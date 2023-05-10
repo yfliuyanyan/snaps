@@ -1,0 +1,41 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:15Z"
+  generation: 1
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: registry-facade
+  name: builtin-registry-facade-cert
+  namespace: gitpod
+  resourceVersion: "4140"
+  uid: 95ad8747-26da-45de-951f-e6f9a2747dcc
+spec:
+  dnsNames:
+  - reg.ide-lyy.one
+  duration: 2160h0m0s
+  issuerRef:
+    group: cert-manager.io
+    kind: Issuer
+    name: ca-issuer
+  secretName: builtin-registry-facade-cert
+  secretTemplate:
+    labels:
+      app: gitpod
+      component: registry-facade
+status:
+  conditions:
+  - lastTransitionTime: "2023-05-09T09:31:20Z"
+    message: Certificate is up to date and has not expired
+    observedGeneration: 1
+    reason: Ready
+    status: "True"
+    type: Ready
+  notAfter: "2023-08-07T09:31:20Z"
+  notBefore: "2023-05-09T09:31:20Z"
+  renewalTime: "2023-07-08T09:31:20Z"
+  revision: 1

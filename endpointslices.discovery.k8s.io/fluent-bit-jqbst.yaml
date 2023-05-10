@@ -1,0 +1,47 @@
+addressType: IPv4
+apiVersion: discovery.k8s.io/v1
+endpoints:
+- addresses:
+  - 192.168.132.248
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: vultr
+  targetRef:
+    kind: Pod
+    name: fluent-bit-2m8l4
+    namespace: gitpod
+    uid: 433114fe-ed05-41ee-a9fe-7fa8541b7d0b
+kind: EndpointSlice
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2023-05-09T09:31:54Z"
+  creationTimestamp: "2023-05-09T09:30:56Z"
+  generateName: fluent-bit-
+  generation: 8
+  labels:
+    app.kubernetes.io/instance: fluent-bit
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: fluent-bit
+    app.kubernetes.io/version: 1.9.4
+    endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+    helm.sh/chart: fluent-bit-0.20.2
+    kots.io/app-slug: gitpod
+    kots.io/backup: velero
+    kubernetes.io/service-name: fluent-bit
+  name: fluent-bit-jqbst
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Service
+    name: fluent-bit
+    uid: 1d2398f0-60e3-41c3-839e-e975b36fe966
+  resourceVersion: "4660"
+  uid: b13ac730-2ca0-42ca-89c6-417212e629cc
+ports:
+- name: http
+  port: 2020
+  protocol: TCP

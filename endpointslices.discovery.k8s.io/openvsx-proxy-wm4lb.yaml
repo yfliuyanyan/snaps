@@ -1,0 +1,48 @@
+addressType: IPv4
+apiVersion: discovery.k8s.io/v1
+endpoints:
+- addresses:
+  - 192.168.132.247
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  hostname: openvsx-proxy-0
+  nodeName: vultr
+  targetRef:
+    kind: Pod
+    name: openvsx-proxy-0
+    namespace: gitpod
+    uid: 75498f0f-6745-4212-b318-c9938e3da246
+kind: EndpointSlice
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2023-05-09T09:31:58Z"
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  generateName: openvsx-proxy-
+  generation: 3
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: openvsx-proxy
+    endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+    kind: service
+    kubernetes.io/service-name: openvsx-proxy
+  name: openvsx-proxy-wm4lb
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Service
+    name: openvsx-proxy
+    uid: 07ab6449-6aef-480e-879a-7c2ca57ab689
+  resourceVersion: "4695"
+  uid: ddd00999-72f3-43b2-9f42-b972532f147b
+ports:
+- name: http
+  port: 8080
+  protocol: TCP
+- name: metrics
+  port: 9500
+  protocol: TCP

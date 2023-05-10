@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2023-05-09T09:22:38Z"
+  creationTimestamp: "2023-05-09T09:21:56Z"
+  labels:
+    kots.io/backup: velero
+    kots.io/kotsadm: "true"
+  name: kotsadm-minio
+  namespace: gitpod
+  resourceVersion: "2589"
+  uid: 3d92231e-f4b5-47cd-afc5-e394a32dbb3c
+subsets:
+- addresses:
+  - ip: 192.168.132.208
+    nodeName: vultr
+    targetRef:
+      kind: Pod
+      name: kotsadm-minio-0
+      namespace: gitpod
+      uid: d4f13de3-55a6-4a50-8e9f-e755498c8f1d
+  ports:
+  - name: service
+    port: 9000
+    protocol: TCP

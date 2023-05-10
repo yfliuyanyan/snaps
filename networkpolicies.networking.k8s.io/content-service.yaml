@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:13Z"
+  generation: 1
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: content-service
+  name: content-service
+  namespace: gitpod
+  resourceVersion: "3461"
+  uid: 0619fcdb-388b-4948-a6ca-62e655eec522
+spec:
+  ingress:
+  - {}
+  podSelector:
+    matchLabels:
+      app: gitpod
+      component: content-service
+  policyTypes:
+  - Ingress
+status: {}

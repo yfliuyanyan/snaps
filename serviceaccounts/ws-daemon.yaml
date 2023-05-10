@@ -1,0 +1,16 @@
+apiVersion: v1
+automountServiceAccountToken: true
+kind: ServiceAccount
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:13Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ws-daemon
+  name: ws-daemon
+  namespace: gitpod
+  resourceVersion: "3492"
+  uid: 773d46bc-55e9-4b33-b061-3df50a35af45

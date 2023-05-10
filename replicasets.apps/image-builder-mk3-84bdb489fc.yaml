@@ -1,0 +1,176 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  annotations:
+    deployment.kubernetes.io/desired-replicas: "1"
+    deployment.kubernetes.io/max-replicas: "2"
+    deployment.kubernetes.io/revision: "1"
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  generation: 2
+  labels:
+    app: gitpod
+    component: image-builder-mk3
+    pod-template-hash: 84bdb489fc
+  name: image-builder-mk3-84bdb489fc
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Deployment
+    name: image-builder-mk3
+    uid: e35c692b-a48d-45c9-affb-23743c052cff
+  resourceVersion: "8166"
+  uid: 0a60eb47-bedc-432f-bef7-2dd30d691216
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: gitpod
+      component: image-builder-mk3
+      pod-template-hash: 84bdb489fc
+  template:
+    metadata:
+      annotations:
+        gitpod.io/checksum_config: a856dc58d24da40bd9d268298c04eec53506ae2210fb7891e7382008dbde08c6
+      creationTimestamp: null
+      labels:
+        app: gitpod
+        component: image-builder-mk3
+        pod-template-hash: 84bdb489fc
+      name: image-builder-mk3
+      namespace: gitpod
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: gitpod.io/workload_meta
+                operator: Exists
+      containers:
+      - args:
+        - run
+        - --config
+        - /config/image-builder.json
+        env:
+        - name: GITPOD_DOMAIN
+          value: ide-lyy.one
+        - name: GITPOD_INSTALLATION_SHORTNAME
+          value: default
+        - name: GITPOD_REGION
+          value: local
+        - name: HOST_URL
+          value: https://ide-lyy.one
+        - name: KUBE_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: KUBE_DOMAIN
+          value: svc.cluster.local
+        - name: LOG_LEVEL
+          value: info
+        - name: JAEGER_DISABLED
+          value: "true"
+        image: eu.gcr.io/gitpod-core-dev/build/image-builder-mk3:commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc
+        imagePullPolicy: IfNotPresent
+        name: image-builder-mk3
+        ports:
+        - containerPort: 8080
+          name: service
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 100m
+            memory: 200Mi
+        securityContext:
+          privileged: false
+          runAsUser: 33333
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /config/image-builder.json
+          name: configuration
+          subPath: image-builder.json
+        - mountPath: /wsman-certs
+          name: wsman-tls-certs
+          readOnly: true
+        - mountPath: /config/pull-secret.json
+          name: pull-secret
+          subPath: .dockerconfigjson
+      - args:
+        - --logtostderr
+        - --insecure-listen-address=[$(IP)]:9500
+        - --upstream=http://127.0.0.1:9500/
+        env:
+        - name: IP
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.podIP
+        image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+        imagePullPolicy: IfNotPresent
+        name: kube-rbac-proxy
+        ports:
+        - containerPort: 9500
+          name: metrics
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 1m
+            memory: 30Mi
+        securityContext:
+          runAsGroup: 65532
+          runAsNonRoot: true
+          runAsUser: 65532
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: FallbackToLogsOnError
+      dnsPolicy: ClusterFirst
+      enableServiceLinks: false
+      initContainers:
+      - command:
+        - bash
+        - -c
+        - set -e; update-ca-certificates -f; cp /etc/ssl/certs/* /ssl-certs; echo
+          'OK'
+        image: eu.gcr.io/gitpod-core-dev/build/ca-updater:commit-2529db484939a3e73ed6f129dd0add0f767ce394
+        imagePullPolicy: IfNotPresent
+        name: update-ca-certificates
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /ssl-certs
+          name: cacerts
+        - mountPath: /usr/local/share/ca-certificates/gitpod-ca.crt
+          name: gitpod-ca-certificate
+          subPath: ca.crt
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: image-builder-mk3
+      serviceAccountName: image-builder-mk3
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: image-builder-mk3-config
+        name: configuration
+      - name: wsman-tls-certs
+        secret:
+          defaultMode: 420
+          secretName: ws-manager-client-tls
+      - name: pull-secret
+        secret:
+          defaultMode: 420
+          secretName: builtin-registry-auth
+      - emptyDir: {}
+        name: gitpod-ca-certificate
+      - emptyDir: {}
+        name: cacerts
+status:
+  observedGeneration: 2
+  replicas: 0

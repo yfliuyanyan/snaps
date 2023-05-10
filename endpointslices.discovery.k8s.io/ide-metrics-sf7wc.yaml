@@ -1,0 +1,44 @@
+addressType: IPv4
+apiVersion: discovery.k8s.io/v1
+endpoints:
+- addresses:
+  - 192.168.132.223
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: vultr
+  targetRef:
+    kind: Pod
+    name: ide-metrics-6d9889c4bb-qn27s
+    namespace: gitpod
+    uid: 4d503971-c42e-4151-8c46-469386514cd0
+kind: EndpointSlice
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2023-05-09T09:31:37Z"
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  generateName: ide-metrics-
+  generation: 2
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ide-metrics
+    endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+    kind: service
+    kubernetes.io/service-name: ide-metrics
+  name: ide-metrics-sf7wc
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Service
+    name: ide-metrics
+    uid: 49b35662-6d4c-437a-9998-b78831412b5a
+  resourceVersion: "4543"
+  uid: 581c9b96-dcce-48ec-9f3d-4ee47e368ece
+ports:
+- name: http
+  port: 3000
+  protocol: TCP

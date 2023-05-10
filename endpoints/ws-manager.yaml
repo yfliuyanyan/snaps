@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ws-manager
+    kind: service
+  name: ws-manager
+  namespace: gitpod
+  resourceVersion: "8243"
+  uid: 037e5d77-a64f-49ba-803a-8d15814f3393
+subsets:
+- addresses:
+  - ip: 192.168.132.253
+    nodeName: vultr
+    targetRef:
+      kind: Pod
+      name: ws-manager-6d44c45579-ns4ht
+      namespace: gitpod
+      uid: 9c12a2dc-59c8-4672-aafd-57245554ae21
+  ports:
+  - name: rpc
+    port: 8080
+    protocol: TCP

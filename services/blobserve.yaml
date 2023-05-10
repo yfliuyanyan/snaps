@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: blobserve
+    kind: service
+  name: blobserve
+  namespace: gitpod
+  resourceVersion: "3673"
+  uid: a8bb4701-abce-4403-969d-a12a3c4e3ab7
+spec:
+  clusterIP: 10.43.4.200
+  clusterIPs:
+  - 10.43.4.200
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: service
+    port: 4000
+    protocol: TCP
+    targetPort: 32224
+  selector:
+    app: gitpod
+    component: blobserve
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

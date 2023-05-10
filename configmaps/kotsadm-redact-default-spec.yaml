@@ -1,0 +1,26 @@
+apiVersion: v1
+data:
+  default-redactor: |
+    apiVersion: troubleshoot.sh/v1beta2
+    kind: Redactor
+    metadata:
+      creationTimestamp: null
+      name: default-redactor
+    spec:
+      redactors:
+      - fileSelector: {}
+        name: IP Addresses
+        removals:
+          regex:
+          - redactor: (?P<mask>\b(?P<drop>25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?P<drop>25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?P<drop>25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?P<drop>25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b)
+    status: {}
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2023-05-09T09:24:49Z"
+  labels:
+    kots.io/backup: velero
+    kots.io/kotsadm: "true"
+  name: kotsadm-redact-default-spec
+  namespace: gitpod
+  resourceVersion: "2792"
+  uid: c7323fbd-16d2-4d0a-8ebc-432350c34c5b

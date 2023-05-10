@@ -1,0 +1,42 @@
+addressType: IPv4
+apiVersion: discovery.k8s.io/v1
+endpoints:
+- addresses:
+  - 192.168.132.209
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: vultr
+  targetRef:
+    kind: Pod
+    name: kotsadm-67dc4c7c59-58b8l
+    namespace: gitpod
+    uid: c6c47366-b594-41ad-bda0-e32a566e69e1
+kind: EndpointSlice
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2023-05-09T09:23:37Z"
+  creationTimestamp: "2023-05-09T09:22:46Z"
+  generateName: kotsadm-
+  generation: 3
+  labels:
+    endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+    kots.io/backup: velero
+    kots.io/kotsadm: "true"
+    kubernetes.io/service-name: kotsadm
+  name: kotsadm-qldpw
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Service
+    name: kotsadm
+    uid: cede93c9-2509-4c25-b259-2404232aaca5
+  resourceVersion: "2708"
+  uid: ae8c2dd1-45ba-4ec9-8c71-2a1b878e0fdc
+ports:
+- name: http
+  port: 3000
+  protocol: TCP

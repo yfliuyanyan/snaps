@@ -1,0 +1,256 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    cni.projectcalico.org/containerID: f220822d2200851cfbe84b330c2aa8eaf242f8e6530a3726709f41fb9454360b
+    cni.projectcalico.org/podIP: 192.168.132.255/32
+    cni.projectcalico.org/podIPs: 192.168.132.255/32
+    gitpod.io/checksum_config: c2456b756081461b7c78a0c4570deb44b8ae0711bddac029be21874abc22dbb9
+  creationTimestamp: "2023-05-09T10:05:03Z"
+  generateName: ws-proxy-7584dfddf4-
+  labels:
+    app: gitpod
+    component: ws-proxy
+    pod-template-hash: 7584dfddf4
+  name: ws-proxy-7584dfddf4-zkqgh
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: ws-proxy-7584dfddf4
+    uid: 84ec701f-4abe-4573-b297-e6c172f1ade7
+  resourceVersion: "8124"
+  uid: c900e7a0-aab9-4c2e-9675-9df652e10b14
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: gitpod.io/workload_workspace_services
+            operator: Exists
+  containers:
+  - args:
+    - run
+    - /config/config.json
+    env:
+    - name: GITPOD_DOMAIN
+      value: ide-lyy.one
+    - name: GITPOD_INSTALLATION_SHORTNAME
+      value: default
+    - name: GITPOD_REGION
+      value: local
+    - name: HOST_URL
+      value: https://ide-lyy.one
+    - name: KUBE_NAMESPACE
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.namespace
+    - name: KUBE_DOMAIN
+      value: svc.cluster.local
+    - name: LOG_LEVEL
+      value: info
+    - name: JAEGER_DISABLED
+      value: "true"
+    image: eu.gcr.io/gitpod-core-dev/build/ws-proxy:commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc
+    imagePullPolicy: IfNotPresent
+    livenessProbe:
+      failureThreshold: 10
+      httpGet:
+        path: /healthz
+        port: 8086
+        scheme: HTTP
+      initialDelaySeconds: 2
+      periodSeconds: 5
+      successThreshold: 1
+      timeoutSeconds: 2
+    name: ws-proxy
+    ports:
+    - containerPort: 8080
+      name: http-proxy
+      protocol: TCP
+    - containerPort: 9090
+      name: https-proxy
+      protocol: TCP
+    - containerPort: 9500
+      name: metrics
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 10
+      httpGet:
+        path: /readyz
+        port: 8086
+        scheme: HTTP
+      initialDelaySeconds: 2
+      periodSeconds: 5
+      successThreshold: 1
+      timeoutSeconds: 1
+    resources:
+      requests:
+        cpu: 100m
+        memory: 32Mi
+    securityContext:
+      privileged: false
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /config
+      name: config
+      readOnly: true
+    - mountPath: /ws-manager-client-tls-certs
+      name: ws-manager-client-tls-certs
+      readOnly: true
+    - mountPath: /mnt/certificates
+      name: config-certificates
+    - mountPath: /mnt/host-key
+      name: host-key
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-q85gg
+      readOnly: true
+  - args:
+    - --logtostderr
+    - --insecure-listen-address=[$(IP)]:9500
+    - --upstream=http://127.0.0.1:9500/
+    env:
+    - name: IP
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: status.podIP
+    image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+    imagePullPolicy: IfNotPresent
+    name: kube-rbac-proxy
+    ports:
+    - containerPort: 9500
+      name: metrics
+      protocol: TCP
+    resources:
+      requests:
+        cpu: 1m
+        memory: 30Mi
+    securityContext:
+      runAsGroup: 65532
+      runAsNonRoot: true
+      runAsUser: 65532
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: FallbackToLogsOnError
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-q85gg
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: false
+  nodeName: vultr
+  preemptionPolicy: PreemptLowerPriority
+  priority: 2000001000
+  priorityClassName: system-node-critical
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext:
+    runAsUser: 31002
+  serviceAccount: ws-proxy
+  serviceAccountName: ws-proxy
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  topologySpreadConstraints:
+  - labelSelector:
+      matchLabels:
+        app: gitpod
+        component: ws-proxy
+    maxSkew: 1
+    topologyKey: kubernetes.io/hostname
+    whenUnsatisfiable: DoNotSchedule
+  volumes:
+  - configMap:
+      defaultMode: 420
+      name: ws-proxy
+    name: config
+  - name: ws-manager-client-tls-certs
+    secret:
+      defaultMode: 420
+      secretName: ws-manager-client-tls
+  - name: config-certificates
+    secret:
+      defaultMode: 420
+      secretName: https-certificates
+  - name: host-key
+    secret:
+      defaultMode: 420
+      secretName: ssh-gateway-host-key
+  - name: kube-api-access-q85gg
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T10:05:04Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T10:05:10Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T10:05:10Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T10:05:03Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://ddcf2d11e58386ff87977539e4f2205988bfa2da0d778da2886493c451d34ce5
+    image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+    imageID: quay.io/brancz/kube-rbac-proxy@sha256:12b82e47da1a2f5094966d4239811a5ae5c37b47e4224b1b35e57a7f02edd57a
+    lastState: {}
+    name: kube-rbac-proxy
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2023-05-09T10:05:07Z"
+  - containerID: containerd://1f6cc5f1bea047eefcda9082df9bf89c6a358a9da116b7f43cc62f1ceb885ce1
+    image: eu.gcr.io/gitpod-core-dev/build/ws-proxy:commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc
+    imageID: eu.gcr.io/gitpod-core-dev/build/ws-proxy@sha256:167af2e58b95ed27c095ba0987ac4c5d21a4876bbfd3e92bcd29f99650d7389a
+    lastState: {}
+    name: ws-proxy
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2023-05-09T10:05:07Z"
+  hostIP: 45.77.41.206
+  phase: Running
+  podIP: 192.168.132.255
+  podIPs:
+  - ip: 192.168.132.255
+  qosClass: Burstable
+  startTime: "2023-05-09T10:05:04Z"

@@ -1,0 +1,22 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: blobserve
+  name: blobserve
+  namespace: gitpod
+  resourceVersion: "3577"
+  uid: 3ccb490a-eb3b-48a1-b9fc-75029b54374f
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: gitpod-ns-psp:restricted-root-user
+subjects:
+- kind: ServiceAccount
+  name: blobserve

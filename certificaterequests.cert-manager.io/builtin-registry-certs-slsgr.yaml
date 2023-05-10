@@ -1,0 +1,59 @@
+apiVersion: cert-manager.io/v1
+kind: CertificateRequest
+metadata:
+  annotations:
+    cert-manager.io/certificate-name: builtin-registry-certs
+    cert-manager.io/certificate-revision: "1"
+    cert-manager.io/private-key-secret-name: builtin-registry-certs-s2q5g
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:16Z"
+  generateName: builtin-registry-certs-
+  generation: 1
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: docker-registry
+  name: builtin-registry-certs-slsgr
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: cert-manager.io/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Certificate
+    name: builtin-registry-certs
+    uid: 685df097-924d-4d8a-ad4e-f931fcaeb5e7
+  resourceVersion: "4107"
+  uid: 6747beed-1dc4-46bc-9107-f4da4d80af7e
+spec:
+  duration: 2160h0m0s
+  extra:
+    authentication.kubernetes.io/pod-name:
+    - cert-manager-69c6cb69f9-zz8c7
+    authentication.kubernetes.io/pod-uid:
+    - f8f0b3bc-4eb8-4784-8b8b-b771a30367e0
+  groups:
+  - system:serviceaccounts
+  - system:serviceaccounts:cert-manager
+  - system:authenticated
+  issuerRef:
+    group: cert-manager.io
+    kind: Issuer
+    name: ca-issuer
+  request: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURSBSRVFVRVNULS0tLS0KTUlJQ2tUQ0NBWGtDQVFBd0FEQ0NBU0l3RFFZSktvWklodmNOQVFFQkJRQURnZ0VQQURDQ0FRb0NnZ0VCQU12VQpiTUE3QzRrY1dmdEIxYmo4QVoxbG9ZMmVQRUFsc2hoTDZmRm5OWngzTGtoTStRdm5yRy92WWxRVDZta2M3ZktxClIyT2p6dHhKaFplWUVUeHFZWm5meWUrQ1dEVXhNVy9YdTVNMzgxQXlheUtxemtaNzRsaXd0ZXJDYmN2dytndEQKYjJGRWVuM0k0WjRxMDNPd1RUbkdHSm1CdlViMzFFbjk1aWE1VmdxTjNhVmVES3V3VkdJNEFwMTQ4NXRxbGtSVQpWSE5WNHJlVzA1Slp3OTFXY2RFYmRFVWxtQ1VJS2lQMUZTcFNCVEpRMFlOTUV6NFFtS21wazRpQzlwUDVxK3J4ClR5ZGswQ0ZMTUhrV0xadFgyZ2psblFua3pPalFLM0ZwMTh3L0laVlRuVzFyT3JlN2pyRDBYUkpxWHkrRTZ5R3AKS3lLUEJGbm5uL1JBcVl5eUZ0MENBd0VBQWFCTU1Fb0dDU3FHU0liM0RRRUpEakU5TURzd0xBWURWUjBSQkNVdwpJNEloY21WbmFYTjBjbmt1WjJsMGNHOWtMbk4yWXk1amJIVnpkR1Z5TG14dlkyRnNNQXNHQTFVZER3UUVBd0lGCm9EQU5CZ2txaGtpRzl3MEJBUXNGQUFPQ0FRRUFPT3Nmcm1YNU9QdWJWQVVjbWVwTDZ2MFQ5TGZES3YzaDV5THgKWFd4OVRwUG9ad1ZjRVpmbHBaMWkrR0RjZlBFdkZjSUxBTzI5U2tUQ0hrdVYrbUV2enlndlJGYkJEZWt6UGg5Ygp0b25GalB0bGRWQXBXMjlsbGZncHVmOTVFVTc1TUpZbUwybW5rZ01aUGpOVHZDWGZ6K24reUlkc0pUTUN5U0pRCldCbEVXNTc4SmF4ei9wZExJSmhFWkxvak9pbjRUTUxlaVg4SFNlanVHMnd0aFRoOG9xaG1tL3MxUHdNL3R3ek4KWFg3RUphK0hvMVpwUmJtbUplL09ZemdabEpTc3lKMUJzdFIxM3lDZHJRWldCUjkyMEwrakpkbGVaZkE3VjI1TQp6M2psdFhwcCtvUEtjWDJONWxiaFZ0bDh5eHhQellyVGdxRzA4MW0yTUtwWi9iSmJNZz09Ci0tLS0tRU5EIENFUlRJRklDQVRFIFJFUVVFU1QtLS0tLQo=
+  uid: 8f1f2353-75b6-422d-a904-4b2593614e9f
+  username: system:serviceaccount:cert-manager:cert-manager
+status:
+  ca: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJiVENDQVJTZ0F3SUJBZ0lRSVNCMi9rNmIvZ2ZOTERnd1BvS1EzREFLQmdncWhrak9QUVFEQWpBWE1SVXcKRXdZRFZRUURFd3hqWVMxcGMzTjFaWEl0WTJFd0hoY05Nak13TlRBNU1Ea3pNVEUxV2hjTk1qTXdPREEzTURregpNVEUxV2pBWE1SVXdFd1lEVlFRREV3eGpZUzFwYzNOMVpYSXRZMkV3V1RBVEJnY3Foa2pPUFFJQkJnZ3Foa2pPClBRTUJCd05DQUFSVTJBeU4zb1ZnOGpybzJPZURma1VuWTlNNHI0bnVMeHRTbHZ5SHIyM1c2NHNaV2lHOVVwRFUKSHVFUjkrWXZDZWpSVlppbFJZckVwSFQwYmYvZitXc29vMEl3UURBT0JnTlZIUThCQWY4RUJBTUNBcVF3RHdZRApWUjBUQVFIL0JBVXdBd0VCL3pBZEJnTlZIUTRFRmdRVS9uYjJ0S2JaTlN0ZXE0MEp0SEZOSTAxM1g4b3dDZ1lJCktvWkl6ajBFQXdJRFJ3QXdSQUlnZEVMNE5kU2htMWZmN1FScDVnZmxPRUFVbldXUDcyakJmWGd0NzZEeEZVWUMKSUdBc0dWaFBDSmFRK1lvZ2F1UWhvTk50OUphMjZxVmo1K3Zyd2hSZUxWQTgKLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+  certificate: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUNVVENDQWZpZ0F3SUJBZ0lRZEl2aVI1dDlzNUpoNW1BY25GMjM0ekFLQmdncWhrak9QUVFEQWpBWE1SVXcKRXdZRFZRUURFd3hqWVMxcGMzTjFaWEl0WTJFd0hoY05Nak13TlRBNU1Ea3pNVEl3V2hjTk1qTXdPREEzTURregpNVEl3V2pBQU1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBeTlSc3dEc0xpUnhaCiswSFZ1UHdCbldXaGpaNDhRQ1d5R0V2cDhXYzFuSGN1U0V6NUMrZXNiKzlpVkJQcWFSenQ4cXBIWTZQTzNFbUYKbDVnUlBHcGhtZC9KNzRKWU5URXhiOWU3a3pmelVESnJJcXJPUm52aVdMQzE2c0p0eS9ENkMwTnZZVVI2ZmNqaApuaXJUYzdCTk9jWVltWUc5UnZmVVNmM21KcmxXQ28zZHBWNE1xN0JVWWpnQ25YanptMnFXUkZSVWMxWGl0NWJUCmtsbkQzVlp4MFJ0MFJTV1lKUWdxSS9VVktsSUZNbERSZzB3VFBoQ1lxYW1UaUlMMmsvbXI2dkZQSjJUUUlVc3cKZVJZdG0xZmFDT1dkQ2VUTTZOQXJjV25YekQ4aGxWT2RiV3M2dDd1T3NQUmRFbXBmTDRUcklha3JJbzhFV2VlZgo5RUNwakxJVzNRSURBUUFCbzNJd2NEQU9CZ05WSFE4QkFmOEVCQU1DQmFBd0RBWURWUjBUQVFIL0JBSXdBREFmCkJnTlZIU01FR0RBV2dCVCtkdmEwcHRrMUsxNnJqUW0wY1UwalRYZGZ5akF2QmdOVkhSRUJBZjhFSlRBamdpRnkKWldkcGMzUnllUzVuYVhSd2IyUXVjM1pqTG1Oc2RYTjBaWEl1Ykc5allXd3dDZ1lJS29aSXpqMEVBd0lEUndBdwpSQUlnSG5oa3VHN205Y1BZVHM1WXk0VS9SNU53a0o1TEJhZ2FSOHFsbStCVDM1QUNJREM5ZC9JOXA3ZDV5a3B5CmQwK2NkU2o1YVVBY2FtYlNhb0t5Z2FNdU9OaHEKLS0tLS1FTkQgQ0VSVElGSUNBVEUtLS0tLQo=
+  conditions:
+  - lastTransitionTime: "2023-05-09T09:31:16Z"
+    message: Certificate request has been approved by cert-manager.io
+    reason: cert-manager.io
+    status: "True"
+    type: Approved
+  - lastTransitionTime: "2023-05-09T09:31:20Z"
+    message: Certificate fetched from issuer successfully
+    reason: Issued
+    status: "True"
+    type: Ready

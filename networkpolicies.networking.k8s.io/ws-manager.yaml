@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:13Z"
+  generation: 1
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ws-manager
+  name: ws-manager
+  namespace: gitpod
+  resourceVersion: "3456"
+  uid: 67bdda1c-7bf7-4716-b116-fd9958d729d0
+spec:
+  ingress:
+  - {}
+  podSelector:
+    matchLabels:
+      app: gitpod
+      component: ws-manager
+  policyTypes:
+  - Ingress
+status: {}

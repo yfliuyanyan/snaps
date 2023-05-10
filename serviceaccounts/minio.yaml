@@ -1,0 +1,19 @@
+apiVersion: v1
+automountServiceAccountToken: true
+kind: ServiceAccount
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:13Z"
+  labels:
+    app.kubernetes.io/instance: minio
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: minio
+    helm.sh/chart: minio-11.10.24
+  name: minio
+  namespace: gitpod
+  resourceVersion: "3483"
+  uid: 5e253db3-ce4e-4eda-90bd-d64026f604be
+secrets:
+- name: minio

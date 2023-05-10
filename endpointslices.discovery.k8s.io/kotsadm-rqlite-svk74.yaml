@@ -1,0 +1,42 @@
+addressType: IPv4
+apiVersion: discovery.k8s.io/v1
+endpoints:
+- addresses:
+  - 192.168.132.207
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: vultr
+  targetRef:
+    kind: Pod
+    name: kotsadm-rqlite-0
+    namespace: gitpod
+    uid: 68920ff2-2a51-4b5d-96bf-6374fd7da1b8
+kind: EndpointSlice
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2023-05-09T09:22:23Z"
+  creationTimestamp: "2023-05-09T09:21:56Z"
+  generateName: kotsadm-rqlite-
+  generation: 3
+  labels:
+    endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+    kots.io/backup: velero
+    kots.io/kotsadm: "true"
+    kubernetes.io/service-name: kotsadm-rqlite
+  name: kotsadm-rqlite-svk74
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Service
+    name: kotsadm-rqlite
+    uid: d1897beb-ddf6-404f-8ba3-1bff0792b4e8
+  resourceVersion: "2573"
+  uid: 94160abb-2bc0-4ca6-b077-277214bbb17c
+ports:
+- name: rqlite
+  port: 4001
+  protocol: TCP

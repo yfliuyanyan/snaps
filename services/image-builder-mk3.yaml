@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: image-builder-mk3
+    kind: service
+  name: image-builder-mk3
+  namespace: gitpod
+  resourceVersion: "3664"
+  uid: d8d88804-00e8-4e03-9c8f-4f94d42fc25c
+spec:
+  clusterIP: 10.43.126.169
+  clusterIPs:
+  - 10.43.126.169
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: service
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: gitpod
+    component: image-builder-mk3
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

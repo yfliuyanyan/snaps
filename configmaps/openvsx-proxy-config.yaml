@@ -1,0 +1,32 @@
+apiVersion: v1
+data:
+  config.json: |-
+    {
+      "log_debug": false,
+      "cache_duration_regular": "5m0s",
+      "cache_duration_backup": "72h0m0s",
+      "url_upstream": "https://open-vsx.org",
+      "url_local": "https://open-vsx.ide-lyy.one",
+      "max_idle_conns": 1000,
+      "max_idle_conns_per_host": 1000,
+      "redis_addr": "localhost:6379",
+      "prometheusAddr": "127.0.0.1:9500",
+      "allow_cache_domain": [
+        "open-vsx.org"
+      ]
+    }
+  redis.conf: "\nmaxmemory 100mb\nmaxmemory-policy allkeys-lfu\n\t"
+kind: ConfigMap
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: openvsx-proxy
+  name: openvsx-proxy-config
+  namespace: gitpod
+  resourceVersion: "3512"
+  uid: 26b65703-1096-458a-8184-29a0464a75a0

@@ -1,0 +1,139 @@
+apiVersion: v1
+data:
+  config.json: |-
+    {
+      "version": "release-2022.11.2.16",
+      "hostUrl": "https://ide-lyy.one",
+      "installationShortname": "default",
+      "devBranch": "",
+      "insecureNoDomain": false,
+      "license": "",
+      "licenseFile": "/gitpod/license",
+      "definitelyGpDisabled": true,
+      "enableLocalApp": true,
+      "disableDynamicAuthProviderLogin": false,
+      "maxEnvvarPerUserCount": 4048,
+      "maxConcurrentPrebuildsPerRef": 10,
+      "makeNewUsersAdmin": false,
+      "defaultBaseImageRegistryWhitelist": [],
+      "runDbDeleter": true,
+      "contentServiceAddr": "content-service.gitpod.svc.cluster.local:8080",
+      "imageBuilderAddr": "image-builder-mk3.gitpod.svc.cluster.local:8080",
+      "usageServiceAddr": "usage.gitpod.svc.cluster.local:9001",
+      "ideServiceAddr": "ide-service.gitpod.svc.cluster.local:9001",
+      "maximumEventLoopLag": 0.35,
+      "vsxRegistryUrl": "https://open-vsx.ide-lyy.one",
+      "chargebeeProviderOptionsFile": "/chargebee/providerOptions",
+      "stripeSecretsFile": "/stripe-secret/apikeys",
+      "stripeConfigFile": "",
+      "enablePayment": false,
+      "workspaceHeartbeat": {
+        "intervalSeconds": 60,
+        "timeoutSeconds": 300
+      },
+      "workspaceDefaults": {
+        "workspaceImage": "docker.io/gitpod/workspace-full:latest",
+        "previewFeatureFlags": [],
+        "defaultFeatureFlags": []
+      },
+      "session": {
+        "maxAgeMs": 259200000,
+        "secret": "Important!Really-Change-This-Key!"
+      },
+      "githubApp": {
+        "enabled": false,
+        "appId": 0,
+        "baseUrl": "",
+        "webhookSecret": "",
+        "authProviderId": "",
+        "certPath": "",
+        "marketplaceName": "",
+        "logLevel": "",
+        "certSecretName": ""
+      },
+      "workspaceGarbageCollection": {
+        "disabled": false,
+        "startDate": 0,
+        "intervalSeconds": 300,
+        "chunkLimit": 1000,
+        "minAgeDays": 14,
+        "minAgePrebuildDays": 7,
+        "contentRetentionPeriodDays": 21,
+        "contentChunkLimit": 100,
+        "purgeRetentionPeriodDays": 365,
+        "purgeChunkLimit": 5000
+      },
+      "authProviderConfigFiles": [],
+      "incrementalPrebuilds": {
+        "repositoryPasslist": [],
+        "commitHistory": 100
+      },
+      "blockNewUsers": {
+        "enabled": false,
+        "passlist": []
+      },
+      "oauthServer": {
+        "enabled": true,
+        "jwtSecret": "FvAMaqMDlCpY_9N05w0y"
+      },
+      "rateLimiter": {
+        "groups": {
+          "inWorkspaceUserAction": {
+            "points": 10,
+            "durationsSec": 2
+          }
+        },
+        "functions": {
+          "closePort": {
+            "group": "inWorkspaceUserAction",
+            "points": 0
+          },
+          "controlAdmission": {
+            "group": "inWorkspaceUserAction",
+            "points": 0
+          },
+          "openPort": {
+            "group": "inWorkspaceUserAction",
+            "points": 0
+          },
+          "shareSnapshot": {
+            "group": "inWorkspaceUserAction",
+            "points": 0
+          }
+        }
+      },
+      "codeSync": {
+        "revLimit": 0,
+        "contentLimit": 0,
+        "resources": null
+      },
+      "prebuildLimiter": {
+        "*": 50
+      },
+      "workspaceClasses": [
+        {
+          "id": "default",
+          "category": "GENERAL PURPOSE",
+          "displayName": "Default",
+          "description": "Default workspace class",
+          "powerups": 1,
+          "isDefault": true,
+          "deprecated": false
+        }
+      ],
+      "inactivityPeriodForReposInDays": 0
+    }
+kind: ConfigMap
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: server
+  name: server-config
+  namespace: gitpod
+  resourceVersion: "7717"
+  uid: b5698ba7-6723-4a11-ae30-0a1e2c7165fc

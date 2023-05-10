@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  annotations:
+    pv.kubernetes.io/provisioned-by: rancher.io/local-path
+  creationTimestamp: "2023-05-09T09:22:06Z"
+  finalizers:
+  - kubernetes.io/pv-protection
+  name: pvc-94bd21cc-c22b-45dc-8967-3e03f45345d9
+  resourceVersion: "2509"
+  uid: 9cb0258a-61b6-4132-bef3-a41ee4d40c50
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 1Gi
+  claimRef:
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    name: kotsadm-rqlite-kotsadm-rqlite-0
+    namespace: gitpod
+    resourceVersion: "2451"
+    uid: 94bd21cc-c22b-45dc-8967-3e03f45345d9
+  hostPath:
+    path: /var/lib/rancher/k3s/storage/pvc-94bd21cc-c22b-45dc-8967-3e03f45345d9_gitpod_kotsadm-rqlite-kotsadm-rqlite-0
+    type: DirectoryOrCreate
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - vultr
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: local-path
+  volumeMode: Filesystem
+status:
+  phase: Bound

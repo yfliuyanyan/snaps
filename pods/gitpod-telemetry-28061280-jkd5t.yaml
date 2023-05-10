@@ -1,0 +1,187 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    cni.projectcalico.org/containerID: 407fc67fe096a11fa4ddc341d9b4de27a3c8ae79266c87c3b9202f7f2704d262
+    cni.projectcalico.org/podIP: ""
+    cni.projectcalico.org/podIPs: ""
+  creationTimestamp: "2023-05-10T00:00:00Z"
+  generateName: gitpod-telemetry-28061280-
+  labels:
+    app: gitpod
+    component: gitpod
+    controller-uid: 43f4cd43-2660-4e7f-b0cd-fbb5be40f03b
+    job-name: gitpod-telemetry-28061280
+  name: gitpod-telemetry-28061280-jkd5t
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: batch/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Job
+    name: gitpod-telemetry-28061280
+    uid: 43f4cd43-2660-4e7f-b0cd-fbb5be40f03b
+  resourceVersion: "56503"
+  uid: c5751f64-81f0-4740-8100-eb56d4b73078
+spec:
+  containers:
+  - args:
+    - send
+    env:
+    - name: GITPOD_INSTALLATION_VERSION
+      value: release-2022.11.2.16
+    - name: GITPOD_INSTALLATION_PLATFORM
+      value: k3s
+    - name: SERVER_URL
+      value: http://server.gitpod.svc.cluster.local:9000
+    image: eu.gcr.io/gitpod-core-dev/build/installation-telemetry:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+    imagePullPolicy: IfNotPresent
+    name: gitpod-telemetry
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-vdxh7
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: false
+  initContainers:
+  - args:
+    - -v
+    - database
+    env:
+    - name: DB_HOST
+      valueFrom:
+        secretKeyRef:
+          key: host
+          name: mysql
+    - name: DB_PORT
+      valueFrom:
+        secretKeyRef:
+          key: port
+          name: mysql
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          key: password
+          name: mysql
+    - name: DB_USERNAME
+      valueFrom:
+        secretKeyRef:
+          key: username
+          name: mysql
+    - name: DB_ENCRYPTION_KEYS
+      valueFrom:
+        secretKeyRef:
+          key: encryptionKeys
+          name: mysql
+    image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+    imagePullPolicy: IfNotPresent
+    name: database-waiter
+    resources: {}
+    securityContext:
+      privileged: false
+      runAsUser: 31001
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-vdxh7
+      readOnly: true
+  nodeName: vultr
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: OnFailure
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: gitpod
+  serviceAccountName: gitpod
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: kube-api-access-vdxh7
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-10T00:00:03Z"
+    reason: PodCompleted
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-10T00:00:00Z"
+    reason: PodCompleted
+    status: "False"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-10T00:00:00Z"
+    reason: PodCompleted
+    status: "False"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-10T00:00:00Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://621724c30bae08a80a761bfdafe61dea3b5ffe9b28b9fe7b3470066f23a19528
+    image: eu.gcr.io/gitpod-core-dev/build/installation-telemetry:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+    imageID: eu.gcr.io/gitpod-core-dev/build/installation-telemetry@sha256:1f6d65f4487150b5802843e034a227f7820b041954086b02db9371c38be5d6e0
+    lastState: {}
+    name: gitpod-telemetry
+    ready: false
+    restartCount: 0
+    started: false
+    state:
+      terminated:
+        containerID: containerd://621724c30bae08a80a761bfdafe61dea3b5ffe9b28b9fe7b3470066f23a19528
+        exitCode: 0
+        finishedAt: "2023-05-10T00:00:11Z"
+        reason: Completed
+        startedAt: "2023-05-10T00:00:10Z"
+  hostIP: 45.77.41.206
+  initContainerStatuses:
+  - containerID: containerd://516646d88a3218a44948c58a32ac7c329b711310cfd81ae7689347b60db769ca
+    image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+    imageID: eu.gcr.io/gitpod-core-dev/build/service-waiter@sha256:6b57c0cd4dc622aa10f37f6d19c30a0bf5d9f668041e311264288ece86091878
+    lastState: {}
+    name: database-waiter
+    ready: true
+    restartCount: 0
+    state:
+      terminated:
+        containerID: containerd://516646d88a3218a44948c58a32ac7c329b711310cfd81ae7689347b60db769ca
+        exitCode: 0
+        finishedAt: "2023-05-10T00:00:03Z"
+        reason: Completed
+        startedAt: "2023-05-10T00:00:01Z"
+  phase: Succeeded
+  podIP: 192.168.132.215
+  podIPs:
+  - ip: 192.168.132.215
+  qosClass: BestEffort
+  startTime: "2023-05-10T00:00:00Z"

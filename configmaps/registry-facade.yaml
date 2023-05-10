@@ -1,0 +1,56 @@
+apiVersion: v1
+data:
+  config.json: |-
+    {
+      "registry": {
+        "port": 32223,
+        "prefix": "",
+        "staticLayer": [
+          {
+            "ref": "eu.gcr.io/gitpod-core-dev/build/supervisor:commit-0ded86b57ca033d2cbb0df77d8845b14aff530f2",
+            "type": "image"
+          },
+          {
+            "ref": "eu.gcr.io/gitpod-core-dev/build/workspacekit:commit-668e50f9f635342acb4eb52115be71fa0dee2a51",
+            "type": "image"
+          },
+          {
+            "ref": "eu.gcr.io/gitpod-core-dev/build/docker-up:commit-668e50f9f635342acb4eb52115be71fa0dee2a51",
+            "type": "image"
+          }
+        ],
+        "remoteSpecProvider": {
+          "addr": "dns:///ws-manager:8080",
+          "tls": {
+            "ca": "/ws-manager-client-tls-certs/ca.crt",
+            "crt": "/ws-manager-client-tls-certs/tls.crt",
+            "key": "/ws-manager-client-tls-certs/tls.key"
+          }
+        },
+        "store": "/mnt/cache/registry",
+        "requireAuth": false,
+        "tls": {
+          "ca": "",
+          "crt": "/mnt/certificates/tls.crt",
+          "key": "/mnt/certificates/tls.key"
+        }
+      },
+      "dockerAuth": "/mnt/pull-secret.json",
+      "pprofAddr": "127.0.0.1:6060",
+      "prometheusAddr": "127.0.0.1:9500",
+      "readinessProbeAddr": ":8086"
+    }
+kind: ConfigMap
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: registry-facade
+  name: registry-facade
+  namespace: gitpod
+  resourceVersion: "3528"
+  uid: a34659f9-502c-4988-8a98-8f717f7bd4aa

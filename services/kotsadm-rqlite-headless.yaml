@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: "2023-05-09T09:21:56Z"
+  labels:
+    kots.io/backup: velero
+    kots.io/kotsadm: "true"
+  name: kotsadm-rqlite-headless
+  namespace: gitpod
+  resourceVersion: "2438"
+  uid: b22c6c7b-c9fa-4f90-bb3a-aa333ada28d6
+spec:
+  clusterIP: None
+  clusterIPs:
+  - None
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: rqlite
+    port: 4001
+    protocol: TCP
+    targetPort: rqlite
+  publishNotReadyAddresses: true
+  selector:
+    app: kotsadm-rqlite
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

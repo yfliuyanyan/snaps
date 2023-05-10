@@ -1,0 +1,155 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    cni.projectcalico.org/containerID: a72e5ea682e17cbc10ed0e01e2e9c51c242b2db1bca1f7fef1e86f4d1696855d
+    cni.projectcalico.org/podIP: 192.168.132.226/32
+    cni.projectcalico.org/podIPs: 192.168.132.226/32
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  generateName: dashboard-6b69855cb-
+  labels:
+    app: gitpod
+    component: dashboard
+    pod-template-hash: 6b69855cb
+  name: dashboard-6b69855cb-r8lkx
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: dashboard-6b69855cb
+    uid: 3ab0988a-a365-4768-8464-f4ca7ae31969
+  resourceVersion: "4468"
+  uid: ddf47cac-b920-469b-a308-fbc17f2856fe
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: gitpod.io/workload_meta
+            operator: Exists
+  containers:
+  - env:
+    - name: GITPOD_DOMAIN
+      value: ide-lyy.one
+    - name: GITPOD_INSTALLATION_SHORTNAME
+      value: default
+    - name: GITPOD_REGION
+      value: local
+    - name: HOST_URL
+      value: https://ide-lyy.one
+    - name: KUBE_NAMESPACE
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.namespace
+    - name: KUBE_DOMAIN
+      value: svc.cluster.local
+    - name: LOG_LEVEL
+      value: info
+    image: eu.gcr.io/gitpod-core-dev/build/dashboard:commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc
+    imagePullPolicy: IfNotPresent
+    name: dashboard
+    ports:
+    - containerPort: 80
+      name: http
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /ready
+        port: 8080
+        scheme: HTTP
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    resources:
+      requests:
+        cpu: 100m
+        memory: 32Mi
+    securityContext:
+      privileged: false
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-gczzr
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: false
+  nodeName: vultr
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: dashboard
+  serviceAccountName: dashboard
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: kube-api-access-gczzr
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:31:15Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:31:34Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:31:34Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:31:15Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://659929e993395a397d1b9221b5e6a59a850f047cd75d00d98ae7aa318b81b71e
+    image: eu.gcr.io/gitpod-core-dev/build/dashboard:commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc
+    imageID: eu.gcr.io/gitpod-core-dev/build/dashboard@sha256:7b1987467edca39f3f246553152a419e0c0007870c2da0078723b8f0f2ab62d5
+    lastState: {}
+    name: dashboard
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2023-05-09T09:31:33Z"
+  hostIP: 45.77.41.206
+  phase: Running
+  podIP: 192.168.132.226
+  podIPs:
+  - ip: 192.168.132.226
+  qosClass: Burstable
+  startTime: "2023-05-09T09:31:15Z"

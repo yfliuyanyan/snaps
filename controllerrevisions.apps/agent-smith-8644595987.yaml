@@ -1,0 +1,132 @@
+apiVersion: apps/v1
+data:
+  spec:
+    template:
+      $patch: replace
+      metadata:
+        creationTimestamp: null
+        labels:
+          app: gitpod
+          component: agent-smith
+        name: agent-smith
+      spec:
+        affinity:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+              - matchExpressions:
+                - key: gitpod.io/workload_workspace_regular
+                  operator: Exists
+              - matchExpressions:
+                - key: gitpod.io/workload_workspace_headless
+                  operator: Exists
+        containers:
+        - args:
+          - run
+          - --config
+          - /config/config.json
+          env:
+          - name: GITPOD_DOMAIN
+            value: ide-lyy.one
+          - name: GITPOD_INSTALLATION_SHORTNAME
+            value: default
+          - name: GITPOD_REGION
+            value: local
+          - name: HOST_URL
+            value: https://ide-lyy.one
+          - name: KUBE_NAMESPACE
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+          - name: KUBE_DOMAIN
+            value: svc.cluster.local
+          - name: LOG_LEVEL
+            value: info
+          - name: JAEGER_DISABLED
+            value: "true"
+          - name: NODENAME
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: spec.nodeName
+          image: eu.gcr.io/gitpod-core-dev/build/agent-smith:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+          imagePullPolicy: IfNotPresent
+          name: agent-smith
+          resources:
+            requests:
+              cpu: 100m
+              memory: 32Mi
+          securityContext:
+            privileged: true
+            procMount: Default
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /config
+            name: config
+        - args:
+          - --logtostderr
+          - --insecure-listen-address=[$(IP)]:9500
+          - --upstream=http://127.0.0.1:9500/
+          env:
+          - name: IP
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: status.podIP
+          image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+          imagePullPolicy: IfNotPresent
+          name: kube-rbac-proxy
+          ports:
+          - containerPort: 9500
+            name: metrics
+            protocol: TCP
+          resources:
+            requests:
+              cpu: 1m
+              memory: 30Mi
+          securityContext:
+            runAsGroup: 65532
+            runAsNonRoot: true
+            runAsUser: 65532
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: FallbackToLogsOnError
+        dnsPolicy: ClusterFirst
+        enableServiceLinks: false
+        hostPID: true
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: agent-smith
+        serviceAccountName: agent-smith
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - configMap:
+            defaultMode: 420
+            name: agent-smith
+          name: config
+kind: ControllerRevision
+metadata:
+  annotations:
+    deprecated.daemonset.template.generation: "1"
+    gitpod.io/checksum_config: 902ed627315d76bf8e68e0741078a0142f5539db422da78f431dfa52a6cfd99b
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    component: agent-smith
+    controller-revision-hash: "8644595987"
+  name: agent-smith-8644595987
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: DaemonSet
+    name: agent-smith
+    uid: c4a7770f-8a4e-4598-999e-91ee9dc8f3f2
+  resourceVersion: "3697"
+  uid: e8a78502-64d6-4b44-92e9-0d4d7498575f
+revision: 1

@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2023-05-09T09:31:58Z"
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: openvsx-proxy
+    kind: service
+  name: openvsx-proxy
+  namespace: gitpod
+  resourceVersion: "4694"
+  uid: 691caf62-5670-4f34-881f-a8cce6cb0333
+subsets:
+- addresses:
+  - hostname: openvsx-proxy-0
+    ip: 192.168.132.247
+    nodeName: vultr
+    targetRef:
+      kind: Pod
+      name: openvsx-proxy-0
+      namespace: gitpod
+      uid: 75498f0f-6745-4212-b318-c9938e3da246
+  ports:
+  - name: metrics
+    port: 9500
+    protocol: TCP
+  - name: http
+    port: 8080
+    protocol: TCP

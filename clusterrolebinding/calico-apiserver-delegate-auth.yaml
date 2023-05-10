@@ -1,0 +1,22 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  creationTimestamp: "2023-05-09T09:00:50Z"
+  name: calico-apiserver-delegate-auth
+  ownerReferences:
+  - apiVersion: operator.tigera.io/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: APIServer
+    name: default
+    uid: eac86891-6404-4e14-9b4a-d093bab1067f
+  resourceVersion: "780"
+  uid: a9e818e1-c047-4fb8-b85e-3458408d8dee
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:auth-delegator
+subjects:
+- kind: ServiceAccount
+  name: calico-apiserver
+  namespace: calico-apiserver

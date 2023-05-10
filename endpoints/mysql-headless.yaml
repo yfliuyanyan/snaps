@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2023-05-09T09:31:35Z"
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app.kubernetes.io/component: primary
+    app.kubernetes.io/instance: mysql
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: mysql
+    helm.sh/chart: mysql-9.4.5
+    service.kubernetes.io/headless: ""
+  name: mysql-headless
+  namespace: gitpod
+  resourceVersion: "4602"
+  uid: d0b16e64-d7ae-4211-8b48-48a5df25ed94
+subsets:
+- addresses:
+  - ip: 192.168.132.245
+    nodeName: vultr
+    targetRef:
+      kind: Pod
+      name: mysql-0
+      namespace: gitpod
+      uid: 4e695631-7ae9-4fbe-a349-c5489f134765
+  ports:
+  - name: mysql
+    port: 3306
+    protocol: TCP

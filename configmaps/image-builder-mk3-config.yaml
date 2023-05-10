@@ -1,0 +1,47 @@
+apiVersion: v1
+data:
+  image-builder.json: |-
+    {
+      "orchestrator": {
+        "wsman": {
+          "address": "ws-manager:8080",
+          "tls": {
+            "ca": "/wsman-certs/ca.crt",
+            "crt": "/wsman-certs/tls.crt",
+            "key": "/wsman-certs/tls.key"
+          }
+        },
+        "pullSecret": "builtin-registry-auth",
+        "pullSecretFile": "/config/pull-secret.json",
+        "baseImageRepository": "registry.ide-lyy.one/base-images",
+        "workspaceImageRepository": "registry.ide-lyy.one/workspace-images",
+        "builderImage": "eu.gcr.io/gitpod-core-dev/build/image-builder-mk3/bob:668e50f9f635342acb4eb52115be71fa0dee2a51"
+      },
+      "refCache": {
+        "interval": "6h0m0s",
+        "refs": [
+          "docker.io/gitpod/workspace-full:latest"
+        ]
+      },
+      "server": {
+        "services": {
+          "grpc": {
+            "address": "0.0.0.0:8080"
+          }
+        }
+      }
+    }
+kind: ConfigMap
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: image-builder-mk3
+  name: image-builder-mk3-config
+  namespace: gitpod
+  resourceVersion: "3515"
+  uid: 6cf237b7-af8b-4707-9590-923ed1877910

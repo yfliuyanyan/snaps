@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: docker-registry
+    app.kubernetes.io/managed-by: Helm
+    chart: docker-registry-2.2.2
+    heritage: Helm
+    release: docker-registry
+  name: registry
+  namespace: gitpod
+  resourceVersion: "3609"
+  uid: e6dbd447-8da7-4c74-8259-eeee76d5dbb9
+spec:
+  clusterIP: 10.43.214.41
+  clusterIPs:
+  - 10.43.214.41
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: https-443
+    port: 443
+    protocol: TCP
+    targetPort: 5000
+  selector:
+    app: docker-registry
+    release: docker-registry
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

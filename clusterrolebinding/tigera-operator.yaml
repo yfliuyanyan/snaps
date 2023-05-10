@@ -1,0 +1,15 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  creationTimestamp: "2023-05-09T08:59:34Z"
+  name: tigera-operator
+  resourceVersion: "295"
+  uid: 709b4ab4-a65f-48c0-bb33-473048fffcba
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: tigera-operator
+subjects:
+- kind: ServiceAccount
+  name: tigera-operator
+  namespace: tigera-operator

@@ -1,0 +1,32 @@
+apiVersion: v1
+data:
+  config.json: |-
+    {
+      "gitpodServiceUrl": "wss://ide-lyy.one",
+      "billingServiceAddress": "usage.gitpod.svc.cluster.local:9001",
+      "stripeWebhookSigningSecretPath": "",
+      "server": {
+        "services": {
+          "grpc": {
+            "address": "0.0.0.0:9001"
+          },
+          "http": {
+            "address": "0.0.0.0:9002"
+          }
+        }
+      }
+    }
+kind: ConfigMap
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: public-api-server
+  name: public-api-server
+  namespace: gitpod
+  resourceVersion: "3522"
+  uid: 7b3ef0f5-46ce-415a-b4d6-43a3a6409ac5

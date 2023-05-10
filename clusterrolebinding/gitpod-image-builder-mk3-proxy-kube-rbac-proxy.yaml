@@ -1,0 +1,22 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: image-builder-mk3
+  name: gitpod-image-builder-mk3-proxy-kube-rbac-proxy
+  resourceVersion: "3553"
+  uid: 0fa84b8e-c659-430d-bcf5-4aabfe167e47
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: gitpod-kube-rbac-proxy
+subjects:
+- kind: ServiceAccount
+  name: image-builder-mk3
+  namespace: gitpod

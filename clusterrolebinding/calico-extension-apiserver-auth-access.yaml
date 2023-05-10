@@ -1,0 +1,22 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  creationTimestamp: "2023-05-09T09:00:50Z"
+  name: calico-extension-apiserver-auth-access
+  ownerReferences:
+  - apiVersion: operator.tigera.io/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: APIServer
+    name: default
+    uid: eac86891-6404-4e14-9b4a-d093bab1067f
+  resourceVersion: "782"
+  uid: a105f5ae-d5be-4b34-805a-54cc789171ed
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: calico-extension-apiserver-auth-access
+subjects:
+- kind: ServiceAccount
+  name: calico-apiserver
+  namespace: calico-apiserver

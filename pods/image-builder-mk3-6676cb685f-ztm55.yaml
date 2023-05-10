@@ -1,0 +1,256 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    cni.projectcalico.org/containerID: 8e62e1780534fe85d0f5ea509b810807a18b7aec14218e5d41adae9a01202db6
+    cni.projectcalico.org/podIP: 192.168.132.220/32
+    cni.projectcalico.org/podIPs: 192.168.132.220/32
+    gitpod.io/checksum_config: 9e3c4c4dde32cd6090c0f61494b6f7d292960cbe2ab29659b6b55b3ccc4843d1
+  creationTimestamp: "2023-05-09T10:05:00Z"
+  generateName: image-builder-mk3-6676cb685f-
+  labels:
+    app: gitpod
+    component: image-builder-mk3
+    pod-template-hash: 6676cb685f
+  name: image-builder-mk3-6676cb685f-ztm55
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: image-builder-mk3-6676cb685f
+    uid: 0306b923-f653-477c-b3c0-13e3deba7c93
+  resourceVersion: "8151"
+  uid: f4ae748b-2689-4e06-b3f6-54e656531320
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: gitpod.io/workload_meta
+            operator: Exists
+  containers:
+  - args:
+    - run
+    - --config
+    - /config/image-builder.json
+    env:
+    - name: GITPOD_DOMAIN
+      value: ide-lyy.one
+    - name: GITPOD_INSTALLATION_SHORTNAME
+      value: default
+    - name: GITPOD_REGION
+      value: local
+    - name: HOST_URL
+      value: https://ide-lyy.one
+    - name: KUBE_NAMESPACE
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.namespace
+    - name: KUBE_DOMAIN
+      value: svc.cluster.local
+    - name: LOG_LEVEL
+      value: info
+    - name: JAEGER_DISABLED
+      value: "true"
+    image: eu.gcr.io/gitpod-core-dev/build/image-builder-mk3:commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc
+    imagePullPolicy: IfNotPresent
+    name: image-builder-mk3
+    ports:
+    - containerPort: 8080
+      name: service
+      protocol: TCP
+    resources:
+      requests:
+        cpu: 100m
+        memory: 200Mi
+    securityContext:
+      privileged: false
+      runAsUser: 33333
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /config/image-builder.json
+      name: configuration
+      subPath: image-builder.json
+    - mountPath: /wsman-certs
+      name: wsman-tls-certs
+      readOnly: true
+    - mountPath: /config/pull-secret.json
+      name: pull-secret
+      subPath: .dockerconfigjson
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-wfdnr
+      readOnly: true
+  - args:
+    - --logtostderr
+    - --insecure-listen-address=[$(IP)]:9500
+    - --upstream=http://127.0.0.1:9500/
+    env:
+    - name: IP
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: status.podIP
+    image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+    imagePullPolicy: IfNotPresent
+    name: kube-rbac-proxy
+    ports:
+    - containerPort: 9500
+      name: metrics
+      protocol: TCP
+    resources:
+      requests:
+        cpu: 1m
+        memory: 30Mi
+    securityContext:
+      runAsGroup: 65532
+      runAsNonRoot: true
+      runAsUser: 65532
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: FallbackToLogsOnError
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-wfdnr
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: false
+  initContainers:
+  - command:
+    - bash
+    - -c
+    - set -e; update-ca-certificates -f; cp /etc/ssl/certs/* /ssl-certs; echo 'OK'
+    image: eu.gcr.io/gitpod-core-dev/build/ca-updater:commit-2529db484939a3e73ed6f129dd0add0f767ce394
+    imagePullPolicy: IfNotPresent
+    name: update-ca-certificates
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /ssl-certs
+      name: cacerts
+    - mountPath: /usr/local/share/ca-certificates/gitpod-ca.crt
+      name: gitpod-ca-certificate
+      subPath: ca.crt
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-wfdnr
+      readOnly: true
+  nodeName: vultr
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: image-builder-mk3
+  serviceAccountName: image-builder-mk3
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - configMap:
+      defaultMode: 420
+      name: image-builder-mk3-config
+    name: configuration
+  - name: wsman-tls-certs
+    secret:
+      defaultMode: 420
+      secretName: ws-manager-client-tls
+  - name: pull-secret
+    secret:
+      defaultMode: 420
+      secretName: builtin-registry-auth
+  - emptyDir: {}
+    name: gitpod-ca-certificate
+  - emptyDir: {}
+    name: cacerts
+  - name: kube-api-access-wfdnr
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T10:05:06Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T10:05:07Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T10:05:07Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T10:05:00Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://3786181f40e616625bfbba3570cbc56c15871cdcd5e3cb12e0998be3c0939a06
+    image: eu.gcr.io/gitpod-core-dev/build/image-builder-mk3:commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc
+    imageID: eu.gcr.io/gitpod-core-dev/build/image-builder-mk3@sha256:dcc3271ccc8493cc06235dffec47cf24e8af0b194ec53f4598165f32558f46f6
+    lastState: {}
+    name: image-builder-mk3
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2023-05-09T10:05:07Z"
+  - containerID: containerd://00ac5fb22e15ed8c3c16494ac69e7046bf1cd3d9a2440ec425558078a3236335
+    image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+    imageID: quay.io/brancz/kube-rbac-proxy@sha256:12b82e47da1a2f5094966d4239811a5ae5c37b47e4224b1b35e57a7f02edd57a
+    lastState: {}
+    name: kube-rbac-proxy
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2023-05-09T10:05:07Z"
+  hostIP: 45.77.41.206
+  initContainerStatuses:
+  - containerID: containerd://055739a1e3b3b380e7abfce560eb884ee7bf9f50cc359c0ec375dbacfb1266e4
+    image: eu.gcr.io/gitpod-core-dev/build/ca-updater:commit-2529db484939a3e73ed6f129dd0add0f767ce394
+    imageID: eu.gcr.io/gitpod-core-dev/build/ca-updater@sha256:9441917630a67ef02bec0a759d1ba6b41ef4d64360153d85aaa6c448cb65adf9
+    lastState: {}
+    name: update-ca-certificates
+    ready: true
+    restartCount: 0
+    state:
+      terminated:
+        containerID: containerd://055739a1e3b3b380e7abfce560eb884ee7bf9f50cc359c0ec375dbacfb1266e4
+        exitCode: 0
+        finishedAt: "2023-05-09T10:05:05Z"
+        reason: Completed
+        startedAt: "2023-05-09T10:05:03Z"
+  phase: Running
+  podIP: 192.168.132.220
+  podIPs:
+  - ip: 192.168.132.220
+  qosClass: Burstable
+  startTime: "2023-05-09T10:05:00Z"

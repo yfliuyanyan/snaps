@@ -1,0 +1,228 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    checksum/config: 76a3e9c8a3fa7d5641ab44881c3680d6ecd39f4aae138f028c67d2667903d247
+    checksum/luascripts: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+    cni.projectcalico.org/containerID: e2e9300b03cc8af058a2dbd571649e3a0f0d1c110b615afe813f30cf7e8abe15
+    cni.projectcalico.org/podIP: 192.168.132.248/32
+    cni.projectcalico.org/podIPs: 192.168.132.248/32
+    kots.io/app-slug: gitpod
+  creationTimestamp: "2023-05-09T09:31:49Z"
+  generateName: fluent-bit-
+  labels:
+    app: gitpod
+    app.kubernetes.io/instance: fluent-bit
+    app.kubernetes.io/name: fluent-bit
+    component: gitpod-log-collector
+    controller-revision-hash: 8546c7857b
+    kots.io/app-slug: gitpod
+    kots.io/backup: velero
+    pod-template-generation: "1"
+  name: fluent-bit-2m8l4
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: DaemonSet
+    name: fluent-bit
+    uid: 73d4e33c-cf6e-4f0d-8948-6eeed3b60710
+  resourceVersion: "4659"
+  uid: 433114fe-ed05-41ee-a9fe-7fa8541b7d0b
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchFields:
+          - key: metadata.name
+            operator: In
+            values:
+            - vultr
+  containers:
+  - image: cr.fluentbit.io/fluent/fluent-bit:1.9.4
+    imagePullPolicy: Always
+    livenessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /
+        port: http
+        scheme: HTTP
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    name: fluent-bit
+    ports:
+    - containerPort: 2020
+      name: http
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /api/v1/health
+        port: http
+        scheme: HTTP
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /fluent-bit/etc/fluent-bit.conf
+      name: config
+      subPath: fluent-bit.conf
+    - mountPath: /fluent-bit/etc/custom_parsers.conf
+      name: config
+      subPath: custom_parsers.conf
+    - mountPath: /var/log
+      name: varlog
+    - mountPath: /var/lib/docker/containers
+      name: varlibdockercontainers
+      readOnly: true
+    - mountPath: /etc/machine-id
+      name: etcmachineid
+      readOnly: true
+    - mountPath: /gitpod
+      name: collector
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-88cjs
+      readOnly: true
+  - args:
+    - mkdir -p /gitpod/log-collector && while true; do echo "waiting" && sleep 60;
+      done
+    command:
+    - sh
+    - -c
+    image: busybox:1
+    imagePullPolicy: IfNotPresent
+    name: kots
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /gitpod
+      name: collector
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-88cjs
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  imagePullSecrets:
+  - name: gitpod-registry
+  nodeName: vultr
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: fluent-bit
+  serviceAccountName: fluent-bit
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+  - effect: NoSchedule
+    key: node.kubernetes.io/disk-pressure
+    operator: Exists
+  - effect: NoSchedule
+    key: node.kubernetes.io/memory-pressure
+    operator: Exists
+  - effect: NoSchedule
+    key: node.kubernetes.io/pid-pressure
+    operator: Exists
+  - effect: NoSchedule
+    key: node.kubernetes.io/unschedulable
+    operator: Exists
+  volumes:
+  - configMap:
+      defaultMode: 420
+      name: fluent-bit
+    name: config
+  - hostPath:
+      path: /var/log
+      type: ""
+    name: varlog
+  - hostPath:
+      path: /var/lib/docker/containers
+      type: ""
+    name: varlibdockercontainers
+  - hostPath:
+      path: /etc/machine-id
+      type: File
+    name: etcmachineid
+  - hostPath:
+      path: /gitpod
+      type: DirectoryOrCreate
+    name: collector
+  - name: kube-api-access-88cjs
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:31:49Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:31:54Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:31:54Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:31:49Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://7afbb78d9ed38b35f11cb7667c1af025e9969740dd2319f7d0021212a7572c8f
+    image: cr.fluentbit.io/fluent/fluent-bit:1.9.4
+    imageID: cr.fluentbit.io/fluent/fluent-bit@sha256:be7c4856f7838efd7fb37c1e217199ba577b2c582442fad0e60c45afa52f5234
+    lastState: {}
+    name: fluent-bit
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2023-05-09T09:31:53Z"
+  - containerID: containerd://b2cf072055af4f9aff4ad1bffd6995c1ee0d0be5cabf197567e71043a1644122
+    image: docker.io/library/busybox:1
+    imageID: docker.io/library/busybox@sha256:b5d6fe0712636ceb7430189de28819e195e8966372edfc2d9409d79402a0dc16
+    lastState: {}
+    name: kots
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2023-05-09T09:31:53Z"
+  hostIP: 45.77.41.206
+  phase: Running
+  podIP: 192.168.132.248
+  podIPs:
+  - ip: 192.168.132.248
+  qosClass: BestEffort
+  startTime: "2023-05-09T09:31:49Z"

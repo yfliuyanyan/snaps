@@ -1,0 +1,149 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: "2023-05-09T09:00:06Z"
+  name: calico-typha
+  ownerReferences:
+  - apiVersion: operator.tigera.io/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Installation
+    name: default
+    uid: ac67e02a-e8f9-4e56-a6c7-4801b9ae5db0
+  resourceVersion: "514"
+  uid: 54db8aac-02a6-4fdf-9cf2-090abe04e5db
+rules:
+- apiGroups:
+  - discovery.k8s.io
+  resources:
+  - endpointslices
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - nodes
+  - namespaces
+  verbs:
+  - get
+- apiGroups:
+  - ""
+  resources:
+  - endpoints
+  - services
+  verbs:
+  - watch
+  - list
+  - get
+- apiGroups:
+  - ""
+  resources:
+  - nodes/status
+  verbs:
+  - patch
+  - update
+- apiGroups:
+  - networking.k8s.io
+  resources:
+  - networkpolicies
+  verbs:
+  - watch
+  - list
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - namespaces
+  - serviceaccounts
+  verbs:
+  - watch
+  - list
+- apiGroups:
+  - ""
+  resources:
+  - pods/status
+  verbs:
+  - patch
+- apiGroups:
+  - crd.projectcalico.org
+  resources:
+  - bgpconfigurations
+  - bgppeers
+  - bgpfilters
+  - blockaffinities
+  - caliconodestatuses
+  - clusterinformations
+  - externalnetworks
+  - felixconfigurations
+  - globalnetworkpolicies
+  - globalnetworksets
+  - hostendpoints
+  - ipamblocks
+  - ippools
+  - ipreservations
+  - networkpolicies
+  - networksets
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - crd.projectcalico.org
+  resources:
+  - globalbgpconfigs
+  - globalfelixconfigs
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - crd.projectcalico.org
+  resources:
+  - clusterinformations
+  - felixconfigurations
+  - ippools
+  verbs:
+  - create
+  - update
+- apiGroups:
+  - ""
+  resources:
+  - nodes
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - crd.projectcalico.org
+  resources:
+  - blockaffinities
+  - ipamblocks
+  - ipamhandles
+  verbs:
+  - get
+  - list
+  - create
+  - update
+  - delete
+- apiGroups:
+  - crd.projectcalico.org
+  resources:
+  - ipamconfigs
+  verbs:
+  - get
+- apiGroups:
+  - crd.projectcalico.org
+  resources:
+  - blockaffinities
+  verbs:
+  - watch
+- apiGroups:
+  - policy
+  resourceNames:
+  - calico-typha
+  resources:
+  - podsecuritypolicies
+  verbs:
+  - use

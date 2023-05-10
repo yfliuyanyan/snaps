@@ -1,0 +1,156 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  annotations:
+    deployment.kubernetes.io/desired-replicas: "1"
+    deployment.kubernetes.io/max-replicas: "2"
+    deployment.kubernetes.io/revision: "1"
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:15Z"
+  generation: 1
+  labels:
+    app: gitpod
+    component: ide-service
+    pod-template-hash: 75fb77ff76
+  name: ide-service-75fb77ff76
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Deployment
+    name: ide-service
+    uid: 23e3f255-08ad-4929-97fd-6871e2fe373a
+  resourceVersion: "4637"
+  uid: cc2270d1-2d34-4ac2-8a42-9cac199f8c53
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gitpod
+      component: ide-service
+      pod-template-hash: 75fb77ff76
+  template:
+    metadata:
+      annotations:
+        gitpod.io/checksum_config: f82286374696fc07881c90b006f422949e5577d4f261f7d037fb17eacda035ff
+      creationTimestamp: null
+      labels:
+        app: gitpod
+        component: ide-service
+        pod-template-hash: 75fb77ff76
+      name: ide-service
+      namespace: gitpod
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: gitpod.io/workload_meta
+                operator: Exists
+      containers:
+      - args:
+        - run
+        - --config
+        - /config/config.json
+        env:
+        - name: GITPOD_DOMAIN
+          value: ide-lyy.one
+        - name: GITPOD_INSTALLATION_SHORTNAME
+          value: default
+        - name: GITPOD_REGION
+          value: local
+        - name: HOST_URL
+          value: https://ide-lyy.one
+        - name: KUBE_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: KUBE_DOMAIN
+          value: svc.cluster.local
+        - name: LOG_LEVEL
+          value: info
+        image: eu.gcr.io/gitpod-core-dev/build/ide-service:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+        imagePullPolicy: IfNotPresent
+        name: ide-service
+        ports:
+        - containerPort: 9001
+          name: grpc
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /ready
+            port: 9501
+            scheme: HTTP
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+        securityContext:
+          privileged: false
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /config
+          name: config
+          readOnly: true
+        - mountPath: /ide-config
+          name: ide-config
+          readOnly: true
+      - args:
+        - --logtostderr
+        - --insecure-listen-address=[$(IP)]:9500
+        - --upstream=http://127.0.0.1:9500/
+        env:
+        - name: IP
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.podIP
+        image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+        imagePullPolicy: IfNotPresent
+        name: kube-rbac-proxy
+        ports:
+        - containerPort: 9500
+          name: metrics
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 1m
+            memory: 30Mi
+        securityContext:
+          runAsGroup: 65532
+          runAsNonRoot: true
+          runAsUser: 65532
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: FallbackToLogsOnError
+      dnsPolicy: ClusterFirst
+      enableServiceLinks: false
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: ide-service
+      serviceAccountName: ide-service
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: ide-service
+        name: config
+      - configMap:
+          defaultMode: 420
+          name: ide-config
+        name: ide-config
+status:
+  availableReplicas: 1
+  fullyLabeledReplicas: 1
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1

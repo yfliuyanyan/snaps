@@ -1,0 +1,43 @@
+addressType: IPv4
+apiVersion: discovery.k8s.io/v1
+endpoints:
+- addresses:
+  - 192.168.132.245
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: vultr
+  targetRef:
+    kind: Pod
+    name: mysql-0
+    namespace: gitpod
+    uid: 4e695631-7ae9-4fbe-a349-c5489f134765
+kind: EndpointSlice
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2023-05-09T09:32:17Z"
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  generateName: db-
+  generation: 3
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: db
+    endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+    kubernetes.io/service-name: db
+  name: db-b7kns
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Service
+    name: db
+    uid: 6886309f-cb1d-4c2d-850c-8a5b7f33373a
+  resourceVersion: "4756"
+  uid: a04535d3-7c4f-4a12-bee7-323ab26de624
+ports:
+- name: ""
+  port: 3306
+  protocol: TCP

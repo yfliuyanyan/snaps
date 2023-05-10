@@ -1,0 +1,189 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    cni.projectcalico.org/containerID: d6f05b79d29b3c2c0ae6782d9232de4f2e6faa10d9440441078a8aa1d517e9dc
+    cni.projectcalico.org/podIP: 192.168.132.207/32
+    cni.projectcalico.org/podIPs: 192.168.132.207/32
+  creationTimestamp: "2023-05-09T09:21:56Z"
+  generateName: kotsadm-rqlite-
+  labels:
+    app: kotsadm-rqlite
+    controller-revision-hash: kotsadm-rqlite-544f88889c
+    kots.io/backup: velero
+    kots.io/kotsadm: "true"
+    statefulset.kubernetes.io/pod-name: kotsadm-rqlite-0
+  name: kotsadm-rqlite-0
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: StatefulSet
+    name: kotsadm-rqlite
+    uid: 8757d4fe-b448-4243-b925-e21312723024
+  resourceVersion: "2571"
+  uid: 68920ff2-2a51-4b5d-96bf-6374fd7da1b8
+spec:
+  affinity:
+    podAntiAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+      - labelSelector:
+          matchExpressions:
+          - key: app
+            operator: In
+            values:
+            - kotsadm-rqlite
+        topologyKey: kubernetes.io/hostname
+  containers:
+  - args:
+    - -disco-mode=dns
+    - -disco-config={"name":"kotsadm-rqlite-headless"}
+    - -bootstrap-expect=1
+    - -auth=/auth/config.json
+    - -join-as=kotsadm
+    env:
+    - name: RQLITE_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          key: password
+          name: kotsadm-rqlite
+    image: rqlite/rqlite:7.14.2
+    imagePullPolicy: IfNotPresent
+    livenessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /readyz?noleader
+        port: rqlite
+        scheme: HTTP
+      initialDelaySeconds: 30
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 5
+    name: kotsadm-rqlite
+    ports:
+    - containerPort: 4001
+      name: rqlite
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /readyz
+        port: rqlite
+        scheme: HTTP
+      initialDelaySeconds: 1
+      periodSeconds: 1
+      successThreshold: 1
+      timeoutSeconds: 5
+    resources:
+      limits:
+        cpu: 200m
+        memory: 1Gi
+      requests:
+        cpu: 100m
+        memory: 100Mi
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /rqlite/file
+      name: kotsadm-rqlite
+    - mountPath: /tmp
+      name: tmp
+    - mountPath: /auth/config.json
+      name: authconfig
+      subPath: authconfig.json
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-x8psj
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  hostname: kotsadm-rqlite-0
+  nodeName: vultr
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext:
+    fsGroup: 1001
+    runAsUser: 1001
+  serviceAccount: default
+  serviceAccountName: default
+  subdomain: kotsadm-rqlite-headless
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: kotsadm-rqlite
+    persistentVolumeClaim:
+      claimName: kotsadm-rqlite-kotsadm-rqlite-0
+  - emptyDir: {}
+    name: tmp
+  - name: authconfig
+    secret:
+      defaultMode: 493
+      items:
+      - key: authconfig.json
+        path: authconfig.json
+      secretName: kotsadm-rqlite
+  - name: kube-api-access-x8psj
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:22:07Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:22:23Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:22:23Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:22:07Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://06137099106834e72e8dccf66201d45e151ba0d0a064b17a8ef31f3c7711c193
+    image: docker.io/rqlite/rqlite:7.14.2
+    imageID: docker.io/rqlite/rqlite@sha256:f5d58ca40ecc8f4bd191c9cbdf42fa193d14b7aad32e108bcbc2ecc8871fe6b4
+    lastState: {}
+    name: kotsadm-rqlite
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2023-05-09T09:22:16Z"
+  hostIP: 45.77.41.206
+  phase: Running
+  podIP: 192.168.132.207
+  podIPs:
+  - ip: 192.168.132.207
+  qosClass: Burstable
+  startTime: "2023-05-09T09:22:07Z"

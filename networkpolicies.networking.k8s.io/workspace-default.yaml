@@ -1,0 +1,83 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:13Z"
+  generation: 1
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: workspace
+  name: workspace-default
+  namespace: gitpod
+  resourceVersion: "3457"
+  uid: 7602f26c-4142-4394-87ac-d257c3dda52b
+spec:
+  egress:
+  - to:
+    - ipBlock:
+        cidr: 0.0.0.0/0
+        except:
+        - 169.254.169.254/32
+  - to:
+    - podSelector:
+        matchLabels:
+          app: gitpod
+          component: proxy
+  - ports:
+    - port: 53
+      protocol: TCP
+    - port: 53
+      protocol: UDP
+    to:
+    - namespaceSelector: {}
+      podSelector:
+        matchLabels:
+          k8s-app: kube-dns
+    - namespaceSelector: {}
+      podSelector:
+        matchLabels:
+          k8s-app: coredns
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: gitpod
+          component: proxy
+  - from:
+    - podSelector:
+        matchLabels:
+          app: gitpod
+          component: ws-proxy
+  - from:
+    - podSelector:
+        matchLabels:
+          app: gitpod
+          component: agent-smith
+  - from:
+    - podSelector:
+        matchLabels:
+          app: gitpod
+          component: ws-daemon
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          chart: monitoring
+      podSelector:
+        matchLabels:
+          app: gitpod
+          component: server
+    ports:
+    - port: 23000
+      protocol: TCP
+  podSelector:
+    matchLabels:
+      app: gitpod
+      component: workspace
+      gitpod.io/networkpolicy: default
+  policyTypes:
+  - Ingress
+  - Egress
+status: {}

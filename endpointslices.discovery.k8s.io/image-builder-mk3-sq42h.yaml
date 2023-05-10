@@ -1,0 +1,42 @@
+addressType: IPv4
+apiVersion: discovery.k8s.io/v1
+endpoints:
+- addresses:
+  - 192.168.132.220
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: vultr
+  targetRef:
+    kind: Pod
+    name: image-builder-mk3-6676cb685f-ztm55
+    namespace: gitpod
+    uid: f4ae748b-2689-4e06-b3f6-54e656531320
+kind: EndpointSlice
+metadata:
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  generateName: image-builder-mk3-
+  generation: 8
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: image-builder-mk3
+    endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+    kind: service
+    kubernetes.io/service-name: image-builder-mk3
+  name: image-builder-mk3-sq42h
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Service
+    name: image-builder-mk3
+    uid: d8d88804-00e8-4e03-9c8f-4f94d42fc25c
+  resourceVersion: "8323"
+  uid: 319db2da-254a-4e83-beb2-9399cb54ac87
+ports:
+- name: service
+  port: 8080
+  protocol: TCP

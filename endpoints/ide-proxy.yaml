@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2023-05-09T09:31:38Z"
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ide-proxy
+    kind: service
+  name: ide-proxy
+  namespace: gitpod
+  resourceVersion: "4593"
+  uid: dfccfa0f-9db4-4429-b22d-c8b0f661cb06
+subsets:
+- addresses:
+  - ip: 192.168.132.224
+    nodeName: vultr
+    targetRef:
+      kind: Pod
+      name: ide-proxy-69f475b7c6-smsbd
+      namespace: gitpod
+      uid: c5b32b60-6304-41ba-ae85-8affcbf561b0
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP

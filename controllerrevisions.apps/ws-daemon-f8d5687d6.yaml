@@ -1,0 +1,312 @@
+apiVersion: apps/v1
+data:
+  spec:
+    template:
+      $patch: replace
+      metadata:
+        annotations:
+          gitpod.io/checksum_config: 7e162805067a42ef1b5ff31ae1fbfc658d04c750ad3781f6ac862f1713259c65
+          seccomp.security.alpha.kubernetes.io/shiftfs-module-loader: unconfined
+        creationTimestamp: null
+        labels:
+          app: gitpod
+          component: ws-daemon
+      spec:
+        affinity:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+              - matchExpressions:
+                - key: gitpod.io/workload_workspace_regular
+                  operator: Exists
+              - matchExpressions:
+                - key: gitpod.io/workload_workspace_headless
+                  operator: Exists
+        containers:
+        - args:
+          - run
+          - --config
+          - /config/config.json
+          env:
+          - name: GITPOD_DOMAIN
+            value: ide-lyy.one
+          - name: GITPOD_INSTALLATION_SHORTNAME
+            value: default
+          - name: GITPOD_REGION
+            value: local
+          - name: HOST_URL
+            value: https://ide-lyy.one
+          - name: KUBE_NAMESPACE
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+          - name: KUBE_DOMAIN
+            value: svc.cluster.local
+          - name: LOG_LEVEL
+            value: info
+          - name: JAEGER_DISABLED
+            value: "true"
+          - name: NODENAME
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: spec.nodeName
+          image: eu.gcr.io/gitpod-core-dev/build/ws-daemon:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+          imagePullPolicy: IfNotPresent
+          livenessProbe:
+            failureThreshold: 5
+            httpGet:
+              path: /live
+              port: 9501
+              scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          name: ws-daemon
+          ports:
+          - containerPort: 8080
+            hostPort: 8080
+            name: rpc
+            protocol: TCP
+          readinessProbe:
+            failureThreshold: 5
+            httpGet:
+              path: /ready
+              port: 9501
+              scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 5
+            successThreshold: 2
+            timeoutSeconds: 1
+          resources:
+            requests:
+              cpu: 500m
+              memory: 4Gi
+          securityContext:
+            privileged: true
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /mnt/workingarea
+            mountPropagation: Bidirectional
+            name: working-area
+          - mountPath: /config
+            name: config
+          - mountPath: /mnt/containerd.sock
+            name: containerd-socket
+          - mountPath: /mnt/node0
+            name: node-fs0
+          - mountPath: /mnt/mounts
+            mountPropagation: HostToContainer
+            name: node-mounts
+            readOnly: true
+          - mountPath: /mnt/node-cgroups
+            mountPropagation: HostToContainer
+            name: node-cgroups
+          - mountPath: /mnt/hosts
+            name: node-hosts
+          - mountPath: /certs
+            name: tls-certs
+          - mountPath: /mnt/sync-tmp
+            name: gcloud-tmp
+        - args:
+          - --logtostderr
+          - --insecure-listen-address=[$(IP)]:9500
+          - --upstream=http://127.0.0.1:9500/
+          env:
+          - name: IP
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: status.podIP
+          image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+          imagePullPolicy: IfNotPresent
+          name: kube-rbac-proxy
+          ports:
+          - containerPort: 9500
+            name: metrics
+            protocol: TCP
+          resources:
+            requests:
+              cpu: 1m
+              memory: 30Mi
+          securityContext:
+            runAsGroup: 65532
+            runAsNonRoot: true
+            runAsUser: 65532
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: FallbackToLogsOnError
+        - command:
+          - /app/ready-probe-labeler
+          - --label=gitpod.io/ws-daemon_ready_ns_gitpod
+          - --probe-url=http://localhost:9501/ready
+          env:
+          - name: NODENAME
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: spec.nodeName
+          image: eu.gcr.io/gitpod-core-dev/build/ws-daemon:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+          imagePullPolicy: IfNotPresent
+          lifecycle:
+            preStop:
+              exec:
+                command:
+                - /app/ready-probe-labeler
+                - --label=gitpod.io/ws-daemon_ready_ns_gitpod
+                - --shutdown
+          name: node-labeler
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        enableServiceLinks: false
+        hostPID: true
+        initContainers:
+        - args:
+          - "exec {BASH_XTRACEFD}>&1 # this causes 'set -x' to write to stdout insted
+            of stderr\nset -euExo pipefail\nsystemctl status kube-container-runtime-monitor.service
+            || true\nif [ \"$(systemctl is-active kube-container-runtime-monitor.service)\"
+            == \"active\" ]\nthen\n\techo \"kube-container-runtime-monitor.service
+            is active\"\n\tsystemctl stop kube-container-runtime-monitor.service\n\tsystemctl
+            disable kube-container-runtime-monitor.service\n\tsystemctl status kube-container-runtime-monitor.service
+            || true\nelse\n\techo \"kube-container-runtime-monitor.service is not
+            active, not doing anything\"\nfi\n"
+          command:
+          - /usr/bin/nsenter
+          - -t
+          - "1"
+          - -a
+          - /bin/bash
+          - -c
+          image: docker.io/library/ubuntu:20.04
+          imagePullPolicy: IfNotPresent
+          name: disable-kube-health-monitor
+          resources: {}
+          securityContext:
+            privileged: true
+            procMount: Default
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        - command:
+          - /bin/sh
+          - -c
+          - cp -f /installer/workspace_default.json /mnt/dst/workspace_default_release-2022.11.2.16.json
+          image: eu.gcr.io/gitpod-core-dev/build/seccomp-profile-installer:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+          imagePullPolicy: IfNotPresent
+          name: seccomp-profile-installer
+          resources: {}
+          securityContext:
+            privileged: true
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /mnt/dst
+            name: hostseccomp
+        - command:
+          - sh
+          - -c
+          - "(\n\techo \"running sysctls\" &&\n\tsysctl -w net.core.somaxconn=4096
+            &&\n\tsysctl -w \"net.ipv4.ip_local_port_range=5000 65000\" &&\n\tsysctl
+            -w \"net.ipv4.tcp_tw_reuse=1\" &&\n\tsysctl -w fs.inotify.max_user_watches=1000000
+            &&\n\tsysctl -w \"kernel.dmesg_restrict=1\" &&\n\tsysctl -w vm.unprivileged_userfaultfd=0\n)
+            && echo \"done!\" || echo \"failed!\"\n"
+          image: eu.gcr.io/gitpod-core-dev/build/ws-daemon:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+          imagePullPolicy: IfNotPresent
+          name: sysctl
+          resources: {}
+          securityContext:
+            privileged: true
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        priorityClassName: system-node-critical
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: ws-daemon
+        serviceAccountName: ws-daemon
+        terminationGracePeriodSeconds: 30
+        tolerations:
+        - effect: NoExecute
+          key: node.kubernetes.io/disk-pressure
+          operator: Exists
+        - effect: NoExecute
+          key: node.kubernetes.io/memory-pressure
+          operator: Exists
+        - effect: NoExecute
+          key: node.kubernetes.io/out-of-disk
+          operator: Exists
+        volumes:
+        - hostPath:
+            path: /
+            type: ""
+          name: hostfs
+        - hostPath:
+            path: /var/gitpod/workspaces
+            type: DirectoryOrCreate
+          name: working-area
+        - name: tls-certs
+          secret:
+            defaultMode: 420
+            secretName: ws-daemon-tls
+        - configMap:
+            defaultMode: 420
+            name: ws-daemon
+          name: config
+        - hostPath:
+            path: /run/k3s/containerd/containerd.sock
+            type: Socket
+          name: containerd-socket
+        - hostPath:
+            path: /run/k3s/containerd/io.containerd.runtime.v2.task/k8s.io
+            type: Directory
+          name: node-fs0
+        - hostPath:
+            path: /proc/mounts
+            type: File
+          name: node-mounts
+        - hostPath:
+            path: /sys/fs/cgroup
+            type: Directory
+          name: node-cgroups
+        - hostPath:
+            path: /etc/hosts
+            type: File
+          name: node-hosts
+        - hostPath:
+            path: /usr/src
+            type: Directory
+          name: node-linux-src
+        - hostPath:
+            path: /var/lib/kubelet/seccomp
+            type: ""
+          name: hostseccomp
+        - hostPath:
+            path: /var/gitpod/tmp/backup
+            type: DirectoryOrCreate
+          name: gcloud-tmp
+kind: ControllerRevision
+metadata:
+  annotations:
+    deprecated.daemonset.template.generation: "1"
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    component: ws-daemon
+    controller-revision-hash: f8d5687d6
+  name: ws-daemon-f8d5687d6
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: DaemonSet
+    name: ws-daemon
+    uid: 7e58b198-06a1-4c2d-8f3f-ac68b4c75f24
+  resourceVersion: "3735"
+  uid: 0e79be52-bc9f-407c-a30c-59bb52adfb6c
+revision: 1

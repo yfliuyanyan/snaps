@@ -1,0 +1,431 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    cni.projectcalico.org/containerID: bda6b682bea7b5da610bdf40f9a2fceabc40dab48837b8d249a6d9d11011cc9b
+    cni.projectcalico.org/podIP: 192.168.132.250/32
+    cni.projectcalico.org/podIPs: 192.168.132.250/32
+    gitpod.io/checksum_config: f0635614e5cb30ebb009eb8ccee7d16611b1f88ace09f78a5b46fbb28b3349e5
+  creationTimestamp: "2023-05-09T10:05:03Z"
+  generateName: server-78d46f8db4-
+  labels:
+    app: gitpod
+    component: server
+    pod-template-hash: 78d46f8db4
+  name: server-78d46f8db4-bx5jb
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: server-78d46f8db4
+    uid: 60b1371c-8f4b-4655-9873-ec11ea925d2d
+  resourceVersion: "8276"
+  uid: f2fe5bec-424d-4272-9345-0ec652b93905
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: gitpod.io/workload_meta
+            operator: Exists
+  containers:
+  - env:
+    - name: GITPOD_DOMAIN
+      value: ide-lyy.one
+    - name: GITPOD_INSTALLATION_SHORTNAME
+      value: default
+    - name: GITPOD_REGION
+      value: local
+    - name: HOST_URL
+      value: https://ide-lyy.one
+    - name: KUBE_NAMESPACE
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.namespace
+    - name: KUBE_DOMAIN
+      value: svc.cluster.local
+    - name: LOG_LEVEL
+      value: info
+    - name: DB_HOST
+      valueFrom:
+        secretKeyRef:
+          key: host
+          name: mysql
+    - name: DB_PORT
+      valueFrom:
+        secretKeyRef:
+          key: port
+          name: mysql
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          key: password
+          name: mysql
+    - name: DB_USERNAME
+      valueFrom:
+        secretKeyRef:
+          key: username
+          name: mysql
+    - name: DB_ENCRYPTION_KEYS
+      valueFrom:
+        secretKeyRef:
+          key: encryptionKeys
+          name: mysql
+    - name: JAEGER_DISABLED
+      value: "true"
+    - name: MESSAGEBUS_USERNAME
+      valueFrom:
+        secretKeyRef:
+          key: username
+          name: rabbitmq
+    - name: MESSAGEBUS_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          key: password
+          name: rabbitmq
+    - name: MESSAGEBUS_CA
+      valueFrom:
+        secretKeyRef:
+          key: ca.crt
+          name: messagebus-certificates-secret-core
+    - name: MESSAGEBUS_CERT
+      valueFrom:
+        secretKeyRef:
+          key: tls.crt
+          name: messagebus-certificates-secret-core
+    - name: MESSAGEBUS_KEY
+      valueFrom:
+        secretKeyRef:
+          key: tls.key
+          name: messagebus-certificates-secret-core
+    - name: CONFIG_PATH
+      value: /config/config.json
+    - name: GITPOD_LICENSE_TYPE
+      valueFrom:
+        secretKeyRef:
+          key: type
+          name: gitpod-license
+          optional: true
+    - name: IDE_CONFIG_PATH
+      value: /ide-config/config.json
+    - name: NODE_ENV
+      value: production
+    - name: SHLVL
+      value: "1"
+    - name: WSMAN_CFG_MANAGERS
+      value: WwogIHsKICAgICJuYW1lIjogImRlZmF1bHQiLAogICAgInVybCI6ICJkbnM6Ly8vd3MtbWFuYWdlcjo4MDgwIiwKICAgICJ0bHMiOiB7CiAgICAgICJjYSI6ICIvd3MtbWFuYWdlci1jbGllbnQtdGxzLWNlcnRzL2NhLmNydCIsCiAgICAgICJjcnQiOiAiL3dzLW1hbmFnZXItY2xpZW50LXRscy1jZXJ0cy90bHMuY3J0IiwKICAgICAgImtleSI6ICIvd3MtbWFuYWdlci1jbGllbnQtdGxzLWNlcnRzL3Rscy5rZXkiCiAgICB9LAogICAgInN0YXRlIjogImF2YWlsYWJsZSIsCiAgICAibWF4U2NvcmUiOiAxMDAsCiAgICAic2NvcmUiOiA1MCwKICAgICJnb3Zlcm4iOiB0cnVlLAogICAgImFkbWlzc2lvbkNvbnN0cmFpbnRzIjogbnVsbCwKICAgICJhcHBsaWNhdGlvbkNsdXN0ZXIiOiAiZGVmYXVsdCIKICB9Cl0=
+    image: eu.gcr.io/gitpod-core-dev/build/server:commit-a50348cca47b4471c77dcb0de820a84cc0f27517
+    imagePullPolicy: IfNotPresent
+    livenessProbe:
+      failureThreshold: 6
+      httpGet:
+        path: /live
+        port: 3000
+        scheme: HTTP
+      initialDelaySeconds: 120
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    name: server
+    ports:
+    - containerPort: 3000
+      name: http
+      protocol: TCP
+    - containerPort: 9500
+      name: metrics
+      protocol: TCP
+    - containerPort: 9000
+      name: install-admin
+      protocol: TCP
+    - containerPort: 6060
+      name: debug
+      protocol: TCP
+    - containerPort: 9229
+      name: debugnode
+      protocol: TCP
+    resources:
+      requests:
+        cpu: 200m
+        memory: 200Mi
+    securityContext:
+      privileged: false
+      runAsUser: 31001
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /config
+      name: config
+      readOnly: true
+    - mountPath: /ide-config
+      name: ide-config
+      readOnly: true
+    - mountPath: /ws-manager-client-tls-certs
+      name: ws-manager-client-tls-certs
+      readOnly: true
+    - mountPath: /gitpod/license
+      name: gitpod-license-key
+      subPath: license
+    - mountPath: /twilio-config
+      name: twilio-secret-volume
+      readOnly: true
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-psmlw
+      readOnly: true
+  - args:
+    - --logtostderr
+    - --insecure-listen-address=[$(IP)]:9500
+    - --upstream=http://127.0.0.1:9500/
+    env:
+    - name: IP
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: status.podIP
+    image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+    imagePullPolicy: IfNotPresent
+    name: kube-rbac-proxy
+    ports:
+    - containerPort: 9500
+      name: metrics
+      protocol: TCP
+    resources:
+      requests:
+        cpu: 1m
+        memory: 30Mi
+    securityContext:
+      runAsGroup: 65532
+      runAsNonRoot: true
+      runAsUser: 65532
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: FallbackToLogsOnError
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-psmlw
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: false
+  initContainers:
+  - args:
+    - -v
+    - database
+    env:
+    - name: DB_HOST
+      valueFrom:
+        secretKeyRef:
+          key: host
+          name: mysql
+    - name: DB_PORT
+      valueFrom:
+        secretKeyRef:
+          key: port
+          name: mysql
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          key: password
+          name: mysql
+    - name: DB_USERNAME
+      valueFrom:
+        secretKeyRef:
+          key: username
+          name: mysql
+    - name: DB_ENCRYPTION_KEYS
+      valueFrom:
+        secretKeyRef:
+          key: encryptionKeys
+          name: mysql
+    image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+    imagePullPolicy: IfNotPresent
+    name: database-waiter
+    resources: {}
+    securityContext:
+      privileged: false
+      runAsUser: 31001
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-psmlw
+      readOnly: true
+  - args:
+    - -v
+    - messagebus
+    env:
+    - name: MESSAGEBUS_USERNAME
+      valueFrom:
+        secretKeyRef:
+          key: username
+          name: rabbitmq
+    - name: MESSAGEBUS_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          key: password
+          name: rabbitmq
+    - name: MESSAGEBUS_CA
+      valueFrom:
+        secretKeyRef:
+          key: ca.crt
+          name: messagebus-certificates-secret-core
+    - name: MESSAGEBUS_CERT
+      valueFrom:
+        secretKeyRef:
+          key: tls.crt
+          name: messagebus-certificates-secret-core
+    - name: MESSAGEBUS_KEY
+      valueFrom:
+        secretKeyRef:
+          key: tls.key
+          name: messagebus-certificates-secret-core
+    image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+    imagePullPolicy: IfNotPresent
+    name: msgbus-waiter
+    resources: {}
+    securityContext:
+      privileged: false
+      runAsUser: 31001
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-psmlw
+      readOnly: true
+  nodeName: vultr
+  preemptionPolicy: PreemptLowerPriority
+  priority: 2000001000
+  priorityClassName: system-node-critical
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: server
+  serviceAccountName: server
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - configMap:
+      defaultMode: 420
+      name: server-config
+    name: config
+  - configMap:
+      defaultMode: 420
+      name: server-ide-config
+    name: ide-config
+  - name: ws-manager-client-tls-certs
+    secret:
+      defaultMode: 420
+      secretName: ws-manager-client-tls
+  - name: gitpod-license-key
+    secret:
+      defaultMode: 420
+      secretName: gitpod-license
+  - name: twilio-secret-volume
+    secret:
+      defaultMode: 420
+      optional: true
+      secretName: twilio-secret
+  - name: kube-api-access-psmlw
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T10:05:11Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T10:05:12Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T10:05:12Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T10:05:03Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://06063f9a077e6bf4349efdf3219126874eab9cfea80a70f1a2cad9dae388fbb9
+    image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+    imageID: quay.io/brancz/kube-rbac-proxy@sha256:12b82e47da1a2f5094966d4239811a5ae5c37b47e4224b1b35e57a7f02edd57a
+    lastState: {}
+    name: kube-rbac-proxy
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2023-05-09T10:05:11Z"
+  - containerID: containerd://8330b2e5f37ee96ad5424890f1e5b5bb2c36757b790ec49a50d2266bf37689d3
+    image: eu.gcr.io/gitpod-core-dev/build/server:commit-a50348cca47b4471c77dcb0de820a84cc0f27517
+    imageID: eu.gcr.io/gitpod-core-dev/build/server@sha256:d35599c9bf240118d22b93dcb94384655be701731296ae6c26c07e025c7e21c9
+    lastState: {}
+    name: server
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2023-05-09T10:05:11Z"
+  hostIP: 45.77.41.206
+  initContainerStatuses:
+  - containerID: containerd://144bdfa9476d404b77470e0473d36683f5cc9d44e4a4f5cd82b5de19fc00deec
+    image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+    imageID: eu.gcr.io/gitpod-core-dev/build/service-waiter@sha256:6b57c0cd4dc622aa10f37f6d19c30a0bf5d9f668041e311264288ece86091878
+    lastState: {}
+    name: database-waiter
+    ready: true
+    restartCount: 0
+    state:
+      terminated:
+        containerID: containerd://144bdfa9476d404b77470e0473d36683f5cc9d44e4a4f5cd82b5de19fc00deec
+        exitCode: 0
+        finishedAt: "2023-05-09T10:05:09Z"
+        reason: Completed
+        startedAt: "2023-05-09T10:05:07Z"
+  - containerID: containerd://75a8cc26bfa7f5aa30031fe285225b9c8fba4ef65985922326ac7d2cfa2d813a
+    image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+    imageID: eu.gcr.io/gitpod-core-dev/build/service-waiter@sha256:6b57c0cd4dc622aa10f37f6d19c30a0bf5d9f668041e311264288ece86091878
+    lastState: {}
+    name: msgbus-waiter
+    ready: true
+    restartCount: 0
+    state:
+      terminated:
+        containerID: containerd://75a8cc26bfa7f5aa30031fe285225b9c8fba4ef65985922326ac7d2cfa2d813a
+        exitCode: 0
+        finishedAt: "2023-05-09T10:05:10Z"
+        reason: Completed
+        startedAt: "2023-05-09T10:05:10Z"
+  phase: Running
+  podIP: 192.168.132.250
+  podIPs:
+  - ip: 192.168.132.250
+  qosClass: Burstable
+  startTime: "2023-05-09T10:05:03Z"

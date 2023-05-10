@@ -1,0 +1,30 @@
+apiVersion: v1
+data:
+  config.json: |-
+    {
+      "gitpodAPI": {
+        "hostURL": "https://ide-lyy.one",
+        "apiToken": ""
+      },
+      "enforcement": {},
+      "kubernetes": {
+        "enabled": true
+      },
+      "namespace": "gitpod",
+      "pprofAddr": "127.0.0.1:6060",
+      "prometheusAddr": "127.0.0.1:9500"
+    }
+kind: ConfigMap
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: agent-smith
+  name: agent-smith
+  namespace: gitpod
+  resourceVersion: "3511"
+  uid: 92b261e4-8b20-450d-929e-6a3aaaadb5f3

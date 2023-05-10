@@ -1,0 +1,22 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ide-service
+  name: ide-service
+  resourceVersion: "3543"
+  uid: 20654b17-3be8-4c04-9c73-83b9ccd6ba14
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: ide-service
+subjects:
+- kind: ServiceAccount
+  name: ide-service
+  namespace: gitpod

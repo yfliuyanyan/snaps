@@ -1,0 +1,16 @@
+apiVersion: v1
+automountServiceAccountToken: true
+kind: ServiceAccount
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:13Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ws-proxy
+  name: ws-proxy
+  namespace: gitpod
+  resourceVersion: "3472"
+  uid: d368be7a-6659-4f47-9f48-fef5dd0644ec

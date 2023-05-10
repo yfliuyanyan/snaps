@@ -1,0 +1,22 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  creationTimestamp: "2023-05-09T09:00:50Z"
+  name: calico-apiserver-webhook-reader
+  ownerReferences:
+  - apiVersion: operator.tigera.io/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: APIServer
+    name: default
+    uid: eac86891-6404-4e14-9b4a-d093bab1067f
+  resourceVersion: "787"
+  uid: 7a65fd3b-eacd-4b15-a434-7686c2e4f569
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: calico-webhook-reader
+subjects:
+- kind: ServiceAccount
+  name: calico-apiserver
+  namespace: calico-apiserver

@@ -1,0 +1,44 @@
+addressType: IPv4
+apiVersion: discovery.k8s.io/v1
+endpoints:
+- addresses:
+  - 192.168.132.211
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: vultr
+  targetRef:
+    kind: Pod
+    name: registry-facade-m98l9
+    namespace: gitpod
+    uid: 15bbf79b-b237-402b-99ef-ba35e819dda3
+kind: EndpointSlice
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2023-05-09T10:05:44Z"
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  generateName: registry-facade-
+  generation: 8
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: registry-facade
+    endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+    kind: service
+    kubernetes.io/service-name: registry-facade
+  name: registry-facade-99867
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Service
+    name: registry-facade
+    uid: fc3e142d-e41c-4515-8d55-6a17e60707c5
+  resourceVersion: "8507"
+  uid: 31894950-21f9-4007-8f07-4b96392e4245
+ports:
+- name: registry
+  port: 32223
+  protocol: TCP

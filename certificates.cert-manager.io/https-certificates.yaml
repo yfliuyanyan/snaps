@@ -1,0 +1,46 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  annotations:
+    kots.io/app-slug: gitpod
+    kots.io/when: "true"
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"cert-manager.io/v1","kind":"Certificate","metadata":{"annotations":{"kots.io/app-slug":"gitpod","kots.io/when":"true"},"labels":{"app":"gitpod","component":"gitpod-installer","kots.io/app-slug":"gitpod","kots.io/backup":"velero"},"name":"https-certificates","namespace":"gitpod"},"spec":{"dnsNames":["ide-lyy.one","*.ide-lyy.one","*.ws.ide-lyy.one"],"issuerRef":{"kind":"ClusterIssuer","name":"cert-manager-webhook-dnspod-cluster-issuer"},"secretName":"https-certificates","secretTemplate":{"labels":{"app":"gitpod","component":"gitpod-installer","kots.io/app-slug":"gitpod","kots.io/backup":"velero"}}}}
+  creationTimestamp: "2023-05-09T09:30:59Z"
+  generation: 1
+  labels:
+    app: gitpod
+    component: gitpod-installer
+    kots.io/app-slug: gitpod
+    kots.io/backup: velero
+  name: https-certificates
+  namespace: gitpod
+  resourceVersion: "3397"
+  uid: f2224b25-630d-4d74-8164-5ee6208df877
+spec:
+  dnsNames:
+  - ide-lyy.one
+  - '*.ide-lyy.one'
+  - '*.ws.ide-lyy.one'
+  issuerRef:
+    kind: ClusterIssuer
+    name: cert-manager-webhook-dnspod-cluster-issuer
+  secretName: https-certificates
+  secretTemplate:
+    labels:
+      app: gitpod
+      component: gitpod-installer
+      kots.io/app-slug: gitpod
+      kots.io/backup: velero
+status:
+  conditions:
+  - lastTransitionTime: "2023-05-09T09:31:02Z"
+    message: Certificate is up to date and has not expired
+    observedGeneration: 1
+    reason: Ready
+    status: "True"
+    type: Ready
+  notAfter: "2023-08-07T08:31:00Z"
+  notBefore: "2023-05-09T08:31:01Z"
+  renewalTime: "2023-07-08T08:31:00Z"
+  revision: 1

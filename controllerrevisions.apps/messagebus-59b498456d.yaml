@@ -1,0 +1,214 @@
+apiVersion: apps/v1
+data:
+  spec:
+    template:
+      $patch: replace
+      metadata:
+        annotations:
+          checksum/config: 9be5e3816c75e6f39eeeb7edf406d2a11cc676b2876f1e373a87bd7b3f485c6a
+          checksum/secret: 951f5ac4dca7c866830cc75f1facbb5fef6a2dad4d232e3a22fb2b17dbafa1d6
+          prometheus.io/port: "9419"
+          prometheus.io/scrape: "true"
+        creationTimestamp: null
+        labels:
+          app.kubernetes.io/instance: rabbitmq
+          app.kubernetes.io/managed-by: Helm
+          app.kubernetes.io/name: rabbitmq
+          helm.sh/chart: rabbitmq-11.3.0
+      spec:
+        affinity:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+              - matchExpressions:
+                - key: gitpod.io/workload_meta
+                  operator: Exists
+        containers:
+        - env:
+          - name: BITNAMI_DEBUG
+            value: "false"
+          - name: MY_POD_IP
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: status.podIP
+          - name: MY_POD_NAME
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.name
+          - name: MY_POD_NAMESPACE
+            valueFrom:
+              fieldRef:
+                apiVersion: v1
+                fieldPath: metadata.namespace
+          - name: K8S_SERVICE_NAME
+            value: messagebus-headless
+          - name: K8S_ADDRESS_TYPE
+            value: hostname
+          - name: RABBITMQ_FORCE_BOOT
+            value: "no"
+          - name: RABBITMQ_NODE_NAME
+            value: rabbit@$(MY_POD_NAME).$(K8S_SERVICE_NAME).$(MY_POD_NAMESPACE).svc.cluster.local
+          - name: K8S_HOSTNAME_SUFFIX
+            value: .$(K8S_SERVICE_NAME).$(MY_POD_NAMESPACE).svc.cluster.local
+          - name: RABBITMQ_MNESIA_DIR
+            value: /bitnami/rabbitmq/mnesia/$(RABBITMQ_NODE_NAME)
+          - name: RABBITMQ_LDAP_ENABLE
+            value: "no"
+          - name: RABBITMQ_LOGS
+            value: '-'
+          - name: RABBITMQ_ULIMIT_NOFILES
+            value: "65536"
+          - name: RABBITMQ_USE_LONGNAME
+            value: "true"
+          - name: RABBITMQ_ERL_COOKIE
+            valueFrom:
+              secretKeyRef:
+                key: rabbitmq-erlang-cookie
+                name: messagebus-erlang-cookie
+          - name: RABBITMQ_LOAD_DEFINITIONS
+            value: "yes"
+          - name: RABBITMQ_DEFINITIONS_FILE
+            value: /app/load_definition.json
+          - name: RABBITMQ_SECURE_PASSWORD
+            value: "yes"
+          - name: RABBITMQ_USERNAME
+            value: gitpod
+          - name: RABBITMQ_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                key: rabbitmq-password
+                name: messagebus
+          - name: RABBITMQ_PLUGINS
+            value: rabbitmq_management, rabbitmq_peer_discovery_k8s, rabbitmq_prometheus
+          - name: RABBITMQ_SERVER_ADDITIONAL_ERL_ARGS
+            value: +sbwt none +sbwtdcpu none +sbwtdio none
+          image: docker.io/bitnami/rabbitmq:3.11.5-debian-11-r2
+          imagePullPolicy: IfNotPresent
+          lifecycle:
+            preStop:
+              exec:
+                command:
+                - /bin/bash
+                - -ec
+                - |
+                  if [[ -f /opt/bitnami/scripts/rabbitmq/nodeshutdown.sh ]]; then
+                      /opt/bitnami/scripts/rabbitmq/nodeshutdown.sh -t "120" -d "false"
+                  else
+                      rabbitmqctl stop_app
+                  fi
+          livenessProbe:
+            exec:
+              command:
+              - /bin/bash
+              - -ec
+              - rabbitmq-diagnostics -q ping
+            failureThreshold: 6
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            successThreshold: 1
+            timeoutSeconds: 20
+          name: rabbitmq
+          ports:
+          - containerPort: 5672
+            name: amqp
+            protocol: TCP
+          - containerPort: 25672
+            name: dist
+            protocol: TCP
+          - containerPort: 15672
+            name: stats
+            protocol: TCP
+          - containerPort: 4369
+            name: epmd
+            protocol: TCP
+          - containerPort: 9419
+            name: metrics
+            protocol: TCP
+          - containerPort: 5671
+            name: amqp-ssl
+            protocol: TCP
+          readinessProbe:
+            exec:
+              command:
+              - /bin/bash
+              - -ec
+              - rabbitmq-diagnostics -q check_running && rabbitmq-diagnostics -q check_local_alarms
+            failureThreshold: 3
+            initialDelaySeconds: 10
+            periodSeconds: 30
+            successThreshold: 1
+            timeoutSeconds: 20
+          resources: {}
+          securityContext:
+            runAsNonRoot: true
+            runAsUser: 1001
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /bitnami/rabbitmq/conf
+            name: configuration
+          - mountPath: /bitnami/rabbitmq/mnesia
+            name: data
+          - mountPath: /opt/bitnami/rabbitmq/certs
+            name: certs
+          - mountPath: /app
+            name: load-definition-volume
+            readOnly: true
+        dnsPolicy: ClusterFirst
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext:
+          fsGroup: 1001
+        serviceAccount: rabbitmq
+        serviceAccountName: rabbitmq
+        terminationGracePeriodSeconds: 120
+        volumes:
+        - name: certs
+          secret:
+            defaultMode: 420
+            items:
+            - key: tls.crt
+              path: ca_certificate.pem
+            - key: tls.crt
+              path: server_certificate.pem
+            - key: tls.key
+              path: server_key.pem
+            secretName: messagebus-certificates-secret-core
+        - name: configuration
+          projected:
+            defaultMode: 420
+            sources:
+            - secret:
+                name: messagebus-config
+        - name: load-definition-volume
+          secret:
+            defaultMode: 420
+            secretName: load-definition
+        - emptyDir: {}
+          name: data
+kind: ControllerRevision
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app.kubernetes.io/instance: rabbitmq
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: rabbitmq
+    controller.kubernetes.io/hash: 59b498456d
+    helm.sh/chart: rabbitmq-11.3.0
+  name: messagebus-59b498456d
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: StatefulSet
+    name: messagebus
+    uid: eb01ca26-cf13-4b8c-84bc-f9d4a0110457
+  resourceVersion: "3774"
+  uid: 0a0a4a25-0a75-4155-b60c-bbd4008590f8
+revision: 1

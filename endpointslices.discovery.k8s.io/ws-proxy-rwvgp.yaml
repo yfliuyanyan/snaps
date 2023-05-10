@@ -1,0 +1,51 @@
+addressType: IPv4
+apiVersion: discovery.k8s.io/v1
+endpoints:
+- addresses:
+  - 192.168.132.255
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: vultr
+  targetRef:
+    kind: Pod
+    name: ws-proxy-7584dfddf4-zkqgh
+    namespace: gitpod
+    uid: c900e7a0-aab9-4c2e-9675-9df652e10b14
+kind: EndpointSlice
+metadata:
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  generateName: ws-proxy-
+  generation: 7
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ws-proxy
+    endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+    kind: service
+    kubernetes.io/service-name: ws-proxy
+  name: ws-proxy-rwvgp
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Service
+    name: ws-proxy
+    uid: 01a8f5f8-4fe0-45c7-b5c3-5f24f3c1bb1e
+  resourceVersion: "8343"
+  uid: 12efe12d-e83d-4a31-a5be-67053f63be76
+ports:
+- name: https-proxy
+  port: 9090
+  protocol: TCP
+- name: metrics
+  port: 9500
+  protocol: TCP
+- name: ssh
+  port: 2200
+  protocol: TCP
+- name: http-proxy
+  port: 8080
+  protocol: TCP

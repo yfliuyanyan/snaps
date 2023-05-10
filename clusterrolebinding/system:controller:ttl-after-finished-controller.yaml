@@ -1,0 +1,19 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+  creationTimestamp: "2023-05-09T08:59:32Z"
+  labels:
+    kubernetes.io/bootstrapping: rbac-defaults
+  name: system:controller:ttl-after-finished-controller
+  resourceVersion: "175"
+  uid: 49166fc5-cd72-443e-8919-ca6d316b5563
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:controller:ttl-after-finished-controller
+subjects:
+- kind: ServiceAccount
+  name: ttl-after-finished-controller
+  namespace: kube-system

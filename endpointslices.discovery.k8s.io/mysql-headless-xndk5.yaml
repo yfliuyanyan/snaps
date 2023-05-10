@@ -1,0 +1,46 @@
+addressType: IPv4
+apiVersion: discovery.k8s.io/v1
+endpoints:
+- addresses:
+  - 192.168.132.245
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: vultr
+  targetRef:
+    kind: Pod
+    name: mysql-0
+    namespace: gitpod
+    uid: 4e695631-7ae9-4fbe-a349-c5489f134765
+kind: EndpointSlice
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2023-05-09T09:32:17Z"
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  generateName: mysql-headless-
+  generation: 3
+  labels:
+    app.kubernetes.io/component: primary
+    app.kubernetes.io/instance: mysql
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: mysql
+    endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+    helm.sh/chart: mysql-9.4.5
+    kubernetes.io/service-name: mysql-headless
+    service.kubernetes.io/headless: ""
+  name: mysql-headless-xndk5
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Service
+    name: mysql-headless
+    uid: 1bae4b0b-5e1f-483b-9954-995823d2450f
+  resourceVersion: "4758"
+  uid: 4cde7f58-26b5-4eb2-b5cc-89993f49f8cb
+ports:
+- name: mysql
+  port: 3306
+  protocol: TCP

@@ -1,0 +1,242 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  annotations:
+    deprecated.daemonset.template.generation: "2"
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  generation: 2
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: registry-facade
+  name: registry-facade
+  namespace: gitpod
+  resourceVersion: "8509"
+  uid: a31611ba-0d50-449b-9f1b-7996b3075155
+spec:
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: gitpod
+      component: registry-facade
+  template:
+    metadata:
+      annotations:
+        gitpod.io/checksum_config: 2ede6ff4d7cbf116816b54787f89ea61ed2121d83f7cc50170ce4649f0be19a1
+      creationTimestamp: null
+      labels:
+        app: gitpod
+        component: registry-facade
+      name: registry-facade
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: gitpod.io/workload_workspace_regular
+                operator: Exists
+            - matchExpressions:
+              - key: gitpod.io/workload_workspace_headless
+                operator: Exists
+      containers:
+      - args:
+        - run
+        - /mnt/config/config.json
+        env:
+        - name: GITPOD_DOMAIN
+          value: ide-lyy.one
+        - name: GITPOD_INSTALLATION_SHORTNAME
+          value: default
+        - name: GITPOD_REGION
+          value: local
+        - name: HOST_URL
+          value: https://ide-lyy.one
+        - name: KUBE_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: KUBE_DOMAIN
+          value: svc.cluster.local
+        - name: LOG_LEVEL
+          value: info
+        - name: JAEGER_DISABLED
+          value: "true"
+        - name: GRPC_GO_RETRY
+          value: "on"
+        - name: NODENAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: spec.nodeName
+        image: eu.gcr.io/gitpod-core-dev/build/registry-facade:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /live
+            port: 8086
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 2
+        name: registry-facade
+        ports:
+        - containerPort: 32223
+          hostPort: 20000
+          name: registry
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 5
+          httpGet:
+            path: /ready
+            port: 8086
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          successThreshold: 2
+          timeoutSeconds: 2
+        resources:
+          requests:
+            cpu: 100m
+            memory: 32Mi
+        securityContext:
+          privileged: false
+          runAsUser: 1000
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /mnt/cache
+          name: cache
+        - mountPath: /mnt/config
+          name: config
+          readOnly: true
+        - mountPath: /ws-manager-client-tls-certs
+          name: ws-manager-client-tls-certs
+          readOnly: true
+        - mountPath: /mnt/pull-secret.json
+          name: pull-secret
+          subPath: .dockerconfigjson
+        - mountPath: /mnt/certificates
+          name: config-certificates
+      - args:
+        - --logtostderr
+        - --insecure-listen-address=[$(IP)]:9500
+        - --upstream=http://127.0.0.1:9500/
+        env:
+        - name: IP
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.podIP
+        image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+        imagePullPolicy: IfNotPresent
+        name: kube-rbac-proxy
+        ports:
+        - containerPort: 9500
+          name: metrics
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 1m
+            memory: 30Mi
+        securityContext:
+          runAsGroup: 65532
+          runAsNonRoot: true
+          runAsUser: 65532
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: FallbackToLogsOnError
+      - command:
+        - /app/ready-probe-labeler
+        - --label=gitpod.io/registry-facade_ready_ns_gitpod
+        - --probe-url=http://localhost:8086/ready
+        env:
+        - name: NODENAME
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: spec.nodeName
+        image: eu.gcr.io/gitpod-core-dev/build/registry-facade:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+        imagePullPolicy: IfNotPresent
+        lifecycle:
+          preStop:
+            exec:
+              command:
+              - /app/ready-probe-labeler
+              - --label=gitpod.io/registry-facade_ready_ns_gitpod
+              - --shutdown
+        name: node-labeler
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      enableServiceLinks: false
+      initContainers:
+      - command:
+        - bash
+        - -c
+        - set -e; update-ca-certificates -f; cp /etc/ssl/certs/* /ssl-certs; echo
+          'OK'
+        image: eu.gcr.io/gitpod-core-dev/build/ca-updater:commit-2529db484939a3e73ed6f129dd0add0f767ce394
+        imagePullPolicy: IfNotPresent
+        name: update-ca-certificates
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /ssl-certs
+          name: cacerts
+        - mountPath: /usr/local/share/ca-certificates/gitpod-ca.crt
+          name: gitpod-ca-certificate
+          subPath: ca.crt
+      priorityClassName: system-node-critical
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: registry-facade
+      serviceAccountName: registry-facade
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - emptyDir: {}
+        name: cache
+      - configMap:
+          defaultMode: 420
+          name: registry-facade
+        name: config
+      - name: ws-manager-client-tls-certs
+        secret:
+          defaultMode: 420
+          secretName: ws-manager-client-tls
+      - name: pull-secret
+        secret:
+          defaultMode: 420
+          secretName: builtin-registry-auth
+      - hostPath:
+          path: /
+          type: ""
+        name: hostfs
+      - emptyDir: {}
+        name: gitpod-ca-certificate
+      - emptyDir: {}
+        name: cacerts
+      - name: config-certificates
+        secret:
+          defaultMode: 420
+          secretName: https-certificates
+  updateStrategy:
+    rollingUpdate:
+      maxSurge: 0
+      maxUnavailable: 1
+    type: RollingUpdate
+status:
+  currentNumberScheduled: 1
+  desiredNumberScheduled: 1
+  numberAvailable: 1
+  numberMisscheduled: 0
+  numberReady: 1
+  observedGeneration: 2
+  updatedNumberScheduled: 1

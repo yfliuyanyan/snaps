@@ -1,0 +1,46 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  annotations:
+    objectset.rio.cattle.io/applied: H4sIAAAAAAAA/5SST4/UMAzFvwryOVN2/mhnWokD4sCBGwcuaA5p4m1NM3YVux3Bar47SmcRoF0YONov7+e8xI/gR/qEWUkYGsitD5WfrJdM37yRcDUctCJ5Pa/BwUAcoYF3aVLD/FESgoMTmo/ePDSP4JnFFp+WUtovGEzRqkxSBW+WsMCoUMD9UZczY1518wANDFv9RZnX7tUH4vjmbYzCNxHsT1hiScKWOBJ3+k8eHX0oxmFqcaVf1fAEFwfJt5j+mqz32kMD9/Xdvr2Ph4iI+/WuvgthU2/r3UOI+73HzQMi4mZ3KNCnO16nNMNWV0HYsqSEueh5SqjQfF6+6n2WaSwVwNFBRpUph0UGlohaujPmdul0aHC8uJvGH4F/dydSAwdnb6F/AcNoZ8kDcfe0Is+51xOjJAqE5eHDdXECxfxfs56hkeMoxFago8QXYSX9T+Tx8j0AAP//ts8FmesCAAA
+    objectset.rio.cattle.io/id: ""
+    objectset.rio.cattle.io/owner-gvk: k3s.cattle.io/v1, Kind=Addon
+    objectset.rio.cattle.io/owner-name: rolebindings
+    objectset.rio.cattle.io/owner-namespace: kube-system
+  creationTimestamp: "2023-05-09T08:59:37Z"
+  labels:
+    objectset.rio.cattle.io/hash: 6907b6d8deee71490cc29394fcd77ae2feeee248
+  name: system:k3s-controller
+  resourceVersion: "376"
+  uid: 5bff2aa7-042e-486a-990f-7cf5021045fb
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - nodes
+  verbs:
+  - get
+- apiGroups:
+  - ""
+  resources:
+  - namespaces
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - networking.k8s.io
+  resources:
+  - networkpolicies
+  - clustercidrs
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - endpoints
+  - pods
+  verbs:
+  - list
+  - get
+  - watch

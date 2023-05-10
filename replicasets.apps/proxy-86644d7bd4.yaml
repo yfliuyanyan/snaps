@@ -1,0 +1,190 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  annotations:
+    deployment.kubernetes.io/desired-replicas: "1"
+    deployment.kubernetes.io/max-replicas: "2"
+    deployment.kubernetes.io/revision: "2"
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T10:05:00Z"
+  generation: 1
+  labels:
+    app: gitpod
+    component: proxy
+    pod-template-hash: 86644d7bd4
+  name: proxy-86644d7bd4
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Deployment
+    name: proxy
+    uid: 0da0d5bc-c762-4592-8fc1-0baebfd64cf7
+  resourceVersion: "8209"
+  uid: 5ef4617e-4ace-4363-888a-500938eda86b
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gitpod
+      component: proxy
+      pod-template-hash: 86644d7bd4
+  template:
+    metadata:
+      annotations:
+        gitpod.io/checksum_config: 10d0cd6935a3ed2cf30f8d1ed9899bc3abad3e6a9ababf85ddb2643b01241330
+      creationTimestamp: null
+      labels:
+        app: gitpod
+        component: proxy
+        pod-template-hash: 86644d7bd4
+      name: proxy
+      namespace: gitpod
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: gitpod.io/workload_meta
+                operator: Exists
+      containers:
+      - args:
+        - --logtostderr
+        - --insecure-listen-address=[$(IP)]:9500
+        - --upstream=http://127.0.0.1:9545/
+        env:
+        - name: IP
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.podIP
+        image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+        imagePullPolicy: IfNotPresent
+        name: kube-rbac-proxy
+        ports:
+        - containerPort: 9500
+          name: metrics
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 1m
+            memory: 30Mi
+        securityContext:
+          runAsGroup: 65532
+          runAsNonRoot: true
+          runAsUser: 65532
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      - env:
+        - name: GITPOD_DOMAIN
+          value: ide-lyy.one
+        - name: GITPOD_INSTALLATION_SHORTNAME
+          value: default
+        - name: GITPOD_REGION
+          value: local
+        - name: HOST_URL
+          value: https://ide-lyy.one
+        - name: KUBE_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: KUBE_DOMAIN
+          value: svc.cluster.local
+        - name: LOG_LEVEL
+          value: info
+        - name: PROXY_DOMAIN
+          value: ide-lyy.one
+        image: eu.gcr.io/gitpod-core-dev/build/proxy:commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc
+        imagePullPolicy: IfNotPresent
+        name: proxy
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+        - containerPort: 443
+          name: https
+          protocol: TCP
+        - containerPort: 22
+          name: ssh
+          protocol: TCP
+        - containerPort: 9500
+          name: metrics
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /ready
+            port: 8003
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources:
+          requests:
+            cpu: 100m
+            memory: 200Mi
+        securityContext:
+          privileged: false
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /etc/caddy/vhosts
+          name: vhosts
+        - mountPath: /etc/caddy/certificates
+          name: config-certificates
+        - mountPath: /etc/caddy/registry-auth
+          name: builtin-registry-auth
+        - mountPath: /etc/caddy/registry-certs
+          name: builtin-registry-certs
+      dnsPolicy: ClusterFirst
+      enableServiceLinks: false
+      initContainers:
+      - command:
+        - sh
+        - -c
+        - sysctl -w net.core.somaxconn=32768; sysctl -w net.ipv4.ip_local_port_range='1024
+          65000'
+        image: docker.io/library/alpine:3.16
+        imagePullPolicy: IfNotPresent
+        name: sysctl
+        resources: {}
+        securityContext:
+          privileged: true
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      priorityClassName: system-node-critical
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext:
+        runAsNonRoot: false
+      serviceAccount: proxy
+      serviceAccountName: proxy
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: proxy-config
+        name: vhosts
+      - name: config-certificates
+        secret:
+          defaultMode: 420
+          secretName: https-certificates
+      - name: builtin-registry-auth
+        secret:
+          defaultMode: 420
+          secretName: builtin-registry-auth
+      - name: builtin-registry-certs
+        secret:
+          defaultMode: 420
+          secretName: builtin-registry-certs
+status:
+  availableReplicas: 1
+  fullyLabeledReplicas: 1
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1

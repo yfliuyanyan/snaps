@@ -1,0 +1,246 @@
+apiVersion: v1
+data:
+  config.yaml: |
+    apiVersion: v1
+    authProviders: []
+    blockNewUsers:
+      enabled: false
+      passlist: []
+    certificate:
+      kind: secret
+      name: https-certificates
+    containerRegistry:
+      inCluster: true
+      privateBaseImageAllowList: []
+    database:
+      inCluster: true
+    disableDefinitelyGp: true
+    domain: ide-lyy.one
+    kind: Full
+    license:
+      kind: secret
+      name: gitpod-license
+    metadata:
+      region: local
+      shortname: default
+    objectStorage:
+      inCluster: true
+      resources:
+        requests:
+          memory: 2Gi
+    observability:
+      logLevel: info
+    openVSX:
+      url: https://open-vsx.org
+    repository: eu.gcr.io/gitpod-core-dev/build
+    sshGatewayHostKey:
+      kind: secret
+      name: ssh-gateway-host-key
+    workspace:
+      maxLifetime: 36h0m0s
+      prebuildPVC:
+        size: 30Gi
+        snapshotClass: ""
+        storageClass: ""
+      pvc:
+        size: 30Gi
+        snapshotClass: ""
+        storageClass: ""
+      resources:
+        requests:
+          cpu: "1"
+          memory: 2Gi
+      runtime:
+        containerdRuntimeDir: /run/k3s/containerd/io.containerd.runtime.v2.task/k8s.io
+        containerdSocket: /run/k3s/containerd/containerd.sock
+        fsShiftMethod: shiftfs
+  versions.json: |-
+    {
+      "versions": {
+        "version": "release-2022.11.2.16",
+        "components": {
+          "agentSmith": {
+            "version": "commit-668e50f9f635342acb4eb52115be71fa0dee2a51"
+          },
+          "blobserve": {
+            "version": "commit-668e50f9f635342acb4eb52115be71fa0dee2a51"
+          },
+          "caUpdater": {
+            "version": "commit-2529db484939a3e73ed6f129dd0add0f767ce394"
+          },
+          "contentService": {
+            "version": "commit-668e50f9f635342acb4eb52115be71fa0dee2a51"
+          },
+          "dashboard": {
+            "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc"
+          },
+          "dbMigrations": {
+            "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc"
+          },
+          "dbSync": {
+            "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc"
+          },
+          "ideProxy": {
+            "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc"
+          },
+          "ideMetrics": {
+            "version": "commit-668e50f9f635342acb4eb52115be71fa0dee2a51"
+          },
+          "ideService": {
+            "version": "commit-668e50f9f635342acb4eb52115be71fa0dee2a51"
+          },
+          "imageBuilder": {
+            "version": ""
+          },
+          "imageBuilderMk3": {
+            "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc",
+            "builderImage": {
+              "version": "668e50f9f635342acb4eb52115be71fa0dee2a51"
+            }
+          },
+          "installationTelemetry": {
+            "version": "commit-668e50f9f635342acb4eb52115be71fa0dee2a51"
+          },
+          "integrationTests": {
+            "version": ""
+          },
+          "openVSXProxy": {
+            "version": "commit-668e50f9f635342acb4eb52115be71fa0dee2a51"
+          },
+          "paymentEndpoint": {
+            "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc"
+          },
+          "proxy": {
+            "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc"
+          },
+          "public-api-server": {
+            "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc"
+          },
+          "registryFacade": {
+            "version": "commit-668e50f9f635342acb4eb52115be71fa0dee2a51"
+          },
+          "server": {
+            "version": "commit-a50348cca47b4471c77dcb0de820a84cc0f27517"
+          },
+          "serviceWaiter": {
+            "version": "commit-668e50f9f635342acb4eb52115be71fa0dee2a51"
+          },
+          "toxic-config": {
+            "version": "commit-668e50f9f635342acb4eb52115be71fa0dee2a51"
+          },
+          "usage": {
+            "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc"
+          },
+          "workspace": {
+            "codeImage": {
+              "version": "commit-a65f065d070fcf91a9491e806d9fff26d962e873"
+            },
+            "dockerUp": {
+              "version": "commit-668e50f9f635342acb4eb52115be71fa0dee2a51"
+            },
+            "supervisor": {
+              "version": "commit-0ded86b57ca033d2cbb0df77d8845b14aff530f2"
+            },
+            "workspacekit": {
+              "version": "commit-668e50f9f635342acb4eb52115be71fa0dee2a51"
+            },
+            "desktopIdeImages": {
+              "codeDesktop": {
+                "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc"
+              },
+              "codeDesktopInsiders": {
+                "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc"
+              },
+              "intellij": {
+                "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc"
+              },
+              "intellijLatest": {
+                "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc-latest"
+              },
+              "goland": {
+                "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc"
+              },
+              "golandLatest": {
+                "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc-latest"
+              },
+              "pycharm": {
+                "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc"
+              },
+              "pycharmLatest": {
+                "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc-latest"
+              },
+              "phpstorm": {
+                "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc"
+              },
+              "phpstormLatest": {
+                "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc-latest"
+              },
+              "rubymine": {
+                "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc"
+              },
+              "rubymineLatest": {
+                "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc-latest"
+              },
+              "webstorm": {
+                "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc"
+              },
+              "webstormLatest": {
+                "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc-latest"
+              },
+              "rider": {
+                "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc"
+              },
+              "riderLatest": {
+                "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc-latest"
+              },
+              "clion": {
+                "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc"
+              },
+              "clionLatest": {
+                "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc-latest"
+              },
+              "jbBackendPlugin": {
+                "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc"
+              },
+              "jbBackendPluginLatest": {
+                "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc-latest"
+              }
+            }
+          },
+          "wsDaemon": {
+            "version": "commit-668e50f9f635342acb4eb52115be71fa0dee2a51",
+            "userNamespaces": {
+              "seccompProfileInstaller": {
+                "version": "commit-668e50f9f635342acb4eb52115be71fa0dee2a51"
+              },
+              "shiftfsModuleLoader": {
+                "version": "commit-668e50f9f635342acb4eb52115be71fa0dee2a51"
+              }
+            }
+          },
+          "wsManager": {
+            "version": "commit-668e50f9f635342acb4eb52115be71fa0dee2a51"
+          },
+          "wsManagerBridge": {
+            "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc"
+          },
+          "wsProxy": {
+            "version": "commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc"
+          }
+        }
+      }
+    }
+kind: ConfigMap
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: gitpod
+  name: gitpod
+  namespace: gitpod
+  resourceVersion: "7715"
+  uid: a665aa99-5477-4124-90df-92bb1c15c01c

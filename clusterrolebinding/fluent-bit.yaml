@@ -1,0 +1,27 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  annotations:
+    kots.io/app-slug: gitpod
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"rbac.authorization.k8s.io/v1","kind":"ClusterRoleBinding","metadata":{"annotations":{"kots.io/app-slug":"gitpod"},"labels":{"app.kubernetes.io/instance":"fluent-bit","app.kubernetes.io/managed-by":"Helm","app.kubernetes.io/name":"fluent-bit","app.kubernetes.io/version":"1.9.4","helm.sh/chart":"fluent-bit-0.20.2","kots.io/app-slug":"gitpod","kots.io/backup":"velero"},"name":"fluent-bit"},"roleRef":{"apiGroup":"rbac.authorization.k8s.io","kind":"ClusterRole","name":"fluent-bit"},"subjects":[{"kind":"ServiceAccount","name":"fluent-bit","namespace":"gitpod"}]}
+  creationTimestamp: "2023-05-09T09:30:55Z"
+  labels:
+    app.kubernetes.io/instance: fluent-bit
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: fluent-bit
+    app.kubernetes.io/version: 1.9.4
+    helm.sh/chart: fluent-bit-0.20.2
+    kots.io/app-slug: gitpod
+    kots.io/backup: velero
+  name: fluent-bit
+  resourceVersion: "3277"
+  uid: 12db749d-3d2c-4f95-96ef-40f48421cf58
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: fluent-bit
+subjects:
+- kind: ServiceAccount
+  name: fluent-bit
+  namespace: gitpod

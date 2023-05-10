@@ -1,0 +1,170 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  annotations:
+    deployment.kubernetes.io/desired-replicas: "1"
+    deployment.kubernetes.io/max-replicas: "2"
+    deployment.kubernetes.io/revision: "1"
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  generation: 2
+  labels:
+    app: gitpod
+    component: blobserve
+    pod-template-hash: c87c4c88b
+  name: blobserve-c87c4c88b
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Deployment
+    name: blobserve
+    uid: 5d03657c-a880-42f5-9ce4-b86e564a38eb
+  resourceVersion: "8270"
+  uid: fbb94c62-3ab3-40d5-9563-dff7dfd5e0c2
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: gitpod
+      component: blobserve
+      pod-template-hash: c87c4c88b
+  template:
+    metadata:
+      annotations:
+        gitpod.io/checksum_config: 671ee6579db9934e29ba6dd0c7575d084bc00a57b369402d8ed78f8afcd09ca0
+      creationTimestamp: null
+      labels:
+        app: gitpod
+        component: blobserve
+        pod-template-hash: c87c4c88b
+      name: blobserve
+      namespace: gitpod
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: gitpod.io/workload_ide
+                operator: Exists
+      containers:
+      - args:
+        - run
+        - /mnt/config/config.json
+        env:
+        - name: GITPOD_DOMAIN
+          value: ide-lyy.one
+        - name: GITPOD_INSTALLATION_SHORTNAME
+          value: default
+        - name: GITPOD_REGION
+          value: local
+        - name: HOST_URL
+          value: https://ide-lyy.one
+        - name: KUBE_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: KUBE_DOMAIN
+          value: svc.cluster.local
+        - name: LOG_LEVEL
+          value: info
+        - name: JAEGER_DISABLED
+          value: "true"
+        image: eu.gcr.io/gitpod-core-dev/build/blobserve:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /live
+            port: 8086
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 2
+        name: blobserve
+        ports:
+        - containerPort: 32224
+          name: service
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /ready
+            port: 8086
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 2
+        resources:
+          requests:
+            cpu: 100m
+            memory: 32Mi
+        securityContext:
+          privileged: false
+          runAsUser: 1000
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /mnt/config
+          name: config
+          readOnly: true
+        - mountPath: /mnt/cache
+          name: cache
+        - mountPath: /mnt/pull-secret.json
+          name: pull-secret
+          subPath: .dockerconfigjson
+      - args:
+        - --logtostderr
+        - --insecure-listen-address=[$(IP)]:9500
+        - --upstream=http://127.0.0.1:9500/
+        env:
+        - name: IP
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.podIP
+        image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+        imagePullPolicy: IfNotPresent
+        name: kube-rbac-proxy
+        ports:
+        - containerPort: 9500
+          name: metrics
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 1m
+            memory: 30Mi
+        securityContext:
+          runAsGroup: 65532
+          runAsNonRoot: true
+          runAsUser: 65532
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: FallbackToLogsOnError
+      dnsPolicy: ClusterFirst
+      enableServiceLinks: false
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: blobserve
+      serviceAccountName: blobserve
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - emptyDir: {}
+        name: cache
+      - configMap:
+          defaultMode: 420
+          name: blobserve
+        name: config
+      - name: pull-secret
+        secret:
+          defaultMode: 420
+          secretName: builtin-registry-auth
+status:
+  observedGeneration: 2
+  replicas: 0

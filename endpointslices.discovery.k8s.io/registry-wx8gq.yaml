@@ -1,0 +1,45 @@
+addressType: IPv4
+apiVersion: discovery.k8s.io/v1
+endpoints:
+- addresses:
+  - 192.168.132.251
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: vultr
+  targetRef:
+    kind: Pod
+    name: registry-849478cf8-g5jp7
+    namespace: gitpod
+    uid: e2b510ee-2d10-4259-9602-1525c70030cd
+kind: EndpointSlice
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2023-05-09T10:11:24Z"
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  generateName: registry-
+  generation: 17
+  labels:
+    app: docker-registry
+    app.kubernetes.io/managed-by: Helm
+    chart: docker-registry-2.2.2
+    endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+    heritage: Helm
+    kubernetes.io/service-name: registry
+    release: docker-registry
+  name: registry-wx8gq
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Service
+    name: registry
+    uid: e6dbd447-8da7-4c74-8259-eeee76d5dbb9
+  resourceVersion: "9013"
+  uid: 3d34fb8a-12d0-43d9-ba36-76178fbc195d
+ports:
+- name: https-443
+  port: 5000
+  protocol: TCP

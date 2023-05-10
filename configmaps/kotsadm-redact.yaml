@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2023-05-09T09:24:49Z"
+  labels:
+    kots.io/kotsadm: "true"
+  name: kotsadm-redact
+  namespace: gitpod
+  resourceVersion: "2789"
+  uid: 2903e0ba-d1d6-45b9-9808-e9171e3f13e5

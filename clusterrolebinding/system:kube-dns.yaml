@@ -1,0 +1,19 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+  creationTimestamp: "2023-05-09T08:59:32Z"
+  labels:
+    kubernetes.io/bootstrapping: rbac-defaults
+  name: system:kube-dns
+  resourceVersion: "141"
+  uid: 3945c4de-2a8a-4d2a-af11-a2a73818eb22
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:kube-dns
+subjects:
+- kind: ServiceAccount
+  name: kube-dns
+  namespace: kube-system

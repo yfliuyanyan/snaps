@@ -1,0 +1,49 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:13Z"
+  generation: 1
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: server
+  name: server
+  namespace: gitpod
+  resourceVersion: "3463"
+  uid: ed18e89f-7cf9-4c6d-843a-4ae7a15d7bd6
+spec:
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          component: proxy
+    ports:
+    - port: 3000
+      protocol: TCP
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          chart: monitoring
+      podSelector:
+        matchLabels:
+          component: proxy
+    ports:
+    - port: 9500
+      protocol: TCP
+  - from:
+    - podSelector:
+        matchLabels:
+          component: gitpod
+    ports:
+    - port: 9000
+      protocol: TCP
+  podSelector:
+    matchLabels:
+      app: gitpod
+      component: server
+  policyTypes:
+  - Ingress
+status: {}

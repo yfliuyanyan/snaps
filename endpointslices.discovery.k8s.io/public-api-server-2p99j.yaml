@@ -1,0 +1,47 @@
+addressType: IPv4
+apiVersion: discovery.k8s.io/v1
+endpoints:
+- addresses:
+  - 192.168.132.239
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: vultr
+  targetRef:
+    kind: Pod
+    name: public-api-server-6944dcdb5b-hcj74
+    namespace: gitpod
+    uid: 638d90e9-ef8f-402a-b37e-582f23c6769c
+kind: EndpointSlice
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2023-05-09T09:32:32Z"
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  generateName: public-api-server-
+  generation: 3
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: public-api-server
+    endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+    kind: service
+    kubernetes.io/service-name: public-api-server
+  name: public-api-server-2p99j
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Service
+    name: public-api-server
+    uid: 8c1afc2b-48ec-40ef-9bbc-02bcacfa0c1a
+  resourceVersion: "4828"
+  uid: b3c37712-cbe0-4e08-8f94-e04058fd92d3
+ports:
+- name: grpc
+  port: 9001
+  protocol: TCP
+- name: http
+  port: 9002
+  protocol: TCP

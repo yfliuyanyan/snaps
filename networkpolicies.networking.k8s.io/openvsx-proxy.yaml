@@ -1,0 +1,38 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:13Z"
+  generation: 1
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: openvsx-proxy
+  name: openvsx-proxy
+  namespace: gitpod
+  resourceVersion: "3466"
+  uid: 4a57165e-70ef-45b4-99ab-aaadcbbfa1ae
+spec:
+  ingress:
+  - ports:
+    - port: 8080
+      protocol: TCP
+  - from:
+    - namespaceSelector:
+        matchLabels:
+          chart: monitoring
+      podSelector:
+        matchLabels:
+          component: server
+    ports:
+    - port: 8080
+      protocol: TCP
+  podSelector:
+    matchLabels:
+      app: gitpod
+      component: openvsx-proxy
+  policyTypes:
+  - Ingress
+status: {}

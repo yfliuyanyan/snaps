@@ -1,0 +1,27 @@
+apiVersion: v1
+data:
+  config.json: |-
+    {
+      "server": {
+        "services": {
+          "grpc": {
+            "address": "0.0.0.0:9001"
+          }
+        }
+      },
+      "ideConfigPath": "/ide-config/config.json"
+    }
+kind: ConfigMap
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ide-service
+  name: ide-service
+  namespace: gitpod
+  resourceVersion: "3521"
+  uid: 9a8d918b-6a3e-4982-b2e0-f253ea3db518

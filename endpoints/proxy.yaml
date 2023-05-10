@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: proxy
+    kind: service
+  name: proxy
+  namespace: gitpod
+  resourceVersion: "8216"
+  uid: b990b072-c4f5-4dcb-a62c-b72f0356b1bb
+subsets:
+- addresses:
+  - ip: 192.168.132.219
+    nodeName: vultr
+    targetRef:
+      kind: Pod
+      name: proxy-86644d7bd4-lg5qg
+      namespace: gitpod
+      uid: 8045ba53-f2df-4ac9-ae45-df5e8c0f0abc
+  ports:
+  - name: metrics
+    port: 9500
+    protocol: TCP
+  - name: https
+    port: 443
+    protocol: TCP
+  - name: http
+    port: 80
+    protocol: TCP
+  - name: ssh
+    port: 22
+    protocol: TCP

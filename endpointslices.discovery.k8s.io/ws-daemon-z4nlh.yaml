@@ -1,0 +1,42 @@
+addressType: IPv4
+apiVersion: discovery.k8s.io/v1
+endpoints:
+- addresses:
+  - 192.168.132.210
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: vultr
+  targetRef:
+    kind: Pod
+    name: ws-daemon-gzwvj
+    namespace: gitpod
+    uid: c6ae5138-d07c-4297-97e9-f6de334c6290
+kind: EndpointSlice
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2023-05-09T10:05:36Z"
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  generateName: ws-daemon-
+  generation: 8
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ws-daemon
+    endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+    kind: service
+    kubernetes.io/service-name: ws-daemon
+    service.kubernetes.io/headless: ""
+  name: ws-daemon-z4nlh
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Service
+    name: ws-daemon
+    uid: 588ce338-02cd-4a83-95c9-135571f399a7
+  resourceVersion: "8445"
+  uid: 4ac7ddb9-5724-447d-90a6-0b5cfae97e1e
+ports: null

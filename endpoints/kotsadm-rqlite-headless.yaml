@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2023-05-09T09:22:07Z"
+  creationTimestamp: "2023-05-09T09:21:56Z"
+  labels:
+    kots.io/backup: velero
+    kots.io/kotsadm: "true"
+    service.kubernetes.io/headless: ""
+  name: kotsadm-rqlite-headless
+  namespace: gitpod
+  resourceVersion: "2546"
+  uid: 0e8cdc47-e50a-4a1c-8638-1d82bf2a972d
+subsets:
+- addresses:
+  - hostname: kotsadm-rqlite-0
+    ip: 192.168.132.207
+    nodeName: vultr
+    targetRef:
+      kind: Pod
+      name: kotsadm-rqlite-0
+      namespace: gitpod
+      uid: 68920ff2-2a51-4b5d-96bf-6374fd7da1b8
+  ports:
+  - name: rqlite
+    port: 4001
+    protocol: TCP

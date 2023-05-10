@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:13Z"
+  generation: 1
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: blobserve
+  name: blobserve
+  namespace: gitpod
+  resourceVersion: "3458"
+  uid: 07866836-772a-4f71-b473-1a1b1f0d422c
+spec:
+  ingress:
+  - {}
+  podSelector:
+    matchLabels:
+      app: gitpod
+      component: blobserve
+  policyTypes:
+  - Ingress
+status: {}

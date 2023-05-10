@@ -1,0 +1,155 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    cni.projectcalico.org/containerID: 8774a1690127f658c8db892bcb403edc649d918f6c23d45ecc5d88026dd47df5
+    cni.projectcalico.org/podIP: 192.168.132.224/32
+    cni.projectcalico.org/podIPs: 192.168.132.224/32
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  generateName: ide-proxy-69f475b7c6-
+  labels:
+    app: gitpod
+    component: ide-proxy
+    pod-template-hash: 69f475b7c6
+  name: ide-proxy-69f475b7c6-smsbd
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: ide-proxy-69f475b7c6
+    uid: ee4684f3-9620-4492-b92b-60da3eae99e1
+  resourceVersion: "4591"
+  uid: c5b32b60-6304-41ba-ae85-8affcbf561b0
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: gitpod.io/workload_meta
+            operator: Exists
+  containers:
+  - env:
+    - name: GITPOD_DOMAIN
+      value: ide-lyy.one
+    - name: GITPOD_INSTALLATION_SHORTNAME
+      value: default
+    - name: GITPOD_REGION
+      value: local
+    - name: HOST_URL
+      value: https://ide-lyy.one
+    - name: KUBE_NAMESPACE
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.namespace
+    - name: KUBE_DOMAIN
+      value: svc.cluster.local
+    - name: LOG_LEVEL
+      value: info
+    image: eu.gcr.io/gitpod-core-dev/build/ide-proxy:commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc
+    imagePullPolicy: IfNotPresent
+    name: ide-proxy
+    ports:
+    - containerPort: 80
+      name: http
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /ready
+        port: 8080
+        scheme: HTTP
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    resources:
+      requests:
+        cpu: 100m
+        memory: 32Mi
+    securityContext:
+      privileged: false
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-fb27w
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: false
+  nodeName: vultr
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: ide-proxy
+  serviceAccountName: ide-proxy
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: kube-api-access-fb27w
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:31:14Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:31:38Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:31:38Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:31:14Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://9986f2b77a1463a059d7fd0d4b618c2671f02588858229bd04425a72264a1ad8
+    image: eu.gcr.io/gitpod-core-dev/build/ide-proxy:commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc
+    imageID: eu.gcr.io/gitpod-core-dev/build/ide-proxy@sha256:19de83a9028ab0f75350314297fec43a7e43d6b580bba54b78db086e1a133452
+    lastState: {}
+    name: ide-proxy
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2023-05-09T09:31:37Z"
+  hostIP: 45.77.41.206
+  phase: Running
+  podIP: 192.168.132.224
+  podIPs:
+  - ip: 192.168.132.224
+  qosClass: Burstable
+  startTime: "2023-05-09T09:31:14Z"

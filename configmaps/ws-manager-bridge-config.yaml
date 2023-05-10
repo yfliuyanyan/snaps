@@ -1,0 +1,53 @@
+apiVersion: v1
+data:
+  ws-manager-bridge.json: |-
+    {
+      "installation": "default",
+      "staticBridges": [
+        {
+          "name": "default",
+          "url": "dns:///ws-manager:8080",
+          "tls": {
+            "ca": "/ws-manager-client-tls-certs/ca.crt",
+            "crt": "/ws-manager-client-tls-certs/tls.crt",
+            "key": "/ws-manager-client-tls-certs/tls.key"
+          },
+          "state": "available",
+          "maxScore": 100,
+          "score": 50,
+          "govern": true,
+          "admissionConstraints": null,
+          "applicationCluster": "default"
+        }
+      ],
+      "clusterService": {
+        "port": 8080,
+        "host": "localhost"
+      },
+      "wsClusterDBReconcileIntervalSeconds": 60,
+      "controllerIntervalSeconds": 60,
+      "controllerMaxDisconnectSeconds": 150,
+      "emulatePreparingIntervalSeconds": 10,
+      "timeouts": {
+        "preparingPhaseSeconds": 3600,
+        "buildingPhaseSeconds": 3600,
+        "unknownPhaseSeconds": 600,
+        "pendingPhaseSeconds": 3600,
+        "stoppingPhaseSeconds": 3600
+      },
+      "clusterSyncIntervalSeconds": 60
+    }
+kind: ConfigMap
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ws-manager-bridge
+  name: ws-manager-bridge-config
+  namespace: gitpod
+  resourceVersion: "3530"
+  uid: ed0e47a4-2572-4eb3-a31c-4688b7a57b22

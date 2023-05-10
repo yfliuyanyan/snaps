@@ -1,0 +1,24 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"rbac.authorization.k8s.io/v1","kind":"ClusterRoleBinding","metadata":{"annotations":{},"labels":{"app":"cert-manager","app.kubernetes.io/component":"controller","app.kubernetes.io/instance":"cert-manager","app.kubernetes.io/name":"cert-manager","app.kubernetes.io/version":"v1.8.0"},"name":"cert-manager-controller-ingress-shim"},"roleRef":{"apiGroup":"rbac.authorization.k8s.io","kind":"ClusterRole","name":"cert-manager-controller-ingress-shim"},"subjects":[{"kind":"ServiceAccount","name":"cert-manager","namespace":"cert-manager"}]}
+  creationTimestamp: "2023-05-09T09:01:56Z"
+  labels:
+    app: cert-manager
+    app.kubernetes.io/component: controller
+    app.kubernetes.io/instance: cert-manager
+    app.kubernetes.io/name: cert-manager
+    app.kubernetes.io/version: v1.8.0
+  name: cert-manager-controller-ingress-shim
+  resourceVersion: "982"
+  uid: 65d6fd7b-4cda-405f-a15d-de5e49a81409
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: cert-manager-controller-ingress-shim
+subjects:
+- kind: ServiceAccount
+  name: cert-manager
+  namespace: cert-manager

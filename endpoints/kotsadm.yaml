@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2023-05-09T09:23:37Z"
+  creationTimestamp: "2023-05-09T09:22:46Z"
+  labels:
+    kots.io/backup: velero
+    kots.io/kotsadm: "true"
+  name: kotsadm
+  namespace: gitpod
+  resourceVersion: "2709"
+  uid: 8560e1fc-2bf0-4482-b02e-de6848d5411d
+subsets:
+- addresses:
+  - ip: 192.168.132.209
+    nodeName: vultr
+    targetRef:
+      kind: Pod
+      name: kotsadm-67dc4c7c59-58b8l
+      namespace: gitpod
+      uid: c6c47366-b594-41ad-bda0-e32a566e69e1
+  ports:
+  - name: http
+    port: 3000
+    protocol: TCP

@@ -1,0 +1,242 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    checksum/configuration: 37e3943f161e7ddf74433d5e5ddd1a4042eed1436b9e35832a62accc68860c1b
+    cni.projectcalico.org/containerID: c04a5f794ca85c533bd532a8c086c615f7cbc4049c1fb44c173c134f8a92e96a
+    cni.projectcalico.org/podIP: 192.168.132.245/32
+    cni.projectcalico.org/podIPs: 192.168.132.245/32
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  generateName: mysql-
+  labels:
+    app.kubernetes.io/component: primary
+    app.kubernetes.io/instance: mysql
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: mysql
+    controller-revision-hash: mysql-594c5859
+    helm.sh/chart: mysql-9.4.5
+    statefulset.kubernetes.io/pod-name: mysql-0
+  name: mysql-0
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: StatefulSet
+    name: mysql
+    uid: 9f1546ab-f4bb-4956-a5df-f27cdbb8b076
+  resourceVersion: "4754"
+  uid: 4e695631-7ae9-4fbe-a349-c5489f134765
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: gitpod.io/workload_meta
+            operator: Exists
+  containers:
+  - env:
+    - name: BITNAMI_DEBUG
+      value: "false"
+    - name: MYSQL_ROOT_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          key: mysql-root-password
+          name: db-password
+    - name: MYSQL_USER
+      value: gitpod
+    - name: MYSQL_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          key: mysql-password
+          name: db-password
+    - name: MYSQL_DATABASE
+      value: gitpod
+    - name: MYSQL_EXTRA_FLAGS
+      value: --explicit-defaults-for-timestamp=OFF
+    image: docker.io/bitnami/mysql:5.7.34-debian-10-r55
+    imagePullPolicy: IfNotPresent
+    livenessProbe:
+      exec:
+        command:
+        - /bin/bash
+        - -ec
+        - |
+          password_aux="${MYSQL_ROOT_PASSWORD:-}"
+          if [[ -f "${MYSQL_ROOT_PASSWORD_FILE:-}" ]]; then
+              password_aux=$(cat "$MYSQL_ROOT_PASSWORD_FILE")
+          fi
+          mysqladmin status -uroot -p"${password_aux}"
+      failureThreshold: 3
+      initialDelaySeconds: 30
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    name: mysql
+    ports:
+    - containerPort: 3306
+      name: mysql
+      protocol: TCP
+    readinessProbe:
+      exec:
+        command:
+        - /bin/bash
+        - -ec
+        - |
+          password_aux="${MYSQL_ROOT_PASSWORD:-}"
+          if [[ -f "${MYSQL_ROOT_PASSWORD_FILE:-}" ]]; then
+              password_aux=$(cat "$MYSQL_ROOT_PASSWORD_FILE")
+          fi
+          mysqladmin status -uroot -p"${password_aux}"
+      failureThreshold: 3
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    resources:
+      requests:
+        memory: 128Mi
+    securityContext:
+      runAsNonRoot: true
+      runAsUser: 1001
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /bitnami/mysql
+      name: data
+    - mountPath: /docker-entrypoint-initdb.d
+      name: custom-init-scripts
+    - mountPath: /opt/bitnami/mysql/conf/my.cnf
+      name: config
+      subPath: my.cnf
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-zl2q4
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  hostname: mysql-0
+  initContainers:
+  - command:
+    - /bin/bash
+    - -ec
+    - |
+      mkdir -p "/bitnami/mysql"
+      chown "1001:1001" "/bitnami/mysql"
+      find "/bitnami/mysql" -mindepth 1 -maxdepth 1 -not -name ".snapshot" -not -name "lost+found" | xargs -r chown -R "1001:1001"
+    image: docker.io/bitnami/bitnami-shell:11-debian-11-r60
+    imagePullPolicy: IfNotPresent
+    name: volume-permissions
+    resources: {}
+    securityContext:
+      runAsUser: 0
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /bitnami/mysql
+      name: data
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-zl2q4
+      readOnly: true
+  nodeName: vultr
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext:
+    fsGroup: 1001
+  serviceAccount: db
+  serviceAccountName: db
+  subdomain: mysql
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: data
+    persistentVolumeClaim:
+      claimName: data-mysql-0
+  - configMap:
+      defaultMode: 420
+      name: mysql
+    name: config
+  - configMap:
+      defaultMode: 420
+      name: db-init-scripts
+    name: custom-init-scripts
+  - name: kube-api-access-zl2q4
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:31:46Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:32:17Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:32:17Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:31:35Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://256b327d809df63a7be739b9eb1dad24f31ea142148993a4be9ebde566c86e81
+    image: docker.io/bitnami/mysql:5.7.34-debian-10-r55
+    imageID: docker.io/bitnami/mysql@sha256:06b6e9d0a49c6f6595e7a3b4b19a35a43e8335dae44320150c0b53544e562120
+    lastState: {}
+    name: mysql
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2023-05-09T09:31:58Z"
+  hostIP: 45.77.41.206
+  initContainerStatuses:
+  - containerID: containerd://c8846ba090b9cecd51735a943be30caacb39a3d6c96b51d09c44dedfb95e8fa4
+    image: docker.io/bitnami/bitnami-shell:11-debian-11-r60
+    imageID: docker.io/bitnami/bitnami-shell@sha256:650ab32dd9bc912e60bebdbe4f9b90d251ef5cf0f437391cd9ae37a02b07243b
+    lastState: {}
+    name: volume-permissions
+    ready: true
+    restartCount: 0
+    state:
+      terminated:
+        containerID: containerd://c8846ba090b9cecd51735a943be30caacb39a3d6c96b51d09c44dedfb95e8fa4
+        exitCode: 0
+        finishedAt: "2023-05-09T09:31:45Z"
+        reason: Completed
+        startedAt: "2023-05-09T09:31:45Z"
+  phase: Running
+  podIP: 192.168.132.245
+  podIPs:
+  - ip: 192.168.132.245
+  qosClass: Burstable
+  startTime: "2023-05-09T09:31:35Z"

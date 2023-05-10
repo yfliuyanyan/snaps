@@ -1,0 +1,44 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:15Z"
+  generation: 1
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ws-daemon
+  name: ws-daemon-tls
+  namespace: gitpod
+  resourceVersion: "4129"
+  uid: 4326c630-e7a1-4acb-9b3f-e9db0efaddef
+spec:
+  dnsNames:
+  - gitpod.gitpod
+  - ws-daemon.gitpod.svc
+  - ws-daemon
+  - wsdaemon
+  duration: 2160h0m0s
+  issuerRef:
+    group: cert-manager.io
+    kind: Issuer
+    name: ca-issuer
+  secretName: ws-daemon-tls
+  secretTemplate:
+    labels:
+      app: gitpod
+      component: ws-daemon
+status:
+  conditions:
+  - lastTransitionTime: "2023-05-09T09:31:20Z"
+    message: Certificate is up to date and has not expired
+    observedGeneration: 1
+    reason: Ready
+    status: "True"
+    type: Ready
+  notAfter: "2023-08-07T09:31:20Z"
+  notBefore: "2023-05-09T09:31:20Z"
+  renewalTime: "2023-07-08T09:31:20Z"
+  revision: 1

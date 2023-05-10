@@ -1,0 +1,216 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    cni.projectcalico.org/containerID: 6e1972165d8b00396a5ade304e76715adf066c335b0814babe8fde0d93f2cf44
+    cni.projectcalico.org/podIP: 192.168.132.222/32
+    cni.projectcalico.org/podIPs: 192.168.132.222/32
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  generateName: agent-smith-
+  labels:
+    app: gitpod
+    component: agent-smith
+    controller-revision-hash: "8644595987"
+    pod-template-generation: "1"
+  name: agent-smith-fxqnw
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: DaemonSet
+    name: agent-smith
+    uid: c4a7770f-8a4e-4598-999e-91ee9dc8f3f2
+  resourceVersion: "4495"
+  uid: 01b0fd29-3858-43bb-9ce3-5bd34439373d
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchFields:
+          - key: metadata.name
+            operator: In
+            values:
+            - vultr
+  containers:
+  - args:
+    - run
+    - --config
+    - /config/config.json
+    env:
+    - name: GITPOD_DOMAIN
+      value: ide-lyy.one
+    - name: GITPOD_INSTALLATION_SHORTNAME
+      value: default
+    - name: GITPOD_REGION
+      value: local
+    - name: HOST_URL
+      value: https://ide-lyy.one
+    - name: KUBE_NAMESPACE
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.namespace
+    - name: KUBE_DOMAIN
+      value: svc.cluster.local
+    - name: LOG_LEVEL
+      value: info
+    - name: JAEGER_DISABLED
+      value: "true"
+    - name: NODENAME
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: spec.nodeName
+    image: eu.gcr.io/gitpod-core-dev/build/agent-smith:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+    imagePullPolicy: IfNotPresent
+    name: agent-smith
+    resources:
+      requests:
+        cpu: 100m
+        memory: 32Mi
+    securityContext:
+      privileged: true
+      procMount: Default
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /config
+      name: config
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-k5kwl
+      readOnly: true
+  - args:
+    - --logtostderr
+    - --insecure-listen-address=[$(IP)]:9500
+    - --upstream=http://127.0.0.1:9500/
+    env:
+    - name: IP
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: status.podIP
+    image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+    imagePullPolicy: IfNotPresent
+    name: kube-rbac-proxy
+    ports:
+    - containerPort: 9500
+      name: metrics
+      protocol: TCP
+    resources:
+      requests:
+        cpu: 1m
+        memory: 30Mi
+    securityContext:
+      runAsGroup: 65532
+      runAsNonRoot: true
+      runAsUser: 65532
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: FallbackToLogsOnError
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-k5kwl
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: false
+  hostPID: true
+  nodeName: vultr
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: agent-smith
+  serviceAccountName: agent-smith
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+  - effect: NoSchedule
+    key: node.kubernetes.io/disk-pressure
+    operator: Exists
+  - effect: NoSchedule
+    key: node.kubernetes.io/memory-pressure
+    operator: Exists
+  - effect: NoSchedule
+    key: node.kubernetes.io/pid-pressure
+    operator: Exists
+  - effect: NoSchedule
+    key: node.kubernetes.io/unschedulable
+    operator: Exists
+  volumes:
+  - configMap:
+      defaultMode: 420
+      name: agent-smith
+    name: config
+  - name: kube-api-access-k5kwl
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:31:14Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:31:37Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:31:37Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:31:14Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://48b166769923b3314e63e0ff204511a65d41b1ff6615b2f3563c913fad6ad0e5
+    image: eu.gcr.io/gitpod-core-dev/build/agent-smith:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+    imageID: eu.gcr.io/gitpod-core-dev/build/agent-smith@sha256:c550f40ed2fbe9fc84a32f29b8edcc5195af765c1859cf1b1abaac8e32abf0a3
+    lastState: {}
+    name: agent-smith
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2023-05-09T09:31:26Z"
+  - containerID: containerd://a0935f0572b74a98fbc81e6d424e6c7111662a1097806da9ff22b420af06bcc2
+    image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+    imageID: quay.io/brancz/kube-rbac-proxy@sha256:12b82e47da1a2f5094966d4239811a5ae5c37b47e4224b1b35e57a7f02edd57a
+    lastState: {}
+    name: kube-rbac-proxy
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2023-05-09T09:31:37Z"
+  hostIP: 45.77.41.206
+  phase: Running
+  podIP: 192.168.132.222
+  podIPs:
+  - ip: 192.168.132.222
+  qosClass: Burstable
+  startTime: "2023-05-09T09:31:14Z"

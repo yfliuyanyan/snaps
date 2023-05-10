@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ide-metrics
+    kind: service
+  name: ide-metrics
+  namespace: gitpod
+  resourceVersion: "3642"
+  uid: 49b35662-6d4c-437a-9998-b78831412b5a
+spec:
+  clusterIP: 10.43.169.127
+  clusterIPs:
+  - 10.43.169.127
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: http
+    port: 3000
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: gitpod
+    component: ide-metrics
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

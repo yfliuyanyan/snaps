@@ -1,0 +1,27 @@
+apiVersion: cert-manager.io/v1
+kind: Issuer
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:15Z"
+  generation: 1
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: cluster
+  name: ca-issuer
+  namespace: gitpod
+  resourceVersion: "4094"
+  uid: 81bc5690-b905-41cc-b62c-2c72959ec052
+spec:
+  ca:
+    secretName: ca-issuer-ca
+status:
+  conditions:
+  - lastTransitionTime: "2023-05-09T09:31:20Z"
+    message: Signing CA verified
+    observedGeneration: 1
+    reason: KeyPairVerified
+    status: "True"
+    type: Ready

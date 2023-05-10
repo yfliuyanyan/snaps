@@ -1,0 +1,41 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:13Z"
+  generation: 1
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ws-daemon
+  name: ws-daemon
+  namespace: gitpod
+  resourceVersion: "3454"
+  uid: 2883a557-3bde-47bc-810f-efa670b5ea69
+spec:
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          app: gitpod
+          component: ws-manager
+    ports:
+    - port: 8080
+      protocol: TCP
+  - from:
+    - podSelector:
+        matchLabels:
+          app: prometheus
+          component: server
+    ports:
+    - port: 9500
+      protocol: TCP
+  podSelector:
+    matchLabels:
+      app: gitpod
+      component: ws-daemon
+  policyTypes:
+  - Ingress
+status: {}

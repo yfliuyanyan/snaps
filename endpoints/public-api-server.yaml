@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2023-05-09T09:32:32Z"
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: public-api-server
+    kind: service
+  name: public-api-server
+  namespace: gitpod
+  resourceVersion: "4830"
+  uid: b143f822-f179-4683-bc1f-d9253b48d584
+subsets:
+- addresses:
+  - ip: 192.168.132.239
+    nodeName: vultr
+    targetRef:
+      kind: Pod
+      name: public-api-server-6944dcdb5b-hcj74
+      namespace: gitpod
+      uid: 638d90e9-ef8f-402a-b37e-582f23c6769c
+  ports:
+  - name: http
+    port: 9002
+    protocol: TCP
+  - name: grpc
+    port: 9001
+    protocol: TCP

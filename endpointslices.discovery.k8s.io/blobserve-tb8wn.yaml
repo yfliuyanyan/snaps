@@ -1,0 +1,42 @@
+addressType: IPv4
+apiVersion: discovery.k8s.io/v1
+endpoints:
+- addresses:
+  - 192.168.132.218
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: vultr
+  targetRef:
+    kind: Pod
+    name: blobserve-75d764476-tsfxp
+    namespace: gitpod
+    uid: 33a4ad59-a1fa-44a0-8e82-0072a9159419
+kind: EndpointSlice
+metadata:
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  generateName: blobserve-
+  generation: 6
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: blobserve
+    endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+    kind: service
+    kubernetes.io/service-name: blobserve
+  name: blobserve-tb8wn
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Service
+    name: blobserve
+    uid: a8bb4701-abce-4403-969d-a12a3c4e3ab7
+  resourceVersion: "8388"
+  uid: dddfedda-4022-4ca0-9868-33a37c385888
+ports:
+- name: service
+  port: 32224
+  protocol: TCP

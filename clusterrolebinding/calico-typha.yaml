@@ -1,0 +1,22 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  creationTimestamp: "2023-05-09T09:00:06Z"
+  name: calico-typha
+  ownerReferences:
+  - apiVersion: operator.tigera.io/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Installation
+    name: default
+    uid: ac67e02a-e8f9-4e56-a6c7-4801b9ae5db0
+  resourceVersion: "515"
+  uid: ded096b6-6e99-4d32-909c-9139496e8f2c
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: calico-typha
+subjects:
+- kind: ServiceAccount
+  name: calico-typha
+  namespace: calico-system

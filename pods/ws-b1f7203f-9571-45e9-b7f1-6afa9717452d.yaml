@@ -1,0 +1,226 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    cluster-autoscaler.kubernetes.io/safe-to-evict: "false"
+    container.apparmor.security.beta.kubernetes.io/workspace: unconfined
+    gitpod.io/attemptingToCreate: "true"
+    gitpod.io/sshPublicKeys: Cltzc2gtZWQyNTUxOSBBQUFBQzNOemFDMWxaREkxTlRFNUFBQUFJUG9wTzVYZG1FcnY3ZFlSWXgxbnpweVJKQUduclRPQlFJVVJIbzVEbkN6RyByb290QHZ1bHRyCqMDc3NoLXJzYSBBQUFBQjNOemFDMXljMkVBQUFBREFRQUJBQUFCQVFDcitoc3Q3dFF4U3Q5TWFkWFNpMWxGS3BSdWY5QWEycUU4cDFmcy9RMEF1dkUzRHQ2azVsRG04Zy9hczdrRDlMM0lLWFR1Z3kxVk82TnJMZWNOWDU2d3ZSTUJxWHNlczhKUGdrUXNtaTh3cTM2bFdyVWZUR0pFOHVxQ2FoYWhDdWZmcTREc2p1NmNXTThSWTRTN1JQbWViTjI0MUZxdkk4V3BOUkV0QldocEpCTVJMUXZ3dlVXOGN1dWhnT09NejNHQ3VDVmVLODl6NmlXMUhxVzJqa29IRlFGNGhDT2RRcG14YTBVRHR4VFhZUk1DWFk1VlUrcHBRNVZpNzI0d3BvS1p3eW1IOUJVRDZzcTBYWlh2dFhvbUhFMWwwa21HNzk5WkltN1FINVkySktITldOUk4wSjNHUEFNdXVNcDBxV25zVHVpMVh4ZFd6WTkxSEYyTjdtbS8gbGl1eWFueWFuQGxpdXlhbnlhbmRlTWFjQm9vay1Qcm8ubG9jYWw=
+    gitpod.io/stoppedByRequest: 30s
+    gitpod/admission: admit_owner_only
+    gitpod/contentInitializer: En0KLmh0dHBzOi8vZ2l0aHViLmNvbS95ZmxpdXlhbnlhbi9weXRob24tdGVzdC5naXQYAiIGbWFzdGVyKgtweXRob24tdGVzdDI0EAEaBm9hdXRoMiIoZ2hvX0h4cmlXcDFmYjJQNGlFelJNa3RLNzdEemc1b211aDBQcFdRTA==
+    gitpod/customTimeout: 60m
+    gitpod/id: b1f7203f-9571-45e9-b7f1-6afa9717452d
+    gitpod/imageSpec: CmZyZWdpc3RyeS5pZGUtbHl5Lm9uZS93b3Jrc3BhY2UtaW1hZ2VzOmFmNDQxOGI4MTUwOTJhYmYwNjljZmJhNjUxNDJkODFlY2FlNzE4MmI0MGI5ZjYyMzIzM2ZjMGMwODMxZmYwNzkSWGV1Lmdjci5pby9naXRwb2QtY29yZS1kZXYvYnVpbGQvaWRlL2NvZGU6Y29tbWl0LWE2NWYwNjVkMDcwZmNmOTFhOTQ5MWU4MDZkOWZmZjI2ZDk2MmU4NzMqWmV1Lmdjci5pby9naXRwb2QtY29yZS1kZXYvYnVpbGQvc3VwZXJ2aXNvcjpjb21taXQtMGRlZDg2YjU3Y2EwMzNkMmNiYjBkZjc3ZDg4NDViMTRhZmY1MzBmMjpcZXUuZ2NyLmlvL2dpdHBvZC1jb3JlLWRldi9idWlsZC9pZGUvaW50ZWxsaWo6Y29tbWl0LTZjN2FmMDVlMTM2MmU2MDBiYmFmNzNiNTdkMGUzMThmYzhiOTdhYmM6ZWV1Lmdjci5pby9naXRwb2QtY29yZS1kZXYvYnVpbGQvaWRlL2piLWJhY2tlbmQtcGx1Z2luOmNvbW1pdC02YzdhZjA1ZTEzNjJlNjAwYmJhZjczYjU3ZDBlMzE4ZmM4Yjk3YWJj
+    gitpod/never-ready: "true"
+    gitpod/ownerToken: ixjuqMcRmaKMHEwZgmsmtwT-exdEGyHY
+    gitpod/servicePrefix: yfliuyanyan-pythontest-h6m5gfi741o
+    gitpod/timedout: workspace timed out after initialization (00h30m) took longer
+      than 00h30m
+    gitpod/url: https://yfliuyanyan-pythontest-h6m5gfi741o.ws.ide-lyy.one
+  creationTimestamp: "2023-05-09T09:58:58Z"
+  deletionGracePeriodSeconds: 0
+  deletionTimestamp: "2023-05-09T10:01:29Z"
+  finalizers:
+  - gitpod.io/finalizer
+  labels:
+    app: gitpod
+    component: workspace
+    gitpod.io/networkpolicy: default
+    gitpod.io/workspaceClass: default
+    gpwsman: "true"
+    headless: "false"
+    metaID: yfliuyanyan-pythontest-h6m5gfi741o
+    owner: 8be7bb68-04c9-41a1-aa55-4c6e8d857ace
+    project: ""
+    team: ""
+    workspaceID: b1f7203f-9571-45e9-b7f1-6afa9717452d
+    workspaceType: regular
+  name: ws-b1f7203f-9571-45e9-b7f1-6afa9717452d
+  namespace: gitpod
+  resourceVersion: "10130"
+  uid: ff8d3646-c4b0-48c4-94c2-981f94acaeb1
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: gitpod.io/workload_workspace_regular
+            operator: Exists
+          - key: gitpod.io/ws-daemon_ready_ns_gitpod
+            operator: Exists
+          - key: gitpod.io/registry-facade_ready_ns_gitpod
+            operator: Exists
+  automountServiceAccountToken: false
+  containers:
+  - command:
+    - /.supervisor/workspacekit
+    - ring0
+    env:
+    - name: GITPOD_REPO_ROOT
+      value: /workspace/python-test
+    - name: GITPOD_REPO_ROOTS
+      value: /workspace/python-test
+    - name: GITPOD_CLI_APITOKEN
+      value: GAdctP7_qPqCmQH_08lILxLNQBdrqysD
+    - name: GITPOD_OWNER_ID
+      value: 8be7bb68-04c9-41a1-aa55-4c6e8d857ace
+    - name: GITPOD_WORKSPACE_ID
+      value: yfliuyanyan-pythontest-h6m5gfi741o
+    - name: GITPOD_INSTANCE_ID
+      value: b1f7203f-9571-45e9-b7f1-6afa9717452d
+    - name: GITPOD_THEIA_PORT
+      value: "23000"
+    - name: THEIA_WORKSPACE_ROOT
+      value: /workspace/python-test
+    - name: GITPOD_HOST
+      value: https://ide-lyy.one
+    - name: GITPOD_WORKSPACE_URL
+      value: https://yfliuyanyan-pythontest-h6m5gfi741o.ws.ide-lyy.one
+    - name: GITPOD_WORKSPACE_CLUSTER_HOST
+      value: ws.ide-lyy.one
+    - name: GITPOD_WORKSPACE_CLASS
+      value: default
+    - name: THEIA_SUPERVISOR_ENDPOINT
+      value: :22999
+    - name: THEIA_WEBVIEW_EXTERNAL_ENDPOINT
+      value: webview-{{hostname}}
+    - name: THEIA_MINI_BROWSER_HOST_PATTERN
+      value: browser-{{hostname}}
+    - name: GITPOD_GIT_USER_NAME
+      value: yfliuyanyan
+    - name: GITPOD_GIT_USER_EMAIL
+      value: liouyanyan9@126.com
+    - name: GITPOD_IDE_ALIAS
+      value: intellij
+    - name: GITPOD_WORKSPACE_CONTEXT_URL
+      value: https://github.com/yfliuyanyan/python-test
+    - name: GITPOD_WORKSPACE_CONTEXT
+      value: '{"isFile":false,"path":"","title":"yfliuyanyan/python-test - master","ref":"master","refType":"branch","revision":"1c645f09834b999aa242e6a3b8fcad7f51b15e3f","repository":{"cloneUrl":"https://github.com/yfliuyanyan/python-test.git","host":"github.com","name":"python-test","owner":"yfliuyanyan","private":false},"normalizedContextURL":"https://github.com/yfliuyanyan/python-test","checkoutLocation":"python-test"}'
+    - name: GITPOD_WORKSPACE_CLASS_INFO
+      value: '{"id":"default","category":"GENERAL PURPOSE","displayName":"Default","description":"Default
+        workspace class","powerups":1,"isDefault":true,"deprecated":false}'
+    - name: VSX_REGISTRY_URL
+      valueFrom:
+        secretKeyRef:
+          key: 6271376496bf05a98eb6f9231ef39c87d25a936de821916483e5755bf4dfbe1a
+          name: ws-b1f7203f-9571-45e9-b7f1-6afa9717452d
+    - name: THEIA_SUPERVISOR_TOKENS
+      valueFrom:
+        secretKeyRef:
+          key: 3a3b612491764cccf7a5bccafc73031bb965cad1592bf600f2c3edca7c6e41bb
+          name: ws-b1f7203f-9571-45e9-b7f1-6afa9717452d
+    - name: GITPOD_INTERVAL
+      value: "30000"
+    - name: GITPOD_MEMORY
+      value: "2147"
+    image: reg.ide-lyy.one:20000/remote/b1f7203f-9571-45e9-b7f1-6afa9717452d
+    imagePullPolicy: IfNotPresent
+    name: workspace
+    ports:
+    - containerPort: 23000
+      protocol: TCP
+    - containerPort: 22999
+      name: supervisor
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 600
+      httpGet:
+        path: /_supervisor/v1/status/content/wait/true
+        port: 22999
+        scheme: HTTP
+      initialDelaySeconds: 2
+      periodSeconds: 1
+      successThreshold: 1
+      timeoutSeconds: 1
+    resources:
+      requests:
+        cpu: "1"
+        memory: 2Gi
+    securityContext:
+      allowPrivilegeEscalation: true
+      capabilities:
+        add:
+        - AUDIT_WRITE
+        - FSETID
+        - KILL
+        - NET_BIND_SERVICE
+        - SYS_PTRACE
+        drop:
+        - SETPCAP
+        - CHOWN
+        - NET_RAW
+        - DAC_OVERRIDE
+        - FOWNER
+        - SYS_CHROOT
+        - SETFCAP
+        - SETUID
+        - SETGID
+      privileged: false
+      readOnlyRootFilesystem: false
+      runAsGroup: 33333
+      runAsNonRoot: true
+      runAsUser: 33333
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /workspace
+      mountPropagation: HostToContainer
+      name: vol-this-workspace
+    - mountPath: /.workspace
+      mountPropagation: HostToContainer
+      name: daemon-mount
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: false
+  hostname: yfliuyanyan-pythontest-h6m5gfi741o
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Never
+  schedulerName: default-scheduler
+  securityContext:
+    seccompProfile:
+      localhostProfile: workspace_default_release-2022.11.2.16.json
+      type: Localhost
+  serviceAccount: workspace
+  serviceAccountName: workspace
+  terminationGracePeriodSeconds: 180
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/disk-pressure
+    operator: Exists
+  - effect: NoExecute
+    key: node.kubernetes.io/memory-pressure
+    operator: Exists
+  - effect: NoExecute
+    key: node.kubernetes.io/network-unavailable
+    operator: Exists
+    tolerationSeconds: 30
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - hostPath:
+      path: /var/gitpod/workspaces/b1f7203f-9571-45e9-b7f1-6afa9717452d
+      type: DirectoryOrCreate
+    name: vol-this-workspace
+  - hostPath:
+      path: /var/gitpod/workspaces/b1f7203f-9571-45e9-b7f1-6afa9717452d-daemon
+      type: DirectoryOrCreate
+    name: daemon-mount
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:58:58Z"
+    message: '0/1 nodes are available: 1 Insufficient cpu. preemption: 0/1 nodes are
+      available: 1 No preemption victims found for incoming pod..'
+    reason: Unschedulable
+    status: "False"
+    type: PodScheduled
+  phase: Failed
+  qosClass: Burstable

@@ -1,0 +1,142 @@
+apiVersion: v1
+data:
+  config.json: |-
+    {
+      "daemon": {
+        "runtime": {
+          "containerRuntime": {
+            "mounts": {
+              "proc": "/mnt/mounts"
+            },
+            "nodeToContainerMapping": {
+              "/run/k3s/containerd/io.containerd.runtime.v2.task/k8s.io": "/mnt/node0"
+            },
+            "runtime": "containerd",
+            "containerd": {
+              "socket": "/mnt/containerd.sock"
+            }
+          },
+          "kubeconfig": "",
+          "namespace": "gitpod"
+        },
+        "content": {
+          "workingArea": "/mnt/workingarea",
+          "workingAreaNode": "/var/gitpod/workspaces",
+          "tempDir": "/tmp",
+          "storage": {
+            "stage": "",
+            "kind": "minio",
+            "gcloud": {
+              "credentialsFile": "",
+              "region": "",
+              "projectId": ""
+            },
+            "minio": {
+              "endpoint": "minio.gitpod.svc.cluster.local:9000",
+              "accessKey": "aBcCxquh0PXqV7-sJY45",
+              "accessKeyFile": "",
+              "secretKey": "VHjtkSL4gJ31vpHRE4gn",
+              "secretKeyFile": "",
+              "region": "local",
+              "parallelUpload": 6
+            },
+            "blobQuota": 5368709120
+          },
+          "backup": {
+            "timeout": "5m0s",
+            "attempts": 3,
+            "period": "0s"
+          },
+          "userNamespaces": {
+            "fsShift": "SHIFTFS"
+          },
+          "initializer": {
+            "command": "/app/content-initializer",
+            "args": null
+          }
+        },
+        "uidmapper": {
+          "procLocation": "/proc",
+          "rootUIDRange": {
+            "start": 33333,
+            "size": 1
+          },
+          "userUIDRange": [
+            {
+              "start": 100000,
+              "size": 70000
+            }
+          ]
+        },
+        "cpulimit": {
+          "enabled": false,
+          "totalBandwidth": "0",
+          "limit": "0",
+          "burstLimit": "0",
+          "controlPeriod": "15s",
+          "cgroupBasePath": "/mnt/node-cgroups"
+        },
+        "ioLimit": {
+          "writeBandwidthPerSecond": "0",
+          "readBandwidthPerSecond": "0",
+          "writeIOPS": 0,
+          "readIOPS": 0
+        },
+        "procLimit": 0,
+        "netlimit": {
+          "enabled": false,
+          "enforce": false,
+          "connectionsPerMinute": 3000,
+          "bucketSize": 1000
+        },
+        "oomScores": {
+          "enabled": false,
+          "tier1": 0,
+          "tier2": 0
+        },
+        "hosts": {
+          "enabled": true,
+          "nodeHostsFile": "/mnt/hosts",
+          "fixedHosts": {
+            "registryFacade": [
+              {
+                "addr": "127.0.0.1",
+                "name": "reg.ide-lyy.one"
+              }
+            ]
+          }
+        },
+        "disk": {
+          "enabled": true,
+          "interval": "5m0s",
+          "locations": [
+            {
+              "path": "/mnt/workingarea",
+              "minBytesAvail": 21474836480
+            }
+          ]
+        }
+      },
+      "service": {
+        "address": "0.0.0.0:8080",
+        "tls": {
+          "caPath": "/certs/ca.crt",
+          "certPath": "/certs/tls.crt",
+          "keyPath": "/certs/tls.key"
+        }
+      }
+    }
+kind: ConfigMap
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ws-daemon
+  name: ws-daemon
+  namespace: gitpod
+  resourceVersion: "7718"
+  uid: 115018d3-af62-466e-b0cb-3b7a451bf8e3

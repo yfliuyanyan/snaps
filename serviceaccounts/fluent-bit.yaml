@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  annotations:
+    kots.io/app-slug: gitpod
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"ServiceAccount","metadata":{"annotations":{"kots.io/app-slug":"gitpod"},"labels":{"app.kubernetes.io/instance":"fluent-bit","app.kubernetes.io/managed-by":"Helm","app.kubernetes.io/name":"fluent-bit","app.kubernetes.io/version":"1.9.4","helm.sh/chart":"fluent-bit-0.20.2","kots.io/app-slug":"gitpod","kots.io/backup":"velero"},"name":"fluent-bit","namespace":"gitpod"}}
+  creationTimestamp: "2023-05-09T09:30:51Z"
+  labels:
+    app.kubernetes.io/instance: fluent-bit
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: fluent-bit
+    app.kubernetes.io/version: 1.9.4
+    helm.sh/chart: fluent-bit-0.20.2
+    kots.io/app-slug: gitpod
+    kots.io/backup: velero
+  name: fluent-bit
+  namespace: gitpod
+  resourceVersion: "3262"
+  uid: 3246cff4-2513-4b6d-8501-69259b82139b

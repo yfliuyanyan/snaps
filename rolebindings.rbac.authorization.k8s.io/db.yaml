@@ -1,0 +1,22 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: db
+  name: db
+  namespace: gitpod
+  resourceVersion: "3578"
+  uid: 9dce76b4-6728-4ab5-a8f4-644617b3f20a
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: gitpod-ns-psp:restricted-root-user
+subjects:
+- kind: ServiceAccount
+  name: db

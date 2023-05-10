@@ -1,0 +1,24 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:13Z"
+  generation: 1
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: agent-smith
+  name: agent-smith
+  namespace: gitpod
+  resourceVersion: "3452"
+  uid: 5d2ef21f-34f0-487a-b26f-8d3e2398f4ea
+spec:
+  podSelector:
+    matchLabels:
+      app: gitpod
+      component: agent-smith
+  policyTypes:
+  - Ingress
+status: {}

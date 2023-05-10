@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ws-manager
+  name: workspace-templates
+  namespace: gitpod
+  resourceVersion: "3517"
+  uid: 6f8d07b1-f167-4a2e-874e-bd404d4b8089

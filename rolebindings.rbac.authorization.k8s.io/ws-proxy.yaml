@@ -1,0 +1,22 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ws-proxy
+  name: ws-proxy
+  namespace: gitpod
+  resourceVersion: "3572"
+  uid: 1106f618-b903-4815-9b3d-f0ec91e59b9d
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: gitpod-ns-psp:unprivileged
+subjects:
+- kind: ServiceAccount
+  name: ws-proxy

@@ -1,0 +1,115 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  annotations:
+    batch.kubernetes.io/job-tracking: ""
+  creationTimestamp: "2023-05-10T00:00:00Z"
+  generation: 1
+  labels:
+    app: gitpod
+    component: gitpod
+  name: gitpod-telemetry-28061280
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: batch/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: CronJob
+    name: gitpod-telemetry
+    uid: 0c77212e-57b4-4a72-8217-c89fd53bac1f
+  resourceVersion: "56504"
+  uid: 43f4cd43-2660-4e7f-b0cd-fbb5be40f03b
+spec:
+  backoffLimit: 6
+  completionMode: NonIndexed
+  completions: 1
+  parallelism: 1
+  selector:
+    matchLabels:
+      controller-uid: 43f4cd43-2660-4e7f-b0cd-fbb5be40f03b
+  suspend: false
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: gitpod
+        component: gitpod
+        controller-uid: 43f4cd43-2660-4e7f-b0cd-fbb5be40f03b
+        job-name: gitpod-telemetry-28061280
+      name: gitpod-telemetry
+      namespace: gitpod
+    spec:
+      containers:
+      - args:
+        - send
+        env:
+        - name: GITPOD_INSTALLATION_VERSION
+          value: release-2022.11.2.16
+        - name: GITPOD_INSTALLATION_PLATFORM
+          value: k3s
+        - name: SERVER_URL
+          value: http://server.gitpod.svc.cluster.local:9000
+        image: eu.gcr.io/gitpod-core-dev/build/installation-telemetry:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+        imagePullPolicy: IfNotPresent
+        name: gitpod-telemetry
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      enableServiceLinks: false
+      initContainers:
+      - args:
+        - -v
+        - database
+        env:
+        - name: DB_HOST
+          valueFrom:
+            secretKeyRef:
+              key: host
+              name: mysql
+        - name: DB_PORT
+          valueFrom:
+            secretKeyRef:
+              key: port
+              name: mysql
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: mysql
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: username
+              name: mysql
+        - name: DB_ENCRYPTION_KEYS
+          valueFrom:
+            secretKeyRef:
+              key: encryptionKeys
+              name: mysql
+        image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+        imagePullPolicy: IfNotPresent
+        name: database-waiter
+        resources: {}
+        securityContext:
+          privileged: false
+          runAsUser: 31001
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      restartPolicy: OnFailure
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: gitpod
+      serviceAccountName: gitpod
+      terminationGracePeriodSeconds: 30
+status:
+  completionTime: "2023-05-10T00:00:13Z"
+  conditions:
+  - lastProbeTime: "2023-05-10T00:00:13Z"
+    lastTransitionTime: "2023-05-10T00:00:13Z"
+    status: "True"
+    type: Complete
+  ready: 0
+  startTime: "2023-05-10T00:00:00Z"
+  succeeded: 1
+  uncountedTerminatedPods: {}

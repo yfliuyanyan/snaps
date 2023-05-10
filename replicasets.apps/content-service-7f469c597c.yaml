@@ -1,0 +1,145 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  annotations:
+    deployment.kubernetes.io/desired-replicas: "1"
+    deployment.kubernetes.io/max-replicas: "2"
+    deployment.kubernetes.io/revision: "1"
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  generation: 2
+  labels:
+    app: gitpod
+    component: content-service
+    pod-template-hash: 7f469c597c
+  name: content-service-7f469c597c
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Deployment
+    name: content-service
+    uid: 6f2ad299-8485-4131-90e8-1ea7bb3ebeb3
+  resourceVersion: "7989"
+  uid: 463c94d8-79bd-48e4-8443-09d4c635369e
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: gitpod
+      component: content-service
+      pod-template-hash: 7f469c597c
+  template:
+    metadata:
+      annotations:
+        gitpod.io/checksum_config: 12cbad5d865637b899a405d52b8d9751b0786c6101855c7f02ddd7bd6ae6a449
+      creationTimestamp: null
+      labels:
+        app: gitpod
+        component: content-service
+        pod-template-hash: 7f469c597c
+      name: content-service
+      namespace: gitpod
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: gitpod.io/workload_meta
+                operator: Exists
+      containers:
+      - args:
+        - run
+        - --config
+        - /config/config.json
+        env:
+        - name: GITPOD_DOMAIN
+          value: ide-lyy.one
+        - name: GITPOD_INSTALLATION_SHORTNAME
+          value: default
+        - name: GITPOD_REGION
+          value: local
+        - name: HOST_URL
+          value: https://ide-lyy.one
+        - name: KUBE_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: KUBE_DOMAIN
+          value: svc.cluster.local
+        - name: LOG_LEVEL
+          value: info
+        - name: JAEGER_DISABLED
+          value: "true"
+        - name: GRPC_GO_RETRY
+          value: "on"
+        image: eu.gcr.io/gitpod-core-dev/build/content-service:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+        imagePullPolicy: IfNotPresent
+        name: content-service
+        ports:
+        - containerPort: 8080
+          name: rpc
+          protocol: TCP
+        - containerPort: 9500
+          name: metrics
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 100m
+            memory: 32Mi
+        securityContext:
+          privileged: false
+          runAsUser: 1000
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /config
+          name: config
+          readOnly: true
+      - args:
+        - --logtostderr
+        - --insecure-listen-address=[$(IP)]:9500
+        - --upstream=http://127.0.0.1:9500/
+        env:
+        - name: IP
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.podIP
+        image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+        imagePullPolicy: IfNotPresent
+        name: kube-rbac-proxy
+        ports:
+        - containerPort: 9500
+          name: metrics
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 1m
+            memory: 30Mi
+        securityContext:
+          runAsGroup: 65532
+          runAsNonRoot: true
+          runAsUser: 65532
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: FallbackToLogsOnError
+      dnsPolicy: ClusterFirst
+      enableServiceLinks: false
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: content-service
+      serviceAccountName: content-service
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: content-service
+        name: config
+status:
+  observedGeneration: 2
+  replicas: 0

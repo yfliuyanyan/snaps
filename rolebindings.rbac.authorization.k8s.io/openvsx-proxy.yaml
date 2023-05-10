@@ -1,0 +1,22 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: openvsx-proxy
+  name: openvsx-proxy
+  namespace: gitpod
+  resourceVersion: "3592"
+  uid: 18ea8e4e-c29e-4090-8371-dd75131f7cab
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: gitpod-ns-psp:restricted-root-user
+subjects:
+- kind: ServiceAccount
+  name: openvsx-proxy

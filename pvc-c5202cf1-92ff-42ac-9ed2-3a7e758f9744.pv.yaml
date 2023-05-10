@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  annotations:
+    pv.kubernetes.io/provisioned-by: rancher.io/local-path
+  creationTimestamp: "2023-05-09T09:31:35Z"
+  finalizers:
+  - kubernetes.io/pv-protection
+  name: pvc-c5202cf1-92ff-42ac-9ed2-3a7e758f9744
+  resourceVersion: "4336"
+  uid: 3eabc602-c3e4-4318-bfdc-cde2626a42f8
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 8Gi
+  claimRef:
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    name: data-mysql-0
+    namespace: gitpod
+    resourceVersion: "3870"
+    uid: c5202cf1-92ff-42ac-9ed2-3a7e758f9744
+  hostPath:
+    path: /var/lib/rancher/k3s/storage/pvc-c5202cf1-92ff-42ac-9ed2-3a7e758f9744_gitpod_data-mysql-0
+    type: DirectoryOrCreate
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - vultr
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: local-path
+  volumeMode: Filesystem
+status:
+  phase: Bound

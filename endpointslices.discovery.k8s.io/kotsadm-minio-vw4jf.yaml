@@ -1,0 +1,42 @@
+addressType: IPv4
+apiVersion: discovery.k8s.io/v1
+endpoints:
+- addresses:
+  - 192.168.132.208
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: vultr
+  targetRef:
+    kind: Pod
+    name: kotsadm-minio-0
+    namespace: gitpod
+    uid: d4f13de3-55a6-4a50-8e9f-e755498c8f1d
+kind: EndpointSlice
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2023-05-09T09:22:38Z"
+  creationTimestamp: "2023-05-09T09:21:56Z"
+  generateName: kotsadm-minio-
+  generation: 3
+  labels:
+    endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+    kots.io/backup: velero
+    kots.io/kotsadm: "true"
+    kubernetes.io/service-name: kotsadm-minio
+  name: kotsadm-minio-vw4jf
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Service
+    name: kotsadm-minio
+    uid: 37d7ea85-0761-442a-a7d7-1518f4aace6d
+  resourceVersion: "2590"
+  uid: ad26af9c-d1f3-4e66-ba80-de2153e75257
+ports:
+- name: service
+  port: 9000
+  protocol: TCP

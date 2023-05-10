@@ -1,0 +1,44 @@
+addressType: IPv4
+apiVersion: discovery.k8s.io/v1
+endpoints:
+- addresses:
+  - 192.168.132.224
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: vultr
+  targetRef:
+    kind: Pod
+    name: ide-proxy-69f475b7c6-smsbd
+    namespace: gitpod
+    uid: c5b32b60-6304-41ba-ae85-8affcbf561b0
+kind: EndpointSlice
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2023-05-09T09:31:38Z"
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  generateName: ide-proxy-
+  generation: 2
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ide-proxy
+    endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+    kind: service
+    kubernetes.io/service-name: ide-proxy
+  name: ide-proxy-m9x7v
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Service
+    name: ide-proxy
+    uid: 29b6f750-9bb6-4e7e-9613-3f54d7bbac8a
+  resourceVersion: "4592"
+  uid: 7cc17872-e5e6-459a-a179-573c1f895c6c
+ports:
+- name: http
+  port: 80
+  protocol: TCP

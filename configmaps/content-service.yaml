@@ -1,0 +1,41 @@
+apiVersion: v1
+data:
+  config.json: |-
+    {
+      "service": {
+        "address": "0.0.0.0:8080"
+      },
+      "storage": {
+        "stage": "",
+        "kind": "minio",
+        "gcloud": {
+          "credentialsFile": "",
+          "region": "",
+          "projectId": ""
+        },
+        "minio": {
+          "endpoint": "minio.gitpod.svc.cluster.local:9000",
+          "accessKey": "aBcCxquh0PXqV7-sJY45",
+          "accessKeyFile": "",
+          "secretKey": "VHjtkSL4gJ31vpHRE4gn",
+          "secretKeyFile": "",
+          "region": "local",
+          "parallelUpload": 6
+        },
+        "blobQuota": 5368709120
+      }
+    }
+kind: ConfigMap
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: content-service
+  name: content-service
+  namespace: gitpod
+  resourceVersion: "7714"
+  uid: 38b8ad2d-aa3b-43c1-858b-82a4652cdb70

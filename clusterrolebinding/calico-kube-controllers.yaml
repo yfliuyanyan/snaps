@@ -1,0 +1,22 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  creationTimestamp: "2023-05-09T09:00:06Z"
+  name: calico-kube-controllers
+  ownerReferences:
+  - apiVersion: operator.tigera.io/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Installation
+    name: default
+    uid: ac67e02a-e8f9-4e56-a6c7-4801b9ae5db0
+  resourceVersion: "559"
+  uid: 7769c9df-869e-46f7-ab2c-105888ac5547
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: calico-kube-controllers
+subjects:
+- kind: ServiceAccount
+  name: calico-kube-controllers
+  namespace: calico-system

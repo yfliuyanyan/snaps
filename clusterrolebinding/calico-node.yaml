@@ -1,0 +1,24 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  creationTimestamp: "2023-05-09T09:00:06Z"
+  finalizers:
+  - tigera.io/cni-protector
+  name: calico-node
+  ownerReferences:
+  - apiVersion: operator.tigera.io/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Installation
+    name: default
+    uid: ac67e02a-e8f9-4e56-a6c7-4801b9ae5db0
+  resourceVersion: "531"
+  uid: 493e738c-93ff-4e81-be49-9c48280497b8
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: calico-node
+subjects:
+- kind: ServiceAccount
+  name: calico-node
+  namespace: calico-system

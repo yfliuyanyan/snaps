@@ -1,0 +1,18 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"rbac.authorization.k8s.io/v1","kind":"ClusterRoleBinding","metadata":{"annotations":{},"name":"kuboard-viewer"},"roleRef":{"apiGroup":"rbac.authorization.k8s.io","kind":"ClusterRole","name":"view"},"subjects":[{"kind":"ServiceAccount","name":"kuboard-viewer","namespace":"kube-system"}]}
+  creationTimestamp: "2023-05-10T01:22:20Z"
+  name: kuboard-viewer
+  resourceVersion: "61141"
+  uid: fdd16de1-0360-4d87-ab58-eef339f4dbee
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: view
+subjects:
+- kind: ServiceAccount
+  name: kuboard-viewer
+  namespace: kube-system

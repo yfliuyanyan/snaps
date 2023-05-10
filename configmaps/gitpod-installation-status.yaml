@@ -1,0 +1,74 @@
+apiVersion: v1
+data:
+  gitpod-installer.log: |
+    Gitpod: Killing any in-progress installations
+    Warning: Immediate deletion does not wait for confirmation that the running resource has been terminated. The resource may continue to run on the cluster indefinitely.
+    No resources found
+    Warning: Immediate deletion does not wait for confirmation that the running resource has been terminated. The resource may continue to run on the cluster indefinitely.
+    No resources found
+    Gitpod: Create a Helm template directory
+    Gitpod: Installer version - release-2022.11.2.16
+    Gitpod: Generate the base Installer config
+    time="2023-05-09T10:04:03Z" level=info msg="File written to /tmp/gitpod-config.yaml"
+    Gitpod: auto-detecting ShiftFS support on host machine
+    time="2023-05-09T10:04:04Z" level=info msg="Ensuring namespace exists gitpod"
+    time="2023-05-09T10:04:04Z" level=info msg="Deploying ShiftFS check to gitpod namespace with timeout of 10 seconds"
+    time="2023-05-09T10:04:14Z" level=info msg="Deleting cluster resources"
+    time="2023-05-09T10:04:14Z" level=info msg="ShiftFS is supported"
+    time="2023-05-09T10:04:14Z" level=info msg="File written to /tmp/gitpod-config.yaml"
+    Gitpod: auto-detecting containerd settings on host machine
+    time="2023-05-09T10:04:15Z" level=info msg="containerd location detected as /run/k3s/containerd/io.containerd.runtime.v2.task/k8s.io"
+    time="2023-05-09T10:04:15Z" level=info msg="containerd socket location detected as /run/k3s/containerd/containerd.sock"
+    time="2023-05-09T10:04:15Z" level=info msg="File written to /tmp/gitpod-config.yaml"
+    Gitpod: auto-detecting settings
+    time="2023-05-09T10:04:15Z" level=info msg="Setting license name: gitpod-license"
+    time="2023-05-09T10:04:15Z" level=info msg="Setting Open VSX URL"
+    time="2023-05-09T10:04:15Z" level=info msg="Setting Open VSX URL to default"
+    time="2023-05-09T10:04:15Z" level=info msg="DB incluster: true"
+    time="2023-05-09T10:04:15Z" level=info msg="Registry incluster: true"
+    time="2023-05-09T10:04:15Z" level=info msg="Storage provider: incluster"
+    time="2023-05-09T10:04:15Z" level=info msg="Configuring SSH gateway host key"
+    time="2023-05-09T10:04:15Z" level=info msg="Setting deployment platform: k3s"
+    time="2023-05-09T10:04:15Z" level=info msg="No advanced configuration applied"
+    time="2023-05-09T10:04:15Z" level=info msg="File written to /tmp/gitpod-config.yaml"
+    Gitpod: Validate config
+    {
+      "valid": true
+    }
+    Gitpod: render Kubernetes manifests
+    rendering using experimental config
+    Gitpod: Add the local registry secret to the in-cluster registry secret
+    Gitpod: update the in-cluster registry secret
+    Gitpod: Escape any Golang template values
+    Gitpod: shut down any running workspaces/image-builders
+    Context "gitpod" created.
+    Switched to context "gitpod".
+    Context "gitpod" modified.
+    Gitpod: shutting down workspace 132e71b4-08f8-4399-9621-051deb390d26
+    stopping
+    Gitpod: shutting down workspace b1f7203f-9571-45e9-b7f1-6afa9717452d
+    stopping
+    Gitpod: shutting down workspace 6cf40c04-4315-4a32-872d-cdaef768ce6a
+    stopping
+    Property "contexts.gitpod" unset.
+    Property "current-context" unset.
+    Gitpod: Apply the Kubernetes objects with timeout of 5m
+    Release "gitpod" has been upgraded. Happy Helming!
+    NAME: gitpod
+    LAST DEPLOYED: Tue May  9 10:04:53 2023
+    NAMESPACE: gitpod
+    STATUS: deployed
+    REVISION: 2
+    TEST SUITE: None
+    Gitpod: Restarting installation status job
+    pod "installation-status-6c88597b57-xchwj" deleted
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","data":{"gitpod-installer.log":"Gitpod: Killing any in-progress installations\nWarning: Immediate deletion does not wait for confirmation that the running resource has been terminated. The resource may continue to run on the cluster indefinitely.\nNo resources found\nWarning: Immediate deletion does not wait for confirmation that the running resource has been terminated. The resource may continue to run on the cluster indefinitely.\nNo resources found\nGitpod: Create a Helm template directory\nGitpod: Installer version - release-2022.11.2.16\nGitpod: Generate the base Installer config\ntime=\"2023-05-09T10:04:03Z\" level=info msg=\"File written to /tmp/gitpod-config.yaml\"\nGitpod: auto-detecting ShiftFS support on host machine\ntime=\"2023-05-09T10:04:04Z\" level=info msg=\"Ensuring namespace exists gitpod\"\ntime=\"2023-05-09T10:04:04Z\" level=info msg=\"Deploying ShiftFS check to gitpod namespace with timeout of 10 seconds\"\ntime=\"2023-05-09T10:04:14Z\" level=info msg=\"Deleting cluster resources\"\ntime=\"2023-05-09T10:04:14Z\" level=info msg=\"ShiftFS is supported\"\ntime=\"2023-05-09T10:04:14Z\" level=info msg=\"File written to /tmp/gitpod-config.yaml\"\nGitpod: auto-detecting containerd settings on host machine\ntime=\"2023-05-09T10:04:15Z\" level=info msg=\"containerd location detected as /run/k3s/containerd/io.containerd.runtime.v2.task/k8s.io\"\ntime=\"2023-05-09T10:04:15Z\" level=info msg=\"containerd socket location detected as /run/k3s/containerd/containerd.sock\"\ntime=\"2023-05-09T10:04:15Z\" level=info msg=\"File written to /tmp/gitpod-config.yaml\"\nGitpod: auto-detecting settings\ntime=\"2023-05-09T10:04:15Z\" level=info msg=\"Setting license name: gitpod-license\"\ntime=\"2023-05-09T10:04:15Z\" level=info msg=\"Setting Open VSX URL\"\ntime=\"2023-05-09T10:04:15Z\" level=info msg=\"Setting Open VSX URL to default\"\ntime=\"2023-05-09T10:04:15Z\" level=info msg=\"DB incluster: true\"\ntime=\"2023-05-09T10:04:15Z\" level=info msg=\"Registry incluster: true\"\ntime=\"2023-05-09T10:04:15Z\" level=info msg=\"Storage provider: incluster\"\ntime=\"2023-05-09T10:04:15Z\" level=info msg=\"Configuring SSH gateway host key\"\ntime=\"2023-05-09T10:04:15Z\" level=info msg=\"Setting deployment platform: k3s\"\ntime=\"2023-05-09T10:04:15Z\" level=info msg=\"No advanced configuration applied\"\ntime=\"2023-05-09T10:04:15Z\" level=info msg=\"File written to /tmp/gitpod-config.yaml\"\nGitpod: Validate config\n{\n  \"valid\": true\n}\nGitpod: render Kubernetes manifests\nrendering using experimental config\nGitpod: Add the local registry secret to the in-cluster registry secret\nGitpod: update the in-cluster registry secret\nGitpod: Escape any Golang template values\nGitpod: shut down any running workspaces/image-builders\nContext \"gitpod\" created.\nSwitched to context \"gitpod\".\nContext \"gitpod\" modified.\nGitpod: shutting down workspace 132e71b4-08f8-4399-9621-051deb390d26\nstopping\nGitpod: shutting down workspace b1f7203f-9571-45e9-b7f1-6afa9717452d\nstopping\nGitpod: shutting down workspace 6cf40c04-4315-4a32-872d-cdaef768ce6a\nstopping\nProperty \"contexts.gitpod\" unset.\nProperty \"current-context\" unset.\nGitpod: Apply the Kubernetes objects with timeout of 5m\nRelease \"gitpod\" has been upgraded. Happy Helming!\nNAME: gitpod\nLAST DEPLOYED: Tue May  9 10:04:53 2023\nNAMESPACE: gitpod\nSTATUS: deployed\nREVISION: 2\nTEST SUITE: None\nGitpod: Restarting installation status job\npod \"installation-status-6c88597b57-xchwj\" deleted\n"},"kind":"ConfigMap","metadata":{"annotations":{},"creationTimestamp":null,"name":"gitpod-installation-status","namespace":"gitpod"}}
+  creationTimestamp: "2023-05-09T09:30:40Z"
+  name: gitpod-installation-status
+  namespace: gitpod
+  resourceVersion: "8485"
+  uid: 6c20dcb5-6e50-48b0-a728-3b3350e98331

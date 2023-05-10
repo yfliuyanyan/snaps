@@ -1,0 +1,22 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ws-daemon
+  name: gitpod-ws-daemon-rb-kube-rbac-proxy
+  resourceVersion: "3559"
+  uid: 890d08b7-9a10-45b5-9ccc-be111afc939b
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: gitpod-kube-rbac-proxy
+subjects:
+- kind: ServiceAccount
+  name: ws-daemon
+  namespace: gitpod

@@ -1,0 +1,67 @@
+apiVersion: v1
+data:
+  config.json: |-
+    {
+      "ingress": {
+        "httpAddress": "0.0.0.0:8080",
+        "httpsAddress": "0.0.0.0:9090",
+        "header": "x-wsproxy-host"
+      },
+      "proxy": {
+        "https": {
+          "key": "/mnt/certificates/tls.key",
+          "crt": "/mnt/certificates/tls.crt"
+        },
+        "transportConfig": {
+          "connectTimeout": "10s",
+          "idleConnTimeout": "1m0s",
+          "maxIdleConns": 0,
+          "maxIdleConnsPerHost": 100
+        },
+        "blobServer": {
+          "scheme": "https",
+          "host": "ide.ide-lyy.one",
+          "pathPrefix": "/blobserve"
+        },
+        "gitpodInstallation": {
+          "scheme": "https",
+          "hostName": "ide-lyy.one",
+          "workspaceHostSuffix": ".ws.ide-lyy.one",
+          "workspaceHostSuffixRegex": "\\.ws[^\\.]*\\.ide-lyy.one"
+        },
+        "workspacePodConfig": {
+          "theiaPort": 23000,
+          "supervisorPort": 22999,
+          "supervisorImage": "eu.gcr.io/gitpod-core-dev/build/supervisor:commit-0ded86b57ca033d2cbb0df77d8845b14aff530f2"
+        },
+        "builtinPages": {
+          "location": "/app/public"
+        }
+      },
+      "pprofAddr": "127.0.0.1:6060",
+      "prometheusAddr": "127.0.0.1:9500",
+      "readinessProbeAddr": ":8086",
+      "namespace": "gitpod",
+      "wsManager": {
+        "addr": "ws-manager:8080",
+        "tls": {
+          "ca": "/ws-manager-client-tls-certs/ca.crt",
+          "crt": "/ws-manager-client-tls-certs/tls.crt",
+          "key": "/ws-manager-client-tls-certs/tls.key"
+        }
+      }
+    }
+kind: ConfigMap
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ws-proxy
+  name: ws-proxy
+  namespace: gitpod
+  resourceVersion: "3510"
+  uid: f21b6fb9-2683-4e78-9bdc-2d18b02bb85f

@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2023-05-09T10:14:05Z"
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app.kubernetes.io/instance: rabbitmq
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: rabbitmq
+    helm.sh/chart: rabbitmq-11.3.0
+  name: messagebus
+  namespace: gitpod
+  resourceVersion: "9199"
+  uid: 5240f12e-ec8d-4acb-bf0f-3ab484822510
+subsets:
+- addresses:
+  - ip: 192.168.132.227
+    nodeName: vultr
+    targetRef:
+      kind: Pod
+      name: messagebus-0
+      namespace: gitpod
+      uid: 869142aa-edfa-459c-97ee-4ef724ddc1ec
+  ports:
+  - name: amqp
+    port: 5672
+    protocol: TCP
+  - name: metrics
+    port: 9419
+    protocol: TCP
+  - name: amqp-ssl
+    port: 5671
+    protocol: TCP
+  - name: http-stats
+    port: 15672
+    protocol: TCP
+  - name: epmd
+    port: 4369
+    protocol: TCP
+  - name: dist
+    port: 25672
+    protocol: TCP

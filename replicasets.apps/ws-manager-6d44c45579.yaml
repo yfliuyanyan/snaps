@@ -1,0 +1,167 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  annotations:
+    deployment.kubernetes.io/desired-replicas: "1"
+    deployment.kubernetes.io/max-replicas: "2"
+    deployment.kubernetes.io/revision: "2"
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T10:05:03Z"
+  generation: 1
+  labels:
+    app: gitpod
+    component: ws-manager
+    pod-template-hash: 6d44c45579
+  name: ws-manager-6d44c45579
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Deployment
+    name: ws-manager
+    uid: 67c0186a-03d4-4ca8-85cf-02bc49dca307
+  resourceVersion: "8234"
+  uid: d05ba891-ba71-48bb-b781-3fb9bd1aeb74
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gitpod
+      component: ws-manager
+      pod-template-hash: 6d44c45579
+  template:
+    metadata:
+      annotations:
+        gitpod.io/checksum_config: 111420633ee8cff3014e716b002a10abe37a29246c0a811946013ce4d37eb5fb
+      creationTimestamp: null
+      labels:
+        app: gitpod
+        component: ws-manager
+        pod-template-hash: 6d44c45579
+      name: ws-manager
+      namespace: gitpod
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: gitpod.io/workload_workspace_services
+                operator: Exists
+      containers:
+      - args:
+        - run
+        - --config
+        - /config/config.json
+        env:
+        - name: GITPOD_DOMAIN
+          value: ide-lyy.one
+        - name: GITPOD_INSTALLATION_SHORTNAME
+          value: default
+        - name: GITPOD_REGION
+          value: local
+        - name: HOST_URL
+          value: https://ide-lyy.one
+        - name: KUBE_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: KUBE_DOMAIN
+          value: svc.cluster.local
+        - name: LOG_LEVEL
+          value: info
+        - name: JAEGER_DISABLED
+          value: "true"
+        - name: GRPC_GO_RETRY
+          value: "on"
+        image: eu.gcr.io/gitpod-core-dev/build/ws-manager:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+        imagePullPolicy: IfNotPresent
+        name: ws-manager
+        ports:
+        - containerPort: 8080
+          name: rpc
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 100m
+            memory: 32Mi
+        securityContext:
+          privileged: false
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /config
+          name: config
+          readOnly: true
+        - mountPath: /workspace-templates
+          name: workspace-template
+          readOnly: true
+        - mountPath: /ws-daemon-tls-certs
+          name: ws-daemon-tls-certs
+          readOnly: true
+        - mountPath: /certs
+          name: tls-certs
+          readOnly: true
+      - args:
+        - --logtostderr
+        - --insecure-listen-address=[$(IP)]:9500
+        - --upstream=http://127.0.0.1:9500/
+        env:
+        - name: IP
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.podIP
+        image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+        imagePullPolicy: IfNotPresent
+        name: kube-rbac-proxy
+        ports:
+        - containerPort: 9500
+          name: metrics
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 1m
+            memory: 30Mi
+        securityContext:
+          runAsGroup: 65532
+          runAsNonRoot: true
+          runAsUser: 65532
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: FallbackToLogsOnError
+      dnsPolicy: ClusterFirst
+      enableServiceLinks: false
+      priorityClassName: system-node-critical
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext:
+        runAsUser: 31002
+      serviceAccount: ws-manager
+      serviceAccountName: ws-manager
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: ws-manager
+        name: config
+      - configMap:
+          defaultMode: 420
+          name: workspace-templates
+        name: workspace-template
+      - name: ws-daemon-tls-certs
+        secret:
+          defaultMode: 420
+          secretName: ws-daemon-tls
+      - name: tls-certs
+        secret:
+          defaultMode: 420
+          secretName: ws-manager-tls
+status:
+  availableReplicas: 1
+  fullyLabeledReplicas: 1
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1

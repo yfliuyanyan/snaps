@@ -1,0 +1,47 @@
+addressType: IPv4
+apiVersion: discovery.k8s.io/v1
+endpoints:
+- addresses:
+  - 192.168.132.205
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: vultr
+  targetRef:
+    kind: Pod
+    name: minio-6968f88644-wd6q5
+    namespace: gitpod
+    uid: d5c7217e-9eb8-4062-9ce4-c848bc8c0206
+kind: EndpointSlice
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2023-05-09T10:05:22Z"
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  generateName: minio-
+  generation: 8
+  labels:
+    app.kubernetes.io/instance: minio
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: minio
+    endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+    helm.sh/chart: minio-11.10.24
+    kubernetes.io/service-name: minio
+  name: minio-kfxwd
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Service
+    name: minio
+    uid: 3aa1f45d-b9b6-40af-8efc-58d027fff9c1
+  resourceVersion: "8377"
+  uid: 8bcd83d4-4aeb-4ac4-8be9-e747f2d86306
+ports:
+- name: minio-console
+  port: 9001
+  protocol: TCP
+- name: minio-api
+  port: 9000
+  protocol: TCP

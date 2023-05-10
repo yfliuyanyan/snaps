@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  creationTimestamp: "2023-05-09T09:21:56Z"
+  labels:
+    kubernetes.io/metadata.name: gitpod
+  name: gitpod
+  resourceVersion: "2418"
+  uid: f4c3f2ed-5cdb-4fa0-b9cf-706e5a9e5cd6
+spec:
+  finalizers:
+  - kubernetes
+status:
+  phase: Active

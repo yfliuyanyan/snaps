@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    cloud.google.com/neg: '{"exposed_ports": {"80":{},"443": {}}}'
+    external-dns.alpha.kubernetes.io/hostname: ide-lyy.one,*.ide-lyy.one,*.ws.ide-lyy.one
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  finalizers:
+  - service.kubernetes.io/load-balancer-cleanup
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: proxy
+    kind: service
+  name: proxy
+  namespace: gitpod
+  resourceVersion: "8144"
+  uid: faabdab6-30ad-491c-971b-419311f6b58a
+spec:
+  allocateLoadBalancerNodePorts: true
+  clusterIP: 10.43.209.223
+  clusterIPs:
+  - 10.43.209.223
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: http
+    nodePort: 32642
+    port: 80
+    protocol: TCP
+    targetPort: 80
+  - name: https
+    nodePort: 31431
+    port: 443
+    protocol: TCP
+    targetPort: 443
+  - name: metrics
+    nodePort: 31323
+    port: 9500
+    protocol: TCP
+    targetPort: 9500
+  - name: ssh
+    nodePort: 31812
+    port: 22
+    protocol: TCP
+    targetPort: 22
+  selector:
+    app: gitpod
+    component: proxy
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - ip: 45.77.41.206

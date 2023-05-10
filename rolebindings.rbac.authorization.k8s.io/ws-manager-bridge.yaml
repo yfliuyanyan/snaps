@@ -1,0 +1,22 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ws-manager-bridge
+  name: ws-manager-bridge
+  namespace: gitpod
+  resourceVersion: "3586"
+  uid: 96e138af-6b45-4f04-804d-e9cc6a4c9a94
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: gitpod-ns-psp:unprivileged
+subjects:
+- kind: ServiceAccount
+  name: ws-manager-bridge

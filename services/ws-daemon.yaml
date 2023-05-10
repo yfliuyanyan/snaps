@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ws-daemon
+    kind: service
+  name: ws-daemon
+  namespace: gitpod
+  resourceVersion: "3597"
+  uid: 588ce338-02cd-4a83-95c9-135571f399a7
+spec:
+  clusterIP: None
+  clusterIPs:
+  - None
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  selector:
+    app: gitpod
+    component: ws-daemon
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

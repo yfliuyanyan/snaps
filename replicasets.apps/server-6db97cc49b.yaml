@@ -1,0 +1,331 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  annotations:
+    deployment.kubernetes.io/desired-replicas: "1"
+    deployment.kubernetes.io/max-replicas: "2"
+    deployment.kubernetes.io/revision: "1"
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  generation: 2
+  labels:
+    app: gitpod
+    component: server
+    pod-template-hash: 6db97cc49b
+  name: server-6db97cc49b
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Deployment
+    name: server
+    uid: 07d52cac-042e-4cdc-b8dc-56b794ee8003
+  resourceVersion: "8292"
+  uid: 860c8cb4-3677-4980-803b-63c76091f8a5
+spec:
+  replicas: 0
+  selector:
+    matchLabels:
+      app: gitpod
+      component: server
+      pod-template-hash: 6db97cc49b
+  template:
+    metadata:
+      annotations:
+        gitpod.io/checksum_config: 2315d1f2a3e6cb7471f111179bf6d0089b628c93d5a64292e7fe8486b59e0bda
+      creationTimestamp: null
+      labels:
+        app: gitpod
+        component: server
+        pod-template-hash: 6db97cc49b
+      name: server
+      namespace: gitpod
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: gitpod.io/workload_meta
+                operator: Exists
+      containers:
+      - env:
+        - name: GITPOD_DOMAIN
+          value: ide-lyy.one
+        - name: GITPOD_INSTALLATION_SHORTNAME
+          value: default
+        - name: GITPOD_REGION
+          value: local
+        - name: HOST_URL
+          value: https://ide-lyy.one
+        - name: KUBE_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: KUBE_DOMAIN
+          value: svc.cluster.local
+        - name: LOG_LEVEL
+          value: info
+        - name: DB_HOST
+          valueFrom:
+            secretKeyRef:
+              key: host
+              name: mysql
+        - name: DB_PORT
+          valueFrom:
+            secretKeyRef:
+              key: port
+              name: mysql
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: mysql
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: username
+              name: mysql
+        - name: DB_ENCRYPTION_KEYS
+          valueFrom:
+            secretKeyRef:
+              key: encryptionKeys
+              name: mysql
+        - name: JAEGER_DISABLED
+          value: "true"
+        - name: MESSAGEBUS_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: username
+              name: rabbitmq
+        - name: MESSAGEBUS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: rabbitmq
+        - name: MESSAGEBUS_CA
+          valueFrom:
+            secretKeyRef:
+              key: ca.crt
+              name: messagebus-certificates-secret-core
+        - name: MESSAGEBUS_CERT
+          valueFrom:
+            secretKeyRef:
+              key: tls.crt
+              name: messagebus-certificates-secret-core
+        - name: MESSAGEBUS_KEY
+          valueFrom:
+            secretKeyRef:
+              key: tls.key
+              name: messagebus-certificates-secret-core
+        - name: CONFIG_PATH
+          value: /config/config.json
+        - name: GITPOD_LICENSE_TYPE
+          valueFrom:
+            secretKeyRef:
+              key: type
+              name: gitpod-license
+              optional: true
+        - name: IDE_CONFIG_PATH
+          value: /ide-config/config.json
+        - name: NODE_ENV
+          value: production
+        - name: SHLVL
+          value: "1"
+        - name: WSMAN_CFG_MANAGERS
+          value: WwogIHsKICAgICJuYW1lIjogImRlZmF1bHQiLAogICAgInVybCI6ICJkbnM6Ly8vd3MtbWFuYWdlcjo4MDgwIiwKICAgICJ0bHMiOiB7CiAgICAgICJjYSI6ICIvd3MtbWFuYWdlci1jbGllbnQtdGxzLWNlcnRzL2NhLmNydCIsCiAgICAgICJjcnQiOiAiL3dzLW1hbmFnZXItY2xpZW50LXRscy1jZXJ0cy90bHMuY3J0IiwKICAgICAgImtleSI6ICIvd3MtbWFuYWdlci1jbGllbnQtdGxzLWNlcnRzL3Rscy5rZXkiCiAgICB9LAogICAgInN0YXRlIjogImF2YWlsYWJsZSIsCiAgICAibWF4U2NvcmUiOiAxMDAsCiAgICAic2NvcmUiOiA1MCwKICAgICJnb3Zlcm4iOiB0cnVlLAogICAgImFkbWlzc2lvbkNvbnN0cmFpbnRzIjogbnVsbCwKICAgICJhcHBsaWNhdGlvbkNsdXN0ZXIiOiAiZGVmYXVsdCIKICB9Cl0=
+        image: eu.gcr.io/gitpod-core-dev/build/server:commit-a50348cca47b4471c77dcb0de820a84cc0f27517
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 6
+          httpGet:
+            path: /live
+            port: 3000
+            scheme: HTTP
+          initialDelaySeconds: 120
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        name: server
+        ports:
+        - containerPort: 3000
+          name: http
+          protocol: TCP
+        - containerPort: 9500
+          name: metrics
+          protocol: TCP
+        - containerPort: 9000
+          name: install-admin
+          protocol: TCP
+        - containerPort: 6060
+          name: debug
+          protocol: TCP
+        - containerPort: 9229
+          name: debugnode
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 200m
+            memory: 200Mi
+        securityContext:
+          privileged: false
+          runAsUser: 31001
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /config
+          name: config
+          readOnly: true
+        - mountPath: /ide-config
+          name: ide-config
+          readOnly: true
+        - mountPath: /ws-manager-client-tls-certs
+          name: ws-manager-client-tls-certs
+          readOnly: true
+        - mountPath: /gitpod/license
+          name: gitpod-license-key
+          subPath: license
+        - mountPath: /twilio-config
+          name: twilio-secret-volume
+          readOnly: true
+      - args:
+        - --logtostderr
+        - --insecure-listen-address=[$(IP)]:9500
+        - --upstream=http://127.0.0.1:9500/
+        env:
+        - name: IP
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.podIP
+        image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+        imagePullPolicy: IfNotPresent
+        name: kube-rbac-proxy
+        ports:
+        - containerPort: 9500
+          name: metrics
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 1m
+            memory: 30Mi
+        securityContext:
+          runAsGroup: 65532
+          runAsNonRoot: true
+          runAsUser: 65532
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: FallbackToLogsOnError
+      dnsPolicy: ClusterFirst
+      enableServiceLinks: false
+      initContainers:
+      - args:
+        - -v
+        - database
+        env:
+        - name: DB_HOST
+          valueFrom:
+            secretKeyRef:
+              key: host
+              name: mysql
+        - name: DB_PORT
+          valueFrom:
+            secretKeyRef:
+              key: port
+              name: mysql
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: mysql
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: username
+              name: mysql
+        - name: DB_ENCRYPTION_KEYS
+          valueFrom:
+            secretKeyRef:
+              key: encryptionKeys
+              name: mysql
+        image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+        imagePullPolicy: IfNotPresent
+        name: database-waiter
+        resources: {}
+        securityContext:
+          privileged: false
+          runAsUser: 31001
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      - args:
+        - -v
+        - messagebus
+        env:
+        - name: MESSAGEBUS_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: username
+              name: rabbitmq
+        - name: MESSAGEBUS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: rabbitmq
+        - name: MESSAGEBUS_CA
+          valueFrom:
+            secretKeyRef:
+              key: ca.crt
+              name: messagebus-certificates-secret-core
+        - name: MESSAGEBUS_CERT
+          valueFrom:
+            secretKeyRef:
+              key: tls.crt
+              name: messagebus-certificates-secret-core
+        - name: MESSAGEBUS_KEY
+          valueFrom:
+            secretKeyRef:
+              key: tls.key
+              name: messagebus-certificates-secret-core
+        image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+        imagePullPolicy: IfNotPresent
+        name: msgbus-waiter
+        resources: {}
+        securityContext:
+          privileged: false
+          runAsUser: 31001
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      priorityClassName: system-node-critical
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: server
+      serviceAccountName: server
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: server-config
+        name: config
+      - configMap:
+          defaultMode: 420
+          name: server-ide-config
+        name: ide-config
+      - name: ws-manager-client-tls-certs
+        secret:
+          defaultMode: 420
+          secretName: ws-manager-client-tls
+      - name: gitpod-license-key
+        secret:
+          defaultMode: 420
+          secretName: gitpod-license
+      - name: twilio-secret-volume
+        secret:
+          defaultMode: 420
+          optional: true
+          secretName: twilio-secret
+status:
+  observedGeneration: 2
+  replicas: 0

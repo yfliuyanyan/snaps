@@ -1,0 +1,35 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:13Z"
+  generation: 1
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ide-metrics
+  name: ide-metrics
+  namespace: gitpod
+  resourceVersion: "3467"
+  uid: 1707aa1d-57f1-442c-8b2c-fbfe0e71b83c
+spec:
+  ingress:
+  - from:
+    - podSelector:
+        matchLabels:
+          component: proxy
+    - podSelector:
+        matchLabels:
+          component: ide-proxy
+    ports:
+    - port: 3000
+      protocol: TCP
+  podSelector:
+    matchLabels:
+      app: gitpod
+      component: ide-metrics
+  policyTypes:
+  - Ingress
+status: {}

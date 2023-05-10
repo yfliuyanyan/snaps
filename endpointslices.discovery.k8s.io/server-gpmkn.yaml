@@ -1,0 +1,54 @@
+addressType: IPv4
+apiVersion: discovery.k8s.io/v1
+endpoints:
+- addresses:
+  - 192.168.132.250
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: vultr
+  targetRef:
+    kind: Pod
+    name: server-78d46f8db4-bx5jb
+    namespace: gitpod
+    uid: f2fe5bec-424d-4272-9345-0ec652b93905
+kind: EndpointSlice
+metadata:
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  generateName: server-
+  generation: 7
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: server
+    endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+    kind: service
+    kubernetes.io/service-name: server
+  name: server-gpmkn
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Service
+    name: server
+    uid: c3ddf41c-4260-4c4c-8ed7-c0d6fd992a4b
+  resourceVersion: "8412"
+  uid: 7015904c-bd04-4348-a24f-91c0689046e1
+ports:
+- name: metrics
+  port: 9500
+  protocol: TCP
+- name: install-admin
+  port: 9000
+  protocol: TCP
+- name: debug
+  port: 6060
+  protocol: TCP
+- name: http
+  port: 3000
+  protocol: TCP
+- name: debugnode
+  port: 9229
+  protocol: TCP

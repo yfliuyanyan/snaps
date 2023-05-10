@@ -1,0 +1,19 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+  creationTimestamp: "2023-05-09T08:59:32Z"
+  labels:
+    kubernetes.io/bootstrapping: rbac-defaults
+  name: system:monitoring
+  resourceVersion: "135"
+  uid: b41e4aad-d06c-469d-ab2e-5b03b40f0533
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:monitoring
+subjects:
+- apiGroup: rbac.authorization.k8s.io
+  kind: Group
+  name: system:monitoring

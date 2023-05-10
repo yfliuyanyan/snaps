@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  annotations:
+    pv.kubernetes.io/provisioned-by: rancher.io/local-path
+  creationTimestamp: "2023-05-09T09:31:32Z"
+  finalizers:
+  - kubernetes.io/pv-protection
+  name: pvc-f069f149-9036-4c7e-ab24-d13cea868da5
+  resourceVersion: "4310"
+  uid: 1691f865-d10f-41ad-9823-c00d52555f1e
+spec:
+  accessModes:
+  - ReadWriteOnce
+  capacity:
+    storage: 10Gi
+  claimRef:
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    name: registry
+    namespace: gitpod
+    resourceVersion: "3845"
+    uid: f069f149-9036-4c7e-ab24-d13cea868da5
+  hostPath:
+    path: /var/lib/rancher/k3s/storage/pvc-f069f149-9036-4c7e-ab24-d13cea868da5_gitpod_registry
+    type: DirectoryOrCreate
+  nodeAffinity:
+    required:
+      nodeSelectorTerms:
+      - matchExpressions:
+        - key: kubernetes.io/hostname
+          operator: In
+          values:
+          - vultr
+  persistentVolumeReclaimPolicy: Delete
+  storageClassName: local-path
+  volumeMode: Filesystem
+status:
+  phase: Bound

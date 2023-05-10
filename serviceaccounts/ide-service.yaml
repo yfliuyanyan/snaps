@@ -1,0 +1,16 @@
+apiVersion: v1
+automountServiceAccountToken: true
+kind: ServiceAccount
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:13Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ide-service
+  name: ide-service
+  namespace: gitpod
+  resourceVersion: "3488"
+  uid: 4fc3b644-2a44-4f59-b1aa-ad5aa0a6f8a7

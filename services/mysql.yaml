@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app.kubernetes.io/component: primary
+    app.kubernetes.io/instance: mysql
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: mysql
+    helm.sh/chart: mysql-9.4.5
+  name: mysql
+  namespace: gitpod
+  resourceVersion: "3616"
+  uid: ebc8b396-a175-4ceb-bf16-a096110142a7
+spec:
+  clusterIP: 10.43.141.143
+  clusterIPs:
+  - 10.43.141.143
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: mysql
+    port: 3306
+    protocol: TCP
+    targetPort: mysql
+  selector:
+    app.kubernetes.io/component: primary
+    app.kubernetes.io/instance: mysql
+    app.kubernetes.io/name: mysql
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

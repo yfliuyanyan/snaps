@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2023-05-09T09:31:54Z"
+  creationTimestamp: "2023-05-09T09:30:56Z"
+  labels:
+    app.kubernetes.io/instance: fluent-bit
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: fluent-bit
+    app.kubernetes.io/version: 1.9.4
+    helm.sh/chart: fluent-bit-0.20.2
+    kots.io/app-slug: gitpod
+    kots.io/backup: velero
+  name: fluent-bit
+  namespace: gitpod
+  resourceVersion: "4661"
+  uid: 71b8cf96-72c2-4dc0-993b-01c9517cf489
+subsets:
+- addresses:
+  - ip: 192.168.132.248
+    nodeName: vultr
+    targetRef:
+      kind: Pod
+      name: fluent-bit-2m8l4
+      namespace: gitpod
+      uid: 433114fe-ed05-41ee-a9fe-7fa8541b7d0b
+  ports:
+  - name: http
+    port: 2020
+    protocol: TCP

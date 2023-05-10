@@ -1,0 +1,44 @@
+addressType: IPv4
+apiVersion: discovery.k8s.io/v1
+endpoints:
+- addresses:
+  - 192.168.132.226
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: vultr
+  targetRef:
+    kind: Pod
+    name: dashboard-6b69855cb-r8lkx
+    namespace: gitpod
+    uid: ddf47cac-b920-469b-a308-fbc17f2856fe
+kind: EndpointSlice
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2023-05-09T09:31:34Z"
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  generateName: dashboard-
+  generation: 2
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: dashboard
+    endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+    kind: service
+    kubernetes.io/service-name: dashboard
+  name: dashboard-rg7zq
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Service
+    name: dashboard
+    uid: 5d823eca-0c6c-42a1-805e-5a345fac8750
+  resourceVersion: "4470"
+  uid: 3d36f742-fd56-4ce9-9f05-2b73dbd9081c
+ports:
+- name: http
+  port: 80
+  protocol: TCP

@@ -1,0 +1,45 @@
+addressType: IPv4
+apiVersion: discovery.k8s.io/v1
+endpoints:
+- addresses:
+  - 192.168.132.225
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: vultr
+  targetRef:
+    kind: Pod
+    name: content-service-685fdc4d-fg65x
+    namespace: gitpod
+    uid: 87412fec-b1e6-4912-be60-3cf00a0c99fb
+kind: EndpointSlice
+metadata:
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  generateName: content-service-
+  generation: 6
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: content-service
+    endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+    kind: service
+    kubernetes.io/service-name: content-service
+  name: content-service-286fz
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Service
+    name: content-service
+    uid: 3d2ac83f-ec7b-46ce-86c1-0fe2c178e0a6
+  resourceVersion: "8178"
+  uid: 1c556be7-c221-47b9-a3c8-b7fc6c9a6acd
+ports:
+- name: metrics
+  port: 9500
+  protocol: TCP
+- name: rpc
+  port: 8080
+  protocol: TCP

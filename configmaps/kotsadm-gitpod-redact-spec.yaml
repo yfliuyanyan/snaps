@@ -1,0 +1,43 @@
+apiVersion: v1
+data:
+  redact-spec: |
+    apiVersion: troubleshoot.sh/v1beta2
+    kind: Redactor
+    metadata:
+      annotations:
+        kots.io/exclude: "true"
+      creationTimestamp: null
+      name: gitpod
+    spec:
+      redactors:
+      - fileSelector:
+          file: kots-config/*/*/*
+        name: kots-config
+        removals:
+          yamlPath:
+          - spec.values.reg_incluster_storage_s3_accesskey
+          - spec.values.reg_incluster_storage_s3_secretkey
+          - spec.values.reg_password
+          - spec.values.db_encryption_keys
+          - spec.values.db_password
+          - spec.values.db_gcp_credentials
+          - spec.values.store_azure_account_name
+          - spec.values.store_azure_access_key
+          - spec.values.store_gcp_project
+          - spec.values.store_gcp_credentials
+          - spec.values.store_s3_access_key_id
+          - spec.values.store_s3_secret_access_key
+          - spec.values.tls_ca_crt
+          - spec.values.tls_crt
+          - spec.values.tls_key
+    status: {}
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2023-05-09T09:24:49Z"
+  labels:
+    kots.io/backup: velero
+    kots.io/kotsadm: "true"
+  name: kotsadm-gitpod-redact-spec
+  namespace: gitpod
+  resourceVersion: "2791"
+  uid: ebd4c68b-1062-4f6c-856d-9823c1b4be28

@@ -1,0 +1,285 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    deployment.kubernetes.io/revision: "1"
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  generation: 1
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ws-manager-bridge
+  name: ws-manager-bridge
+  namespace: gitpod
+  resourceVersion: "4855"
+  uid: a0fdcc7f-766a-496a-82e7-c0764830b5a9
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: gitpod
+      component: ws-manager-bridge
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations:
+        gitpod.io/checksum_config: 0e914e0812a18326e4683b1bb9291797f445025edc08fab4c27c0dd2e3709099
+      creationTimestamp: null
+      labels:
+        app: gitpod
+        component: ws-manager-bridge
+      name: ws-manager-bridge
+      namespace: gitpod
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: gitpod.io/workload_meta
+                operator: Exists
+      containers:
+      - env:
+        - name: GITPOD_DOMAIN
+          value: ide-lyy.one
+        - name: GITPOD_INSTALLATION_SHORTNAME
+          value: default
+        - name: GITPOD_REGION
+          value: local
+        - name: HOST_URL
+          value: https://ide-lyy.one
+        - name: KUBE_NAMESPACE
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+        - name: KUBE_DOMAIN
+          value: svc.cluster.local
+        - name: LOG_LEVEL
+          value: info
+        - name: JAEGER_DISABLED
+          value: "true"
+        - name: MESSAGEBUS_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: username
+              name: rabbitmq
+        - name: MESSAGEBUS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: rabbitmq
+        - name: MESSAGEBUS_CA
+          valueFrom:
+            secretKeyRef:
+              key: ca.crt
+              name: messagebus-certificates-secret-core
+        - name: MESSAGEBUS_CERT
+          valueFrom:
+            secretKeyRef:
+              key: tls.crt
+              name: messagebus-certificates-secret-core
+        - name: MESSAGEBUS_KEY
+          valueFrom:
+            secretKeyRef:
+              key: tls.key
+              name: messagebus-certificates-secret-core
+        - name: DB_HOST
+          valueFrom:
+            secretKeyRef:
+              key: host
+              name: mysql
+        - name: DB_PORT
+          valueFrom:
+            secretKeyRef:
+              key: port
+              name: mysql
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: mysql
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: username
+              name: mysql
+        - name: DB_ENCRYPTION_KEYS
+          valueFrom:
+            secretKeyRef:
+              key: encryptionKeys
+              name: mysql
+        - name: WSMAN_BRIDGE_CONFIGPATH
+          value: /config/ws-manager-bridge.json
+        image: eu.gcr.io/gitpod-core-dev/build/ws-manager-bridge:commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc
+        imagePullPolicy: IfNotPresent
+        name: ws-manager-bridge
+        ports:
+        - containerPort: 9500
+          name: metrics
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 100m
+            memory: 64Mi
+        securityContext:
+          privileged: false
+          runAsUser: 31001
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /config
+          name: config
+          readOnly: true
+        - mountPath: /ws-manager-client-tls-certs
+          name: ws-manager-client-tls-certs
+          readOnly: true
+      - args:
+        - --logtostderr
+        - --insecure-listen-address=[$(IP)]:9500
+        - --upstream=http://127.0.0.1:9500/
+        env:
+        - name: IP
+          valueFrom:
+            fieldRef:
+              apiVersion: v1
+              fieldPath: status.podIP
+        image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+        imagePullPolicy: IfNotPresent
+        name: kube-rbac-proxy
+        ports:
+        - containerPort: 9500
+          name: metrics
+          protocol: TCP
+        resources:
+          requests:
+            cpu: 1m
+            memory: 30Mi
+        securityContext:
+          runAsGroup: 65532
+          runAsNonRoot: true
+          runAsUser: 65532
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: FallbackToLogsOnError
+      dnsPolicy: ClusterFirst
+      enableServiceLinks: false
+      initContainers:
+      - args:
+        - -v
+        - database
+        env:
+        - name: DB_HOST
+          valueFrom:
+            secretKeyRef:
+              key: host
+              name: mysql
+        - name: DB_PORT
+          valueFrom:
+            secretKeyRef:
+              key: port
+              name: mysql
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: mysql
+        - name: DB_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: username
+              name: mysql
+        - name: DB_ENCRYPTION_KEYS
+          valueFrom:
+            secretKeyRef:
+              key: encryptionKeys
+              name: mysql
+        image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+        imagePullPolicy: IfNotPresent
+        name: database-waiter
+        resources: {}
+        securityContext:
+          privileged: false
+          runAsUser: 31001
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      - args:
+        - -v
+        - messagebus
+        env:
+        - name: MESSAGEBUS_USERNAME
+          valueFrom:
+            secretKeyRef:
+              key: username
+              name: rabbitmq
+        - name: MESSAGEBUS_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: rabbitmq
+        - name: MESSAGEBUS_CA
+          valueFrom:
+            secretKeyRef:
+              key: ca.crt
+              name: messagebus-certificates-secret-core
+        - name: MESSAGEBUS_CERT
+          valueFrom:
+            secretKeyRef:
+              key: tls.crt
+              name: messagebus-certificates-secret-core
+        - name: MESSAGEBUS_KEY
+          valueFrom:
+            secretKeyRef:
+              key: tls.key
+              name: messagebus-certificates-secret-core
+        image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+        imagePullPolicy: IfNotPresent
+        name: msgbus-waiter
+        resources: {}
+        securityContext:
+          privileged: false
+          runAsUser: 31001
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      priorityClassName: system-node-critical
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      serviceAccount: ws-manager-bridge
+      serviceAccountName: ws-manager-bridge
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: ws-manager-bridge-config
+        name: config
+      - name: ws-manager-client-tls-certs
+        secret:
+          defaultMode: 420
+          secretName: ws-manager-client-tls
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2023-05-09T09:32:39Z"
+    lastUpdateTime: "2023-05-09T09:32:39Z"
+    message: Deployment has minimum availability.
+    reason: MinimumReplicasAvailable
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2023-05-09T09:31:14Z"
+    lastUpdateTime: "2023-05-09T09:32:39Z"
+    message: ReplicaSet "ws-manager-bridge-5f77d9b5d" has successfully progressed.
+    reason: NewReplicaSetAvailable
+    status: "True"
+    type: Progressing
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1
+  updatedReplicas: 1

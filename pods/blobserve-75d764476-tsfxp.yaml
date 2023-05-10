@@ -1,0 +1,233 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    cni.projectcalico.org/containerID: 6f092f3e3767ffcd7e03544bb9817a4f76ca782d5736ae95c497b965391f04f2
+    cni.projectcalico.org/podIP: 192.168.132.218/32
+    cni.projectcalico.org/podIPs: 192.168.132.218/32
+    gitpod.io/checksum_config: daee472eaaf320ad2908270f85bb7db49adae8e1e220463ec75fdbd6c0129b4a
+  creationTimestamp: "2023-05-09T10:05:00Z"
+  generateName: blobserve-75d764476-
+  labels:
+    app: gitpod
+    component: blobserve
+    pod-template-hash: 75d764476
+  name: blobserve-75d764476-tsfxp
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: blobserve-75d764476
+    uid: 8db60095-2796-4e9e-ab11-7c4d52cc7a74
+  resourceVersion: "8256"
+  uid: 33a4ad59-a1fa-44a0-8e82-0072a9159419
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: gitpod.io/workload_ide
+            operator: Exists
+  containers:
+  - args:
+    - run
+    - /mnt/config/config.json
+    env:
+    - name: GITPOD_DOMAIN
+      value: ide-lyy.one
+    - name: GITPOD_INSTALLATION_SHORTNAME
+      value: default
+    - name: GITPOD_REGION
+      value: local
+    - name: HOST_URL
+      value: https://ide-lyy.one
+    - name: KUBE_NAMESPACE
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.namespace
+    - name: KUBE_DOMAIN
+      value: svc.cluster.local
+    - name: LOG_LEVEL
+      value: info
+    - name: JAEGER_DISABLED
+      value: "true"
+    image: eu.gcr.io/gitpod-core-dev/build/blobserve:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+    imagePullPolicy: IfNotPresent
+    livenessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /live
+        port: 8086
+        scheme: HTTP
+      initialDelaySeconds: 5
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 2
+    name: blobserve
+    ports:
+    - containerPort: 32224
+      name: service
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /ready
+        port: 8086
+        scheme: HTTP
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      successThreshold: 1
+      timeoutSeconds: 2
+    resources:
+      requests:
+        cpu: 100m
+        memory: 32Mi
+    securityContext:
+      privileged: false
+      runAsUser: 1000
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /mnt/config
+      name: config
+      readOnly: true
+    - mountPath: /mnt/cache
+      name: cache
+    - mountPath: /mnt/pull-secret.json
+      name: pull-secret
+      subPath: .dockerconfigjson
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-cwtbp
+      readOnly: true
+  - args:
+    - --logtostderr
+    - --insecure-listen-address=[$(IP)]:9500
+    - --upstream=http://127.0.0.1:9500/
+    env:
+    - name: IP
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: status.podIP
+    image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+    imagePullPolicy: IfNotPresent
+    name: kube-rbac-proxy
+    ports:
+    - containerPort: 9500
+      name: metrics
+      protocol: TCP
+    resources:
+      requests:
+        cpu: 1m
+        memory: 30Mi
+    securityContext:
+      runAsGroup: 65532
+      runAsNonRoot: true
+      runAsUser: 65532
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: FallbackToLogsOnError
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-cwtbp
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: false
+  nodeName: vultr
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: blobserve
+  serviceAccountName: blobserve
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - emptyDir: {}
+    name: cache
+  - configMap:
+      defaultMode: 420
+      name: blobserve
+    name: config
+  - name: pull-secret
+    secret:
+      defaultMode: 420
+      secretName: builtin-registry-auth
+  - name: kube-api-access-cwtbp
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T10:05:00Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T10:05:10Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T10:05:10Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T10:05:00Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://368db3fa215de6a20c490b1d884434467b1eb40fff46c50720caacd882b9d31e
+    image: eu.gcr.io/gitpod-core-dev/build/blobserve:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+    imageID: eu.gcr.io/gitpod-core-dev/build/blobserve@sha256:9381482eddd500a03cb09f19fe322a3ebf5d9dc4584a5f755dab80ab739ac245
+    lastState: {}
+    name: blobserve
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2023-05-09T10:05:05Z"
+  - containerID: containerd://5b94dff2fe4e21f70877dd2bc3f77a5ac3059f99db854fbc198b8ee916991954
+    image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+    imageID: quay.io/brancz/kube-rbac-proxy@sha256:12b82e47da1a2f5094966d4239811a5ae5c37b47e4224b1b35e57a7f02edd57a
+    lastState: {}
+    name: kube-rbac-proxy
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2023-05-09T10:05:05Z"
+  hostIP: 45.77.41.206
+  phase: Running
+  podIP: 192.168.132.218
+  podIPs:
+  - ip: 192.168.132.218
+  qosClass: Burstable
+  startTime: "2023-05-09T10:05:00Z"

@@ -1,0 +1,180 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    backup.velero.io/backup-volumes: kotsadm-minio,minio-config-dir,minio-cert-dir
+    cni.projectcalico.org/containerID: 37669f5b06546b3221ac162e3dc433ddeaf8d1fa79ff022aaa7b6f1060cfd991
+    cni.projectcalico.org/podIP: 192.168.132.208/32
+    cni.projectcalico.org/podIPs: 192.168.132.208/32
+  creationTimestamp: "2023-05-09T09:21:56Z"
+  generateName: kotsadm-minio-
+  labels:
+    app: kotsadm-minio
+    controller-revision-hash: kotsadm-minio-7b6b4bd5b5
+    kots.io/backup: velero
+    kots.io/kotsadm: "true"
+    statefulset.kubernetes.io/pod-name: kotsadm-minio-0
+  name: kotsadm-minio-0
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: StatefulSet
+    name: kotsadm-minio
+    uid: c091d3ad-b45d-4e50-bd04-795a72ecbd56
+  resourceVersion: "2588"
+  uid: d4f13de3-55a6-4a50-8e9f-e755498c8f1d
+spec:
+  containers:
+  - command:
+    - /bin/sh
+    - -ce
+    - /usr/bin/docker-entrypoint.sh minio -C /home/minio/.minio/ --quiet server /export
+    env:
+    - name: MINIO_ACCESS_KEY
+      valueFrom:
+        secretKeyRef:
+          key: accesskey
+          name: kotsadm-minio
+    - name: MINIO_SECRET_KEY
+      valueFrom:
+        secretKeyRef:
+          key: secretkey
+          name: kotsadm-minio
+    - name: MINIO_BROWSER
+      value: "on"
+    - name: MINIO_UPDATE
+      value: "off"
+    image: minio/minio:RELEASE.2023-04-20T17-56-55Z
+    imagePullPolicy: IfNotPresent
+    livenessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /minio/health/live
+        port: service
+        scheme: HTTP
+      initialDelaySeconds: 5
+      periodSeconds: 30
+      successThreshold: 1
+      timeoutSeconds: 1
+    name: kotsadm-minio
+    ports:
+    - containerPort: 9000
+      name: service
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /minio/health/ready
+        port: service
+        scheme: HTTP
+      initialDelaySeconds: 5
+      periodSeconds: 15
+      successThreshold: 1
+      timeoutSeconds: 1
+    resources:
+      limits:
+        cpu: 100m
+        memory: 512Mi
+      requests:
+        cpu: 50m
+        memory: 100Mi
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /export
+      name: kotsadm-minio
+    - mountPath: /home/minio/.minio/
+      name: minio-config-dir
+    - mountPath: /.minio/
+      name: minio-cert-dir
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-7c69p
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  hostname: kotsadm-minio-0
+  nodeName: vultr
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext:
+    fsGroup: 1001
+    runAsUser: 1001
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: kotsadm-minio
+    persistentVolumeClaim:
+      claimName: kotsadm-minio-kotsadm-minio-0
+  - emptyDir: {}
+    name: minio-config-dir
+  - emptyDir: {}
+    name: minio-cert-dir
+  - name: kube-api-access-7c69p
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:22:07Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:22:38Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:22:38Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:22:07Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://9e3b4f62aa81e35f7712add9d23c0f375e5ffebd866d92eee16daa054d6a8c85
+    image: docker.io/minio/minio:RELEASE.2023-04-20T17-56-55Z
+    imageID: docker.io/minio/minio@sha256:f1d1a7a6cc3ae54302a94a90ecf22861d17268d9b8755cc43b69cdd2e8525edc
+    lastState: {}
+    name: kotsadm-minio
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2023-05-09T09:22:20Z"
+  hostIP: 45.77.41.206
+  phase: Running
+  podIP: 192.168.132.208
+  podIPs:
+  - ip: 192.168.132.208
+  qosClass: Burstable
+  startTime: "2023-05-09T09:22:07Z"

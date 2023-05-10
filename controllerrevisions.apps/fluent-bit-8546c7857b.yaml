@@ -1,0 +1,138 @@
+apiVersion: apps/v1
+data:
+  spec:
+    template:
+      $patch: replace
+      metadata:
+        annotations:
+          checksum/config: 76a3e9c8a3fa7d5641ab44881c3680d6ecd39f4aae138f028c67d2667903d247
+          checksum/luascripts: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+          kots.io/app-slug: gitpod
+        creationTimestamp: null
+        labels:
+          app: gitpod
+          app.kubernetes.io/instance: fluent-bit
+          app.kubernetes.io/name: fluent-bit
+          component: gitpod-log-collector
+          kots.io/app-slug: gitpod
+          kots.io/backup: velero
+      spec:
+        containers:
+        - image: cr.fluentbit.io/fluent/fluent-bit:1.9.4
+          imagePullPolicy: Always
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /
+              port: http
+              scheme: HTTP
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          name: fluent-bit
+          ports:
+          - containerPort: 2020
+            name: http
+            protocol: TCP
+          readinessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /api/v1/health
+              port: http
+              scheme: HTTP
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 1
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /fluent-bit/etc/fluent-bit.conf
+            name: config
+            subPath: fluent-bit.conf
+          - mountPath: /fluent-bit/etc/custom_parsers.conf
+            name: config
+            subPath: custom_parsers.conf
+          - mountPath: /var/log
+            name: varlog
+          - mountPath: /var/lib/docker/containers
+            name: varlibdockercontainers
+            readOnly: true
+          - mountPath: /etc/machine-id
+            name: etcmachineid
+            readOnly: true
+          - mountPath: /gitpod
+            name: collector
+        - args:
+          - mkdir -p /gitpod/log-collector && while true; do echo "waiting" && sleep
+            60; done
+          command:
+          - sh
+          - -c
+          image: busybox:1
+          imagePullPolicy: IfNotPresent
+          name: kots
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /gitpod
+            name: collector
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: gitpod-registry
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        serviceAccount: fluent-bit
+        serviceAccountName: fluent-bit
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - configMap:
+            defaultMode: 420
+            name: fluent-bit
+          name: config
+        - hostPath:
+            path: /var/log
+            type: ""
+          name: varlog
+        - hostPath:
+            path: /var/lib/docker/containers
+            type: ""
+          name: varlibdockercontainers
+        - hostPath:
+            path: /etc/machine-id
+            type: File
+          name: etcmachineid
+        - hostPath:
+            path: /gitpod
+            type: DirectoryOrCreate
+          name: collector
+kind: ControllerRevision
+metadata:
+  annotations:
+    deprecated.daemonset.template.generation: "1"
+    kots.io/app-slug: gitpod
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"apps/v1","kind":"DaemonSet","metadata":{"annotations":{"kots.io/app-slug":"gitpod"},"labels":{"app":"gitpod","app.kubernetes.io/instance":"fluent-bit","app.kubernetes.io/managed-by":"Helm","app.kubernetes.io/name":"fluent-bit","app.kubernetes.io/version":"1.9.4","component":"gitpod-log-collector","helm.sh/chart":"fluent-bit-0.20.2","kots.io/app-slug":"gitpod","kots.io/backup":"velero"},"name":"fluent-bit","namespace":"gitpod"},"spec":{"selector":{"matchLabels":{"app.kubernetes.io/instance":"fluent-bit","app.kubernetes.io/name":"fluent-bit"}},"template":{"metadata":{"annotations":{"checksum/config":"76a3e9c8a3fa7d5641ab44881c3680d6ecd39f4aae138f028c67d2667903d247","checksum/luascripts":"e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855","kots.io/app-slug":"gitpod"},"labels":{"app":"gitpod","app.kubernetes.io/instance":"fluent-bit","app.kubernetes.io/name":"fluent-bit","component":"gitpod-log-collector","kots.io/app-slug":"gitpod","kots.io/backup":"velero"}},"spec":{"containers":[{"image":"cr.fluentbit.io/fluent/fluent-bit:1.9.4","imagePullPolicy":"Always","livenessProbe":{"httpGet":{"path":"/","port":"http"}},"name":"fluent-bit","ports":[{"containerPort":2020,"name":"http","protocol":"TCP"}],"readinessProbe":{"httpGet":{"path":"/api/v1/health","port":"http"}},"volumeMounts":[{"mountPath":"/fluent-bit/etc/fluent-bit.conf","name":"config","subPath":"fluent-bit.conf"},{"mountPath":"/fluent-bit/etc/custom_parsers.conf","name":"config","subPath":"custom_parsers.conf"},{"mountPath":"/var/log","name":"varlog"},{"mountPath":"/var/lib/docker/containers","name":"varlibdockercontainers","readOnly":true},{"mountPath":"/etc/machine-id","name":"etcmachineid","readOnly":true},{"mountPath":"/gitpod","name":"collector"}]},{"args":["mkdir -p /gitpod/log-collector \u0026\u0026 while true; do echo \"waiting\" \u0026\u0026 sleep 60; done"],"command":["sh","-c"],"image":"busybox:1","name":"kots","volumeMounts":[{"mountPath":"/gitpod","name":"collector"}]}],"dnsPolicy":"ClusterFirst","hostNetwork":false,"imagePullSecrets":[{"name":"gitpod-registry"}],"serviceAccountName":"fluent-bit","volumes":[{"configMap":{"name":"fluent-bit"},"name":"config"},{"hostPath":{"path":"/var/log"},"name":"varlog"},{"hostPath":{"path":"/var/lib/docker/containers"},"name":"varlibdockercontainers"},{"hostPath":{"path":"/etc/machine-id","type":"File"},"name":"etcmachineid"},{"hostPath":{"path":"/gitpod","type":"DirectoryOrCreate"},"name":"collector"}]}}}}
+  creationTimestamp: "2023-05-09T09:30:57Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/instance: fluent-bit
+    app.kubernetes.io/name: fluent-bit
+    component: gitpod-log-collector
+    controller-revision-hash: 8546c7857b
+    kots.io/app-slug: gitpod
+    kots.io/backup: velero
+  name: fluent-bit-8546c7857b
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: DaemonSet
+    name: fluent-bit
+    uid: 73d4e33c-cf6e-4f0d-8948-6eeed3b60710
+  resourceVersion: "3283"
+  uid: cf86d262-3385-43f4-8f3b-b5ebf2cd7f90
+revision: 1

@@ -1,0 +1,52 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: server
+    kind: service
+  name: server
+  namespace: gitpod
+  resourceVersion: "3652"
+  uid: c3ddf41c-4260-4c4c-8ed7-c0d6fd992a4b
+spec:
+  clusterIP: 10.43.198.42
+  clusterIPs:
+  - 10.43.198.42
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: http
+    port: 3000
+    protocol: TCP
+    targetPort: 3000
+  - name: metrics
+    port: 9500
+    protocol: TCP
+    targetPort: 9500
+  - name: install-admin
+    port: 9000
+    protocol: TCP
+    targetPort: 9000
+  - name: debug
+    port: 6060
+    protocol: TCP
+    targetPort: 6060
+  - name: debugnode
+    port: 9229
+    protocol: TCP
+    targetPort: 9229
+  selector:
+    app: gitpod
+    component: server
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

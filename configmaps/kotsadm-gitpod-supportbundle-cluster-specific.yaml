@@ -1,0 +1,21 @@
+apiVersion: v1
+data:
+  support-bundle-spec: |
+    apiVersion: troubleshoot.sh/v1beta2
+    kind: SupportBundle
+    metadata:
+      creationTimestamp: null
+      name: cluster-specific-supportbundle
+    spec: {}
+    status: {}
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2023-05-09T09:24:49Z"
+  labels:
+    kots.io/backup: velero
+    kots.io/kotsadm: "true"
+    troubleshoot.io/kind: support-bundle
+  name: kotsadm-gitpod-supportbundle-cluster-specific
+  namespace: gitpod
+  resourceVersion: "2786"
+  uid: 755d4aad-a56b-47eb-a325-b807e62d0207

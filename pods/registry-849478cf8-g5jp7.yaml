@@ -1,0 +1,178 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    checksum/config: 39ece918c8d928050d2a184c7a8354fac26875b1c62bdbdbe2a032d514a01842
+    checksum/secret: 6cffee31e122e0ec9df9bc46ba174cf3e39a3648d308b7c3676313cadc6428a2
+    cni.projectcalico.org/containerID: 4637185f736e111dd94c3288368527f8733e63036db8aa1c0e4655a6ea88c6a3
+    cni.projectcalico.org/podIP: 192.168.132.251/32
+    cni.projectcalico.org/podIPs: 192.168.132.251/32
+    gitpod.io/checksum_config: e1dee87ec725cad15906a1d6b90d5a8a4992688e1dfeb23874fff38ad17474f4
+  creationTimestamp: "2023-05-09T10:05:02Z"
+  generateName: registry-849478cf8-
+  labels:
+    app: docker-registry
+    pod-template-hash: 849478cf8
+    release: docker-registry
+  name: registry-849478cf8-g5jp7
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: registry-849478cf8
+    uid: b8b2d3a1-7c80-47ad-87d0-d89163b5628a
+  resourceVersion: "9012"
+  uid: e2b510ee-2d10-4259-9602-1525c70030cd
+spec:
+  containers:
+  - command:
+    - /bin/registry
+    - serve
+    - /etc/docker/registry/config.yml
+    env:
+    - name: REGISTRY_HTTP_SECRET
+      valueFrom:
+        secretKeyRef:
+          key: haSharedSecret
+          name: registry-secret
+    - name: REGISTRY_HTTP_TLS_CERTIFICATE
+      value: /etc/ssl/docker/tls.crt
+    - name: REGISTRY_HTTP_TLS_KEY
+      value: /etc/ssl/docker/tls.key
+    - name: REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY
+      value: /var/lib/registry
+    image: docker.io/library/registry:2.8.1
+    imagePullPolicy: IfNotPresent
+    livenessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /
+        port: 5000
+        scheme: HTTPS
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    name: docker-registry
+    ports:
+    - containerPort: 5000
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /
+        port: 5000
+        scheme: HTTPS
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /etc/docker/registry
+      name: registry-config
+    - mountPath: /var/lib/registry/
+      name: data
+    - mountPath: /etc/ssl/docker
+      name: tls-cert
+      readOnly: true
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-gbvlc
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: vultr
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext:
+    fsGroup: 1000
+    runAsUser: 1000
+  serviceAccount: docker-registry
+  serviceAccountName: docker-registry
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - configMap:
+      defaultMode: 420
+      name: registry-config
+    name: registry-config
+  - name: data
+    persistentVolumeClaim:
+      claimName: registry
+  - name: tls-cert
+    secret:
+      defaultMode: 420
+      secretName: builtin-registry-certs
+  - name: kube-api-access-gbvlc
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T10:05:02Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T10:11:24Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T10:11:24Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T10:05:02Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://5c02bbef4cf204f553b2d370ef6399061898adc0c2437acbfc3df7c514ac706c
+    image: docker.io/library/registry:2.8.1
+    imageID: docker.io/library/registry@sha256:8c51be2f669c82da8015017ff1eae5e5155fcf707ba914c5c7b798fbeb03b50c
+    lastState:
+      terminated:
+        containerID: containerd://b66c068ebea567ae3309c70079d7fb28f963cc56f0563ecc0367ecd75e128970
+        exitCode: 2
+        finishedAt: "2023-05-09T10:11:07Z"
+        reason: Error
+        startedAt: "2023-05-09T10:09:30Z"
+    name: docker-registry
+    ready: true
+    restartCount: 2
+    started: true
+    state:
+      running:
+        startedAt: "2023-05-09T10:11:16Z"
+  hostIP: 45.77.41.206
+  phase: Running
+  podIP: 192.168.132.251
+  podIPs:
+  - ip: 192.168.132.251
+  qosClass: BestEffort
+  startTime: "2023-05-09T10:05:02Z"

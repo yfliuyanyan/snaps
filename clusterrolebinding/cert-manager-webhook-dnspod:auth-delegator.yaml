@@ -1,0 +1,24 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  annotations:
+    meta.helm.sh/release-name: cert-manager-webhook-dnspod
+    meta.helm.sh/release-namespace: cert-manager
+  creationTimestamp: "2023-05-09T09:05:51Z"
+  labels:
+    app: cert-manager-webhook-dnspod
+    app.kubernetes.io/managed-by: Helm
+    chart: cert-manager-webhook-dnspod-0.3.3
+    heritage: Helm
+    release: cert-manager-webhook-dnspod
+  name: cert-manager-webhook-dnspod:auth-delegator
+  resourceVersion: "1309"
+  uid: 192e5d12-c21b-45b3-b60d-9c06e14e34e9
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:auth-delegator
+subjects:
+- kind: ServiceAccount
+  name: cert-manager-webhook-dnspod
+  namespace: cert-manager

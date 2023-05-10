@@ -1,0 +1,19 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+  creationTimestamp: "2023-05-09T08:59:32Z"
+  labels:
+    kubernetes.io/bootstrapping: rbac-defaults
+  name: system:controller:ephemeral-volume-controller
+  resourceVersion: "156"
+  uid: cf66180b-a087-4309-bfde-e0a464ab8d3a
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:controller:ephemeral-volume-controller
+subjects:
+- kind: ServiceAccount
+  name: ephemeral-volume-controller
+  namespace: kube-system

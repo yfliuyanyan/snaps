@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2023-05-09T09:31:34Z"
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: dashboard
+    kind: service
+  name: dashboard
+  namespace: gitpod
+  resourceVersion: "4469"
+  uid: 696d199f-f5f1-4f04-b9bb-67fbbd45168c
+subsets:
+- addresses:
+  - ip: 192.168.132.226
+    nodeName: vultr
+    targetRef:
+      kind: Pod
+      name: dashboard-6b69855cb-r8lkx
+      namespace: gitpod
+      uid: ddf47cac-b920-469b-a308-fbc17f2856fe
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP

@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2023-05-09T10:05:44Z"
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: registry-facade
+    kind: service
+  name: registry-facade
+  namespace: gitpod
+  resourceVersion: "8508"
+  uid: 0a460cfe-b940-445c-a880-68f28076c47d
+subsets:
+- addresses:
+  - ip: 192.168.132.211
+    nodeName: vultr
+    targetRef:
+      kind: Pod
+      name: registry-facade-m98l9
+      namespace: gitpod
+      uid: 15bbf79b-b237-402b-99ef-ba35e819dda3
+  ports:
+  - name: registry
+    port: 32223
+    protocol: TCP

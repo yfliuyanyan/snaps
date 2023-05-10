@@ -1,0 +1,32 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:13Z"
+  generation: 1
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ws-proxy
+  name: ws-proxy
+  namespace: gitpod
+  resourceVersion: "3453"
+  uid: e1799a58-7ad1-4da5-a347-fef595d97690
+spec:
+  ingress:
+  - ports:
+    - port: 8080
+      protocol: TCP
+    - port: 9090
+      protocol: TCP
+    - port: 2200
+      protocol: TCP
+  podSelector:
+    matchLabels:
+      app: gitpod
+      component: ws-proxy
+  policyTypes:
+  - Ingress
+status: {}

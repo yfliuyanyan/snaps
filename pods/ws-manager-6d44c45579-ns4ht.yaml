@@ -1,0 +1,227 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    cni.projectcalico.org/containerID: 0459263d737f8272f58c7380a8e514aba4e090a9a3bf04f41d2164367eb730bd
+    cni.projectcalico.org/podIP: 192.168.132.253/32
+    cni.projectcalico.org/podIPs: 192.168.132.253/32
+    gitpod.io/checksum_config: 111420633ee8cff3014e716b002a10abe37a29246c0a811946013ce4d37eb5fb
+  creationTimestamp: "2023-05-09T10:05:03Z"
+  generateName: ws-manager-6d44c45579-
+  labels:
+    app: gitpod
+    component: ws-manager
+    pod-template-hash: 6d44c45579
+  name: ws-manager-6d44c45579-ns4ht
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: ws-manager-6d44c45579
+    uid: d05ba891-ba71-48bb-b781-3fb9bd1aeb74
+  resourceVersion: "8231"
+  uid: 9c12a2dc-59c8-4672-aafd-57245554ae21
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: gitpod.io/workload_workspace_services
+            operator: Exists
+  containers:
+  - args:
+    - run
+    - --config
+    - /config/config.json
+    env:
+    - name: GITPOD_DOMAIN
+      value: ide-lyy.one
+    - name: GITPOD_INSTALLATION_SHORTNAME
+      value: default
+    - name: GITPOD_REGION
+      value: local
+    - name: HOST_URL
+      value: https://ide-lyy.one
+    - name: KUBE_NAMESPACE
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.namespace
+    - name: KUBE_DOMAIN
+      value: svc.cluster.local
+    - name: LOG_LEVEL
+      value: info
+    - name: JAEGER_DISABLED
+      value: "true"
+    - name: GRPC_GO_RETRY
+      value: "on"
+    image: eu.gcr.io/gitpod-core-dev/build/ws-manager:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+    imagePullPolicy: IfNotPresent
+    name: ws-manager
+    ports:
+    - containerPort: 8080
+      name: rpc
+      protocol: TCP
+    resources:
+      requests:
+        cpu: 100m
+        memory: 32Mi
+    securityContext:
+      privileged: false
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /config
+      name: config
+      readOnly: true
+    - mountPath: /workspace-templates
+      name: workspace-template
+      readOnly: true
+    - mountPath: /ws-daemon-tls-certs
+      name: ws-daemon-tls-certs
+      readOnly: true
+    - mountPath: /certs
+      name: tls-certs
+      readOnly: true
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-qwtxw
+      readOnly: true
+  - args:
+    - --logtostderr
+    - --insecure-listen-address=[$(IP)]:9500
+    - --upstream=http://127.0.0.1:9500/
+    env:
+    - name: IP
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: status.podIP
+    image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+    imagePullPolicy: IfNotPresent
+    name: kube-rbac-proxy
+    ports:
+    - containerPort: 9500
+      name: metrics
+      protocol: TCP
+    resources:
+      requests:
+        cpu: 1m
+        memory: 30Mi
+    securityContext:
+      runAsGroup: 65532
+      runAsNonRoot: true
+      runAsUser: 65532
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: FallbackToLogsOnError
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-qwtxw
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: false
+  nodeName: vultr
+  preemptionPolicy: PreemptLowerPriority
+  priority: 2000001000
+  priorityClassName: system-node-critical
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext:
+    runAsUser: 31002
+  serviceAccount: ws-manager
+  serviceAccountName: ws-manager
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - configMap:
+      defaultMode: 420
+      name: ws-manager
+    name: config
+  - configMap:
+      defaultMode: 420
+      name: workspace-templates
+    name: workspace-template
+  - name: ws-daemon-tls-certs
+    secret:
+      defaultMode: 420
+      secretName: ws-daemon-tls
+  - name: tls-certs
+    secret:
+      defaultMode: 420
+      secretName: ws-manager-tls
+  - name: kube-api-access-qwtxw
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T10:05:03Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T10:05:07Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T10:05:07Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T10:05:03Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://675ee12863c68ce83e458b718eb68e9b25e4ef889a19a558e90dd3491483e320
+    image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+    imageID: quay.io/brancz/kube-rbac-proxy@sha256:12b82e47da1a2f5094966d4239811a5ae5c37b47e4224b1b35e57a7f02edd57a
+    lastState: {}
+    name: kube-rbac-proxy
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2023-05-09T10:05:07Z"
+  - containerID: containerd://59dfb153b3e169ec7ac7ae3ab7a5e12f70935c413bbb55d1324449a6f34ca500
+    image: eu.gcr.io/gitpod-core-dev/build/ws-manager:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+    imageID: eu.gcr.io/gitpod-core-dev/build/ws-manager@sha256:0ef834ad320fb456f803b5eefca3e804d04836e0a79c7e952abda72e6a018876
+    lastState: {}
+    name: ws-manager
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2023-05-09T10:05:07Z"
+  hostIP: 45.77.41.206
+  phase: Running
+  podIP: 192.168.132.253
+  podIPs:
+  - ip: 192.168.132.253
+  qosClass: Burstable
+  startTime: "2023-05-09T10:05:03Z"

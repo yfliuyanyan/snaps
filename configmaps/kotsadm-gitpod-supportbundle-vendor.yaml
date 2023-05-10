@@ -1,0 +1,199 @@
+apiVersion: v1
+data:
+  support-bundle-spec: |
+    apiVersion: troubleshoot.sh/v1beta2
+    kind: SupportBundle
+    metadata:
+      creationTimestamp: null
+      name: vendor-supportbundle
+    spec:
+      analyzers:
+      - textAnalyze:
+          checkName: TLS certificate exists
+          fileName: certificate/certificate.log
+          outcomes:
+          - pass:
+              message: TLS certificate exists
+              when: Valid == ok
+          - fail:
+              message: TLS certificate does not exist. If using cert-manager, please check
+                your settings and that your domain name is pointing to the correct name
+                server. If you are supplying your own certificate, this will need to be
+                re-uploaded.
+          regexGroups: 'cert_exists: (?P<Valid>\w+)'
+      - textAnalyze:
+          checkName: TLS certificate domain name
+          fileName: certificate/certificate.log
+          outcomes:
+          - pass:
+              message: TLS certificate has the correct domain names
+              when: Valid == ok
+          - fail:
+              message: TLS certificate does not have the correct domain names. It requires
+                the DNS names `ide-lyy.one`, `*.ide-lyy.one` and `*.ws.ide-lyy.one` on
+                the certificate.
+          regexGroups: 'domain_name: (?P<Valid>\w+)'
+      - textAnalyze:
+          checkName: TLS certificate in date
+          fileName: certificate/certificate.log
+          outcomes:
+          - pass:
+              message: TLS certificate is in date
+              when: Valid == ok
+          - fail:
+              message: TLS certificate is not date and will need to be reissued. If using
+                cert-manager, please check your settings and that your domain name is
+                pointing to the correct name server. If you are supplying your own certificate,
+                this will need to be re-uploaded.
+          regexGroups: 'in_date: (?P<Valid>\w+)'
+      collectors:
+      - runPod:
+          imagePullSecret:
+            data:
+              .dockerconfigjson: eyJhdXRocyI6eyJwcm94eS5yZXBsaWNhdGVkLmNvbSI6eyJhdXRoIjoiTWpjelYxcGxObnBJUldOV1NFZFBkVWxCZG1sMWVVZFlZbWR0T2pJM00xZGFaVFo2U0VWalZraEhUM1ZKUVhacGRYbEhXR0puYlE9PSJ9LCJyZWdpc3RyeS5yZXBsaWNhdGVkLmNvbSI6eyJhdXRoIjoiTWpjelYxcGxObnBJUldOV1NFZFBkVWxCZG1sMWVVZFlZbWR0T2pJM00xZGFaVFo2U0VWalZraEhUM1ZKUVhacGRYbEhXR0puYlE9PSJ9fX0=
+            type: kubernetes.io/dockerconfigjson
+          name: certificate
+          namespace: gitpod
+          podSpec:
+            containers:
+            - args:
+              - ide-lyy.one
+              - gitpod
+              - https-certificates
+              - tls.crt
+              - tls.key
+              image: eu.gcr.io/gitpod-core-dev/build/kots-config-check/certificate:mrsimonemms-add-kots-support-bundle-11865.7
+              name: certificate
+              resources: {}
+            serviceAccountName: kotsadm
+      - run:
+          args:
+          - "1"
+          - "0"
+          - gitpod
+          - ""
+          - ""
+          - "3306"
+          - ""
+          - ""
+          collectorName: database
+          image: eu.gcr.io/gitpod-core-dev/build/kots-config-check/database:sje-kots-config-check.9
+          name: database
+          namespace: gitpod
+      - run:
+          args:
+          - "1"
+          - ""
+          - ""
+          - ""
+          - ""
+          - "false"
+          - ""
+          - s3.amazonaws.com
+          - ""
+          - ""
+          - ""
+          collectorName: registry
+          image: eu.gcr.io/gitpod-core-dev/build/kots-config-check/registry:sje-kots-registry-check.16
+          name: registry
+          namespace: gitpod
+      - run:
+          args:
+          - incluster
+          - ""
+          - ""
+          - ""
+          - ""
+          - ""
+          - s3.amazonaws.com
+          - ""
+          - ""
+          - ""
+          collectorName: storage
+          image: eu.gcr.io/gitpod-core-dev/build/kots-config-check/storage:sje-kots-storage-check.9
+          name: storage
+          namespace: gitpod
+      - run:
+          args:
+          - |
+            CONNECTION="error"
+
+            if [ 'false' = "true" ];
+            then
+              # Don't test for airgapped
+              CONNECTION="ok"
+            else
+              URL="https://eu.gcr.io/v2/"
+              echo "ping ${URL}"
+              if curl --silent --max-time 5 "${URL}" > /dev/null;
+              then
+                CONNECTION="ok"
+              fi
+            fi
+
+            echo "connection: ${CONNECTION}"
+          collectorName: ping-registry
+          command:
+          - /bin/sh
+          - -c
+          image: alpine/curl
+          name: ping-registry
+          namespace: gitpod
+      - clusterInfo: {}
+      - clusterResources: {}
+      - logs:
+          limits:
+            maxAge: 720h
+            maxLines: 10000
+            sinceTime: null
+          name: logs
+          namespace: gitpod
+          selector:
+          - app=gitpod
+      - copy:
+          containerName: kots
+          containerPath: /gitpod/log-collector
+          name: log-collector
+          namespace: gitpod
+          selector:
+          - component=gitpod-log-collector
+      - configMap:
+          includeAllData: true
+          namespace: gitpod
+          selector:
+          - app=gitpod
+      - configMap:
+          includeAllData: true
+          namespace: gitpod
+          selector:
+          - kots.io/kotsadm=true
+      - secret:
+          namespace: gitpod
+          selector:
+          - app=gitpod
+      - exec:
+          args:
+          - get
+          - config
+          - --appslug
+          - gitpod
+          - --namespace
+          - gitpod
+          command:
+          - /kots
+          name: kots-config
+          namespace: gitpod
+          selector:
+          - app=kotsadm
+    status: {}
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2023-05-09T09:24:49Z"
+  labels:
+    kots.io/backup: velero
+    kots.io/kotsadm: "true"
+    troubleshoot.io/kind: support-bundle
+  name: kotsadm-gitpod-supportbundle-vendor
+  namespace: gitpod
+  resourceVersion: "3358"
+  uid: b5f97af3-35f7-4bf3-be91-fa9b11273491

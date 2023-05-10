@@ -1,0 +1,44 @@
+addressType: IPv4
+apiVersion: discovery.k8s.io/v1
+endpoints:
+- addresses:
+  - 192.168.132.242
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: vultr
+  targetRef:
+    kind: Pod
+    name: ide-service-75fb77ff76-6nntg
+    namespace: gitpod
+    uid: 54c51ada-265c-4399-9214-5c9b528f73b9
+kind: EndpointSlice
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2023-05-09T09:31:54Z"
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  generateName: ide-service-
+  generation: 3
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ide-service
+    endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+    kind: service
+    kubernetes.io/service-name: ide-service
+  name: ide-service-f42vx
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Service
+    name: ide-service
+    uid: 53bf1a1b-98bf-4b20-82c1-521af28899b0
+  resourceVersion: "4636"
+  uid: 9a035e7f-b5b2-404c-9f28-6328a2ab16c6
+ports:
+- name: grpc
+  port: 9001
+  protocol: TCP

@@ -1,0 +1,88 @@
+apiVersion: v1
+data:
+  vhost.docker-registry: |-
+    https://registry.ide-lyy.one {
+        import enable_log
+        import remove_server_header
+        import ssl_configuration
+
+        basicauth bcrypt "Docker Registry" {
+            eTOAS3s7wX7d_MexqTXg JDJhJDEwJGE3aDYuWGlWLzMwaS4xeVBMbDVVYnVJSlFFaHZheEpaQXFYNmhoLmxDZFNVRVJZSWZSczh1
+        }
+
+        reverse_proxy https://registry.gitpod.svc.cluster.local {
+            flush_interval -1
+            transport http {
+                tls_trusted_ca_certs /etc/caddy/registry-certs/ca.crt
+            }
+        }
+    }
+  vhost.empty: '# Placeholder to avoid errors loading files using a glob pattern'
+  vhost.ide-proxy: |
+    https://ide.ide-lyy.one {
+        import enable_log_debug
+        import remove_server_header
+        import ssl_configuration
+
+        reverse_proxy  {
+            to h2c://ide-proxy.gitpod.svc.cluster.local:80
+        }
+    }
+  vhost.minio: |-
+    https://minio.ide-lyy.one {
+        import enable_log
+        import remove_server_header
+        import ssl_configuration
+
+        reverse_proxy minio.gitpod.svc.cluster.local:9001 {
+            flush_interval -1
+        }
+    }
+  vhost.open-vsx: |-
+    https://open-vsx.ide-lyy.one {
+        import enable_log_debug
+        import remove_server_header
+        import ssl_configuration
+
+        reverse_proxy  {
+            to openvsx-proxy.gitpod.svc.cluster.local:8080
+        }
+    }
+  vhost.payment-endpoint: |
+    https://payment.ide-lyy.one {
+        import enable_log
+        import remove_server_header
+        import ssl_configuration
+        import debug_headers
+
+        reverse_proxy payment-endpoint.gitpod.svc.cluster.local:3002 {
+            import upstream_headers
+            import upstream_connection
+        }
+
+        @backend path /stripe/invoices/webhook
+        handle @backend {
+            reverse_proxy public-api-server.{$KUBE_NAMESPACE}.{$KUBE_DOMAIN}:9002 {
+                import upstream_headers
+                import upstream_connection
+            }
+        }
+
+        handle_errors {
+            respond "Internal Server Error" 500
+        }
+    }
+kind: ConfigMap
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: proxy
+  name: proxy-config
+  namespace: gitpod
+  resourceVersion: "7716"
+  uid: 2309ef06-805d-4b53-9405-74ccbac46e7d

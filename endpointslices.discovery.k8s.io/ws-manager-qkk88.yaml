@@ -1,0 +1,42 @@
+addressType: IPv4
+apiVersion: discovery.k8s.io/v1
+endpoints:
+- addresses:
+  - 192.168.132.253
+  conditions:
+    ready: true
+    serving: true
+    terminating: false
+  nodeName: vultr
+  targetRef:
+    kind: Pod
+    name: ws-manager-6d44c45579-ns4ht
+    namespace: gitpod
+    uid: 9c12a2dc-59c8-4672-aafd-57245554ae21
+kind: EndpointSlice
+metadata:
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  generateName: ws-manager-
+  generation: 6
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ws-manager
+    endpointslice.kubernetes.io/managed-by: endpointslice-controller.k8s.io
+    kind: service
+    kubernetes.io/service-name: ws-manager
+  name: ws-manager-qkk88
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Service
+    name: ws-manager
+    uid: 2b767850-6c2b-49b6-b957-e8ad8d35dc8d
+  resourceVersion: "8396"
+  uid: ef39dc89-b3d5-4dab-a6bd-95e65b9cb948
+ports:
+- name: rpc
+  port: 8080
+  protocol: TCP

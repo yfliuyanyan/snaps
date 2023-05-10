@@ -1,0 +1,41 @@
+apiVersion: v1
+data:
+  config.yml: |-
+    health:
+      storagedriver:
+        enabled: true
+        interval: 10s
+        threshold: 3
+    http:
+      addr: :5000
+      debug:
+        addr: :5001
+        prometheus:
+          enabled: false
+          path: /metrics
+      headers:
+        X-Content-Type-Options:
+        - nosniff
+    log:
+      fields:
+        service: registry
+    storage:
+      cache:
+        blobdescriptor: inmemory
+    version: 0.1
+kind: ConfigMap
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: docker-registry
+    app.kubernetes.io/managed-by: Helm
+    chart: docker-registry-2.2.2
+    heritage: Helm
+    release: docker-registry
+  name: registry-config
+  namespace: gitpod
+  resourceVersion: "3520"
+  uid: 59eb01e9-a8cf-4b61-bdd5-05841e38aeae

@@ -1,0 +1,419 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    backup.velero.io/backup-volumes: backup
+    cni.projectcalico.org/containerID: e626ad397858e9bd5260e046cef8a251cdb1f15f1230b6b975eac466a40b0c70
+    cni.projectcalico.org/podIP: 192.168.132.209/32
+    cni.projectcalico.org/podIPs: 192.168.132.209/32
+    pre.hook.backup.velero.io/command: '["/backup.sh"]'
+    pre.hook.backup.velero.io/timeout: 10m
+  creationTimestamp: "2023-05-09T09:22:46Z"
+  generateName: kotsadm-67dc4c7c59-
+  labels:
+    app: kotsadm
+    kots.io/backup: velero
+    kots.io/kotsadm: "true"
+    pod-template-hash: 67dc4c7c59
+  name: kotsadm-67dc4c7c59-58b8l
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: kotsadm-67dc4c7c59
+    uid: aaa1c6c3-bcd9-4636-9e58-718fc1388f9f
+  resourceVersion: "2707"
+  uid: c6c47366-b594-41ad-bda0-e32a566e69e1
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubernetes.io/os
+            operator: In
+            values:
+            - linux
+          - key: kubernetes.io/arch
+            operator: NotIn
+            values:
+            - arm64
+  containers:
+  - env:
+    - name: SHARED_PASSWORD_BCRYPT
+      valueFrom:
+        secretKeyRef:
+          key: passwordBcrypt
+          name: kotsadm-password
+    - name: AUTO_CREATE_CLUSTER_TOKEN
+      valueFrom:
+        secretKeyRef:
+          key: kotsadm-cluster-token
+          name: kotsadm-cluster-token
+    - name: SESSION_KEY
+      valueFrom:
+        secretKeyRef:
+          key: key
+          name: kotsadm-session
+    - name: RQLITE_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          key: password
+          name: kotsadm-rqlite
+    - name: RQLITE_URI
+      valueFrom:
+        secretKeyRef:
+          key: uri
+          name: kotsadm-rqlite
+    - name: POSTGRES_URI
+      valueFrom:
+        secretKeyRef:
+          key: uri
+          name: kotsadm-postgres
+          optional: true
+    - name: POSTGRES_SCHEMA_DIR
+      value: /postgres/tables
+    - name: POD_NAMESPACE
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.namespace
+    - name: POD_OWNER_KIND
+      value: deployment
+    - name: API_ENCRYPTION_KEY
+      valueFrom:
+        secretKeyRef:
+          key: encryptionKey
+          name: kotsadm-encryption
+    - name: API_ENDPOINT
+      value: http://kotsadm.gitpod.svc.cluster.local:3000
+    - name: API_ADVERTISE_ENDPOINT
+      value: http://localhost:8800
+    - name: S3_ENDPOINT
+      value: http://kotsadm-minio:9000
+    - name: S3_BUCKET_NAME
+      value: kotsadm
+    - name: S3_ACCESS_KEY_ID
+      valueFrom:
+        secretKeyRef:
+          key: accesskey
+          name: kotsadm-minio
+    - name: S3_SECRET_ACCESS_KEY
+      valueFrom:
+        secretKeyRef:
+          key: secretkey
+          name: kotsadm-minio
+    - name: S3_BUCKET_ENDPOINT
+      value: "true"
+    - name: HTTP_PROXY
+    - name: HTTPS_PROXY
+    - name: NO_PROXY
+      value: kotsadm-rqlite,kotsadm-postgres,kotsadm-minio,kotsadm-api-node
+    - name: KOTS_INSTALL_ID
+      value: 2PYBPgqqVdRdn12kvBqesNkukdl
+    image: kotsadm/kotsadm:v1.98.3
+    imagePullPolicy: IfNotPresent
+    name: kotsadm
+    ports:
+    - containerPort: 3000
+      name: http
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /healthz
+        port: 3000
+        scheme: HTTP
+      initialDelaySeconds: 10
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    resources:
+      limits:
+        cpu: "1"
+        memory: 2Gi
+      requests:
+        cpu: 100m
+        memory: 100Mi
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /backup
+      name: backup
+    - mountPath: /tmp
+      name: tmp
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-26qwf
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  initContainers:
+  - args:
+    - plan
+    env:
+    - name: SCHEMAHERO_DRIVER
+      value: rqlite
+    - name: SCHEMAHERO_SPEC_FILE
+      value: /tables
+    - name: SCHEMAHERO_OUT
+      value: /migrations/plan.yaml
+    - name: SCHEMAHERO_URI
+      valueFrom:
+        secretKeyRef:
+          key: uri
+          name: kotsadm-rqlite
+    image: kotsadm/kotsadm-migrations:v1.98.3
+    imagePullPolicy: IfNotPresent
+    name: schemahero-plan
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100Mi
+      requests:
+        cpu: 50m
+        memory: 50Mi
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /migrations
+      name: migrations
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-26qwf
+      readOnly: true
+  - args:
+    - apply
+    env:
+    - name: SCHEMAHERO_DRIVER
+      value: rqlite
+    - name: SCHEMAHERO_DDL
+      value: /migrations/plan.yaml
+    - name: SCHEMAHERO_URI
+      valueFrom:
+        secretKeyRef:
+          key: uri
+          name: kotsadm-rqlite
+    image: kotsadm/kotsadm-migrations:v1.98.3
+    imagePullPolicy: IfNotPresent
+    name: schemahero-apply
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100Mi
+      requests:
+        cpu: 50m
+        memory: 50Mi
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /migrations
+      name: migrations
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-26qwf
+      readOnly: true
+  - command:
+    - /restore-db.sh
+    env:
+    - name: RQLITE_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          key: password
+          name: kotsadm-rqlite
+    image: kotsadm/kotsadm:v1.98.3
+    imagePullPolicy: IfNotPresent
+    name: restore-db
+    resources:
+      limits:
+        cpu: "1"
+        memory: 2Gi
+      requests:
+        cpu: 100m
+        memory: 100Mi
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /backup
+      name: backup
+    - mountPath: /tmp
+      name: tmp
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-26qwf
+      readOnly: true
+  - command:
+    - /restore-s3.sh
+    env:
+    - name: S3_ENDPOINT
+      value: http://kotsadm-minio:9000
+    - name: S3_BUCKET_NAME
+      value: kotsadm
+    - name: S3_ACCESS_KEY_ID
+      valueFrom:
+        secretKeyRef:
+          key: accesskey
+          name: kotsadm-minio
+    - name: S3_SECRET_ACCESS_KEY
+      valueFrom:
+        secretKeyRef:
+          key: secretkey
+          name: kotsadm-minio
+    - name: S3_BUCKET_ENDPOINT
+      value: "true"
+    image: kotsadm/kotsadm:v1.98.3
+    imagePullPolicy: IfNotPresent
+    name: restore-s3
+    resources:
+      limits:
+        cpu: "1"
+        memory: 2Gi
+      requests:
+        cpu: 100m
+        memory: 100Mi
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /backup
+      name: backup
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-26qwf
+      readOnly: true
+  nodeName: vultr
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext:
+    fsGroup: 1001
+    runAsUser: 1001
+  serviceAccount: kotsadm
+  serviceAccountName: kotsadm
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - emptyDir:
+      medium: Memory
+    name: migrations
+  - emptyDir: {}
+    name: backup
+  - emptyDir: {}
+    name: tmp
+  - name: kube-api-access-26qwf
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:23:22Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:23:37Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:23:37Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:22:46Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://5a9be2ce01f6972cd5dbe1885eb88802883750bfb004d2eed28c0402dcf4b273
+    image: docker.io/kotsadm/kotsadm:v1.98.3
+    imageID: docker.io/kotsadm/kotsadm@sha256:d8a79143341d5295ffdf893b16e8766714fdebdc09973a7b8e513e8031b63284
+    lastState: {}
+    name: kotsadm
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2023-05-09T09:23:22Z"
+  hostIP: 45.77.41.206
+  initContainerStatuses:
+  - containerID: containerd://be546601a766846ef770da23c8e8f93053739149b997afa03be32b752a2c5aa7
+    image: docker.io/kotsadm/kotsadm-migrations:v1.98.3
+    imageID: docker.io/kotsadm/kotsadm-migrations@sha256:9dad08295d0bc32e9364b1d509a15b9d2334233a8c1a0416b7d38a98a58c9445
+    lastState: {}
+    name: schemahero-plan
+    ready: true
+    restartCount: 0
+    state:
+      terminated:
+        containerID: containerd://be546601a766846ef770da23c8e8f93053739149b997afa03be32b752a2c5aa7
+        exitCode: 0
+        finishedAt: "2023-05-09T09:22:56Z"
+        reason: Completed
+        startedAt: "2023-05-09T09:22:56Z"
+  - containerID: containerd://5268224cb88ac1989c91fa7d26af88b0cb2aea78b45db9a7d9737928bed893a0
+    image: docker.io/kotsadm/kotsadm-migrations:v1.98.3
+    imageID: docker.io/kotsadm/kotsadm-migrations@sha256:9dad08295d0bc32e9364b1d509a15b9d2334233a8c1a0416b7d38a98a58c9445
+    lastState: {}
+    name: schemahero-apply
+    ready: true
+    restartCount: 0
+    state:
+      terminated:
+        containerID: containerd://5268224cb88ac1989c91fa7d26af88b0cb2aea78b45db9a7d9737928bed893a0
+        exitCode: 0
+        finishedAt: "2023-05-09T09:22:58Z"
+        reason: Completed
+        startedAt: "2023-05-09T09:22:57Z"
+  - containerID: containerd://c6736f3cddd0ca9fd357c3e0d620a6baf0d07dfc6feb505df1009210c893de06
+    image: docker.io/kotsadm/kotsadm:v1.98.3
+    imageID: docker.io/kotsadm/kotsadm@sha256:d8a79143341d5295ffdf893b16e8766714fdebdc09973a7b8e513e8031b63284
+    lastState: {}
+    name: restore-db
+    ready: true
+    restartCount: 0
+    state:
+      terminated:
+        containerID: containerd://c6736f3cddd0ca9fd357c3e0d620a6baf0d07dfc6feb505df1009210c893de06
+        exitCode: 0
+        finishedAt: "2023-05-09T09:23:19Z"
+        reason: Completed
+        startedAt: "2023-05-09T09:23:19Z"
+  - containerID: containerd://3f1576d96d1770e1ae24fcb8739f6b5bdc8757455d3705d6d1ac91b90f1fa1f2
+    image: docker.io/kotsadm/kotsadm:v1.98.3
+    imageID: docker.io/kotsadm/kotsadm@sha256:d8a79143341d5295ffdf893b16e8766714fdebdc09973a7b8e513e8031b63284
+    lastState: {}
+    name: restore-s3
+    ready: true
+    restartCount: 0
+    state:
+      terminated:
+        containerID: containerd://3f1576d96d1770e1ae24fcb8739f6b5bdc8757455d3705d6d1ac91b90f1fa1f2
+        exitCode: 0
+        finishedAt: "2023-05-09T09:23:21Z"
+        reason: Completed
+        startedAt: "2023-05-09T09:23:21Z"
+  phase: Running
+  podIP: 192.168.132.209
+  podIPs:
+  - ip: 192.168.132.209
+  qosClass: Burstable
+  startTime: "2023-05-09T09:22:46Z"

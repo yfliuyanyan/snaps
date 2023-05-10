@@ -1,0 +1,40 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:13Z"
+  generation: 1
+  labels:
+    app.kubernetes.io/instance: rabbitmq
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: rabbitmq
+    helm.sh/chart: rabbitmq-11.3.0
+  name: messagebus
+  namespace: gitpod
+  resourceVersion: "3462"
+  uid: 15836f86-1b74-4f87-a824-ed78e0030f6a
+spec:
+  ingress:
+  - ports:
+    - port: 4369
+      protocol: TCP
+    - port: 5672
+      protocol: TCP
+    - port: 5671
+      protocol: TCP
+    - port: 25672
+      protocol: TCP
+    - port: 15672
+      protocol: TCP
+  - ports:
+    - port: 9419
+      protocol: TCP
+  podSelector:
+    matchLabels:
+      app.kubernetes.io/instance: rabbitmq
+      app.kubernetes.io/name: rabbitmq
+  policyTypes:
+  - Ingress
+status: {}

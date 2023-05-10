@@ -1,0 +1,97 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: "2023-05-09T09:00:06Z"
+  name: calico-kube-controllers
+  ownerReferences:
+  - apiVersion: operator.tigera.io/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Installation
+    name: default
+    uid: ac67e02a-e8f9-4e56-a6c7-4801b9ae5db0
+  resourceVersion: "557"
+  uid: 95242dfb-044c-4308-b35c-6da9bf2acbd5
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - nodes
+  - endpoints
+  - services
+  verbs:
+  - watch
+  - list
+  - get
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - crd.projectcalico.org
+  resources:
+  - ipreservations
+  verbs:
+  - list
+- apiGroups:
+  - crd.projectcalico.org
+  resources:
+  - blockaffinities
+  - ipamblocks
+  - ipamhandles
+  - networksets
+  verbs:
+  - get
+  - list
+  - create
+  - update
+  - delete
+  - watch
+- apiGroups:
+  - crd.projectcalico.org
+  resources:
+  - ippools
+  verbs:
+  - list
+  - watch
+- apiGroups:
+  - crd.projectcalico.org
+  resources:
+  - clusterinformations
+  verbs:
+  - get
+  - create
+  - update
+  - list
+  - watch
+- apiGroups:
+  - crd.projectcalico.org
+  resources:
+  - hostendpoints
+  verbs:
+  - get
+  - list
+  - create
+  - update
+  - delete
+- apiGroups:
+  - crd.projectcalico.org
+  resources:
+  - kubecontrollersconfigurations
+  verbs:
+  - get
+  - create
+  - update
+  - watch
+- apiGroups:
+  - policy
+  resourceNames:
+  - calico-kube-controllers
+  resources:
+  - podsecuritypolicies
+  verbs:
+  - use

@@ -1,0 +1,13 @@
+apiVersion: v1
+data:
+  id: ausathkyhuawlfpmdujgypodrjcuiqsn
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2023-05-09T09:23:22Z"
+  labels:
+    kots.io/kotsadm: "true"
+    velero.io/exclude-from-backup: "true"
+  name: kotsadm-id
+  namespace: gitpod
+  resourceVersion: "2692"
+  uid: b704b2d0-8f3e-4810-83b1-84e81bcf8e86

@@ -1,0 +1,144 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  creationTimestamp: "2023-05-09T09:21:56Z"
+  generation: 1
+  labels:
+    kots.io/backup: velero
+    kots.io/kotsadm: "true"
+  name: kotsadm-rqlite
+  namespace: gitpod
+  resourceVersion: "2574"
+  uid: 8757d4fe-b448-4243-b925-e21312723024
+spec:
+  podManagementPolicy: Parallel
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: kotsadm-rqlite
+  serviceName: kotsadm-rqlite-headless
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: kotsadm-rqlite
+        kots.io/backup: velero
+        kots.io/kotsadm: "true"
+    spec:
+      affinity:
+        podAntiAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - kotsadm-rqlite
+            topologyKey: kubernetes.io/hostname
+      containers:
+      - args:
+        - -disco-mode=dns
+        - -disco-config={"name":"kotsadm-rqlite-headless"}
+        - -bootstrap-expect=1
+        - -auth=/auth/config.json
+        - -join-as=kotsadm
+        env:
+        - name: RQLITE_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: password
+              name: kotsadm-rqlite
+        image: rqlite/rqlite:7.14.2
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /readyz?noleader
+            port: rqlite
+            scheme: HTTP
+          initialDelaySeconds: 30
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: kotsadm-rqlite
+        ports:
+        - containerPort: 4001
+          name: rqlite
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /readyz
+            port: rqlite
+            scheme: HTTP
+          initialDelaySeconds: 1
+          periodSeconds: 1
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources:
+          limits:
+            cpu: 200m
+            memory: 1Gi
+          requests:
+            cpu: 100m
+            memory: 100Mi
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /rqlite/file
+          name: kotsadm-rqlite
+        - mountPath: /tmp
+          name: tmp
+        - mountPath: /auth/config.json
+          name: authconfig
+          subPath: authconfig.json
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext:
+        fsGroup: 1001
+        runAsUser: 1001
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - emptyDir: {}
+        name: tmp
+      - name: authconfig
+        secret:
+          defaultMode: 493
+          items:
+          - key: authconfig.json
+            path: authconfig.json
+          secretName: kotsadm-rqlite
+  updateStrategy:
+    rollingUpdate:
+      partition: 0
+    type: RollingUpdate
+  volumeClaimTemplates:
+  - apiVersion: v1
+    kind: PersistentVolumeClaim
+    metadata:
+      creationTimestamp: null
+      labels:
+        kots.io/backup: velero
+        kots.io/kotsadm: "true"
+      name: kotsadm-rqlite
+    spec:
+      accessModes:
+      - ReadWriteOnce
+      resources:
+        requests:
+          storage: 1Gi
+      volumeMode: Filesystem
+    status:
+      phase: Pending
+status:
+  availableReplicas: 1
+  collisionCount: 0
+  currentReplicas: 1
+  currentRevision: kotsadm-rqlite-544f88889c
+  observedGeneration: 1
+  readyReplicas: 1
+  replicas: 1
+  updateRevision: kotsadm-rqlite-544f88889c
+  updatedReplicas: 1

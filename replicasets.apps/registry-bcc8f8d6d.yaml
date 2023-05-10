@@ -1,0 +1,122 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  annotations:
+    deployment.kubernetes.io/desired-replicas: "1"
+    deployment.kubernetes.io/max-replicas: "2"
+    deployment.kubernetes.io/revision: "1"
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  generation: 2
+  labels:
+    app: docker-registry
+    pod-template-hash: bcc8f8d6d
+    release: docker-registry
+  name: registry-bcc8f8d6d
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: Deployment
+    name: registry
+    uid: 062be3ef-4257-4bd6-a15b-8084fdb11896
+  resourceVersion: "8083"
+  uid: a77242e7-2019-451b-89b7-e3be856a3cf2
+spec:
+  minReadySeconds: 5
+  replicas: 0
+  selector:
+    matchLabels:
+      app: docker-registry
+      pod-template-hash: bcc8f8d6d
+      release: docker-registry
+  template:
+    metadata:
+      annotations:
+        checksum/config: 39ece918c8d928050d2a184c7a8354fac26875b1c62bdbdbe2a032d514a01842
+        checksum/secret: f8c222c052fb8584ca6a981a8973631666a9a60131755f51d137e176c6358ab9
+        gitpod.io/checksum_config: c4bf68bb63a2ff324b747026006632c60815f4f5f3b8d9efa3fcdb4e601dcf3a
+      creationTimestamp: null
+      labels:
+        app: docker-registry
+        pod-template-hash: bcc8f8d6d
+        release: docker-registry
+    spec:
+      containers:
+      - command:
+        - /bin/registry
+        - serve
+        - /etc/docker/registry/config.yml
+        env:
+        - name: REGISTRY_HTTP_SECRET
+          valueFrom:
+            secretKeyRef:
+              key: haSharedSecret
+              name: registry-secret
+        - name: REGISTRY_HTTP_TLS_CERTIFICATE
+          value: /etc/ssl/docker/tls.crt
+        - name: REGISTRY_HTTP_TLS_KEY
+          value: /etc/ssl/docker/tls.key
+        - name: REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY
+          value: /var/lib/registry
+        image: docker.io/library/registry:2.8.1
+        imagePullPolicy: IfNotPresent
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /
+            port: 5000
+            scheme: HTTPS
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        name: docker-registry
+        ports:
+        - containerPort: 5000
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /
+            port: 5000
+            scheme: HTTPS
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /etc/docker/registry
+          name: registry-config
+        - mountPath: /var/lib/registry/
+          name: data
+        - mountPath: /etc/ssl/docker
+          name: tls-cert
+          readOnly: true
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext:
+        fsGroup: 1000
+        runAsUser: 1000
+      serviceAccount: docker-registry
+      serviceAccountName: docker-registry
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: registry-config
+        name: registry-config
+      - name: data
+        persistentVolumeClaim:
+          claimName: registry
+      - name: tls-cert
+        secret:
+          defaultMode: 420
+          secretName: builtin-registry-certs
+status:
+  observedGeneration: 2
+  replicas: 0

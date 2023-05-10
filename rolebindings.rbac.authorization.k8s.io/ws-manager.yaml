@@ -1,0 +1,22 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ws-manager
+  name: ws-manager
+  namespace: gitpod
+  resourceVersion: "3583"
+  uid: 75ab1e59-e5dd-4a63-9dad-1c2723b4f363
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: ws-manager
+subjects:
+- kind: ServiceAccount
+  name: ws-manager

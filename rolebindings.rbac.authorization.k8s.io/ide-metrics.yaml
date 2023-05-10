@@ -1,0 +1,22 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  annotations:
+    meta.helm.sh/release-name: gitpod
+    meta.helm.sh/release-namespace: gitpod
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ide-metrics
+  name: ide-metrics
+  namespace: gitpod
+  resourceVersion: "3581"
+  uid: 4e43ab3c-711b-4bf9-89c5-278741b9f48d
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: gitpod-ns-psp:restricted-root-user
+subjects:
+- kind: ServiceAccount
+  name: ide-metrics

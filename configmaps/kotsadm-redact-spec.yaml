@@ -1,0 +1,17 @@
+apiVersion: v1
+data:
+  redact-spec: |
+    kind: Redactor
+    apiVersion: troubleshoot.sh/v1beta2
+    metadata:
+      name: kotsadm-redact
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2023-05-09T09:24:49Z"
+  labels:
+    kots.io/backup: velero
+    kots.io/kotsadm: "true"
+  name: kotsadm-redact-spec
+  namespace: gitpod
+  resourceVersion: "2790"
+  uid: 9cfa18ce-f70b-4c42-a41d-3ef205e9bc6a

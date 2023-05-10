@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Endpoints
+metadata:
+  annotations:
+    endpoints.kubernetes.io/last-change-trigger-time: "2023-05-09T09:31:54Z"
+  creationTimestamp: "2023-05-09T09:31:14Z"
+  labels:
+    app: gitpod
+    app.kubernetes.io/managed-by: Helm
+    component: ide-service
+    kind: service
+  name: ide-service
+  namespace: gitpod
+  resourceVersion: "4635"
+  uid: 44ef782e-6cba-4098-81c2-629c03fdf79a
+subsets:
+- addresses:
+  - ip: 192.168.132.242
+    nodeName: vultr
+    targetRef:
+      kind: Pod
+      name: ide-service-75fb77ff76-6nntg
+      namespace: gitpod
+      uid: 54c51ada-265c-4399-9214-5c9b528f73b9
+  ports:
+  - name: grpc
+    port: 9001
+    protocol: TCP

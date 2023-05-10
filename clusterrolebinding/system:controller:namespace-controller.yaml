@@ -1,0 +1,19 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+  creationTimestamp: "2023-05-09T08:59:32Z"
+  labels:
+    kubernetes.io/bootstrapping: rbac-defaults
+  name: system:controller:namespace-controller
+  resourceVersion: "160"
+  uid: 5cb9895b-0581-483d-8831-89ceb2317d1a
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: system:controller:namespace-controller
+subjects:
+- kind: ServiceAccount
+  name: namespace-controller
+  namespace: kube-system

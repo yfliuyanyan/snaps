@@ -1,0 +1,69 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  creationTimestamp: "2023-05-09T09:00:50Z"
+  name: calico-crds
+  ownerReferences:
+  - apiVersion: operator.tigera.io/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: APIServer
+    name: default
+    uid: eac86891-6404-4e14-9b4a-d093bab1067f
+  resourceVersion: "778"
+  uid: 05d68354-6428-4d56-8da2-a6b16aa5e3e8
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - nodes
+  - namespaces
+  - pods
+  - serviceaccounts
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - networking.k8s.io
+  resources:
+  - networkpolicies
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - crd.projectcalico.org
+  resources:
+  - globalnetworkpolicies
+  - networkpolicies
+  - caliconodestatuses
+  - clusterinformations
+  - hostendpoints
+  - globalnetworksets
+  - networksets
+  - bgpconfigurations
+  - bgppeers
+  - felixconfigurations
+  - kubecontrollersconfigurations
+  - ippools
+  - ipreservations
+  - ipamblocks
+  - blockaffinities
+  - ipamconfigs
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - delete
+  - patch
+- apiGroups:
+  - policy
+  resourceNames:
+  - calico-apiserver
+  resources:
+  - podsecuritypolicies
+  verbs:
+  - use

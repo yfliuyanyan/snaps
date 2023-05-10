@@ -1,0 +1,301 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    cni.projectcalico.org/containerID: e627a4a57b29db09d4d80d4a84681a67a39e062a59f1eb9f2591dec368a9440b
+    cni.projectcalico.org/podIP: 192.168.132.239/32
+    cni.projectcalico.org/podIPs: 192.168.132.239/32
+  creationTimestamp: "2023-05-09T09:31:15Z"
+  generateName: public-api-server-6944dcdb5b-
+  labels:
+    app: gitpod
+    component: public-api-server
+    pod-template-hash: 6944dcdb5b
+  name: public-api-server-6944dcdb5b-hcj74
+  namespace: gitpod
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: public-api-server-6944dcdb5b
+    uid: de45d2ee-4655-4c9d-8877-0902c86290cf
+  resourceVersion: "4827"
+  uid: 638d90e9-ef8f-402a-b37e-582f23c6769c
+spec:
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: gitpod.io/workload_meta
+            operator: Exists
+  containers:
+  - args:
+    - run
+    - --config=/config.json
+    - --json-log=true
+    env:
+    - name: GITPOD_DOMAIN
+      value: ide-lyy.one
+    - name: GITPOD_INSTALLATION_SHORTNAME
+      value: default
+    - name: GITPOD_REGION
+      value: local
+    - name: HOST_URL
+      value: https://ide-lyy.one
+    - name: KUBE_NAMESPACE
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: metadata.namespace
+    - name: KUBE_DOMAIN
+      value: svc.cluster.local
+    - name: LOG_LEVEL
+      value: info
+    - name: DB_HOST
+      valueFrom:
+        secretKeyRef:
+          key: host
+          name: mysql
+    - name: DB_PORT
+      valueFrom:
+        secretKeyRef:
+          key: port
+          name: mysql
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          key: password
+          name: mysql
+    - name: DB_USERNAME
+      valueFrom:
+        secretKeyRef:
+          key: username
+          name: mysql
+    - name: DB_ENCRYPTION_KEYS
+      valueFrom:
+        secretKeyRef:
+          key: encryptionKeys
+          name: mysql
+    image: eu.gcr.io/gitpod-core-dev/build/public-api-server:commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc
+    imagePullPolicy: IfNotPresent
+    livenessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /live
+        port: 9501
+        scheme: HTTP
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    name: public-api-server
+    ports:
+    - containerPort: 9001
+      name: grpc
+      protocol: TCP
+    readinessProbe:
+      failureThreshold: 3
+      httpGet:
+        path: /ready
+        port: 9501
+        scheme: HTTP
+      periodSeconds: 10
+      successThreshold: 1
+      timeoutSeconds: 1
+    resources:
+      requests:
+        cpu: 100m
+        memory: 32Mi
+    securityContext:
+      privileged: false
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /config.json
+      name: config
+      readOnly: true
+      subPath: config.json
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-6c858
+      readOnly: true
+  - args:
+    - --logtostderr
+    - --insecure-listen-address=[$(IP)]:9500
+    - --upstream=http://127.0.0.1:9500/
+    env:
+    - name: IP
+      valueFrom:
+        fieldRef:
+          apiVersion: v1
+          fieldPath: status.podIP
+    image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+    imagePullPolicy: IfNotPresent
+    name: kube-rbac-proxy
+    ports:
+    - containerPort: 9500
+      name: metrics
+      protocol: TCP
+    resources:
+      requests:
+        cpu: 1m
+        memory: 30Mi
+    securityContext:
+      runAsGroup: 65532
+      runAsNonRoot: true
+      runAsUser: 65532
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: FallbackToLogsOnError
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-6c858
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: false
+  initContainers:
+  - args:
+    - -v
+    - database
+    env:
+    - name: DB_HOST
+      valueFrom:
+        secretKeyRef:
+          key: host
+          name: mysql
+    - name: DB_PORT
+      valueFrom:
+        secretKeyRef:
+          key: port
+          name: mysql
+    - name: DB_PASSWORD
+      valueFrom:
+        secretKeyRef:
+          key: password
+          name: mysql
+    - name: DB_USERNAME
+      valueFrom:
+        secretKeyRef:
+          key: username
+          name: mysql
+    - name: DB_ENCRYPTION_KEYS
+      valueFrom:
+        secretKeyRef:
+          key: encryptionKeys
+          name: mysql
+    image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+    imagePullPolicy: IfNotPresent
+    name: database-waiter
+    resources: {}
+    securityContext:
+      privileged: false
+      runAsUser: 31001
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-6c858
+      readOnly: true
+  nodeName: vultr
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: public-api-server
+  serviceAccountName: public-api-server
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - configMap:
+      defaultMode: 420
+      name: public-api-server
+    name: config
+  - name: kube-api-access-6c858
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:32:19Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:32:32Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:32:32Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2023-05-09T09:31:15Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: containerd://17ec0e4ed9cd185c5886e7d4a1b33b4081831a906328f97c54f7f00484fb2c34
+    image: quay.io/brancz/kube-rbac-proxy:v0.12.0
+    imageID: quay.io/brancz/kube-rbac-proxy@sha256:12b82e47da1a2f5094966d4239811a5ae5c37b47e4224b1b35e57a7f02edd57a
+    lastState: {}
+    name: kube-rbac-proxy
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2023-05-09T09:32:30Z"
+  - containerID: containerd://70ee0ac7876847b53237d93b4a2ab41b00403f26e806ec9966729c2ae7074f21
+    image: eu.gcr.io/gitpod-core-dev/build/public-api-server:commit-6c7af05e1362e600bbaf73b57d0e318fc8b97abc
+    imageID: eu.gcr.io/gitpod-core-dev/build/public-api-server@sha256:e1f4393054cd6e1122197d0642cbff99b73cbb9d0f37815a6a318aed3f5d3f24
+    lastState: {}
+    name: public-api-server
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2023-05-09T09:32:30Z"
+  hostIP: 45.77.41.206
+  initContainerStatuses:
+  - containerID: containerd://96dc782b7ed38b5efbbb077ea18f3083e32ecfb9e97c8a3133acc7b4fbb8d786
+    image: eu.gcr.io/gitpod-core-dev/build/service-waiter:commit-668e50f9f635342acb4eb52115be71fa0dee2a51
+    imageID: eu.gcr.io/gitpod-core-dev/build/service-waiter@sha256:6b57c0cd4dc622aa10f37f6d19c30a0bf5d9f668041e311264288ece86091878
+    lastState: {}
+    name: database-waiter
+    ready: true
+    restartCount: 0
+    state:
+      terminated:
+        containerID: containerd://96dc782b7ed38b5efbbb077ea18f3083e32ecfb9e97c8a3133acc7b4fbb8d786
+        exitCode: 0
+        finishedAt: "2023-05-09T09:32:18Z"
+        reason: Completed
+        startedAt: "2023-05-09T09:31:30Z"
+  phase: Running
+  podIP: 192.168.132.239
+  podIPs:
+  - ip: 192.168.132.239
+  qosClass: Burstable
+  startTime: "2023-05-09T09:31:15Z"

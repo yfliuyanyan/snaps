@@ -1,0 +1,27 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  annotations:
+    rbac.authorization.kubernetes.io/autoupdate: "true"
+  creationTimestamp: "2023-05-09T08:59:31Z"
+  labels:
+    kubernetes.io/bootstrapping: rbac-defaults
+  name: system:basic-user
+  resourceVersion: "63423"
+  uid: ec191ae6-ba74-48bf-8697-ff00f1b6ca9b
+rules:
+- apiGroups:
+  - authorization.k8s.io
+  resources:
+  - selfsubjectaccessreviews
+  - selfsubjectrulesreviews
+  verbs:
+  - create
+- apiGroups:
+  - apiregistration.k8s.io
+  - ""
+  resources:
+  - apiservices
+  - namespaces
+  verbs:
+  - list

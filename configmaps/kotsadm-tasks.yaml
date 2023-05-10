@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  creationTimestamp: "2023-05-09T09:23:22Z"
+  labels:
+    kots.io/backup: velero
+    kots.io/kotsadm: "true"
+  name: kotsadm-tasks
+  namespace: gitpod
+  resourceVersion: "61327"
+  uid: 7c952e3a-c649-47df-9cb8-e684cea71e2f

@@ -1,0 +1,70 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"rbac.authorization.k8s.io/v1","kind":"ClusterRole","metadata":{"annotations":{},"labels":{"app":"cainjector","app.kubernetes.io/component":"cainjector","app.kubernetes.io/instance":"cert-manager","app.kubernetes.io/name":"cainjector","app.kubernetes.io/version":"v1.8.0"},"name":"cert-manager-cainjector"},"rules":[{"apiGroups":["cert-manager.io"],"resources":["certificates"],"verbs":["get","list","watch"]},{"apiGroups":[""],"resources":["secrets"],"verbs":["get","list","watch"]},{"apiGroups":[""],"resources":["events"],"verbs":["get","create","update","patch"]},{"apiGroups":["admissionregistration.k8s.io"],"resources":["validatingwebhookconfigurations","mutatingwebhookconfigurations"],"verbs":["get","list","watch","update"]},{"apiGroups":["apiregistration.k8s.io"],"resources":["apiservices"],"verbs":["get","list","watch","update"]},{"apiGroups":["apiextensions.k8s.io"],"resources":["customresourcedefinitions"],"verbs":["get","list","watch","update"]}]}
+  creationTimestamp: "2023-05-09T09:01:56Z"
+  labels:
+    app: cainjector
+    app.kubernetes.io/component: cainjector
+    app.kubernetes.io/instance: cert-manager
+    app.kubernetes.io/name: cainjector
+    app.kubernetes.io/version: v1.8.0
+  name: cert-manager-cainjector
+  resourceVersion: "956"
+  uid: 1227fcdc-8340-43f3-a57f-1282515f6248
+rules:
+- apiGroups:
+  - cert-manager.io
+  resources:
+  - certificates
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - secrets
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - ""
+  resources:
+  - events
+  verbs:
+  - get
+  - create
+  - update
+  - patch
+- apiGroups:
+  - admissionregistration.k8s.io
+  resources:
+  - validatingwebhookconfigurations
+  - mutatingwebhookconfigurations
+  verbs:
+  - get
+  - list
+  - watch
+  - update
+- apiGroups:
+  - apiregistration.k8s.io
+  resources:
+  - apiservices
+  verbs:
+  - get
+  - list
+  - watch
+  - update
+- apiGroups:
+  - apiextensions.k8s.io
+  resources:
+  - customresourcedefinitions
+  verbs:
+  - get
+  - list
+  - watch
+  - update
