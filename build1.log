@@ -1,0 +1,1052 @@
+leeway build components/blobserve:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib               [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/registry-facade-api/go:lib  [90m(version 11d9730b48b27fad322e28b6a16b495e98e43527)[0m
+[33m🔧  build[0m           components/blobserve:app               [90m(version f11e41a411b6300ae7a8f6b5545f0e92bf7a356a)[0m
+[33m🔧  build[0m           components/blobserve:docker            [90m(version 8bae6ab6b8841284f019d2469613c7b8254477d7)[0m
+[33m🔧  build[0m           components/registry-facade:lib         [90m(version f17d2b5ceb0629422c004f66a9e5d290873fc317)[0m
+
+[90m[components/registry-facade:lib] [0m[33mbuild started[0m [0;90m(version f17d2b5ceb0629422c004f66a9e5d290873fc317)[0m
+[90m[components/registry-facade:lib] [0m# github.com/lucas-clemente/quic-go/internal/qtls
+[90m[components/registry-facade:lib] [0m/root/go/pkg/mod/github.com/lucas-clemente/quic-go@v0.29.1/internal/qtls/go120.go:5:13: cannot use "The version of quic-go you're using can't be built on Go 1.20 yet. For more details, please see https://github.com/lucas-clemente/quic-go/wiki/quic-go-and-Go-versions." (untyped string constant "The version of quic-go you're using can't be built on Go 1.20 yet. F...) as int value in variable declaration
+[90m[components/registry-facade:lib] [0mFAIL	github.com/gitpod-io/gitpod/registry-facade/pkg/registry [build failed]
+[90m[components/registry-facade:lib] [0m?   	github.com/gitpod-io/gitpod/registry-facade/pkg/registry/mock	[no test files]
+[90m[components/registry-facade:lib] [0mFAIL
+[90m[components/registry-facade:lib] [0m[0;31mpackage build failed[0m
+[90m[components/registry-facade:lib] [0m[1;37mReason:[0m exit status 1
+[0;31mbuild failed[0m
+[1;37mReason:[0m build failed
+time="2023-05-12T05:34:31Z" level=fatal msg="build failed"
+leeway build components/content-service:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib               [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/content-service-api/go:lib  [90m(version 96c22b2ddc7509c580fb952baff56c3a8bfd632d)[0m
+[32m📦  cached locally[0m  components/content-service:app         [90m(version e36b3a19d8d8ea53d07cf14099cf575b19f2e02e)[0m
+[32m📦  cached locally[0m  components/content-service:docker      [90m(version 9a708f9aa03580ef49b725161ac328315f3d6e22)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/dashboard:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/dashboard:app                  [90m(version eb31b40fcdeadcd61c683f0c1c8d1544f130f10a)[0m
+[32m📦  cached locally[0m  components/dashboard:docker               [90m(version c0cfe5394acab7d331266d61e2a68a0a2e29f850)[0m
+[32m📦  cached locally[0m  components/dashboard:static               [90m(version 2c1a15581cfbc93dedbf573fe503e13c4dcc4312)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:gitpod-schema  [90m(version 3832e8872d751eca5bd2028c5a907c6b266c75c3)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:lib            [90m(version 6f50f84f6d574c1dae5f44fabf7fd3a6af9537d1)[0m
+[32m📦  cached locally[0m  components/public-api/typescript:lib      [90m(version 7a7d860801660f8e249d23ef7840745c85733143)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/docker-up:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib              [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/docker-up:app              [90m(version 5ad1970e603efa137381e716b4c359fa46773ece)[0m
+[32m📦  cached locally[0m  components/docker-up:bin-docker-up    [90m(version 80139dcb1af791d0b67a4c33c44e489d0f04bc2b)[0m
+[32m📦  cached locally[0m  components/docker-up:bin-runc-facade  [90m(version b2ae036099bbf3cd9877da0160c7c365c97f1b6f)[0m
+[32m📦  cached locally[0m  components/docker-up:docker           [90m(version 040663dd0c5adb0ac37ff88225d2665e3a04c5e4)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/ee/agent-smith:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib                  [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:gitpod-schema  [90m(version 3832e8872d751eca5bd2028c5a907c6b266c75c3)[0m
+[32m📦  cached locally[0m  dev/addlicense:app                        [90m(version c322ba901584f00744aef2db3f81d8d0e5c0512b)[0m
+[33m🔧  build[0m           components/ee/agent-smith:app             [90m(version 018db92ddbfdc0d94fd93a3cb63c700504857d93)[0m
+[33m🔧  build[0m           components/ee/agent-smith:docker          [90m(version 8293907b3d66c4e3fb4c5116ed1aab8461ee2776)[0m
+[33m🔧  build[0m           components/gitpod-protocol/go:lib         [90m(version 1fa3b26ccbc90832d264edf62bd3340753bb23f7)[0m
+
+[90m[components/gitpod-protocol/go:lib] [0m[33mbuild started[0m [0;90m(version 1fa3b26ccbc90832d264edf62bd3340753bb23f7)[0m
+[90m[components/gitpod-protocol/go:lib] [0mComponent Path: ./scripts/..
+[90m[components/gitpod-protocol/go:lib] [0mConfig Path: ./_deps/components-gitpod-protocol--gitpod-schema/gitpod-schema.json
+[90m[components/gitpod-protocol/go:lib] [0mConfig Types Path: ./scripts/../gitpod-config-types.go
+[90m[components/gitpod-protocol/go:lib] [0m?   	github.com/gitpod-io/gitpod/gitpod-protocol	[no test files]
+[90m[components/gitpod-protocol/go:lib] [0m[0;32mpackage build succeded[0m [0;90m(2.86s)[0m
+[90m[components/ee/agent-smith:app] [0m[33mbuild started[0m [0;90m(version 018db92ddbfdc0d94fd93a3cb63c700504857d93)[0m
+[90m[components/ee/agent-smith:app] [0mlevel=error msg="[linters_context] typechecking error: pattern ./...: directory prefix . does not contain main module or its selected dependencies"
+[90m[components/ee/agent-smith:app] [0m[0;31mpackage build failed[0m
+[90m[components/ee/agent-smith:app] [0m[1;37mReason:[0m exit status 7
+[0;31mbuild failed[0m
+[1;37mReason:[0m build failed
+time="2023-05-12T05:34:39Z" level=fatal msg="build failed"
+leeway build components/gitpod-db:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/gitpod-db:docker      [90m(version e62cf0250951f21302e748079a00b41fc27e9f76)[0m
+[32m📦  cached locally[0m  components/gitpod-db:migrations  [90m(version 34f80a73a6c06eda6f683bc8c8df805c6cf4c555)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:lib   [90m(version 6f50f84f6d574c1dae5f44fabf7fd3a6af9537d1)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/ide-metrics:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib           [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/ide-metrics-api/go:lib  [90m(version 9cc726e368042408982db42a00c99ae057d0c188)[0m
+[33m🔧  build[0m           components/ide-metrics:app         [90m(version c20fcbd2ef9cceda757b5fc242c382756503f061)[0m
+[33m🔧  build[0m           components/ide-metrics:docker      [90m(version d90636896d82e989ddbc3f6aa9d36af82f270ec5)[0m
+
+[90m[components/ide-metrics:app] [0m[33mbuild started[0m [0;90m(version c20fcbd2ef9cceda757b5fc242c382756503f061)[0m
+[90m[components/ide-metrics:app] [0mlevel=error msg="[linters_context] typechecking error: pattern ./...: directory prefix . does not contain main module or its selected dependencies"
+[90m[components/ide-metrics:app] [0m[0;31mpackage build failed[0m
+[90m[components/ide-metrics:app] [0m[1;37mReason:[0m exit status 7
+[0;31mbuild failed[0m
+[1;37mReason:[0m build failed
+time="2023-05-12T05:34:42Z" level=fatal msg="build failed"
+leeway build components/ide-proxy:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/gitpod-protocol/go:lib         [90m(version 1fa3b26ccbc90832d264edf62bd3340753bb23f7)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:gitpod-schema  [90m(version 3832e8872d751eca5bd2028c5a907c6b266c75c3)[0m
+[32m📦  cached locally[0m  components/local-app-api/go:lib           [90m(version e2bea9208fc0994d3cfcd8c56030b594bb4ab9c6)[0m
+[32m📦  cached locally[0m  components/supervisor-api/go:lib          [90m(version 6505b1a01e6e7b434713f4944dcab84b18d89b56)[0m
+[32m📦  cached locally[0m  dev/addlicense:app                        [90m(version c322ba901584f00744aef2db3f81d8d0e5c0512b)[0m
+[33m🔧  build[0m           components/ide-proxy:docker               [90m(version 97ddefe22d9450d53a7eeff35203372d75ddb066)[0m
+[33m🔧  build[0m           components/local-app:app                  [90m(version 45eb82085e143256e3f3dc414692b7fc32424df9)[0m
+[33m🔧  build[0m           components/local-app:app-darwin-amd64     [90m(version cc493f450c2dd31548d7001b00a133b377656708)[0m
+[33m🔧  build[0m           components/local-app:app-darwin-arm64     [90m(version 50aeeda78b7c8817def067f27eea8de297d37a82)[0m
+[33m🔧  build[0m           components/local-app:app-linux-amd64      [90m(version cbbed9fb62b288167c69af4b995f2fedbd70fb63)[0m
+[33m🔧  build[0m           components/local-app:app-linux-arm64      [90m(version 3f31872d41ac322799d31d61c9d0dd92ffbb4752)[0m
+[33m🔧  build[0m           components/local-app:app-windows-386      [90m(version 19e8b79267cdf788825d93c14fcf7b21e4ed15ac)[0m
+[33m🔧  build[0m           components/local-app:app-windows-amd64    [90m(version 1294b27033b7635af0429400923021f70f809366)[0m
+[33m🔧  build[0m           components/local-app:app-windows-arm64    [90m(version 7310c6946ea0895e35b0d4fa30dd73dbb6310b53)[0m
+
+[90m[components/local-app:app-darwin-amd64] [0m[33mbuild started[0m [0;90m(version cc493f450c2dd31548d7001b00a133b377656708)[0m
+[90m[components/local-app:app-linux-arm64] [0m[33mbuild started[0m [0;90m(version 3f31872d41ac322799d31d61c9d0dd92ffbb4752)[0m
+[90m[components/local-app:app-windows-amd64] [0m[33mbuild started[0m [0;90m(version 1294b27033b7635af0429400923021f70f809366)[0m
+[90m[components/local-app:app-windows-arm64] [0m[33mbuild started[0m [0;90m(version 7310c6946ea0895e35b0d4fa30dd73dbb6310b53)[0m
+[90m[components/local-app:app-windows-386] [0m[33mbuild started[0m [0;90m(version 19e8b79267cdf788825d93c14fcf7b21e4ed15ac)[0m
+[90m[components/local-app:app-darwin-arm64] [0m[33mbuild started[0m [0;90m(version 50aeeda78b7c8817def067f27eea8de297d37a82)[0m
+[90m[components/local-app:app-linux-amd64] [0m[33mbuild started[0m [0;90m(version cbbed9fb62b288167c69af4b995f2fedbd70fb63)[0m
+[90m[components/local-app:app-windows-386] [0mlevel=error msg="[linters_context] typechecking error: pattern ./...: directory prefix . does not contain main module or its selected dependencies"
+[90m[components/local-app:app-windows-386] [0m[0;31mpackage build failed[0m
+[90m[components/local-app:app-windows-386] [0m[1;37mReason:[0m exit status 7
+[0;31mbuild failed[0m
+[1;37mReason:[0m build failed
+time="2023-05-12T05:34:48Z" level=fatal msg="build failed"
+leeway build components/ide-service:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib                  [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol/go:lib         [90m(version 1fa3b26ccbc90832d264edf62bd3340753bb23f7)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:gitpod-schema  [90m(version 3832e8872d751eca5bd2028c5a907c6b266c75c3)[0m
+[32m📦  cached locally[0m  dev/addlicense:app                        [90m(version c322ba901584f00744aef2db3f81d8d0e5c0512b)[0m
+[33m🔧  build[0m           components/ide-service-api/go:lib         [90m(version 8b60d826bfbec5d2261411b4c1e987e8aaa8cc9c)[0m
+[33m🔧  build[0m           components/ide-service:app                [90m(version 0dac89bd80d92d382c8cf26547dea8328d06ea02)[0m
+[33m🔧  build[0m           components/ide-service:docker             [90m(version 0e503a1c8514f82ffec2a21b92cc45289e6a62b9)[0m
+
+[90m[components/ide-service-api/go:lib] [0m[33mbuild started[0m [0;90m(version 8b60d826bfbec5d2261411b4c1e987e8aaa8cc9c)[0m
+[90m[components/ide-service-api/go:lib] [0mlevel=error msg="[linters_context] typechecking error: pattern ./...: directory prefix . does not contain main module or its selected dependencies"
+[90m[components/ide-service-api/go:lib] [0m[0;31mpackage build failed[0m
+[90m[components/ide-service-api/go:lib] [0m[1;37mReason:[0m exit status 7
+[0;31mbuild failed[0m
+[1;37mReason:[0m build failed
+time="2023-05-12T05:34:50Z" level=fatal msg="build failed"
+leeway build components/ide/code-desktop:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib                [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/supervisor-api/go:lib        [90m(version 6505b1a01e6e7b434713f4944dcab84b18d89b56)[0m
+[33m🔧  build[0m           components/ide/code-desktop/status:app  [90m(version c46878f2ef07a476326b32ab1d44c843346f53ea)[0m
+[33m🔧  build[0m           components/ide/code-desktop:docker      [90m(version 465d16846257df25a6badfa6ade679f0543c4baa)[0m
+
+[90m[components/ide/code-desktop/status:app] [0m[33mbuild started[0m [0;90m(version c46878f2ef07a476326b32ab1d44c843346f53ea)[0m
+[90m[components/ide/code-desktop/status:app] [0mlevel=error msg="[linters_context] typechecking error: pattern ./...: directory prefix . does not contain main module or its selected dependencies"
+[90m[components/ide/code-desktop/status:app] [0m[0;31mpackage build failed[0m
+[90m[components/ide/code-desktop/status:app] [0m[1;37mReason:[0m exit status 7
+[0;31mbuild failed[0m
+[1;37mReason:[0m build failed
+time="2023-05-12T05:34:51Z" level=fatal msg="build failed"
+leeway build components/ide/code/codehelper:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib                  [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol/go:lib         [90m(version 1fa3b26ccbc90832d264edf62bd3340753bb23f7)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:gitpod-schema  [90m(version 3832e8872d751eca5bd2028c5a907c6b266c75c3)[0m
+[32m📦  cached locally[0m  components/supervisor-api/go:lib          [90m(version 6505b1a01e6e7b434713f4944dcab84b18d89b56)[0m
+[32m📦  cached locally[0m  dev/addlicense:app                        [90m(version c322ba901584f00744aef2db3f81d8d0e5c0512b)[0m
+[33m🔧  build[0m           components/ide/code/codehelper:app        [90m(version 9a97c5656caf65cba17a83b91f50c3290b4c6146)[0m
+[33m🔧  build[0m           components/ide/code/codehelper:docker     [90m(version 44ab892ed3755d2331fb036d14f08c95fa2fe14f)[0m
+
+[90m[components/ide/code/codehelper:app] [0m[33mbuild started[0m [0;90m(version 9a97c5656caf65cba17a83b91f50c3290b4c6146)[0m
+[90m[components/ide/code/codehelper:app] [0mlevel=error msg="[linters_context] typechecking error: pattern ./...: directory prefix . does not contain main module or its selected dependencies"
+[90m[components/ide/code/codehelper:app] [0m[0;31mpackage build failed[0m
+[90m[components/ide/code/codehelper:app] [0m[1;37mReason:[0m exit status 7
+[0;31mbuild failed[0m
+[1;37mReason:[0m build failed
+time="2023-05-12T05:34:53Z" level=fatal msg="build failed"
+leeway build components/ide/code:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/ide/code:docker  [90m(version 294fa29b2ada05f9cc7c1b4a9c3e6a49f7fd9b34)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/ide/jetbrains/backend-plugin:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/gitpod-protocol/java:lib                    [90m(version bbe33c90d80f744ab7a0bde6219e3a6f41bc6046)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/backend-plugin:docker         [90m(version a02bf6475cad6cb76f0e1c23f212e0634ad2d3dd)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/backend-plugin:latest         [90m(version 1edf02d07b86ca453f63e2ea3026aa2e8538f3e6)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/backend-plugin:plugin-latest  [90m(version 898c065e8968c510425c7bd718b1d62743b26f3e)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/backend-plugin:plugin-stable  [90m(version a33a8748d9807e6dc7ef000648328f32a7e95970)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/backend-plugin:stable         [90m(version 0715c43b9f4457f9eeafb85d44162b5373bc6e0c)[0m
+[32m📦  cached locally[0m  components/supervisor-api/java:lib                     [90m(version 24d907858b604f7907d2487a27f1b602b6727d4b)[0m
+[32m📦  cached locally[0m  components/supervisor-api:java                         [90m(version ab87682011b972d51a1fde0730ee69cf70c2bdf0)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/ide/jetbrains/image:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/ide/jetbrains/cli:app                         [90m(version 95c0c1a1b96c7e02fc109e89746d25932314cfb7)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-clion            [90m(version 4d847f2e77f992418ad992e927c96f2112619e41)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-clion-latest     [90m(version 0c35df7e266553bc60291309fc8cc06865dad003)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-goland           [90m(version 2423ff4f94a6effca119ef009c149998caedf246)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-goland-latest    [90m(version 999b8911d6d1981a3720d1c4bfaf2b5cbd4bb73c)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-intellij         [90m(version c7403349757161e7fa18bc085fea3116f36b92bb)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-intellij-latest  [90m(version ab5c403aad95043ad9bccf7abb4ec77b43a27de7)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-phpstorm         [90m(version 5d78a4db1500eb05e74e1647d1baa40c810da33d)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-phpstorm-latest  [90m(version 8783cc40a9ad437461a7771f427d01ee6e361a23)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-pycharm          [90m(version 81f9cfe0e3efa6387c627146a71159ac3b63950d)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-pycharm-latest   [90m(version 9a6044003618b90931f8a4890331d0c7a88d5b0a)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-rider            [90m(version f1859f8ec3afcb7a40cdffcf55930fa0817694b0)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-rider-latest     [90m(version 8c6214abedd1c321ccf24f8a7f1c46540e0b6826)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-rubymine         [90m(version b590a86b7f947262dd1645ef1b36775ca4bb2157)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-rubymine-latest  [90m(version d715ae658a99d98e7e9c36008e8a63250ec7e0f7)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-webstorm         [90m(version 7cffd4570bfd59e1ebab36bd2b77d3e2d62a0dcc)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-webstorm-latest  [90m(version ec74150192bf6796d57baf02171d0f13dadde39b)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:clion                     [90m(version f4ced1c393b83dd2d8e08f2153da0bf77d01689f)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:clion-latest              [90m(version 40d9e2c5339a38a99532d54d11d26d2eefc88afc)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:docker                    [90m(version ad29da0bc2785410b63d0478268056fa2b7bfbd4)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:goland                    [90m(version a7c18f67e8e38b6e2504f626a8cb330b7a144615)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:goland-latest             [90m(version d86beace9eef46bdf5ecde044156fb457bfc4ed8)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:intellij                  [90m(version 7b60384ee6806df6b66a33cf010196edd36a25ab)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:intellij-latest           [90m(version 420d4388f2641e3e7faa020ab55e294110d03f5e)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:phpstorm                  [90m(version 059c93c98ce238bbfd0de41f5f6c6d8ce5f1c9b7)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:phpstorm-latest           [90m(version 59ed4c320a8be8e17c1748b2ccaef527db761128)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:pycharm                   [90m(version 77fca91bd893a905df3c30fdab3326ceefe37c45)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:pycharm-latest            [90m(version 392cb54ea416f417d4922dc4b68882cd62b81e2d)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:rider                     [90m(version ba627801e62f3ea3a4d479ef97e56a532127e131)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:rider-latest              [90m(version 46e0a93cf051dafe5eb5821b547a4cc7d63f7289)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:rubymine                  [90m(version 0b166f3d60f6934ed8aee9895c129c78ad46efdf)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:rubymine-latest           [90m(version a6d3afbe5255a465c0db1e9f98dd73578037c0e6)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:webstorm                  [90m(version 705b6376794c7eb5c4f9a682d5d44dc00f4962ff)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:webstorm-latest           [90m(version 71a69da8da0ec484db76c28969d2beafbf0a593f)[0m
+
+[90m[components/ide/jetbrains/image:rubymine] [0m[33mbuild started[0m [0;90m(version 0b166f3d60f6934ed8aee9895c129c78ad46efdf)[0m
+[90m[components/ide/jetbrains/image:phpstorm-latest] [0m[33mbuild started[0m [0;90m(version 59ed4c320a8be8e17c1748b2ccaef527db761128)[0m
+[90m[components/ide/jetbrains/image:pycharm] [0m[33mbuild started[0m [0;90m(version 77fca91bd893a905df3c30fdab3326ceefe37c45)[0m
+[90m[components/ide/jetbrains/image:rider] [0m[33mbuild started[0m [0;90m(version ba627801e62f3ea3a4d479ef97e56a532127e131)[0m
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m[33mbuild started[0m [0;90m(version 392cb54ea416f417d4922dc4b68882cd62b81e2d)[0m
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m[33mbuild started[0m [0;90m(version 71a69da8da0ec484db76c28969d2beafbf0a593f)[0m
+[90m[components/ide/jetbrains/image:clion-latest] [0m[33mbuild started[0m [0;90m(version 40d9e2c5339a38a99532d54d11d26d2eefc88afc)[0m
+[90m[components/ide/jetbrains/image:goland-latest] [0m[33mbuild started[0m [0;90m(version d86beace9eef46bdf5ecde044156fb457bfc4ed8)[0m
+[90m[components/ide/jetbrains/image:rider-latest] [0m[33mbuild started[0m [0;90m(version 46e0a93cf051dafe5eb5821b547a4cc7d63f7289)[0m
+[90m[components/ide/jetbrains/image:webstorm] [0m[33mbuild started[0m [0;90m(version 705b6376794c7eb5c4f9a682d5d44dc00f4962ff)[0m
+[90m[components/ide/jetbrains/image:intellij-latest] [0m[33mbuild started[0m [0;90m(version 420d4388f2641e3e7faa020ab55e294110d03f5e)[0m
+[90m[components/ide/jetbrains/image:intellij] [0m[33mbuild started[0m [0;90m(version 7b60384ee6806df6b66a33cf010196edd36a25ab)[0m
+[90m[components/ide/jetbrains/image:rubymine-latest] [0m[33mbuild started[0m [0;90m(version a6d3afbe5255a465c0db1e9f98dd73578037c0e6)[0m
+[90m[components/ide/jetbrains/image:clion] [0m[33mbuild started[0m [0;90m(version f4ced1c393b83dd2d8e08f2153da0bf77d01689f)[0m
+[90m[components/ide/jetbrains/image:phpstorm] [0m[33mbuild started[0m [0;90m(version 059c93c98ce238bbfd0de41f5f6c6d8ce5f1c9b7)[0m
+[90m[components/ide/jetbrains/image:goland] [0m[33mbuild started[0m [0;90m(version a7c18f67e8e38b6e2504f626a8cb330b7a144615)[0m
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#1 [internal] load build definition from Dockerfile
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#1 transferring dockerfile: 1.19kB done
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#1 DONE 0.0s
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#2 [internal] load .dockerignore
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#2 transferring context: 2B done
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#2 DONE 0.0s
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#3 [internal] load metadata for cgr.dev/chainguard/wolfi-base:latest@sha256:153c0ba4dd4ef9272ed7440e8f2ffa233b09de3e24a36b490d2a10d750aaaddf
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#3 DONE 1.0s
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#4 [base_builder 1/2] FROM cgr.dev/chainguard/wolfi-base:latest@sha256:153c0ba4dd4ef9272ed7440e8f2ffa233b09de3e24a36b490d2a10d750aaaddf
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#4 DONE 0.0s
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#5 [base_builder 2/2] RUN mkdir /ide-desktop
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#5 CACHED
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#6 [stage-1 1/4] COPY --from=base_builder --chown=33333:33333 /ide-desktop/ /ide-desktop/
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#6 CACHED
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#7 [internal] load build context
+[90m[components/ide/jetbrains/image:rubymine] [0m#1 [base_builder 1/2] FROM cgr.dev/chainguard/wolfi-base:latest@sha256:153c0ba4dd4ef9272ed7440e8f2ffa233b09de3e24a36b490d2a10d750aaaddf
+[90m[components/ide/jetbrains/image:rubymine] [0m#1 DONE 0.0s
+[90m[components/ide/jetbrains/image:rubymine] [0m
+[90m[components/ide/jetbrains/image:rubymine] [0m#2 [base_builder 2/2] RUN mkdir /ide-desktop
+[90m[components/ide/jetbrains/image:rubymine] [0m#2 CACHED
+[90m[components/ide/jetbrains/image:rubymine] [0m
+[90m[components/ide/jetbrains/image:rubymine] [0m#3 [stage-1 1/4] COPY --from=base_builder --chown=33333:33333 /ide-desktop/ /ide-desktop/
+[90m[components/ide/jetbrains/image:rubymine] [0m#3 CACHED
+[90m[components/ide/jetbrains/image:rubymine] [0m
+[90m[components/ide/jetbrains/image:rubymine] [0m#4 [internal] load build definition from Dockerfile
+[90m[components/ide/jetbrains/image:rubymine] [0m#4 transferring dockerfile: 1.19kB done
+[90m[components/ide/jetbrains/image:rubymine] [0m#4 DONE 0.0s
+[90m[components/ide/jetbrains/image:rubymine] [0m
+[90m[components/ide/jetbrains/image:rubymine] [0m#5 [internal] load .dockerignore
+[90m[components/ide/jetbrains/image:rubymine] [0m#5 transferring context: 2B done
+[90m[components/ide/jetbrains/image:rubymine] [0m#5 DONE 0.0s
+[90m[components/ide/jetbrains/image:rubymine] [0m
+[90m[components/ide/jetbrains/image:rubymine] [0m#6 [internal] load metadata for cgr.dev/chainguard/wolfi-base:latest@sha256:153c0ba4dd4ef9272ed7440e8f2ffa233b09de3e24a36b490d2a10d750aaaddf
+[90m[components/ide/jetbrains/image:rubymine] [0m#6 DONE 0.0s
+[90m[components/ide/jetbrains/image:rubymine] [0m
+[90m[components/ide/jetbrains/image:rubymine] [0m#7 [internal] load build context
+[90m[components/ide/jetbrains/image:goland-latest] [0m#1 [internal] load .dockerignore
+[90m[components/ide/jetbrains/image:goland-latest] [0m#1 transferring context: 2B done
+[90m[components/ide/jetbrains/image:goland-latest] [0m#1 DONE 0.5s
+[90m[components/ide/jetbrains/image:goland-latest] [0m
+[90m[components/ide/jetbrains/image:goland-latest] [0m#2 [internal] load build definition from Dockerfile
+[90m[components/ide/jetbrains/image:goland-latest] [0m#2 transferring dockerfile: 1.19kB done
+[90m[components/ide/jetbrains/image:goland-latest] [0m#2 DONE 0.4s
+[90m[components/ide/jetbrains/image:goland-latest] [0m
+[90m[components/ide/jetbrains/image:goland-latest] [0m#3 [internal] load metadata for cgr.dev/chainguard/wolfi-base:latest@sha256:153c0ba4dd4ef9272ed7440e8f2ffa233b09de3e24a36b490d2a10d750aaaddf
+[90m[components/ide/jetbrains/image:goland-latest] [0m#3 DONE 0.0s
+[90m[components/ide/jetbrains/image:goland-latest] [0m
+[90m[components/ide/jetbrains/image:goland-latest] [0m#4 [base_builder 1/2] FROM cgr.dev/chainguard/wolfi-base:latest@sha256:153c0ba4dd4ef9272ed7440e8f2ffa233b09de3e24a36b490d2a10d750aaaddf
+[90m[components/ide/jetbrains/image:goland-latest] [0m#4 DONE 0.0s
+[90m[components/ide/jetbrains/image:goland-latest] [0m
+[90m[components/ide/jetbrains/image:goland-latest] [0m#5 [base_builder 2/2] RUN mkdir /ide-desktop
+[90m[components/ide/jetbrains/image:goland-latest] [0m#5 CACHED
+[90m[components/ide/jetbrains/image:goland-latest] [0m
+[90m[components/ide/jetbrains/image:goland-latest] [0m#6 [stage-1 1/4] COPY --from=base_builder --chown=33333:33333 /ide-desktop/ /ide-desktop/
+[90m[components/ide/jetbrains/image:goland-latest] [0m#6 CACHED
+[90m[components/ide/jetbrains/image:goland-latest] [0m
+[90m[components/ide/jetbrains/image:goland-latest] [0m#7 [internal] load build context
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#7 transferring context: 161.31MB 3.9s
+[90m[components/ide/jetbrains/image:rubymine] [0m#7 transferring context: 196.89MB 5.0s
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#1 [internal] load .dockerignore
+[90m[components/ide/jetbrains/image:goland-latest] [0m#7 transferring context: 176.69MB 4.9s
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#7 transferring context: 573.28MB 9.0s
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#1 transferring context: 2B 0.0s done
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#1 DONE 2.2s
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#2 [internal] load build definition from Dockerfile
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#2 transferring dockerfile: 1.19kB 0.0s done
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#2 DONE 2.2s
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#3 [internal] load metadata for cgr.dev/chainguard/wolfi-base:latest@sha256:153c0ba4dd4ef9272ed7440e8f2ffa233b09de3e24a36b490d2a10d750aaaddf
+[90m[components/ide/jetbrains/image:rubymine] [0m#7 transferring context: 669.62MB 10.0s
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#3 DONE 0.0s
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#4 [base_builder 1/2] FROM cgr.dev/chainguard/wolfi-base:latest@sha256:153c0ba4dd4ef9272ed7440e8f2ffa233b09de3e24a36b490d2a10d750aaaddf
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#4 DONE 0.0s
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#5 [base_builder 2/2] RUN mkdir /ide-desktop
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#5 CACHED
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#6 [stage-1 1/4] COPY --from=base_builder --chown=33333:33333 /ide-desktop/ /ide-desktop/
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#6 CACHED
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#7 [internal] load build context
+[90m[components/ide/jetbrains/image:goland-latest] [0m#7 transferring context: 661.12MB 10.0s
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#7 transferring context: 786.38MB 14.0s
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#7 transferring context: 161.37MB 5.0s
+[90m[components/ide/jetbrains/image:rubymine] [0m#7 transferring context: 830.55MB 15.0s
+[90m[components/ide/jetbrains/image:goland-latest] [0m#7 transferring context: 828.67MB 15.1s
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#7 transferring context: 944.88MB 19.1s
+[90m[components/ide/jetbrains/image:rubymine] [0m#7 transferring context: 976.02MB 20.1s
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#7 transferring context: 636.33MB 10.1s
+[90m[components/ide/jetbrains/image:clion] [0m#1 [internal] load .dockerignore
+[90m[components/ide/jetbrains/image:clion] [0m#1 transferring context:
+[90m[components/ide/jetbrains/image:clion] [0m#1 transferring context: 2B done
+[90m[components/ide/jetbrains/image:clion] [0m#1 DONE 0.1s
+[90m[components/ide/jetbrains/image:clion] [0m
+[90m[components/ide/jetbrains/image:clion] [0m#2 [internal] load build definition from Dockerfile
+[90m[components/ide/jetbrains/image:clion] [0m#2 transferring dockerfile: 1.19kB done
+[90m[components/ide/jetbrains/image:clion] [0m#2 DONE 0.2s
+[90m[components/ide/jetbrains/image:clion] [0m
+[90m[components/ide/jetbrains/image:clion] [0m#3 [internal] load metadata for cgr.dev/chainguard/wolfi-base:latest@sha256:153c0ba4dd4ef9272ed7440e8f2ffa233b09de3e24a36b490d2a10d750aaaddf
+[90m[components/ide/jetbrains/image:clion] [0m#3 DONE 0.1s
+[90m[components/ide/jetbrains/image:clion] [0m
+[90m[components/ide/jetbrains/image:clion] [0m#4 [base_builder 1/2] FROM cgr.dev/chainguard/wolfi-base:latest@sha256:153c0ba4dd4ef9272ed7440e8f2ffa233b09de3e24a36b490d2a10d750aaaddf
+[90m[components/ide/jetbrains/image:clion] [0m#4 DONE 0.0s
+[90m[components/ide/jetbrains/image:clion] [0m
+[90m[components/ide/jetbrains/image:clion] [0m#5 [base_builder 2/2] RUN mkdir /ide-desktop
+[90m[components/ide/jetbrains/image:clion] [0m#5 CACHED
+[90m[components/ide/jetbrains/image:clion] [0m
+[90m[components/ide/jetbrains/image:clion] [0m#6 [stage-1 1/4] COPY --from=base_builder --chown=33333:33333 /ide-desktop/ /ide-desktop/
+[90m[components/ide/jetbrains/image:clion] [0m#6 CACHED
+[90m[components/ide/jetbrains/image:clion] [0m
+[90m[components/ide/jetbrains/image:clion] [0m#7 [internal] load build context
+[90m[components/ide/jetbrains/image:goland-latest] [0m#7 transferring context: 1.01GB 20.2s
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#7 transferring context: 1.11GB 24.2s
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#7 transferring context: 807.09MB 15.1s
+[90m[components/ide/jetbrains/image:rubymine] [0m#7 transferring context: 1.15GB 25.2s
+[90m[components/ide/jetbrains/image:clion] [0m#7 transferring context: 85.02MB 4.9s
+[90m[components/ide/jetbrains/image:goland-latest] [0m#7 transferring context: 1.14GB 25.3s
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#7 transferring context: 1.21GB 29.2s
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#7 transferring context: 951.93MB 20.2s
+[90m[components/ide/jetbrains/image:rubymine] [0m#7 transferring context: 1.31GB 30.3s
+[90m[components/ide/jetbrains/image:clion] [0m#7 transferring context: 267.96MB 9.9s
+[90m[components/ide/jetbrains/image:goland-latest] [0m#7 transferring context: 1.36GB 30.3s
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#7 transferring context: 1.39GB 34.3s
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#7 transferring context: 1.15GB 25.3s
+[90m[components/ide/jetbrains/image:rubymine] [0m#7 transferring context: 1.49GB 35.4s
+[90m[components/ide/jetbrains/image:clion] [0m#7 transferring context: 323.76MB 15.0s
+[90m[components/ide/jetbrains/image:goland-latest] [0m#7 transferring context: 1.57GB 35.4s
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#7 transferring context: 1.59GB 39.4s
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#7 transferring context: 1.36GB 30.3s
+[90m[components/ide/jetbrains/image:rubymine] [0m#7 transferring context: 1.69GB 40.5s
+[90m[components/ide/jetbrains/image:clion] [0m#7 transferring context: 486.03MB 20.1s
+[90m[components/ide/jetbrains/image:goland-latest] [0m#7 transferring context: 1.74GB 40.4s
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#7 transferring context: 1.74GB 44.5s
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#7 transferring context: 1.52GB 35.4s
+[90m[components/ide/jetbrains/image:rubymine] [0m#7 transferring context: 1.81GB 45.6s
+[90m[components/ide/jetbrains/image:clion] [0m#7 transferring context: 676.91MB 25.1s
+[90m[components/ide/jetbrains/image:goland-latest] [0m#7 transferring context: 1.92GB 45.5s
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#7 transferring context: 1.86GB 49.6s
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#1 [internal] load .dockerignore
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#1 transferring context:
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#1 transferring context: 2B 0.0s done
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#1 DONE 0.1s
+[90m[components/ide/jetbrains/image:intellij-latest] [0m
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#2 [internal] load build definition from Dockerfile
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#2 transferring dockerfile: 1.19kB 0.0s done
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#2 DONE 0.1s
+[90m[components/ide/jetbrains/image:intellij-latest] [0m
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#3 [internal] load metadata for cgr.dev/chainguard/wolfi-base:latest@sha256:153c0ba4dd4ef9272ed7440e8f2ffa233b09de3e24a36b490d2a10d750aaaddf
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#3 DONE 0.0s
+[90m[components/ide/jetbrains/image:intellij-latest] [0m
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#4 [base_builder 1/2] FROM cgr.dev/chainguard/wolfi-base:latest@sha256:153c0ba4dd4ef9272ed7440e8f2ffa233b09de3e24a36b490d2a10d750aaaddf
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#4 DONE 0.0s
+[90m[components/ide/jetbrains/image:intellij-latest] [0m
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#5 [base_builder 2/2] RUN mkdir /ide-desktop
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#5 CACHED
+[90m[components/ide/jetbrains/image:intellij-latest] [0m
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#6 [stage-1 1/4] COPY --from=base_builder --chown=33333:33333 /ide-desktop/ /ide-desktop/
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#6 CACHED
+[90m[components/ide/jetbrains/image:intellij-latest] [0m
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#7 [internal] load build context
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#7 transferring context: 1.89GB 50.4s done
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#7 DONE 50.5s
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#8 [stage-1 2/4] COPY --chown=33333:33333 supervisor-ide-config_webstorm-latest.json /ide-desktop/supervisor-ide-config.json
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#7 transferring context: 1.74GB 40.5s
+[90m[components/ide/jetbrains/image:rubymine] [0m#7 transferring context: 1.94GB 50.6s
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#8 DONE 2.7s
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#9 [stage-1 3/4] COPY --chown=33333:33333 components-ide-jetbrains-image--download-webstorm-latest/backend /ide-desktop/webstorm-latest/backend
+[90m[components/ide/jetbrains/image:clion] [0m#7 transferring context: 845.99MB 30.1s
+[90m[components/ide/jetbrains/image:goland-latest] [0m#7 transferring context: 2.10GB 50.6s
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#7 transferring context: 232.49MB 5.0s
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#7 transferring context: 1.93GB 45.6s
+[90m[components/ide/jetbrains/image:rubymine] [0m#7 transferring context: 2.05GB 55.8s
+[90m[components/ide/jetbrains/image:goland-latest] [0m#7 transferring context: 2.22GB 52.6s done
+[90m[components/ide/jetbrains/image:goland-latest] [0m#7 DONE 52.6s
+[90m[components/ide/jetbrains/image:goland-latest] [0m
+[90m[components/ide/jetbrains/image:goland-latest] [0m#8 [stage-1 2/4] COPY --chown=33333:33333 supervisor-ide-config_goland-latest.json /ide-desktop/supervisor-ide-config.json
+[90m[components/ide/jetbrains/image:clion] [0m#7 transferring context: 1.11GB 35.2s
+[90m[components/ide/jetbrains/image:rubymine] [0m#7 transferring context: 2.16GB 59.5s done
+[90m[components/ide/jetbrains/image:rubymine] [0m#7 DONE 59.9s
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#7 transferring context: 728.53MB 10.0s
+[90m[components/ide/jetbrains/image:rubymine] [0m
+[90m[components/ide/jetbrains/image:rubymine] [0m#8 [stage-1 2/4] COPY --chown=33333:33333 supervisor-ide-config_rubymine.json /ide-desktop/supervisor-ide-config.json
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#7 transferring context: 1.99GB 50.6s
+[90m[components/ide/jetbrains/image:rubymine] [0m#8 DONE 3.0s
+[90m[components/ide/jetbrains/image:goland-latest] [0m#8 DONE 7.4s
+[90m[components/ide/jetbrains/image:goland-latest] [0m
+[90m[components/ide/jetbrains/image:goland-latest] [0m#9 [stage-1 3/4] COPY --chown=33333:33333 components-ide-jetbrains-image--download-goland-latest/backend /ide-desktop/goland-latest/backend
+[90m[components/ide/jetbrains/image:clion] [0m#7 transferring context: 1.27GB 40.2s
+[90m[components/ide/jetbrains/image:rubymine] [0m
+[90m[components/ide/jetbrains/image:rubymine] [0m#9 [stage-1 3/4] COPY --chown=33333:33333 components-ide-jetbrains-image--download-rubymine/backend /ide-desktop/rubymine/backend
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#7 transferring context: 996.97MB 15.1s
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#7 transferring context: 2.09GB 55.7s
+[90m[components/ide/jetbrains/image:clion] [0m#7 transferring context: 1.62GB 45.3s
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#7 transferring context: 1.24GB 20.1s
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#7 transferring context: 2.26GB 60.7s
+[90m[components/ide/jetbrains/image:clion] [0m#7 transferring context: 1.81GB 50.4s
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#7 transferring context: 1.44GB 25.2s
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#7 transferring context: 2.38GB 65.8s
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#7 transferring context: 2.38GB 65.9s done
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#7 DONE 67.5s
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#8 [stage-1 2/4] COPY --chown=33333:33333 supervisor-ide-config_pycharm-latest.json /ide-desktop/supervisor-ide-config.json
+[90m[components/ide/jetbrains/image:clion] [0m#7 transferring context: 2.02GB 55.5s
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#8 DONE 1.1s
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#9 [stage-1 3/4] COPY --chown=33333:33333 components-ide-jetbrains-image--download-pycharm-latest/backend /ide-desktop/pycharm-latest/backend
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#7 transferring context: 1.76GB 30.3s
+[90m[components/ide/jetbrains/image:clion] [0m#7 transferring context: 2.37GB 60.6s
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#7 transferring context: 2.06GB 35.4s
+[90m[components/ide/jetbrains/image:clion] [0m#7 transferring context: 2.49GB 65.7s
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#7 transferring context: 2.42GB 40.4s
+[90m[components/ide/jetbrains/image:clion] [0m#7 transferring context: 2.50GB 70.8s
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#7 transferring context: 2.72GB 45.4s
+[90m[components/ide/jetbrains/image:clion] [0m#7 transferring context: 2.66GB 75.8s
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#7 transferring context: 3.08GB 50.5s
+[90m[components/ide/jetbrains/image:clion] [0m#7 transferring context: 2.80GB 79.1s done
+[90m[components/ide/jetbrains/image:clion] [0m#7 DONE 79.2s
+[90m[components/ide/jetbrains/image:clion] [0m
+[90m[components/ide/jetbrains/image:clion] [0m#8 [stage-1 2/4] COPY --chown=33333:33333 supervisor-ide-config_clion.json /ide-desktop/supervisor-ide-config.json
+[90m[components/ide/jetbrains/image:clion] [0m#8 DONE 1.6s
+[90m[components/ide/jetbrains/image:clion] [0m
+[90m[components/ide/jetbrains/image:clion] [0m#9 [stage-1 3/4] COPY --chown=33333:33333 components-ide-jetbrains-image--download-clion/backend /ide-desktop/clion/backend
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#7 transferring context: 3.50GB 55.6s
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#7 transferring context: 3.78GB 60.7s
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#7 transferring context: 3.78GB 60.9s done
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#7 DONE 60.9s
+[90m[components/ide/jetbrains/image:intellij-latest] [0m
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#8 [stage-1 2/4] COPY --chown=33333:33333 supervisor-ide-config_intellij-latest.json /ide-desktop/supervisor-ide-config.json
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#8 DONE 0.8s
+[90m[components/ide/jetbrains/image:intellij-latest] [0m
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#9 [stage-1 3/4] COPY --chown=33333:33333 components-ide-jetbrains-image--download-intellij-latest/backend /ide-desktop/intellij-latest/backend
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#9 DONE 65.9s
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#10 [stage-1 4/4] COPY --chown=33333:33333 components-ide-jetbrains-cli--app/cli /ide-desktop/webstorm-latest/bin/idea-cli
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#10 DONE 0.5s
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#11 exporting to image
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#11 exporting layers
+[90m[components/ide/jetbrains/image:goland-latest] [0m#9 DONE 66.2s
+[90m[components/ide/jetbrains/image:goland-latest] [0m
+[90m[components/ide/jetbrains/image:goland-latest] [0m#10 [stage-1 4/4] COPY --chown=33333:33333 components-ide-jetbrains-cli--app/cli /ide-desktop/goland-latest/bin/idea-cli
+[90m[components/ide/jetbrains/image:goland-latest] [0m#10 DONE 0.2s
+[90m[components/ide/jetbrains/image:goland-latest] [0m
+[90m[components/ide/jetbrains/image:goland-latest] [0m#11 exporting to image
+[90m[components/ide/jetbrains/image:goland-latest] [0m#11 exporting layers
+[90m[components/ide/jetbrains/image:rubymine] [0m#9 DONE 79.0s
+[90m[components/ide/jetbrains/image:rubymine] [0m
+[90m[components/ide/jetbrains/image:rubymine] [0m#10 [stage-1 4/4] COPY --chown=33333:33333 components-ide-jetbrains-cli--app/cli /ide-desktop/rubymine/bin/idea-cli
+[90m[components/ide/jetbrains/image:rubymine] [0m#10 DONE 0.3s
+[90m[components/ide/jetbrains/image:rubymine] [0m
+[90m[components/ide/jetbrains/image:rubymine] [0m#11 exporting to image
+[90m[components/ide/jetbrains/image:rubymine] [0m#11 exporting layers
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#9 DONE 74.7s
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#10 [stage-1 4/4] COPY --chown=33333:33333 components-ide-jetbrains-cli--app/cli /ide-desktop/pycharm-latest/bin/idea-cli
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#10 DONE 0.4s
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#11 exporting to image
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#11 exporting layers
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#11 exporting layers 35.0s done
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#11 writing image sha256:815183d5f9570f12fcb01c33d8e2745131010147fd5f60e05d00e2332753577e done
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#11 naming to docker.io/library/71a69da8da0ec484db76c28969d2beafbf0a593f
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#11 naming to docker.io/library/71a69da8da0ec484db76c28969d2beafbf0a593f 0.0s done
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#11 DONE 35.0s
+[90m[components/ide/jetbrains/image:goland-latest] [0m#11 exporting layers 35.5s done
+[90m[components/ide/jetbrains/image:goland-latest] [0m#11 writing image sha256:04e651985e4935fdea1eaee6f3ecacd2e5624655d655ac47795a5663913007c3 0.0s done
+[90m[components/ide/jetbrains/image:goland-latest] [0m#11 naming to docker.io/library/d86beace9eef46bdf5ecde044156fb457bfc4ed8 done
+[90m[components/ide/jetbrains/image:goland-latest] [0m#11 DONE 35.5s
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#9 DONE 60.5s
+[90m[components/ide/jetbrains/image:intellij-latest] [0m
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#10 [stage-1 4/4] COPY --chown=33333:33333 components-ide-jetbrains-cli--app/cli /ide-desktop/intellij-latest/bin/idea-cli
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#10 DONE 0.2s
+[90m[components/ide/jetbrains/image:intellij-latest] [0m
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#11 exporting to image
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#11 exporting layers
+[90m[components/ide/jetbrains/image:clion] [0m#9 DONE 74.2s
+[90m[components/ide/jetbrains/image:clion] [0m
+[90m[components/ide/jetbrains/image:clion] [0m#10 [stage-1 4/4] COPY --chown=33333:33333 components-ide-jetbrains-cli--app/cli /ide-desktop/clion/bin/idea-cli
+[90m[components/ide/jetbrains/image:clion] [0m#10 DONE 0.2s
+[90m[components/ide/jetbrains/image:clion] [0m
+[90m[components/ide/jetbrains/image:clion] [0m#11 exporting to image
+[90m[components/ide/jetbrains/image:clion] [0m#11 exporting layers
+[90m[components/ide/jetbrains/image:rubymine] [0m#11 exporting layers 38.2s done
+[90m[components/ide/jetbrains/image:rubymine] [0m#11 writing image sha256:122b9fed550a4dc506a7d9c883a985e6d1a9a689bf988b0c8d3b6ffb15fc33fb done
+[90m[components/ide/jetbrains/image:rubymine] [0m#11 naming to docker.io/library/0b166f3d60f6934ed8aee9895c129c78ad46efdf done
+[90m[components/ide/jetbrains/image:rubymine] [0m#11 DONE 38.2s
+[90m[components/ide/jetbrains/image:webstorm-latest] [0mThe push refers to repository [registry.cn-beijing.aliyuncs.com/self-build-gitpod/ide/webstorm]
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m1a3e14675156: Preparing
+[90m[components/ide/jetbrains/image:webstorm-latest] [0ma3dce13c1340: Preparing
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m94c1e46a1a84: Preparing
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m91869c89fdb2: Preparing
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#11 exporting layers 30.9s done
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#11 writing image sha256:d2d02011ae4179669472e7532656df7d056f03b83d19d16eb6e8b560606a53ab done
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#11 naming to docker.io/library/392cb54ea416f417d4922dc4b68882cd62b81e2d done
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m#11 DONE 30.9s
+[90m[components/ide/jetbrains/image:webstorm-latest] [0mdenied: requested access to the resource is denied
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m[0;31mpackage build failed[0m
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m[1;37mReason:[0m exit status 1
+[0;31mbuild failed[0m
+[1;37mReason:[0m build failed
+time="2023-05-12T05:38:48Z" level=fatal msg="build failed"
+leeway build components/ide/jetbrains/launcher:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib                  [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol/go:lib         [90m(version 1fa3b26ccbc90832d264edf62bd3340753bb23f7)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:gitpod-schema  [90m(version 3832e8872d751eca5bd2028c5a907c6b266c75c3)[0m
+[32m📦  cached locally[0m  components/supervisor-api/go:lib          [90m(version 6505b1a01e6e7b434713f4944dcab84b18d89b56)[0m
+[32m📦  cached locally[0m  dev/addlicense:app                        [90m(version c322ba901584f00744aef2db3f81d8d0e5c0512b)[0m
+[33m🔧  build[0m           components/ide/jetbrains/launcher:app     [90m(version 4fead6a045ae5e909f3c5faab8c23392806d2564)[0m
+[33m🔧  build[0m           components/ide/jetbrains/launcher:docker  [90m(version 1d0bf0b6f84133ab628b0efdd2e96d3f9c249c55)[0m
+
+[90m[components/ide/jetbrains/launcher:app] [0m[33mbuild started[0m [0;90m(version 4fead6a045ae5e909f3c5faab8c23392806d2564)[0m
+[90m[components/ide/jetbrains/launcher:app] [0mlevel=error msg="[linters_context] typechecking error: pattern ./...: directory prefix . does not contain main module or its selected dependencies"
+[90m[components/ide/jetbrains/launcher:app] [0m[0;31mpackage build failed[0m
+[90m[components/ide/jetbrains/launcher:app] [0m[1;37mReason:[0m exit status 7
+[0;31mbuild failed[0m
+[1;37mReason:[0m build failed
+time="2023-05-12T05:38:56Z" level=fatal msg="build failed"
+leeway build components/image-builder-bob:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib                  [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/image-builder-bob:app          [90m(version dd8fc2738d5ef916288a38012cb0c81baf4b3dfd)[0m
+[32m📦  cached locally[0m  components/image-builder-bob:docker       [90m(version 7eed3ad58d645022bedec5a2935b5b6f2ae4c3f0)[0m
+[32m📦  cached locally[0m  components/image-builder-bob:runc-facade  [90m(version 25b0a179ec500d041daf3337da287ea3e3ebd317)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/image-builder-mk3:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib               [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/content-service-api/go:lib  [90m(version 96c22b2ddc7509c580fb952baff56c3a8bfd632d)[0m
+[32m📦  cached locally[0m  components/content-service:lib         [90m(version b0cd0898613468d7c336a07949eab1a254208889)[0m
+[32m📦  cached locally[0m  components/image-builder-api/go:lib    [90m(version f569f4c7ed2550ed9c4c7109c92f4e1ee0768739)[0m
+[32m📦  cached locally[0m  components/image-builder-mk3:app       [90m(version 283bf1b40ffab66b63f3f2f0e3649afbe1fdf685)[0m
+[32m📦  cached locally[0m  components/image-builder-mk3:docker    [90m(version 1da5d274b0a909e0759b3fff6349a7b8f3a6ef8a)[0m
+[32m📦  cached locally[0m  components/registry-facade-api/go:lib  [90m(version 11d9730b48b27fad322e28b6a16b495e98e43527)[0m
+[32m📦  cached locally[0m  components/supervisor-api/go:lib       [90m(version 6505b1a01e6e7b434713f4944dcab84b18d89b56)[0m
+[32m📦  cached locally[0m  components/ws-manager-api/go:lib       [90m(version d89281deca1e97571505c1d2d858062eab5c5d01)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/installation-telemetry:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib                  [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[33m🔧  build[0m           components/installation-telemetry:app     [90m(version 65fd3fcbdfd0fda567d35c9a168e9f6513043632)[0m
+[33m🔧  build[0m           components/installation-telemetry:docker  [90m(version c4c38c42eb1ad0e9865de9094c4d0c27df6bb50f)[0m
+
+[0;31mbuild failed[0m
+[1;37mReason:[0m cannot build with unresolved argument "${SEGMENT_IO_TOKEN}": use -DSEGMENT_IO_TOKEN=value to set the argument
+	${SEGMENT_IO_TOKEN} appears in components/installation-telemetry:app
+
+
+time="2023-05-12T05:38:58Z" level=fatal msg="cannot build with unresolved argument \"${SEGMENT_IO_TOKEN}\": use -DSEGMENT_IO_TOKEN=value to set the argument\n\t${SEGMENT_IO_TOKEN} appears in components/installation-telemetry:app\n\n"
+leeway build components/ipfs/ipfs-cluster:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/ipfs/ipfs-cluster:docker  [90m(version 333fd92944461b38589eab4283b40ef71d934003)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/ipfs/kubo:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/ipfs/kubo:docker  [90m(version aea0b0d2be38d5e6fc3078c748b84af50367a987)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/kots-config-check/certificate:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/kots-config-check/certificate:docker  [90m(version 5036fd1ba8921630a18cac8052b458d6a5a95ddc)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/kots-config-check/database:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/kots-config-check/database:docker  [90m(version 987db23e1ecc2d9e7b1e4a855306f7958b478b76)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/kots-config-check/registry:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/kots-config-check/registry:app     [90m(version a9893d222ea5f6c55c4b686a03c232a378894953)[0m
+[32m📦  cached locally[0m  components/kots-config-check/registry:docker  [90m(version 9e2a09c1863f22307d6e66819261e1c6b7bdcf9f)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/kots-config-check/storage:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/kots-config-check/storage:docker  [90m(version 2c0cb42421ca12fa05dcf4662638107716d454b3)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/local-app:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/gitpod-protocol/go:lib         [90m(version 1fa3b26ccbc90832d264edf62bd3340753bb23f7)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:gitpod-schema  [90m(version 3832e8872d751eca5bd2028c5a907c6b266c75c3)[0m
+[32m📦  cached locally[0m  components/local-app-api/go:lib           [90m(version e2bea9208fc0994d3cfcd8c56030b594bb4ab9c6)[0m
+[32m📦  cached locally[0m  components/supervisor-api/go:lib          [90m(version 6505b1a01e6e7b434713f4944dcab84b18d89b56)[0m
+[32m📦  cached locally[0m  dev/addlicense:app                        [90m(version c322ba901584f00744aef2db3f81d8d0e5c0512b)[0m
+[33m🔧  build[0m           components/local-app:app                  [90m(version 45eb82085e143256e3f3dc414692b7fc32424df9)[0m
+[33m🔧  build[0m           components/local-app:app-darwin-amd64     [90m(version cc493f450c2dd31548d7001b00a133b377656708)[0m
+[33m🔧  build[0m           components/local-app:app-darwin-arm64     [90m(version 50aeeda78b7c8817def067f27eea8de297d37a82)[0m
+[33m🔧  build[0m           components/local-app:app-linux-amd64      [90m(version cbbed9fb62b288167c69af4b995f2fedbd70fb63)[0m
+[33m🔧  build[0m           components/local-app:app-linux-arm64      [90m(version 3f31872d41ac322799d31d61c9d0dd92ffbb4752)[0m
+[33m🔧  build[0m           components/local-app:app-windows-386      [90m(version 19e8b79267cdf788825d93c14fcf7b21e4ed15ac)[0m
+[33m🔧  build[0m           components/local-app:app-windows-amd64    [90m(version 1294b27033b7635af0429400923021f70f809366)[0m
+[33m🔧  build[0m           components/local-app:app-windows-arm64    [90m(version 7310c6946ea0895e35b0d4fa30dd73dbb6310b53)[0m
+[33m🔧  build[0m           components/local-app:docker               [90m(version 8b27530609099d387dc58abbfce8dda6a2304238)[0m
+
+[90m[components/local-app:app-linux-arm64] [0m[33mbuild started[0m [0;90m(version 3f31872d41ac322799d31d61c9d0dd92ffbb4752)[0m
+[90m[components/local-app:app-darwin-amd64] [0m[33mbuild started[0m [0;90m(version cc493f450c2dd31548d7001b00a133b377656708)[0m
+[90m[components/local-app:app-darwin-arm64] [0m[33mbuild started[0m [0;90m(version 50aeeda78b7c8817def067f27eea8de297d37a82)[0m
+[90m[components/local-app:app-windows-386] [0m[33mbuild started[0m [0;90m(version 19e8b79267cdf788825d93c14fcf7b21e4ed15ac)[0m
+[90m[components/local-app:app-windows-arm64] [0m[33mbuild started[0m [0;90m(version 7310c6946ea0895e35b0d4fa30dd73dbb6310b53)[0m
+[90m[components/local-app:app-windows-amd64] [0m[33mbuild started[0m [0;90m(version 1294b27033b7635af0429400923021f70f809366)[0m
+[90m[components/local-app:app-linux-amd64] [0m[33mbuild started[0m [0;90m(version cbbed9fb62b288167c69af4b995f2fedbd70fb63)[0m
+[90m[components/local-app:app-windows-386] [0mlevel=error msg="[linters_context] typechecking error: pattern ./...: directory prefix . does not contain main module or its selected dependencies"
+[90m[components/local-app:app-windows-386] [0m[0;31mpackage build failed[0m
+[90m[components/local-app:app-windows-386] [0m[1;37mReason:[0m exit status 7
+[0;31mbuild failed[0m
+[1;37mReason:[0m build failed
+time="2023-05-12T05:39:06Z" level=fatal msg="build failed"
+leeway build components/node-labeler:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib        [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/node-labeler:app     [90m(version 63505a04c1ac91a0cd70ed032cd17e2ec101852e)[0m
+[32m📦  cached locally[0m  components/node-labeler:docker  [90m(version e64ceae903009fd77a4f03bf3b86d4b6aa830d4d)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/openvsx-proxy:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib         [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/openvsx-proxy:app     [90m(version 7a532f216f2c9217019f3bd5a187ae9af784ad6c)[0m
+[32m📦  cached locally[0m  components/openvsx-proxy:docker  [90m(version 94f03f0d116eb9f5f98727d89d488c768701d929)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/proxy:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/proxy:docker  [90m(version 7a13f2f07c643d550bdae7063274620314780642)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/public-api-server:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib                                               [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/gitpod-db:migrations                                        [90m(version 34f80a73a6c06eda6f683bc8c8df805c6cf4c555)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol/go:lib                                      [90m(version 1fa3b26ccbc90832d264edf62bd3340753bb23f7)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:gitpod-schema                               [90m(version 3832e8872d751eca5bd2028c5a907c6b266c75c3)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:lib                                         [90m(version 6f50f84f6d574c1dae5f44fabf7fd3a6af9537d1)[0m
+[32m📦  cached locally[0m  dev/addlicense:app                                                     [90m(version c322ba901584f00744aef2db3f81d8d0e5c0512b)[0m
+[32m📦  cached locally[0m  install/installer/pkg/components/database/incluster/init:init-scripts  [90m(version bfc7aeeb1b4f5ca32780f466121a28417564d532)[0m
+[33m🔧  build[0m           components/gitpod-db/go:init-testdb                                    [90m(version a23666c1719945f81b9d5f2dfa23af1e76ead3a5)[0m
+[33m🔧  build[0m           components/gitpod-db/go:lib                                            [90m(version 8c71f1cc89ab8fb5865e75dd8f018694a0124daa)[0m
+[33m🔧  build[0m           components/gitpod-db:dbtest-init                                       [90m(version 05c1fd0eb1ccd73b78cd93ef5a1ee7e91792cd7f)[0m
+[33m🔧  build[0m           components/public-api-server:app                                       [90m(version 4b37ef4185af78c881523aa0b90995e5fcd0c47b)[0m
+[33m🔧  build[0m           components/public-api-server:docker                                    [90m(version 0e48053a3b5d27888bf32bd639377f4d3b968cba)[0m
+[33m🔧  build[0m           components/public-api/go:lib                                           [90m(version 8d5ba224c77ed3f80025ab3d7d81e3b10d52a605)[0m
+[33m🔧  build[0m           components/usage-api/go:lib                                            [90m(version d09cdbe585fb1443aa98dc8166c76771b26cda54)[0m
+
+[90m[components/public-api/go:lib] [0m[33mbuild started[0m [0;90m(version 8d5ba224c77ed3f80025ab3d7d81e3b10d52a605)[0m
+[90m[components/usage-api/go:lib] [0m[33mbuild started[0m [0;90m(version d09cdbe585fb1443aa98dc8166c76771b26cda54)[0m
+[90m[components/gitpod-db:dbtest-init] [0m[33mbuild started[0m [0;90m(version 05c1fd0eb1ccd73b78cd93ef5a1ee7e91792cd7f)[0m
+[90m[components/gitpod-db:dbtest-init] [0mmysql: [Warning] Using a password on the command line interface can be insecure.
+[90m[components/gitpod-db:dbtest-init] [0mERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)
+[90m[components/gitpod-db:dbtest-init] [0m[0;31mpackage build failed[0m
+[90m[components/gitpod-db:dbtest-init] [0m[1;37mReason:[0m exit status 1
+[0;31mbuild failed[0m
+[1;37mReason:[0m build failed
+time="2023-05-12T05:39:09Z" level=fatal msg="build failed"
+leeway build components/registry-facade:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib               [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/registry-facade-api/go:lib  [90m(version 11d9730b48b27fad322e28b6a16b495e98e43527)[0m
+[33m🔧  build[0m           components/registry-facade:app         [90m(version a03c2dac79397353b8eb20b98248bf956f2f2ffe)[0m
+[33m🔧  build[0m           components/registry-facade:docker      [90m(version 83025b7788d95a6338bd99da47e7ab480865a2ba)[0m
+
+[90m[components/registry-facade:app] [0m[33mbuild started[0m [0;90m(version a03c2dac79397353b8eb20b98248bf956f2f2ffe)[0m
+[90m[components/registry-facade:app] [0m?   	github.com/gitpod-io/gitpod/registry-facade	[no test files]
+[90m[components/registry-facade:app] [0m?   	github.com/gitpod-io/gitpod/registry-facade/cmd	[no test files]
+[90m[components/registry-facade:app] [0m# github.com/lucas-clemente/quic-go/internal/qtls
+[90m[components/registry-facade:app] [0m/root/go/pkg/mod/github.com/lucas-clemente/quic-go@v0.29.1/internal/qtls/go120.go:5:13: cannot use "The version of quic-go you're using can't be built on Go 1.20 yet. For more details, please see https://github.com/lucas-clemente/quic-go/wiki/quic-go-and-Go-versions." (untyped string constant "The version of quic-go you're using can't be built on Go 1.20 yet. F...) as int value in variable declaration
+[90m[components/registry-facade:app] [0mFAIL	github.com/gitpod-io/gitpod/registry-facade/pkg/registry [build failed]
+[90m[components/registry-facade:app] [0m?   	github.com/gitpod-io/gitpod/registry-facade/pkg/registry/mock	[no test files]
+[90m[components/registry-facade:app] [0mFAIL
+[90m[components/registry-facade:app] [0m[0;31mpackage build failed[0m
+[90m[components/registry-facade:app] [0m[1;37mReason:[0m exit status 1
+[0;31mbuild failed[0m
+[1;37mReason:[0m build failed
+time="2023-05-12T05:39:13Z" level=fatal msg="build failed"
+leeway build components/server:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/content-service-api/typescript:lib     [90m(version c71a29d0b6ae107f0aab9d73f018d87f6b7b8582)[0m
+[32m📦  cached locally[0m  components/gitpod-db:lib                          [90m(version 38d74d9aef02665fba03036289a3b12c241d21dd)[0m
+[32m📦  cached locally[0m  components/gitpod-messagebus:lib                  [90m(version c7668ac9d5b02ee05bd39f17054bba4dcbfdb780)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:lib                    [90m(version 6f50f84f6d574c1dae5f44fabf7fd3a6af9537d1)[0m
+[32m📦  cached locally[0m  components/ide-service-api/typescript:lib         [90m(version 6d35d7e42890aaaad38fc5dee2c8771bd6630954)[0m
+[32m📦  cached locally[0m  components/image-builder-api/typescript:lib       [90m(version 73db923ac5e65792066d68e65781554731285296)[0m
+[32m📦  cached locally[0m  components/public-api/typescript:lib              [90m(version 7a7d860801660f8e249d23ef7840745c85733143)[0m
+[32m📦  cached locally[0m  components/server:app                             [90m(version 7550922dd39aba7dea07492653967be8454a887f)[0m
+[32m📦  cached locally[0m  components/server:docker                          [90m(version 7ba6eca8369d37021399cabf51c0563901308d08)[0m
+[32m📦  cached locally[0m  components/supervisor-api/typescript-grpcweb:lib  [90m(version 1389d08c659682be2f91d995f72db43d07246314)[0m
+[32m📦  cached locally[0m  components/supervisor-api:proto                   [90m(version 5924ccc83491010c6320701882875f8807d6880c)[0m
+[32m📦  cached locally[0m  components/usage-api/typescript:lib               [90m(version 12a1dfb878ee98ce37f95536a46e861de03a46d2)[0m
+[32m📦  cached locally[0m  components/ws-manager-api/typescript:lib          [90m(version 3c407f78de6991d3fccfb6af70eb6bfda0bef644)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/service-waiter:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib          [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/service-waiter:app     [90m(version 3b3804ba2b777623c8382726a3f4d28eaac48975)[0m
+[32m📦  cached locally[0m  components/service-waiter:docker  [90m(version 2bad6ee4db97b9ccc28f9f7a33153c742ab871f7)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/supervisor:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib                           [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/content-service-api/go:lib              [90m(version 96c22b2ddc7509c580fb952baff56c3a8bfd632d)[0m
+[32m📦  cached locally[0m  components/content-service:lib                     [90m(version b0cd0898613468d7c336a07949eab1a254208889)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol/go:lib                  [90m(version 1fa3b26ccbc90832d264edf62bd3340753bb23f7)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:gitpod-schema           [90m(version 3832e8872d751eca5bd2028c5a907c6b266c75c3)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:lib                     [90m(version 6f50f84f6d574c1dae5f44fabf7fd3a6af9537d1)[0m
+[32m📦  cached locally[0m  components/ide-metrics-api/go:lib                  [90m(version 9cc726e368042408982db42a00c99ae057d0c188)[0m
+[32m📦  cached locally[0m  components/ide-metrics-api:proto                   [90m(version 83ee761f7c0245453e1e4ccfa8ac2dd31adebec3)[0m
+[32m📦  cached locally[0m  components/supervisor-api/go:lib                   [90m(version 6505b1a01e6e7b434713f4944dcab84b18d89b56)[0m
+[32m📦  cached locally[0m  components/supervisor-api:proto                    [90m(version 5924ccc83491010c6320701882875f8807d6880c)[0m
+[32m📦  cached locally[0m  components/ws-daemon-api/go:lib                    [90m(version 50668ec3ec5e31f546c2466c6eb5bd5cf37f52c6)[0m
+[32m📦  cached locally[0m  dev/addlicense:app                                 [90m(version c322ba901584f00744aef2db3f81d8d0e5c0512b)[0m
+[33m🔧  build[0m           components/gitpod-cli:app                          [90m(version 009836f1eb3bcc011b915ee53b4aecfa99b83cb0)[0m
+[33m🔧  build[0m           components/ide-metrics-api/typescript-grpcweb:lib  [90m(version 8344948665f3c85e26e1385d5723e12aab0adc7b)[0m
+[33m🔧  build[0m           components/public-api/go:lib                       [90m(version 8d5ba224c77ed3f80025ab3d7d81e3b10d52a605)[0m
+[33m🔧  build[0m           components/supervisor-api/typescript-grpc:lib      [90m(version 5d00de98b3c86f4b59738fe59d7316736981f051)[0m
+[33m🔧  build[0m           components/supervisor/frontend:app                 [90m(version 25bb81cd05ffc4ac0e685ac67b8d8167a6bf7cf6)[0m
+[33m🔧  build[0m           components/supervisor/openssh:app                  [90m(version 29a3572cc3f6afc5e80d9b9636436ed6cc31cfdd)[0m
+[33m🔧  build[0m           components/supervisor/openssh:docker-build         [90m(version fd53302ed0931f883f200b955ee8474c49b4b875)[0m
+[33m🔧  build[0m           components/supervisor:app                          [90m(version f8d1d5b7888b9d1a619ce0a31a1480c1f8260e62)[0m
+[33m🔧  build[0m           components/supervisor:docker                       [90m(version 3e008e0a8ef06b73da7ff4e60105604844abde8b)[0m
+
+[90m[components/supervisor/openssh:docker-build] [0m[33mbuild started[0m [0;90m(version fd53302ed0931f883f200b955ee8474c49b4b875)[0m
+[90m[components/ide-metrics-api/typescript-grpcweb:lib] [0m[33mbuild started[0m [0;90m(version 8344948665f3c85e26e1385d5723e12aab0adc7b)[0m
+[90m[components/public-api/go:lib] [0m[33mbuild started[0m [0;90m(version 8d5ba224c77ed3f80025ab3d7d81e3b10d52a605)[0m
+[90m[components/supervisor-api/typescript-grpc:lib] [0m[33mbuild started[0m [0;90m(version 5d00de98b3c86f4b59738fe59d7316736981f051)[0m
+[90m[components/supervisor-api/typescript-grpc:lib] [0myarn install v1.22.19
+[90m[components/ide-metrics-api/typescript-grpcweb:lib] [0myarn install v1.22.19
+[90m[components/ide-metrics-api/typescript-grpcweb:lib] [0mwarning Waiting for the other yarn instance to finish (826108)
+[90m[components/supervisor-api/typescript-grpc:lib] [0m[1/4] Resolving packages...
+[90m[components/supervisor/openssh:docker-build] [0m#1 [internal] load .dockerignore
+[90m[components/supervisor/openssh:docker-build] [0m#1 transferring context: 2B done
+[90m[components/supervisor/openssh:docker-build] [0m#1 DONE 0.0s
+[90m[components/supervisor/openssh:docker-build] [0m
+[90m[components/supervisor/openssh:docker-build] [0m#2 [internal] load build definition from Dockerfile
+[90m[components/supervisor/openssh:docker-build] [0m#2 transferring dockerfile: 2.35kB done
+[90m[components/supervisor/openssh:docker-build] [0m#2 DONE 0.0s
+[90m[components/supervisor/openssh:docker-build] [0m
+[90m[components/supervisor/openssh:docker-build] [0m#3 [internal] load metadata for docker.io/library/alpine:3.17
+[90m[components/supervisor-api/typescript-grpc:lib] [0m[2/4] Fetching packages...
+[90m[components/public-api/go:lib] [0mlevel=error msg="[linters_context] typechecking error: pattern ./...: directory prefix . does not contain main module or its selected dependencies"
+[90m[components/public-api/go:lib] [0m[0;31mpackage build failed[0m
+[90m[components/public-api/go:lib] [0m[1;37mReason:[0m exit status 7
+[0;31mbuild failed[0m
+[1;37mReason:[0m build failed
+[90m[components/supervisor:app] [0m[33mbuild started[0m [0;90m(version f8d1d5b7888b9d1a619ce0a31a1480c1f8260e62)[0m
+time="2023-05-12T05:39:16Z" level=fatal msg="build failed"
+leeway build components/usage:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib                                               [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/content-service-api/go:lib                                  [90m(version 96c22b2ddc7509c580fb952baff56c3a8bfd632d)[0m
+[32m📦  cached locally[0m  components/gitpod-db:migrations                                        [90m(version 34f80a73a6c06eda6f683bc8c8df805c6cf4c555)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:lib                                         [90m(version 6f50f84f6d574c1dae5f44fabf7fd3a6af9537d1)[0m
+[32m📦  cached locally[0m  install/installer/pkg/components/database/incluster/init:init-scripts  [90m(version bfc7aeeb1b4f5ca32780f466121a28417564d532)[0m
+[33m🔧  build[0m           components/gitpod-db/go:init-testdb                                    [90m(version a23666c1719945f81b9d5f2dfa23af1e76ead3a5)[0m
+[33m🔧  build[0m           components/gitpod-db/go:lib                                            [90m(version 8c71f1cc89ab8fb5865e75dd8f018694a0124daa)[0m
+[33m🔧  build[0m           components/gitpod-db:dbtest-init                                       [90m(version 05c1fd0eb1ccd73b78cd93ef5a1ee7e91792cd7f)[0m
+[33m🔧  build[0m           components/public-api/go:lib                                           [90m(version 8d5ba224c77ed3f80025ab3d7d81e3b10d52a605)[0m
+[33m🔧  build[0m           components/usage-api/go:lib                                            [90m(version d09cdbe585fb1443aa98dc8166c76771b26cda54)[0m
+[33m🔧  build[0m           components/usage:app                                                   [90m(version 642f4006fc15be3e6f838cfbb86be424bed2f4c0)[0m
+[33m🔧  build[0m           components/usage:docker                                                [90m(version e45ad95e75f6343663df9ca39cbd0e223519d836)[0m
+
+[90m[components/usage-api/go:lib] [0m[33mbuild started[0m [0;90m(version d09cdbe585fb1443aa98dc8166c76771b26cda54)[0m
+[90m[components/gitpod-db:dbtest-init] [0m[33mbuild started[0m [0;90m(version 05c1fd0eb1ccd73b78cd93ef5a1ee7e91792cd7f)[0m
+[90m[components/public-api/go:lib] [0m[33mbuild started[0m [0;90m(version 8d5ba224c77ed3f80025ab3d7d81e3b10d52a605)[0m
+[90m[components/gitpod-db:dbtest-init] [0mmysql: [Warning] Using a password on the command line interface can be insecure.
+[90m[components/gitpod-db:dbtest-init] [0mERROR 2002 (HY000): Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)
+[90m[components/gitpod-db:dbtest-init] [0m[0;31mpackage build failed[0m
+[90m[components/gitpod-db:dbtest-init] [0m[1;37mReason:[0m exit status 1
+[0;31mbuild failed[0m
+[1;37mReason:[0m build failed
+time="2023-05-12T05:39:17Z" level=fatal msg="build failed"
+leeway build components/workspace-rollout-job:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib                  [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/content-service-api/go:lib     [90m(version 96c22b2ddc7509c580fb952baff56c3a8bfd632d)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol/go:lib         [90m(version 1fa3b26ccbc90832d264edf62bd3340753bb23f7)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:gitpod-schema  [90m(version 3832e8872d751eca5bd2028c5a907c6b266c75c3)[0m
+[32m📦  cached locally[0m  components/image-builder-api/go:lib       [90m(version f569f4c7ed2550ed9c4c7109c92f4e1ee0768739)[0m
+[32m📦  cached locally[0m  components/registry-facade-api/go:lib     [90m(version 11d9730b48b27fad322e28b6a16b495e98e43527)[0m
+[32m📦  cached locally[0m  components/ws-daemon-api/go:lib           [90m(version 50668ec3ec5e31f546c2466c6eb5bd5cf37f52c6)[0m
+[32m📦  cached locally[0m  components/ws-manager-api/go:lib          [90m(version d89281deca1e97571505c1d2d858062eab5c5d01)[0m
+[32m📦  cached locally[0m  dev/addlicense:app                        [90m(version c322ba901584f00744aef2db3f81d8d0e5c0512b)[0m
+[33m🔧  build[0m           components/public-api/go:lib              [90m(version 8d5ba224c77ed3f80025ab3d7d81e3b10d52a605)[0m
+[33m🔧  build[0m           components/workspace-rollout-job:app      [90m(version a158b31f276a9519d10cafdb401593fcf81e799f)[0m
+[33m🔧  build[0m           components/workspace-rollout-job:docker   [90m(version b6ca46f6d54b9e9e646810b9cdcba2088d429205)[0m
+[33m🔧  build[0m           components/ws-manager-bridge-api/go:lib   [90m(version 48a512925b8b34a5753e7927b0dc60996446e00e)[0m
+[33m🔧  build[0m           dev/gpctl:lib                             [90m(version 98050f03c877486f3f9779cb120b71a23c507b57)[0m
+
+[90m[components/ws-manager-bridge-api/go:lib] [0m[33mbuild started[0m [0;90m(version 48a512925b8b34a5753e7927b0dc60996446e00e)[0m
+[90m[components/public-api/go:lib] [0m[33mbuild started[0m [0;90m(version 8d5ba224c77ed3f80025ab3d7d81e3b10d52a605)[0m
+[90m[components/ws-manager-bridge-api/go:lib] [0mlevel=error msg="[linters_context] typechecking error: pattern ./...: directory prefix . does not contain main module or its selected dependencies"
+[90m[components/ws-manager-bridge-api/go:lib] [0m[0;31mpackage build failed[0m
+[90m[components/ws-manager-bridge-api/go:lib] [0m[1;37mReason:[0m exit status 7
+[0;31mbuild failed[0m
+[1;37mReason:[0m build failed
+time="2023-05-12T05:39:18Z" level=fatal msg="build failed"
+leeway build components/workspacekit:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib                [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/content-service-api/go:lib   [90m(version 96c22b2ddc7509c580fb952baff56c3a8bfd632d)[0m
+[32m📦  cached locally[0m  components/workspacekit:fuse-overlayfs  [90m(version 0e3a70acf6c077c42a8c9ddfb56310fea4fce7f6)[0m
+[32m📦  cached locally[0m  components/ws-daemon-api/go:lib         [90m(version 50668ec3ec5e31f546c2466c6eb5bd5cf37f52c6)[0m
+[33m🔧  build[0m           components/workspacekit:app             [90m(version 653c58e1c73e2258980dc9f0142d69ae8446d377)[0m
+[33m🔧  build[0m           components/workspacekit:docker          [90m(version 20a5cc190a9c8a10d7857d4426cddc4f1715d408)[0m
+
+[90m[components/workspacekit:app] [0m[33mbuild started[0m [0;90m(version 653c58e1c73e2258980dc9f0142d69ae8446d377)[0m
+[90m[components/workspacekit:app] [0mrequires libseccomp > 2.5.0
+[90m[components/workspacekit:app] [0m[0;31mpackage build failed[0m
+[90m[components/workspacekit:app] [0m[1;37mReason:[0m exit status 1
+[0;31mbuild failed[0m
+[1;37mReason:[0m build failed
+time="2023-05-12T05:39:20Z" level=fatal msg="build failed"
+leeway build components/ws-daemon/seccomp-profile-installer:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/ws-daemon/seccomp-profile-installer:app      [90m(version a43fb18e4fd284a225c3ca27c40c606a87e56b5d)[0m
+[32m📦  cached locally[0m  components/ws-daemon/seccomp-profile-installer:docker   [90m(version d315149795701d6b09aed65a760c2717616c9c62)[0m
+[32m📦  cached locally[0m  components/ws-daemon/seccomp-profile-installer:profile  [90m(version 9cab06d4d957c4a7d16a80e0edf95cb7d5fa19e9)[0m
+[32m📦  cached locally[0m  components/ws-manager:userns-test-fixtures              [90m(version 337c24db94051d44e9040782c9f60c379e6f349e)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/ws-daemon:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib                  [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/content-service-api/go:lib     [90m(version 96c22b2ddc7509c580fb952baff56c3a8bfd632d)[0m
+[32m📦  cached locally[0m  components/content-service:lib            [90m(version b0cd0898613468d7c336a07949eab1a254208889)[0m
+[32m📦  cached locally[0m  components/ws-daemon-api/go:lib           [90m(version 50668ec3ec5e31f546c2466c6eb5bd5cf37f52c6)[0m
+[32m📦  cached locally[0m  components/ws-daemon/nsinsider:app        [90m(version d12268fa1f748b5cbc2389c20384fddfc8311db1)[0m
+[32m📦  cached locally[0m  components/ws-daemon:app                  [90m(version 12a1474cd62990545c235c3808be17329d6230f1)[0m
+[32m📦  cached locally[0m  components/ws-daemon:content-initializer  [90m(version c806f7cb10365aebe6a71178c51ef5a431a8ce26)[0m
+[32m📦  cached locally[0m  components/ws-daemon:docker               [90m(version 17c422dc67630f3a475daa21b4d3c73f67b8ca76)[0m
+[32m📦  cached locally[0m  components/ws-manager-api/go:lib          [90m(version d89281deca1e97571505c1d2d858062eab5c5d01)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/ws-manager-bridge:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/content-service-api/typescript:lib    [90m(version c71a29d0b6ae107f0aab9d73f018d87f6b7b8582)[0m
+[32m📦  cached locally[0m  components/gitpod-db:lib                         [90m(version 38d74d9aef02665fba03036289a3b12c241d21dd)[0m
+[32m📦  cached locally[0m  components/gitpod-messagebus:lib                 [90m(version c7668ac9d5b02ee05bd39f17054bba4dcbfdb780)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:lib                   [90m(version 6f50f84f6d574c1dae5f44fabf7fd3a6af9537d1)[0m
+[32m📦  cached locally[0m  components/ws-daemon-api/typescript:lib          [90m(version 45773cbd3b66077d489736c0b7ad4ba41905f3d9)[0m
+[32m📦  cached locally[0m  components/ws-manager-api/typescript:lib         [90m(version 3c407f78de6991d3fccfb6af70eb6bfda0bef644)[0m
+[32m📦  cached locally[0m  components/ws-manager-bridge-api/typescript:lib  [90m(version 9ec71ad36e08048edfa0b703cae362816d1dc962)[0m
+[32m📦  cached locally[0m  components/ws-manager-bridge:app                 [90m(version a6241738c536d6e300ed6202db55ca130203795d)[0m
+[32m📦  cached locally[0m  components/ws-manager-bridge:docker              [90m(version 3aa203c48c68fac2b5c8c0689fc34422b5548500)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/ws-manager-mk2:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib               [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/content-service-api/go:lib  [90m(version 96c22b2ddc7509c580fb952baff56c3a8bfd632d)[0m
+[32m📦  cached locally[0m  components/content-service:lib         [90m(version b0cd0898613468d7c336a07949eab1a254208889)[0m
+[32m📦  cached locally[0m  components/image-builder-api/go:lib    [90m(version f569f4c7ed2550ed9c4c7109c92f4e1ee0768739)[0m
+[32m📦  cached locally[0m  components/registry-facade-api/go:lib  [90m(version 11d9730b48b27fad322e28b6a16b495e98e43527)[0m
+[32m📦  cached locally[0m  components/ws-manager-api/go:lib       [90m(version d89281deca1e97571505c1d2d858062eab5c5d01)[0m
+[33m🔧  build[0m           components/ws-manager-mk2:app          [90m(version a585bcc22377fd5be2995593772a65a6de15a0b0)[0m
+[33m🔧  build[0m           components/ws-manager-mk2:docker       [90m(version e1c52725b30403dc682de29836decb589cbcadcd)[0m
+
+[90m[components/ws-manager-mk2:app] [0m[33mbuild started[0m [0;90m(version a585bcc22377fd5be2995593772a65a6de15a0b0)[0m
+[90m[components/ws-manager-mk2:app] [0m?   	github.com/gitpod-io/gitpod/ws-manager-mk2	[no test files]
+[90m[components/ws-manager-mk2:app] [0m?   	github.com/gitpod-io/gitpod/ws-manager-mk2/cmd/sample-workspace	[no test files]
+[90m[components/ws-manager-mk2:app] [0m?   	github.com/gitpod-io/gitpod/ws-manager-mk2/pkg/activity	[no test files]
+[90m[components/ws-manager-mk2:app] [0m?   	github.com/gitpod-io/gitpod/ws-manager-mk2/pkg/maintenance	[no test files]
+[90m[components/ws-manager-mk2:app] [0m?   	github.com/gitpod-io/gitpod/ws-manager-mk2/pkg/proxy	[no test files]
+[90m[components/ws-manager-mk2:app] [0m?   	github.com/gitpod-io/gitpod/ws-manager-mk2/service	[no test files]
+[90m[components/ws-manager-mk2:app] [0m=== RUN   TestAPIs
+[90m[components/ws-manager-mk2:app] [0mRunning Suite: Controller Suite - /tmp/build/components-ws-manager-mk2--app.a585bcc22377fd5be2995593772a65a6de15a0b0/controllers
+[90m[components/ws-manager-mk2:app] [0m================================================================================================================================
+[90m[components/ws-manager-mk2:app] [0mRandom Seed: [1m1683869969[0m
+[90m[components/ws-manager-mk2:app] [0m
+[90m[components/ws-manager-mk2:app] [0mWill run [1m23[0m of [1m23[0m specs
+[90m[components/ws-manager-mk2:app] [0m[38;5;243m------------------------------[0m
+[90m[components/ws-manager-mk2:app] [0m[38;5;9m[BeforeSuite] [FAILED] [0.006 seconds][0m
+[90m[components/ws-manager-mk2:app] [0m[38;5;9m[1m[BeforeSuite] [0m
+[90m[components/ws-manager-mk2:app] [0m[38;5;243m/tmp/build/components-ws-manager-mk2--app.a585bcc22377fd5be2995593772a65a6de15a0b0/controllers/suite_test.go:59[0m
+[90m[components/ws-manager-mk2:app] [0m
+[90m[components/ws-manager-mk2:app] [0m  [38;5;243mTimeline >>[0m
+[90m[components/ws-manager-mk2:app] [0m  [1mSTEP:[0m bootstrapping test environment [38;5;243m@ 05/12/23 05:39:29.571[0m
+[90m[components/ws-manager-mk2:app] [0m  2023-05-12T05:39:29Z	DEBUG	controller-runtime.test-env	starting control plane
+[90m[components/ws-manager-mk2:app] [0m  2023-05-12T05:39:29Z	ERROR	controller-runtime.test-env	unable to start the controlplane	{"tries": 0, "error": "fork/exec /usr/local/kubebuilder/bin/etcd: no such file or directory"}
+[90m[components/ws-manager-mk2:app] [0m  sigs.k8s.io/controller-runtime/pkg/envtest.(*Environment).startControlPlane
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.14.6/pkg/envtest/server.go:329
+[90m[components/ws-manager-mk2:app] [0m  sigs.k8s.io/controller-runtime/pkg/envtest.(*Environment).Start
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.14.6/pkg/envtest/server.go:259
+[90m[components/ws-manager-mk2:app] [0m  github.com/gitpod-io/gitpod/ws-manager-mk2/controllers.glob..func1
+[90m[components/ws-manager-mk2:app] [0m  	/tmp/build/components-ws-manager-mk2--app.a585bcc22377fd5be2995593772a65a6de15a0b0/controllers/suite_test.go:70
+[90m[components/ws-manager-mk2:app] [0m  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/github.com/onsi/ginkgo/v2@v2.8.0/internal/node.go:463
+[90m[components/ws-manager-mk2:app] [0m  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/github.com/onsi/ginkgo/v2@v2.8.0/internal/suite.go:854
+[90m[components/ws-manager-mk2:app] [0m  2023-05-12T05:39:29Z	ERROR	controller-runtime.test-env	unable to start the controlplane	{"tries": 1, "error": "fork/exec /usr/local/kubebuilder/bin/etcd: no such file or directory"}
+[90m[components/ws-manager-mk2:app] [0m  sigs.k8s.io/controller-runtime/pkg/envtest.(*Environment).startControlPlane
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.14.6/pkg/envtest/server.go:329
+[90m[components/ws-manager-mk2:app] [0m  sigs.k8s.io/controller-runtime/pkg/envtest.(*Environment).Start
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.14.6/pkg/envtest/server.go:259
+[90m[components/ws-manager-mk2:app] [0m  github.com/gitpod-io/gitpod/ws-manager-mk2/controllers.glob..func1
+[90m[components/ws-manager-mk2:app] [0m  	/tmp/build/components-ws-manager-mk2--app.a585bcc22377fd5be2995593772a65a6de15a0b0/controllers/suite_test.go:70
+[90m[components/ws-manager-mk2:app] [0m  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/github.com/onsi/ginkgo/v2@v2.8.0/internal/node.go:463
+[90m[components/ws-manager-mk2:app] [0m  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/github.com/onsi/ginkgo/v2@v2.8.0/internal/suite.go:854
+[90m[components/ws-manager-mk2:app] [0m  2023-05-12T05:39:29Z	ERROR	controller-runtime.test-env	unable to start the controlplane	{"tries": 2, "error": "fork/exec /usr/local/kubebuilder/bin/etcd: no such file or directory"}
+[90m[components/ws-manager-mk2:app] [0m  sigs.k8s.io/controller-runtime/pkg/envtest.(*Environment).startControlPlane
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.14.6/pkg/envtest/server.go:329
+[90m[components/ws-manager-mk2:app] [0m  sigs.k8s.io/controller-runtime/pkg/envtest.(*Environment).Start
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.14.6/pkg/envtest/server.go:259
+[90m[components/ws-manager-mk2:app] [0m  github.com/gitpod-io/gitpod/ws-manager-mk2/controllers.glob..func1
+[90m[components/ws-manager-mk2:app] [0m  	/tmp/build/components-ws-manager-mk2--app.a585bcc22377fd5be2995593772a65a6de15a0b0/controllers/suite_test.go:70
+[90m[components/ws-manager-mk2:app] [0m  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/github.com/onsi/ginkgo/v2@v2.8.0/internal/node.go:463
+[90m[components/ws-manager-mk2:app] [0m  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/github.com/onsi/ginkgo/v2@v2.8.0/internal/suite.go:854
+[90m[components/ws-manager-mk2:app] [0m  2023-05-12T05:39:29Z	ERROR	controller-runtime.test-env	unable to start the controlplane	{"tries": 3, "error": "fork/exec /usr/local/kubebuilder/bin/etcd: no such file or directory"}
+[90m[components/ws-manager-mk2:app] [0m  sigs.k8s.io/controller-runtime/pkg/envtest.(*Environment).startControlPlane
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.14.6/pkg/envtest/server.go:329
+[90m[components/ws-manager-mk2:app] [0m  sigs.k8s.io/controller-runtime/pkg/envtest.(*Environment).Start
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.14.6/pkg/envtest/server.go:259
+[90m[components/ws-manager-mk2:app] [0m  github.com/gitpod-io/gitpod/ws-manager-mk2/controllers.glob..func1
+[90m[components/ws-manager-mk2:app] [0m  	/tmp/build/components-ws-manager-mk2--app.a585bcc22377fd5be2995593772a65a6de15a0b0/controllers/suite_test.go:70
+[90m[components/ws-manager-mk2:app] [0m  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/github.com/onsi/ginkgo/v2@v2.8.0/internal/node.go:463
+[90m[components/ws-manager-mk2:app] [0m  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/github.com/onsi/ginkgo/v2@v2.8.0/internal/suite.go:854
+[90m[components/ws-manager-mk2:app] [0m  2023-05-12T05:39:29Z	ERROR	controller-runtime.test-env	unable to start the controlplane	{"tries": 4, "error": "fork/exec /usr/local/kubebuilder/bin/etcd: no such file or directory"}
+[90m[components/ws-manager-mk2:app] [0m  sigs.k8s.io/controller-runtime/pkg/envtest.(*Environment).startControlPlane
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.14.6/pkg/envtest/server.go:329
+[90m[components/ws-manager-mk2:app] [0m  sigs.k8s.io/controller-runtime/pkg/envtest.(*Environment).Start
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.14.6/pkg/envtest/server.go:259
+[90m[components/ws-manager-mk2:app] [0m  github.com/gitpod-io/gitpod/ws-manager-mk2/controllers.glob..func1
+[90m[components/ws-manager-mk2:app] [0m  	/tmp/build/components-ws-manager-mk2--app.a585bcc22377fd5be2995593772a65a6de15a0b0/controllers/suite_test.go:70
+[90m[components/ws-manager-mk2:app] [0m  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/github.com/onsi/ginkgo/v2@v2.8.0/internal/node.go:463
+[90m[components/ws-manager-mk2:app] [0m  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/github.com/onsi/ginkgo/v2@v2.8.0/internal/suite.go:854
+[90m[components/ws-manager-mk2:app] [0m  [38;5;9m[FAILED][0m in [BeforeSuite] - /tmp/build/components-ws-manager-mk2--app.a585bcc22377fd5be2995593772a65a6de15a0b0/controllers/suite_test.go:71 [38;5;243m@ 05/12/23 05:39:29.577[0m
+[90m[components/ws-manager-mk2:app] [0m  [38;5;243m<< Timeline[0m
+[90m[components/ws-manager-mk2:app] [0m
+[90m[components/ws-manager-mk2:app] [0m  [38;5;9m[FAILED] Unexpected error:
+[90m[components/ws-manager-mk2:app] [0m      <*fmt.wrapError | 0xc0005171e0>: {
+[90m[components/ws-manager-mk2:app] [0m          msg: "unable to start control plane itself: failed to start the controlplane. retried 5 times: fork/exec /usr/local/kubebuilder/bin/etcd: no such file or directory",
+[90m[components/ws-manager-mk2:app] [0m          err: <*fmt.wrapError | 0xc0005171c0>{
+[90m[components/ws-manager-mk2:app] [0m              msg: "failed to start the controlplane. retried 5 times: fork/exec /usr/local/kubebuilder/bin/etcd: no such file or directory",
+[90m[components/ws-manager-mk2:app] [0m              err: <*fs.PathError | 0xc00052aea0>{
+[90m[components/ws-manager-mk2:app] [0m                  Op: "fork/exec",
+[90m[components/ws-manager-mk2:app] [0m                  Path: "/usr/local/kubebuilder/bin/etcd",
+[90m[components/ws-manager-mk2:app] [0m                  Err: <syscall.Errno>0x2,
+[90m[components/ws-manager-mk2:app] [0m              },
+[90m[components/ws-manager-mk2:app] [0m          },
+[90m[components/ws-manager-mk2:app] [0m      }
+[90m[components/ws-manager-mk2:app] [0m      unable to start control plane itself: failed to start the controlplane. retried 5 times: fork/exec /usr/local/kubebuilder/bin/etcd: no such file or directory
+[90m[components/ws-manager-mk2:app] [0m  occurred[0m
+[90m[components/ws-manager-mk2:app] [0m  [38;5;9mIn [1m[BeforeSuite][0m[38;5;9m at: [1m/tmp/build/components-ws-manager-mk2--app.a585bcc22377fd5be2995593772a65a6de15a0b0/controllers/suite_test.go:71[0m [38;5;243m@ 05/12/23 05:39:29.577[0m
+[90m[components/ws-manager-mk2:app] [0m[38;5;243m------------------------------[0m
+[90m[components/ws-manager-mk2:app] [0m[38;5;13m[AfterSuite] [PANICKED] [0.000 seconds][0m
+[90m[components/ws-manager-mk2:app] [0m[38;5;13m[1m[AfterSuite] [0m
+[90m[components/ws-manager-mk2:app] [0m[38;5;243m/tmp/build/components-ws-manager-mk2--app.a585bcc22377fd5be2995593772a65a6de15a0b0/controllers/suite_test.go:178[0m
+[90m[components/ws-manager-mk2:app] [0m
+[90m[components/ws-manager-mk2:app] [0m  [38;5;13m[PANICKED] Test Panicked[0m
+[90m[components/ws-manager-mk2:app] [0m  [38;5;13mIn [1m[AfterSuite][0m[38;5;13m at: [1m/snap/go/current/src/runtime/panic.go:260[0m [38;5;243m@ 05/12/23 05:39:29.577[0m
+[90m[components/ws-manager-mk2:app] [0m
+[90m[components/ws-manager-mk2:app] [0m  [38;5;13mruntime error: invalid memory address or nil pointer dereference[0m
+[90m[components/ws-manager-mk2:app] [0m
+[90m[components/ws-manager-mk2:app] [0m  [38;5;13mFull Stack Trace[0m
+[90m[components/ws-manager-mk2:app] [0m    github.com/gitpod-io/gitpod/ws-manager-mk2/controllers.glob..func2()
+[90m[components/ws-manager-mk2:app] [0m    	/tmp/build/components-ws-manager-mk2--app.a585bcc22377fd5be2995593772a65a6de15a0b0/controllers/suite_test.go:179 +0x1b
+[90m[components/ws-manager-mk2:app] [0m[38;5;243m------------------------------[0m
+[90m[components/ws-manager-mk2:app] [0m
+[90m[components/ws-manager-mk2:app] [0m[38;5;9m[1mSummarizing 2 Failures:[0m
+[90m[components/ws-manager-mk2:app] [0m  [38;5;9m[FAIL][0m [38;5;9m[1m[BeforeSuite] [0m
+[90m[components/ws-manager-mk2:app] [0m  [38;5;243m/tmp/build/components-ws-manager-mk2--app.a585bcc22377fd5be2995593772a65a6de15a0b0/controllers/suite_test.go:71[0m
+[90m[components/ws-manager-mk2:app] [0m  [38;5;13m[PANICKED!][0m [38;5;13m[1m[AfterSuite] [0m
+[90m[components/ws-manager-mk2:app] [0m  [38;5;243m/snap/go/current/src/runtime/panic.go:260[0m
+[90m[components/ws-manager-mk2:app] [0m
+[90m[components/ws-manager-mk2:app] [0m[38;5;9m[1mRan 0 of 23 Specs in 0.007 seconds[0m
+[90m[components/ws-manager-mk2:app] [0m[38;5;9m[1mFAIL![0m -- [38;5;14m[1mA BeforeSuite node failed so all tests were skipped.[0m
+[90m[components/ws-manager-mk2:app] [0m--- FAIL: TestAPIs (0.01s)
+[90m[components/ws-manager-mk2:app] [0mFAIL
+[90m[components/ws-manager-mk2:app] [0mFAIL	github.com/gitpod-io/gitpod/ws-manager-mk2/controllers	0.065s
+[90m[components/ws-manager-mk2:app] [0m=== RUN   TestFirstGet
+[90m[components/ws-manager-mk2:app] [0m--- PASS: TestFirstGet (0.00s)
+[90m[components/ws-manager-mk2:app] [0m=== RUN   TestGetShutDown
+[90m[components/ws-manager-mk2:app] [0m--- PASS: TestGetShutDown (0.00s)
+[90m[components/ws-manager-mk2:app] [0m=== RUN   TestClosed
+[90m[components/ws-manager-mk2:app] [0m--- PASS: TestClosed (0.00s)
+[90m[components/ws-manager-mk2:app] [0m=== RUN   TestValidateConnections
+[90m[components/ws-manager-mk2:app] [0m--- PASS: TestValidateConnections (0.00s)
+[90m[components/ws-manager-mk2:app] [0mPASS
+[90m[components/ws-manager-mk2:app] [0mok  	github.com/gitpod-io/gitpod/ws-manager-mk2/grpcpool	(cached)
+[90m[components/ws-manager-mk2:app] [0mFAIL
+[90m[components/ws-manager-mk2:app] [0m[0;31mpackage build failed[0m
+[90m[components/ws-manager-mk2:app] [0m[1;37mReason:[0m exit status 1
+[0;31mbuild failed[0m
+[1;37mReason:[0m build failed
+time="2023-05-12T05:39:29Z" level=fatal msg="build failed"
+leeway build components/ws-manager:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib               [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/content-service-api/go:lib  [90m(version 96c22b2ddc7509c580fb952baff56c3a8bfd632d)[0m
+[32m📦  cached locally[0m  components/content-service:lib         [90m(version b0cd0898613468d7c336a07949eab1a254208889)[0m
+[32m📦  cached locally[0m  components/image-builder-api/go:lib    [90m(version f569f4c7ed2550ed9c4c7109c92f4e1ee0768739)[0m
+[32m📦  cached locally[0m  components/registry-facade-api/go:lib  [90m(version 11d9730b48b27fad322e28b6a16b495e98e43527)[0m
+[32m📦  cached locally[0m  components/ws-daemon-api/go:lib        [90m(version 50668ec3ec5e31f546c2466c6eb5bd5cf37f52c6)[0m
+[32m📦  cached locally[0m  components/ws-manager-api/go:lib       [90m(version d89281deca1e97571505c1d2d858062eab5c5d01)[0m
+[32m📦  cached locally[0m  components/ws-manager:app              [90m(version 83418f4921a84792a474cfa3c1f75f73e2513bc6)[0m
+[32m📦  cached locally[0m  components/ws-manager:docker           [90m(version 48c678786153c9829a606e692827f0a905c8feb3)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/ws-proxy:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib               [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/content-service-api/go:lib  [90m(version 96c22b2ddc7509c580fb952baff56c3a8bfd632d)[0m
+[32m📦  cached locally[0m  components/content-service:lib         [90m(version b0cd0898613468d7c336a07949eab1a254208889)[0m
+[32m📦  cached locally[0m  components/registry-facade-api/go:lib  [90m(version 11d9730b48b27fad322e28b6a16b495e98e43527)[0m
+[32m📦  cached locally[0m  components/supervisor-api/go:lib       [90m(version 6505b1a01e6e7b434713f4944dcab84b18d89b56)[0m
+[32m📦  cached locally[0m  components/ws-manager-api/go:lib       [90m(version d89281deca1e97571505c1d2d858062eab5c5d01)[0m
+[32m📦  cached locally[0m  components/ws-proxy:app                [90m(version c8f4bc5cbbab18d1e584cf5d292c8416f415e811)[0m
+[32m📦  cached locally[0m  components/ws-proxy:docker             [90m(version 6ec35aef52c54230b12e5655cd9d4427f3bf518b)[0m
+
+
+[0;32mbuild succeded[0m
