@@ -1,0 +1,1508 @@
+leeway build components/blobserve:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib               [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/registry-facade-api/go:lib  [90m(version 11d9730b48b27fad322e28b6a16b495e98e43527)[0m
+[33m🔧  build[0m           components/blobserve:app               [90m(version f11e41a411b6300ae7a8f6b5545f0e92bf7a356a)[0m
+[33m🔧  build[0m           components/blobserve:docker            [90m(version 8bae6ab6b8841284f019d2469613c7b8254477d7)[0m
+[33m🔧  build[0m           components/registry-facade:lib         [90m(version f17d2b5ceb0629422c004f66a9e5d290873fc317)[0m
+
+[90m[components/registry-facade:lib] [0m[33mbuild started[0m [0;90m(version f17d2b5ceb0629422c004f66a9e5d290873fc317)[0m
+[90m[components/registry-facade:lib] [0m# github.com/lucas-clemente/quic-go/internal/qtls
+[90m[components/registry-facade:lib] [0m/root/go/pkg/mod/github.com/lucas-clemente/quic-go@v0.29.1/internal/qtls/go120.go:5:13: cannot use "The version of quic-go you're using can't be built on Go 1.20 yet. For more details, please see https://github.com/lucas-clemente/quic-go/wiki/quic-go-and-Go-versions." (untyped string constant "The version of quic-go you're using can't be built on Go 1.20 yet. F...) as int value in variable declaration
+[90m[components/registry-facade:lib] [0mFAIL	github.com/gitpod-io/gitpod/registry-facade/pkg/registry [build failed]
+[90m[components/registry-facade:lib] [0m?   	github.com/gitpod-io/gitpod/registry-facade/pkg/registry/mock	[no test files]
+[90m[components/registry-facade:lib] [0mFAIL
+[90m[components/registry-facade:lib] [0m[0;31mpackage build failed[0m
+[90m[components/registry-facade:lib] [0m[1;37mReason:[0m exit status 1
+[0;31mbuild failed[0m
+[1;37mReason:[0m build failed
+time="2023-05-12T08:44:03Z" level=fatal msg="build failed"
+leeway build components/content-service:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib               [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/content-service-api/go:lib  [90m(version 96c22b2ddc7509c580fb952baff56c3a8bfd632d)[0m
+[32m📦  cached locally[0m  components/content-service:app         [90m(version e36b3a19d8d8ea53d07cf14099cf575b19f2e02e)[0m
+[32m📦  cached locally[0m  components/content-service:docker      [90m(version 9a708f9aa03580ef49b725161ac328315f3d6e22)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/dashboard:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/dashboard:app                  [90m(version eb31b40fcdeadcd61c683f0c1c8d1544f130f10a)[0m
+[32m📦  cached locally[0m  components/dashboard:docker               [90m(version c0cfe5394acab7d331266d61e2a68a0a2e29f850)[0m
+[32m📦  cached locally[0m  components/dashboard:static               [90m(version 2c1a15581cfbc93dedbf573fe503e13c4dcc4312)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:gitpod-schema  [90m(version 3832e8872d751eca5bd2028c5a907c6b266c75c3)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:lib            [90m(version 6f50f84f6d574c1dae5f44fabf7fd3a6af9537d1)[0m
+[32m📦  cached locally[0m  components/public-api/typescript:lib      [90m(version 7a7d860801660f8e249d23ef7840745c85733143)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/docker-up:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib              [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/docker-up:app              [90m(version 5ad1970e603efa137381e716b4c359fa46773ece)[0m
+[32m📦  cached locally[0m  components/docker-up:bin-docker-up    [90m(version 80139dcb1af791d0b67a4c33c44e489d0f04bc2b)[0m
+[32m📦  cached locally[0m  components/docker-up:bin-runc-facade  [90m(version b2ae036099bbf3cd9877da0160c7c365c97f1b6f)[0m
+[32m📦  cached locally[0m  components/docker-up:docker           [90m(version 040663dd0c5adb0ac37ff88225d2665e3a04c5e4)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/ee/agent-smith:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib                  [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/ee/agent-smith:app             [90m(version 4778616f8d70fe71af3c096b032cd66bf1ba64cb)[0m
+[32m📦  cached locally[0m  components/ee/agent-smith:docker          [90m(version 29f5486df4f59ee4082ef1bb2cf060be153a377c)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol/go:lib         [90m(version 1fa3b26ccbc90832d264edf62bd3340753bb23f7)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:gitpod-schema  [90m(version 3832e8872d751eca5bd2028c5a907c6b266c75c3)[0m
+[32m📦  cached locally[0m  dev/addlicense:app                        [90m(version c322ba901584f00744aef2db3f81d8d0e5c0512b)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/gitpod-db:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/gitpod-db:docker      [90m(version e62cf0250951f21302e748079a00b41fc27e9f76)[0m
+[32m📦  cached locally[0m  components/gitpod-db:migrations  [90m(version 34f80a73a6c06eda6f683bc8c8df805c6cf4c555)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:lib   [90m(version 6f50f84f6d574c1dae5f44fabf7fd3a6af9537d1)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/ide-metrics:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib           [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/ide-metrics-api/go:lib  [90m(version 9cc726e368042408982db42a00c99ae057d0c188)[0m
+[32m📦  cached locally[0m  components/ide-metrics:app         [90m(version eaedb1745387855cb52193d3fd4a2e63a03573af)[0m
+[32m📦  cached locally[0m  components/ide-metrics:docker      [90m(version 3d2d838c5b0e204985171645017e38f87e9c8b58)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/ide-proxy:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/gitpod-protocol/go:lib         [90m(version 1fa3b26ccbc90832d264edf62bd3340753bb23f7)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:gitpod-schema  [90m(version 3832e8872d751eca5bd2028c5a907c6b266c75c3)[0m
+[32m📦  cached locally[0m  components/ide-proxy:docker               [90m(version 7a401620966c9cf0e5b420da12f1ac647eb18516)[0m
+[32m📦  cached locally[0m  components/local-app-api/go:lib           [90m(version e2bea9208fc0994d3cfcd8c56030b594bb4ab9c6)[0m
+[32m📦  cached locally[0m  components/local-app:app                  [90m(version 55adf583bb19af8454b1c97dbaa98a8fbc61dad9)[0m
+[32m📦  cached locally[0m  components/local-app:app-darwin-amd64     [90m(version 48242d69d41a941ad48a3f1e45909eeed0395791)[0m
+[32m📦  cached locally[0m  components/local-app:app-darwin-arm64     [90m(version 919408b918994091cf3f667ab824544f51e39f8a)[0m
+[32m📦  cached locally[0m  components/local-app:app-linux-amd64      [90m(version ac80371009fdfd2f0f123b5b5e35f437a944d1cd)[0m
+[32m📦  cached locally[0m  components/local-app:app-linux-arm64      [90m(version 91b74847b1beb5e6135dfb2eb66eb8c97432a50a)[0m
+[32m📦  cached locally[0m  components/local-app:app-windows-386      [90m(version 4cbb41883b8356f8f8c2a1c63b60abe9c892386c)[0m
+[32m📦  cached locally[0m  components/local-app:app-windows-amd64    [90m(version 6b0aec6e60eadcf7a44d626f9da5bb92bedc56d9)[0m
+[32m📦  cached locally[0m  components/local-app:app-windows-arm64    [90m(version c958d6765a57b80eaf7ebcfd775a879f13fd195d)[0m
+[32m📦  cached locally[0m  components/supervisor-api/go:lib          [90m(version 6505b1a01e6e7b434713f4944dcab84b18d89b56)[0m
+[32m📦  cached locally[0m  dev/addlicense:app                        [90m(version c322ba901584f00744aef2db3f81d8d0e5c0512b)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/ide-service:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib                  [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol/go:lib         [90m(version 1fa3b26ccbc90832d264edf62bd3340753bb23f7)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:gitpod-schema  [90m(version 3832e8872d751eca5bd2028c5a907c6b266c75c3)[0m
+[32m📦  cached locally[0m  components/ide-service-api/go:lib         [90m(version a67372d5dbb194c6defe7ca7c40fbda64e606d18)[0m
+[32m📦  cached locally[0m  components/ide-service:app                [90m(version 585782075be9225498bd4f9455cb8765b1108922)[0m
+[32m📦  cached locally[0m  components/ide-service:docker             [90m(version 5f917a743d0aa444551ee92902ed9f8f3e4c34c9)[0m
+[32m📦  cached locally[0m  dev/addlicense:app                        [90m(version c322ba901584f00744aef2db3f81d8d0e5c0512b)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/ide/code-desktop:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib                [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/ide/code-desktop/status:app  [90m(version 0fde8a9fca83f3981889b144e29bd50ed088d067)[0m
+[32m📦  cached locally[0m  components/ide/code-desktop:docker      [90m(version 624fe0787fb1ca95ac42d0fab18596b4be4a31ce)[0m
+[32m📦  cached locally[0m  components/supervisor-api/go:lib        [90m(version 6505b1a01e6e7b434713f4944dcab84b18d89b56)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/ide/code/codehelper:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib                  [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol/go:lib         [90m(version 1fa3b26ccbc90832d264edf62bd3340753bb23f7)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:gitpod-schema  [90m(version 3832e8872d751eca5bd2028c5a907c6b266c75c3)[0m
+[32m📦  cached locally[0m  components/ide/code/codehelper:app        [90m(version 846703662775c6dbba180e1483a16ed23e7a100b)[0m
+[32m📦  cached locally[0m  components/ide/code/codehelper:docker     [90m(version 301f2d880be34e406749fcd22e89af328c968b7b)[0m
+[32m📦  cached locally[0m  components/supervisor-api/go:lib          [90m(version 6505b1a01e6e7b434713f4944dcab84b18d89b56)[0m
+[32m📦  cached locally[0m  dev/addlicense:app                        [90m(version c322ba901584f00744aef2db3f81d8d0e5c0512b)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/ide/code:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/ide/code:docker  [90m(version 294fa29b2ada05f9cc7c1b4a9c3e6a49f7fd9b34)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/ide/jetbrains/backend-plugin:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/gitpod-protocol/java:lib                    [90m(version bbe33c90d80f744ab7a0bde6219e3a6f41bc6046)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/backend-plugin:docker         [90m(version a02bf6475cad6cb76f0e1c23f212e0634ad2d3dd)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/backend-plugin:latest         [90m(version 1edf02d07b86ca453f63e2ea3026aa2e8538f3e6)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/backend-plugin:plugin-latest  [90m(version 898c065e8968c510425c7bd718b1d62743b26f3e)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/backend-plugin:plugin-stable  [90m(version a33a8748d9807e6dc7ef000648328f32a7e95970)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/backend-plugin:stable         [90m(version 0715c43b9f4457f9eeafb85d44162b5373bc6e0c)[0m
+[32m📦  cached locally[0m  components/supervisor-api/java:lib                     [90m(version 24d907858b604f7907d2487a27f1b602b6727d4b)[0m
+[32m📦  cached locally[0m  components/supervisor-api:java                         [90m(version ab87682011b972d51a1fde0730ee69cf70c2bdf0)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/ide/jetbrains/image:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/ide/jetbrains/cli:app                         [90m(version 95c0c1a1b96c7e02fc109e89746d25932314cfb7)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-clion            [90m(version 4d847f2e77f992418ad992e927c96f2112619e41)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-clion-latest     [90m(version 0c35df7e266553bc60291309fc8cc06865dad003)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-goland           [90m(version 2423ff4f94a6effca119ef009c149998caedf246)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-goland-latest    [90m(version 999b8911d6d1981a3720d1c4bfaf2b5cbd4bb73c)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-intellij         [90m(version c7403349757161e7fa18bc085fea3116f36b92bb)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-intellij-latest  [90m(version ab5c403aad95043ad9bccf7abb4ec77b43a27de7)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-phpstorm         [90m(version 5d78a4db1500eb05e74e1647d1baa40c810da33d)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-phpstorm-latest  [90m(version 8783cc40a9ad437461a7771f427d01ee6e361a23)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-pycharm          [90m(version 81f9cfe0e3efa6387c627146a71159ac3b63950d)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-pycharm-latest   [90m(version 9a6044003618b90931f8a4890331d0c7a88d5b0a)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-rider            [90m(version f1859f8ec3afcb7a40cdffcf55930fa0817694b0)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-rider-latest     [90m(version 8c6214abedd1c321ccf24f8a7f1c46540e0b6826)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-rubymine         [90m(version b590a86b7f947262dd1645ef1b36775ca4bb2157)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-rubymine-latest  [90m(version d715ae658a99d98e7e9c36008e8a63250ec7e0f7)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-webstorm         [90m(version 7cffd4570bfd59e1ebab36bd2b77d3e2d62a0dcc)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/image:download-webstorm-latest  [90m(version ec74150192bf6796d57baf02171d0f13dadde39b)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:clion                     [90m(version f4ced1c393b83dd2d8e08f2153da0bf77d01689f)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:clion-latest              [90m(version 40d9e2c5339a38a99532d54d11d26d2eefc88afc)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:docker                    [90m(version ad29da0bc2785410b63d0478268056fa2b7bfbd4)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:goland                    [90m(version a7c18f67e8e38b6e2504f626a8cb330b7a144615)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:goland-latest             [90m(version d86beace9eef46bdf5ecde044156fb457bfc4ed8)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:intellij                  [90m(version 7b60384ee6806df6b66a33cf010196edd36a25ab)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:intellij-latest           [90m(version 420d4388f2641e3e7faa020ab55e294110d03f5e)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:phpstorm                  [90m(version 059c93c98ce238bbfd0de41f5f6c6d8ce5f1c9b7)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:phpstorm-latest           [90m(version 59ed4c320a8be8e17c1748b2ccaef527db761128)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:pycharm                   [90m(version 77fca91bd893a905df3c30fdab3326ceefe37c45)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:pycharm-latest            [90m(version 392cb54ea416f417d4922dc4b68882cd62b81e2d)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:rider                     [90m(version ba627801e62f3ea3a4d479ef97e56a532127e131)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:rider-latest              [90m(version 46e0a93cf051dafe5eb5821b547a4cc7d63f7289)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:rubymine                  [90m(version 0b166f3d60f6934ed8aee9895c129c78ad46efdf)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:rubymine-latest           [90m(version a6d3afbe5255a465c0db1e9f98dd73578037c0e6)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:webstorm                  [90m(version 705b6376794c7eb5c4f9a682d5d44dc00f4962ff)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:webstorm-latest           [90m(version 71a69da8da0ec484db76c28969d2beafbf0a593f)[0m
+
+[90m[components/ide/jetbrains/image:intellij] [0m[33mbuild started[0m [0;90m(version 7b60384ee6806df6b66a33cf010196edd36a25ab)[0m
+[90m[components/ide/jetbrains/image:rider-latest] [0m[33mbuild started[0m [0;90m(version 46e0a93cf051dafe5eb5821b547a4cc7d63f7289)[0m
+[90m[components/ide/jetbrains/image:clion] [0m[33mbuild started[0m [0;90m(version f4ced1c393b83dd2d8e08f2153da0bf77d01689f)[0m
+[90m[components/ide/jetbrains/image:rubymine] [0m[33mbuild started[0m [0;90m(version 0b166f3d60f6934ed8aee9895c129c78ad46efdf)[0m
+[90m[components/ide/jetbrains/image:goland-latest] [0m[33mbuild started[0m [0;90m(version d86beace9eef46bdf5ecde044156fb457bfc4ed8)[0m
+[90m[components/ide/jetbrains/image:goland] [0m[33mbuild started[0m [0;90m(version a7c18f67e8e38b6e2504f626a8cb330b7a144615)[0m
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m[33mbuild started[0m [0;90m(version 71a69da8da0ec484db76c28969d2beafbf0a593f)[0m
+[90m[components/ide/jetbrains/image:phpstorm-latest] [0m[33mbuild started[0m [0;90m(version 59ed4c320a8be8e17c1748b2ccaef527db761128)[0m
+[90m[components/ide/jetbrains/image:pycharm] [0m[33mbuild started[0m [0;90m(version 77fca91bd893a905df3c30fdab3326ceefe37c45)[0m
+[90m[components/ide/jetbrains/image:clion-latest] [0m[33mbuild started[0m [0;90m(version 40d9e2c5339a38a99532d54d11d26d2eefc88afc)[0m
+[90m[components/ide/jetbrains/image:rubymine-latest] [0m[33mbuild started[0m [0;90m(version a6d3afbe5255a465c0db1e9f98dd73578037c0e6)[0m
+[90m[components/ide/jetbrains/image:webstorm] [0m[33mbuild started[0m [0;90m(version 705b6376794c7eb5c4f9a682d5d44dc00f4962ff)[0m
+[90m[components/ide/jetbrains/image:intellij-latest] [0m[33mbuild started[0m [0;90m(version 420d4388f2641e3e7faa020ab55e294110d03f5e)[0m
+[90m[components/ide/jetbrains/image:pycharm-latest] [0m[33mbuild started[0m [0;90m(version 392cb54ea416f417d4922dc4b68882cd62b81e2d)[0m
+[90m[components/ide/jetbrains/image:phpstorm] [0m[33mbuild started[0m [0;90m(version 059c93c98ce238bbfd0de41f5f6c6d8ce5f1c9b7)[0m
+[90m[components/ide/jetbrains/image:rider] [0m[33mbuild started[0m [0;90m(version ba627801e62f3ea3a4d479ef97e56a532127e131)[0m
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#1 [internal] load .dockerignore
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#1 transferring context: 2B done
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#1 DONE 0.0s
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#2 [internal] load build definition from Dockerfile
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#2 transferring dockerfile: 1.19kB done
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#2 DONE 0.0s
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#3 [internal] load metadata for cgr.dev/chainguard/wolfi-base:latest@sha256:153c0ba4dd4ef9272ed7440e8f2ffa233b09de3e24a36b490d2a10d750aaaddf
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#3 DONE 1.3s
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#4 [base_builder 1/2] FROM cgr.dev/chainguard/wolfi-base:latest@sha256:153c0ba4dd4ef9272ed7440e8f2ffa233b09de3e24a36b490d2a10d750aaaddf
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#4 DONE 0.0s
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#5 [internal] load build context
+[90m[components/ide/jetbrains/image:phpstorm] [0m#1 [internal] load .dockerignore
+[90m[components/ide/jetbrains/image:phpstorm] [0m#1 transferring context:
+[90m[components/ide/jetbrains/image:phpstorm] [0m#1 transferring context: 2B done
+[90m[components/ide/jetbrains/image:phpstorm] [0m#1 ...
+[90m[components/ide/jetbrains/image:phpstorm] [0m
+[90m[components/ide/jetbrains/image:phpstorm] [0m#2 [internal] load build definition from Dockerfile
+[90m[components/ide/jetbrains/image:phpstorm] [0m#2 transferring dockerfile: 1.19kB 0.1s done
+[90m[components/ide/jetbrains/image:phpstorm] [0m#2 DONE 1.0s
+[90m[components/ide/jetbrains/image:phpstorm] [0m
+[90m[components/ide/jetbrains/image:phpstorm] [0m#1 [internal] load .dockerignore
+[90m[components/ide/jetbrains/image:phpstorm] [0m#1 DONE 1.3s
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#5 transferring context: 289.88kB 1.6s done
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#5 DONE 1.7s
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#6 [stage-1 2/4] COPY --chown=33333:33333 supervisor-ide-config_webstorm-latest.json /ide-desktop/supervisor-ide-config.json
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#6 CACHED
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#7 [stage-1 3/4] COPY --chown=33333:33333 components-ide-jetbrains-image--download-webstorm-latest/backend /ide-desktop/webstorm-latest/backend
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#7 CACHED
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#8 [base_builder 2/2] RUN mkdir /ide-desktop
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#8 CACHED
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#9 [stage-1 1/4] COPY --from=base_builder --chown=33333:33333 /ide-desktop/ /ide-desktop/
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#9 CACHED
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#10 [stage-1 4/4] COPY --chown=33333:33333 components-ide-jetbrains-cli--app/cli /ide-desktop/webstorm-latest/bin/idea-cli
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#10 CACHED
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#11 exporting to image
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#11 exporting layers done
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#11 writing image sha256:815183d5f9570f12fcb01c33d8e2745131010147fd5f60e05d00e2332753577e done
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#11 naming to docker.io/library/71a69da8da0ec484db76c28969d2beafbf0a593f done
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m#11 DONE 0.0s
+[90m[components/ide/jetbrains/image:phpstorm] [0m
+[90m[components/ide/jetbrains/image:phpstorm] [0m#3 [base_builder 1/2] FROM cgr.dev/chainguard/wolfi-base:latest@sha256:153c0ba4dd4ef9272ed7440e8f2ffa233b09de3e24a36b490d2a10d750aaaddf
+[90m[components/ide/jetbrains/image:phpstorm] [0m#3 DONE 0.0s
+[90m[components/ide/jetbrains/image:phpstorm] [0m
+[90m[components/ide/jetbrains/image:phpstorm] [0m#4 [internal] load metadata for cgr.dev/chainguard/wolfi-base:latest@sha256:153c0ba4dd4ef9272ed7440e8f2ffa233b09de3e24a36b490d2a10d750aaaddf
+[90m[components/ide/jetbrains/image:phpstorm] [0m#4 DONE 0.0s
+[90m[components/ide/jetbrains/image:phpstorm] [0m
+[90m[components/ide/jetbrains/image:phpstorm] [0m#5 [internal] load build context
+[90m[components/ide/jetbrains/image:phpstorm] [0m#5 transferring context: 285.07kB 0.3s done
+[90m[components/ide/jetbrains/image:phpstorm] [0m#5 DONE 0.3s
+[90m[components/ide/jetbrains/image:phpstorm] [0m
+[90m[components/ide/jetbrains/image:phpstorm] [0m#6 [base_builder 2/2] RUN mkdir /ide-desktop
+[90m[components/ide/jetbrains/image:phpstorm] [0m#6 CACHED
+[90m[components/ide/jetbrains/image:phpstorm] [0m
+[90m[components/ide/jetbrains/image:phpstorm] [0m#7 [stage-1 1/4] COPY --from=base_builder --chown=33333:33333 /ide-desktop/ /ide-desktop/
+[90m[components/ide/jetbrains/image:phpstorm] [0m#7 CACHED
+[90m[components/ide/jetbrains/image:phpstorm] [0m
+[90m[components/ide/jetbrains/image:phpstorm] [0m#8 [stage-1 2/4] COPY --chown=33333:33333 supervisor-ide-config_phpstorm.json /ide-desktop/supervisor-ide-config.json
+[90m[components/ide/jetbrains/image:phpstorm] [0m#8 CACHED
+[90m[components/ide/jetbrains/image:phpstorm] [0m
+[90m[components/ide/jetbrains/image:phpstorm] [0m#9 [stage-1 3/4] COPY --chown=33333:33333 components-ide-jetbrains-image--download-phpstorm/backend /ide-desktop/phpstorm/backend
+[90m[components/ide/jetbrains/image:phpstorm] [0m#9 CACHED
+[90m[components/ide/jetbrains/image:phpstorm] [0m
+[90m[components/ide/jetbrains/image:phpstorm] [0m#10 [stage-1 4/4] COPY --chown=33333:33333 components-ide-jetbrains-cli--app/cli /ide-desktop/phpstorm/bin/idea-cli
+[90m[components/ide/jetbrains/image:phpstorm] [0m#10 CACHED
+[90m[components/ide/jetbrains/image:phpstorm] [0m
+[90m[components/ide/jetbrains/image:phpstorm] [0m#11 exporting to image
+[90m[components/ide/jetbrains/image:phpstorm] [0m#11 exporting layers done
+[90m[components/ide/jetbrains/image:phpstorm] [0m#11 writing image sha256:841b86a06e9e9d953c732dfa5d2ced1f0a14bc28694449c3861166cc070b218a done
+[90m[components/ide/jetbrains/image:phpstorm] [0m#11 naming to docker.io/library/059c93c98ce238bbfd0de41f5f6c6d8ce5f1c9b7 done
+[90m[components/ide/jetbrains/image:phpstorm] [0m#11 DONE 0.0s
+[90m[components/ide/jetbrains/image:goland] [0m#1 [internal] load .dockerignore
+[90m[components/ide/jetbrains/image:goland] [0m#1 transferring context: 2B done
+[90m[components/ide/jetbrains/image:goland] [0m#1 DONE 0.0s
+[90m[components/ide/jetbrains/image:goland] [0m
+[90m[components/ide/jetbrains/image:goland] [0m#2 [internal] load build definition from Dockerfile
+[90m[components/ide/jetbrains/image:goland] [0m#2 transferring dockerfile: 1.19kB done
+[90m[components/ide/jetbrains/image:goland] [0m#2 DONE 0.0s
+[90m[components/ide/jetbrains/image:goland] [0m
+[90m[components/ide/jetbrains/image:goland] [0m#3 [internal] load metadata for cgr.dev/chainguard/wolfi-base:latest@sha256:153c0ba4dd4ef9272ed7440e8f2ffa233b09de3e24a36b490d2a10d750aaaddf
+[90m[components/ide/jetbrains/image:goland] [0m#3 DONE 0.0s
+[90m[components/ide/jetbrains/image:goland] [0m
+[90m[components/ide/jetbrains/image:goland] [0m#4 [base_builder 1/2] FROM cgr.dev/chainguard/wolfi-base:latest@sha256:153c0ba4dd4ef9272ed7440e8f2ffa233b09de3e24a36b490d2a10d750aaaddf
+[90m[components/ide/jetbrains/image:goland] [0m#4 DONE 0.0s
+[90m[components/ide/jetbrains/image:goland] [0m
+[90m[components/ide/jetbrains/image:goland] [0m#5 [internal] load build context
+[90m[components/ide/jetbrains/image:goland] [0m#5 transferring context: 250.44kB 0.2s done
+[90m[components/ide/jetbrains/image:goland] [0m#5 DONE 0.7s
+[90m[components/ide/jetbrains/image:goland] [0m
+[90m[components/ide/jetbrains/image:goland] [0m#6 [base_builder 2/2] RUN mkdir /ide-desktop
+[90m[components/ide/jetbrains/image:goland] [0m#6 CACHED
+[90m[components/ide/jetbrains/image:goland] [0m
+[90m[components/ide/jetbrains/image:goland] [0m#7 [stage-1 1/4] COPY --from=base_builder --chown=33333:33333 /ide-desktop/ /ide-desktop/
+[90m[components/ide/jetbrains/image:goland] [0m#7 CACHED
+[90m[components/ide/jetbrains/image:goland] [0m
+[90m[components/ide/jetbrains/image:goland] [0m#8 [stage-1 2/4] COPY --chown=33333:33333 supervisor-ide-config_goland.json /ide-desktop/supervisor-ide-config.json
+[90m[components/ide/jetbrains/image:goland] [0m#8 CACHED
+[90m[components/ide/jetbrains/image:goland] [0m
+[90m[components/ide/jetbrains/image:goland] [0m#9 [stage-1 3/4] COPY --chown=33333:33333 components-ide-jetbrains-image--download-goland/backend /ide-desktop/goland/backend
+[90m[components/ide/jetbrains/image:goland] [0m#9 CACHED
+[90m[components/ide/jetbrains/image:goland] [0m
+[90m[components/ide/jetbrains/image:goland] [0m#10 [stage-1 4/4] COPY --chown=33333:33333 components-ide-jetbrains-cli--app/cli /ide-desktop/goland/bin/idea-cli
+[90m[components/ide/jetbrains/image:goland] [0m#10 CACHED
+[90m[components/ide/jetbrains/image:goland] [0m
+[90m[components/ide/jetbrains/image:goland] [0m#11 exporting to image
+[90m[components/ide/jetbrains/image:goland] [0m#11 exporting layers done
+[90m[components/ide/jetbrains/image:goland] [0m#11 writing image sha256:270c8f58f8f37469dc60593f6b63b223730600404bdbac4736f29d22da6f4d86 done
+[90m[components/ide/jetbrains/image:goland] [0m#11 naming to docker.io/library/a7c18f67e8e38b6e2504f626a8cb330b7a144615 done
+[90m[components/ide/jetbrains/image:goland] [0m#11 DONE 0.0s
+[90m[components/ide/jetbrains/image:pycharm] [0m#1 [internal] load .dockerignore
+[90m[components/ide/jetbrains/image:pycharm] [0m#1 transferring context: 2B done
+[90m[components/ide/jetbrains/image:pycharm] [0m#1 DONE 0.0s
+[90m[components/ide/jetbrains/image:pycharm] [0m
+[90m[components/ide/jetbrains/image:pycharm] [0m#2 [internal] load build definition from Dockerfile
+[90m[components/ide/jetbrains/image:pycharm] [0m#2 transferring dockerfile: 1.19kB done
+[90m[components/ide/jetbrains/image:pycharm] [0m#2 DONE 0.0s
+[90m[components/ide/jetbrains/image:pycharm] [0m
+[90m[components/ide/jetbrains/image:pycharm] [0m#3 [internal] load metadata for cgr.dev/chainguard/wolfi-base:latest@sha256:153c0ba4dd4ef9272ed7440e8f2ffa233b09de3e24a36b490d2a10d750aaaddf
+[90m[components/ide/jetbrains/image:pycharm] [0m#3 DONE 0.0s
+[90m[components/ide/jetbrains/image:pycharm] [0m
+[90m[components/ide/jetbrains/image:pycharm] [0m#4 [base_builder 1/2] FROM cgr.dev/chainguard/wolfi-base:latest@sha256:153c0ba4dd4ef9272ed7440e8f2ffa233b09de3e24a36b490d2a10d750aaaddf
+[90m[components/ide/jetbrains/image:pycharm] [0m#4 DONE 0.0s
+[90m[components/ide/jetbrains/image:pycharm] [0m
+[90m[components/ide/jetbrains/image:pycharm] [0m#5 [internal] load build context
+[90m[components/ide/jetbrains/image:pycharm] [0m#5 transferring context: 1.07MB 3.6s done
+[90m[components/ide/jetbrains/image:pycharm] [0m#5 DONE 3.8s
+[90m[components/ide/jetbrains/image:pycharm] [0m
+[90m[components/ide/jetbrains/image:pycharm] [0m#6 [base_builder 2/2] RUN mkdir /ide-desktop
+[90m[components/ide/jetbrains/image:pycharm] [0m#6 CACHED
+[90m[components/ide/jetbrains/image:pycharm] [0m
+[90m[components/ide/jetbrains/image:pycharm] [0m#7 [stage-1 1/4] COPY --from=base_builder --chown=33333:33333 /ide-desktop/ /ide-desktop/
+[90m[components/ide/jetbrains/image:pycharm] [0m#7 CACHED
+[90m[components/ide/jetbrains/image:pycharm] [0m
+[90m[components/ide/jetbrains/image:pycharm] [0m#8 [stage-1 2/4] COPY --chown=33333:33333 supervisor-ide-config_pycharm.json /ide-desktop/supervisor-ide-config.json
+[90m[components/ide/jetbrains/image:pycharm] [0m#8 CACHED
+[90m[components/ide/jetbrains/image:pycharm] [0m
+[90m[components/ide/jetbrains/image:pycharm] [0m#9 [stage-1 3/4] COPY --chown=33333:33333 components-ide-jetbrains-image--download-pycharm/backend /ide-desktop/pycharm/backend
+[90m[components/ide/jetbrains/image:pycharm] [0m#9 CACHED
+[90m[components/ide/jetbrains/image:pycharm] [0m
+[90m[components/ide/jetbrains/image:pycharm] [0m#10 [stage-1 4/4] COPY --chown=33333:33333 components-ide-jetbrains-cli--app/cli /ide-desktop/pycharm/bin/idea-cli
+[90m[components/ide/jetbrains/image:pycharm] [0m#10 CACHED
+[90m[components/ide/jetbrains/image:pycharm] [0m
+[90m[components/ide/jetbrains/image:pycharm] [0m#11 exporting to image
+[90m[components/ide/jetbrains/image:pycharm] [0m#11 exporting layers done
+[90m[components/ide/jetbrains/image:pycharm] [0m#11 writing image sha256:02e8c273f26c811516b9bae7cfe11a1c7271e883f7a14f13c1adae565e4d9e02 done
+[90m[components/ide/jetbrains/image:pycharm] [0m#11 naming to docker.io/library/77fca91bd893a905df3c30fdab3326ceefe37c45 done
+[90m[components/ide/jetbrains/image:pycharm] [0m#11 DONE 0.0s
+[90m[components/ide/jetbrains/image:intellij] [0m#1 [internal] load .dockerignore
+[90m[components/ide/jetbrains/image:intellij] [0m#1 transferring context:
+[90m[components/ide/jetbrains/image:intellij] [0m#1 ...
+[90m[components/ide/jetbrains/image:intellij] [0m
+[90m[components/ide/jetbrains/image:intellij] [0m#2 [internal] load build definition from Dockerfile
+[90m[components/ide/jetbrains/image:intellij] [0m#2 transferring dockerfile: 1.19kB 0.0s done
+[90m[components/ide/jetbrains/image:intellij] [0m#2 DONE 0.4s
+[90m[components/ide/jetbrains/image:intellij] [0m
+[90m[components/ide/jetbrains/image:intellij] [0m#1 [internal] load .dockerignore
+[90m[components/ide/jetbrains/image:intellij] [0m#1 transferring context: 2B done
+[90m[components/ide/jetbrains/image:intellij] [0m#1 DONE 0.4s
+[90m[components/ide/jetbrains/image:intellij] [0m
+[90m[components/ide/jetbrains/image:intellij] [0m#3 [internal] load metadata for cgr.dev/chainguard/wolfi-base:latest@sha256:153c0ba4dd4ef9272ed7440e8f2ffa233b09de3e24a36b490d2a10d750aaaddf
+[90m[components/ide/jetbrains/image:intellij] [0m#3 DONE 0.0s
+[90m[components/ide/jetbrains/image:intellij] [0m
+[90m[components/ide/jetbrains/image:intellij] [0m#4 [base_builder 1/2] FROM cgr.dev/chainguard/wolfi-base:latest@sha256:153c0ba4dd4ef9272ed7440e8f2ffa233b09de3e24a36b490d2a10d750aaaddf
+[90m[components/ide/jetbrains/image:intellij] [0m#4 DONE 0.0s
+[90m[components/ide/jetbrains/image:intellij] [0m
+[90m[components/ide/jetbrains/image:intellij] [0m#5 [internal] load build context
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#1 [internal] load .dockerignore
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#1 transferring context: 2B done
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#1 DONE 0.0s
+[90m[components/ide/jetbrains/image:intellij-latest] [0m
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#2 [internal] load build definition from Dockerfile
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#2 transferring dockerfile: 1.19kB done
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#2 DONE 0.0s
+[90m[components/ide/jetbrains/image:intellij-latest] [0m
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#3 [internal] load metadata for cgr.dev/chainguard/wolfi-base:latest@sha256:153c0ba4dd4ef9272ed7440e8f2ffa233b09de3e24a36b490d2a10d750aaaddf
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#3 DONE 0.0s
+[90m[components/ide/jetbrains/image:intellij] [0m#5 transferring context: 408.72kB 0.2s done
+[90m[components/ide/jetbrains/image:intellij] [0m#5 DONE 0.2s
+[90m[components/ide/jetbrains/image:intellij] [0m
+[90m[components/ide/jetbrains/image:intellij] [0m#6 [base_builder 2/2] RUN mkdir /ide-desktop
+[90m[components/ide/jetbrains/image:intellij] [0m#6 CACHED
+[90m[components/ide/jetbrains/image:intellij] [0m
+[90m[components/ide/jetbrains/image:intellij] [0m#7 [stage-1 1/4] COPY --from=base_builder --chown=33333:33333 /ide-desktop/ /ide-desktop/
+[90m[components/ide/jetbrains/image:intellij] [0m#7 CACHED
+[90m[components/ide/jetbrains/image:intellij] [0m
+[90m[components/ide/jetbrains/image:intellij] [0m#8 [stage-1 2/4] COPY --chown=33333:33333 supervisor-ide-config_intellij.json /ide-desktop/supervisor-ide-config.json
+[90m[components/ide/jetbrains/image:intellij] [0m#8 CACHED
+[90m[components/ide/jetbrains/image:intellij] [0m
+[90m[components/ide/jetbrains/image:intellij] [0m#9 [stage-1 3/4] COPY --chown=33333:33333 components-ide-jetbrains-image--download-intellij/backend /ide-desktop/intellij/backend
+[90m[components/ide/jetbrains/image:intellij] [0m#9 CACHED
+[90m[components/ide/jetbrains/image:intellij] [0m
+[90m[components/ide/jetbrains/image:intellij] [0m#10 [stage-1 4/4] COPY --chown=33333:33333 components-ide-jetbrains-cli--app/cli /ide-desktop/intellij/bin/idea-cli
+[90m[components/ide/jetbrains/image:intellij] [0m#10 CACHED
+[90m[components/ide/jetbrains/image:intellij] [0m
+[90m[components/ide/jetbrains/image:intellij] [0m#11 exporting to image
+[90m[components/ide/jetbrains/image:intellij] [0m#11 exporting layers done
+[90m[components/ide/jetbrains/image:intellij] [0m#11 writing image sha256:a00220e0ced692a6acc5e26e78487f11d02caabc19d81239404b8090c64fce4f done
+[90m[components/ide/jetbrains/image:intellij] [0m#11 naming to docker.io/library/7b60384ee6806df6b66a33cf010196edd36a25ab done
+[90m[components/ide/jetbrains/image:intellij] [0m#11 DONE 0.0s
+[90m[components/ide/jetbrains/image:intellij-latest] [0m
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#4 [base_builder 1/2] FROM cgr.dev/chainguard/wolfi-base:latest@sha256:153c0ba4dd4ef9272ed7440e8f2ffa233b09de3e24a36b490d2a10d750aaaddf
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#4 DONE 0.0s
+[90m[components/ide/jetbrains/image:intellij-latest] [0m
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#5 [internal] load build context
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#5 transferring context: 431.79kB 0.1s done
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#5 DONE 0.2s
+[90m[components/ide/jetbrains/image:intellij-latest] [0m
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#6 [base_builder 2/2] RUN mkdir /ide-desktop
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#6 CACHED
+[90m[components/ide/jetbrains/image:intellij-latest] [0m
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#7 [stage-1 1/4] COPY --from=base_builder --chown=33333:33333 /ide-desktop/ /ide-desktop/
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#7 CACHED
+[90m[components/ide/jetbrains/image:intellij-latest] [0m
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#8 [stage-1 2/4] COPY --chown=33333:33333 supervisor-ide-config_intellij-latest.json /ide-desktop/supervisor-ide-config.json
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#8 CACHED
+[90m[components/ide/jetbrains/image:intellij-latest] [0m
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#9 [stage-1 3/4] COPY --chown=33333:33333 components-ide-jetbrains-image--download-intellij-latest/backend /ide-desktop/intellij-latest/backend
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#9 CACHED
+[90m[components/ide/jetbrains/image:intellij-latest] [0m
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#10 [stage-1 4/4] COPY --chown=33333:33333 components-ide-jetbrains-cli--app/cli /ide-desktop/intellij-latest/bin/idea-cli
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#10 CACHED
+[90m[components/ide/jetbrains/image:intellij-latest] [0m
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#11 exporting to image
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#11 exporting layers done
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#11 writing image sha256:10dafbf699eb510ec21ed010823852d76f0701b9ad3d19b65a05f8c9477dd707 done
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#11 naming to docker.io/library/420d4388f2641e3e7faa020ab55e294110d03f5e done
+[90m[components/ide/jetbrains/image:intellij-latest] [0m#11 DONE 0.0s
+[90m[components/ide/jetbrains/image:webstorm-latest] [0mThe push refers to repository [registry.cn-beijing.aliyuncs.com/self-build-gitpod/ide/webstorm]
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m1a3e14675156: Preparing
+[90m[components/ide/jetbrains/image:webstorm-latest] [0ma3dce13c1340: Preparing
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m94c1e46a1a84: Preparing
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m91869c89fdb2: Preparing
+[90m[components/ide/jetbrains/image:phpstorm] [0mThe push refers to repository [registry.cn-beijing.aliyuncs.com/self-build-gitpod/ide/phpstorm]
+[90m[components/ide/jetbrains/image:phpstorm] [0m84a246a1033b: Preparing
+[90m[components/ide/jetbrains/image:phpstorm] [0m6db351bc1f0f: Preparing
+[90m[components/ide/jetbrains/image:phpstorm] [0m77581ff67f63: Preparing
+[90m[components/ide/jetbrains/image:phpstorm] [0m91869c89fdb2: Preparing
+[90m[components/ide/jetbrains/image:phpstorm] [0m91869c89fdb2: Waiting
+[90m[components/ide/jetbrains/image:webstorm-latest] [0mdenied: requested access to the resource is denied
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m[0;31mpackage build failed[0m
+[90m[components/ide/jetbrains/image:webstorm-latest] [0m[1;37mReason:[0m exit status 1
+[0;31mbuild failed[0m
+[1;37mReason:[0m build failed
+time="2023-05-12T08:45:36Z" level=fatal msg="build failed"
+leeway build components/ide/jetbrains/launcher:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib                  [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol/go:lib         [90m(version 1fa3b26ccbc90832d264edf62bd3340753bb23f7)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:gitpod-schema  [90m(version 3832e8872d751eca5bd2028c5a907c6b266c75c3)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/launcher:app     [90m(version c61067282c7f3e6af6717fe5be83f8a4f39e4293)[0m
+[32m📦  cached locally[0m  components/ide/jetbrains/launcher:docker  [90m(version 2715ed936ab6cb3b2aa50188ac13bb0ec55f65c2)[0m
+[32m📦  cached locally[0m  components/supervisor-api/go:lib          [90m(version 6505b1a01e6e7b434713f4944dcab84b18d89b56)[0m
+[32m📦  cached locally[0m  dev/addlicense:app                        [90m(version c322ba901584f00744aef2db3f81d8d0e5c0512b)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/image-builder-bob:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib                  [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/image-builder-bob:app          [90m(version dd8fc2738d5ef916288a38012cb0c81baf4b3dfd)[0m
+[32m📦  cached locally[0m  components/image-builder-bob:docker       [90m(version 7eed3ad58d645022bedec5a2935b5b6f2ae4c3f0)[0m
+[32m📦  cached locally[0m  components/image-builder-bob:runc-facade  [90m(version 25b0a179ec500d041daf3337da287ea3e3ebd317)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/image-builder-mk3:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib               [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/content-service-api/go:lib  [90m(version 96c22b2ddc7509c580fb952baff56c3a8bfd632d)[0m
+[32m📦  cached locally[0m  components/content-service:lib         [90m(version b0cd0898613468d7c336a07949eab1a254208889)[0m
+[32m📦  cached locally[0m  components/image-builder-api/go:lib    [90m(version f569f4c7ed2550ed9c4c7109c92f4e1ee0768739)[0m
+[32m📦  cached locally[0m  components/image-builder-mk3:app       [90m(version 283bf1b40ffab66b63f3f2f0e3649afbe1fdf685)[0m
+[32m📦  cached locally[0m  components/image-builder-mk3:docker    [90m(version 1da5d274b0a909e0759b3fff6349a7b8f3a6ef8a)[0m
+[32m📦  cached locally[0m  components/registry-facade-api/go:lib  [90m(version 11d9730b48b27fad322e28b6a16b495e98e43527)[0m
+[32m📦  cached locally[0m  components/supervisor-api/go:lib       [90m(version 6505b1a01e6e7b434713f4944dcab84b18d89b56)[0m
+[32m📦  cached locally[0m  components/ws-manager-api/go:lib       [90m(version d89281deca1e97571505c1d2d858062eab5c5d01)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/installation-telemetry:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib                  [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[33m🔧  build[0m           components/installation-telemetry:app     [90m(version 65fd3fcbdfd0fda567d35c9a168e9f6513043632)[0m
+[33m🔧  build[0m           components/installation-telemetry:docker  [90m(version c4c38c42eb1ad0e9865de9094c4d0c27df6bb50f)[0m
+
+[0;31mbuild failed[0m
+[1;37mReason:[0m cannot build with unresolved argument "${SEGMENT_IO_TOKEN}": use -DSEGMENT_IO_TOKEN=value to set the argument
+	${SEGMENT_IO_TOKEN} appears in components/installation-telemetry:app
+
+
+time="2023-05-12T08:45:41Z" level=fatal msg="cannot build with unresolved argument \"${SEGMENT_IO_TOKEN}\": use -DSEGMENT_IO_TOKEN=value to set the argument\n\t${SEGMENT_IO_TOKEN} appears in components/installation-telemetry:app\n\n"
+leeway build components/ipfs/ipfs-cluster:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/ipfs/ipfs-cluster:docker  [90m(version 333fd92944461b38589eab4283b40ef71d934003)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/ipfs/kubo:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/ipfs/kubo:docker  [90m(version aea0b0d2be38d5e6fc3078c748b84af50367a987)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/kots-config-check/certificate:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/kots-config-check/certificate:docker  [90m(version 5036fd1ba8921630a18cac8052b458d6a5a95ddc)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/kots-config-check/database:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/kots-config-check/database:docker  [90m(version 987db23e1ecc2d9e7b1e4a855306f7958b478b76)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/kots-config-check/registry:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/kots-config-check/registry:app     [90m(version a9893d222ea5f6c55c4b686a03c232a378894953)[0m
+[32m📦  cached locally[0m  components/kots-config-check/registry:docker  [90m(version 9e2a09c1863f22307d6e66819261e1c6b7bdcf9f)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/kots-config-check/storage:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/kots-config-check/storage:docker  [90m(version 2c0cb42421ca12fa05dcf4662638107716d454b3)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/local-app:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/gitpod-protocol/go:lib         [90m(version 1fa3b26ccbc90832d264edf62bd3340753bb23f7)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:gitpod-schema  [90m(version 3832e8872d751eca5bd2028c5a907c6b266c75c3)[0m
+[32m📦  cached locally[0m  components/local-app-api/go:lib           [90m(version e2bea9208fc0994d3cfcd8c56030b594bb4ab9c6)[0m
+[32m📦  cached locally[0m  components/local-app:app                  [90m(version 55adf583bb19af8454b1c97dbaa98a8fbc61dad9)[0m
+[32m📦  cached locally[0m  components/local-app:app-darwin-amd64     [90m(version 48242d69d41a941ad48a3f1e45909eeed0395791)[0m
+[32m📦  cached locally[0m  components/local-app:app-darwin-arm64     [90m(version 919408b918994091cf3f667ab824544f51e39f8a)[0m
+[32m📦  cached locally[0m  components/local-app:app-linux-amd64      [90m(version ac80371009fdfd2f0f123b5b5e35f437a944d1cd)[0m
+[32m📦  cached locally[0m  components/local-app:app-linux-arm64      [90m(version 91b74847b1beb5e6135dfb2eb66eb8c97432a50a)[0m
+[32m📦  cached locally[0m  components/local-app:app-windows-386      [90m(version 4cbb41883b8356f8f8c2a1c63b60abe9c892386c)[0m
+[32m📦  cached locally[0m  components/local-app:app-windows-amd64    [90m(version 6b0aec6e60eadcf7a44d626f9da5bb92bedc56d9)[0m
+[32m📦  cached locally[0m  components/local-app:app-windows-arm64    [90m(version c958d6765a57b80eaf7ebcfd775a879f13fd195d)[0m
+[32m📦  cached locally[0m  components/local-app:docker               [90m(version d40f4349693f84d8cf80b620c07d049cfdbce024)[0m
+[32m📦  cached locally[0m  components/supervisor-api/go:lib          [90m(version 6505b1a01e6e7b434713f4944dcab84b18d89b56)[0m
+[32m📦  cached locally[0m  dev/addlicense:app                        [90m(version c322ba901584f00744aef2db3f81d8d0e5c0512b)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/node-labeler:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib        [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/node-labeler:app     [90m(version 63505a04c1ac91a0cd70ed032cd17e2ec101852e)[0m
+[32m📦  cached locally[0m  components/node-labeler:docker  [90m(version e64ceae903009fd77a4f03bf3b86d4b6aa830d4d)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/openvsx-proxy:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib         [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/openvsx-proxy:app     [90m(version 7a532f216f2c9217019f3bd5a187ae9af784ad6c)[0m
+[32m📦  cached locally[0m  components/openvsx-proxy:docker  [90m(version 94f03f0d116eb9f5f98727d89d488c768701d929)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/proxy:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/proxy:docker  [90m(version 7a13f2f07c643d550bdae7063274620314780642)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/public-api-server:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib                  [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol/go:lib         [90m(version 1fa3b26ccbc90832d264edf62bd3340753bb23f7)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:gitpod-schema  [90m(version 3832e8872d751eca5bd2028c5a907c6b266c75c3)[0m
+[32m📦  cached locally[0m  components/public-api/go:lib              [90m(version b712341e954abd3f84889ea36df9a2db0692df85)[0m
+[32m📦  cached locally[0m  dev/addlicense:app                        [90m(version c322ba901584f00744aef2db3f81d8d0e5c0512b)[0m
+[33m🔧  build[0m           components/gitpod-db/go:lib               [90m(version 0738c8406610d681ca6dbaae49f3747c8456b4b1)[0m
+[33m🔧  build[0m           components/public-api-server:app          [90m(version b695098e7f21e504e0cb7ffcbd1275f31fbd052e)[0m
+[33m🔧  build[0m           components/public-api-server:docker       [90m(version 6b3f657be6548e180f2f7633f40dc848695ae647)[0m
+[33m🔧  build[0m           components/usage-api/go:lib               [90m(version d09cdbe585fb1443aa98dc8166c76771b26cda54)[0m
+
+[90m[components/usage-api/go:lib] [0m[33mbuild started[0m [0;90m(version d09cdbe585fb1443aa98dc8166c76771b26cda54)[0m
+[90m[components/gitpod-db/go:lib] [0m[33mbuild started[0m [0;90m(version 0738c8406610d681ca6dbaae49f3747c8456b4b1)[0m
+[90m[components/usage-api/go:lib] [0mlevel=error msg="[linters_context] typechecking error: pattern ./...: directory prefix . does not contain main module or its selected dependencies"
+[90m[components/usage-api/go:lib] [0m[0;31mpackage build failed[0m
+[90m[components/usage-api/go:lib] [0m[1;37mReason:[0m exit status 7
+[0;31mbuild failed[0m
+[1;37mReason:[0m build failed
+time="2023-05-12T08:45:53Z" level=fatal msg="build failed"
+leeway build components/registry-facade:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib               [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/registry-facade-api/go:lib  [90m(version 11d9730b48b27fad322e28b6a16b495e98e43527)[0m
+[33m🔧  build[0m           components/registry-facade:app         [90m(version a03c2dac79397353b8eb20b98248bf956f2f2ffe)[0m
+[33m🔧  build[0m           components/registry-facade:docker      [90m(version 83025b7788d95a6338bd99da47e7ab480865a2ba)[0m
+
+[90m[components/registry-facade:app] [0m[33mbuild started[0m [0;90m(version a03c2dac79397353b8eb20b98248bf956f2f2ffe)[0m
+[90m[components/registry-facade:app] [0m?   	github.com/gitpod-io/gitpod/registry-facade	[no test files]
+[90m[components/registry-facade:app] [0m?   	github.com/gitpod-io/gitpod/registry-facade/cmd	[no test files]
+[90m[components/registry-facade:app] [0m# github.com/lucas-clemente/quic-go/internal/qtls
+[90m[components/registry-facade:app] [0m/root/go/pkg/mod/github.com/lucas-clemente/quic-go@v0.29.1/internal/qtls/go120.go:5:13: cannot use "The version of quic-go you're using can't be built on Go 1.20 yet. For more details, please see https://github.com/lucas-clemente/quic-go/wiki/quic-go-and-Go-versions." (untyped string constant "The version of quic-go you're using can't be built on Go 1.20 yet. F...) as int value in variable declaration
+[90m[components/registry-facade:app] [0mFAIL	github.com/gitpod-io/gitpod/registry-facade/pkg/registry [build failed]
+[90m[components/registry-facade:app] [0m?   	github.com/gitpod-io/gitpod/registry-facade/pkg/registry/mock	[no test files]
+[90m[components/registry-facade:app] [0mFAIL
+[90m[components/registry-facade:app] [0m[0;31mpackage build failed[0m
+[90m[components/registry-facade:app] [0m[1;37mReason:[0m exit status 1
+[0;31mbuild failed[0m
+[1;37mReason:[0m build failed
+time="2023-05-12T08:45:57Z" level=fatal msg="build failed"
+leeway build components/server:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/content-service-api/typescript:lib     [90m(version c71a29d0b6ae107f0aab9d73f018d87f6b7b8582)[0m
+[32m📦  cached locally[0m  components/gitpod-db:lib                          [90m(version 38d74d9aef02665fba03036289a3b12c241d21dd)[0m
+[32m📦  cached locally[0m  components/gitpod-messagebus:lib                  [90m(version c7668ac9d5b02ee05bd39f17054bba4dcbfdb780)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:lib                    [90m(version 6f50f84f6d574c1dae5f44fabf7fd3a6af9537d1)[0m
+[32m📦  cached locally[0m  components/ide-service-api/typescript:lib         [90m(version 6d35d7e42890aaaad38fc5dee2c8771bd6630954)[0m
+[32m📦  cached locally[0m  components/image-builder-api/typescript:lib       [90m(version 73db923ac5e65792066d68e65781554731285296)[0m
+[32m📦  cached locally[0m  components/public-api/typescript:lib              [90m(version 7a7d860801660f8e249d23ef7840745c85733143)[0m
+[32m📦  cached locally[0m  components/server:app                             [90m(version 7550922dd39aba7dea07492653967be8454a887f)[0m
+[32m📦  cached locally[0m  components/server:docker                          [90m(version 7ba6eca8369d37021399cabf51c0563901308d08)[0m
+[32m📦  cached locally[0m  components/supervisor-api/typescript-grpcweb:lib  [90m(version 1389d08c659682be2f91d995f72db43d07246314)[0m
+[32m📦  cached locally[0m  components/supervisor-api:proto                   [90m(version 5924ccc83491010c6320701882875f8807d6880c)[0m
+[32m📦  cached locally[0m  components/usage-api/typescript:lib               [90m(version 12a1dfb878ee98ce37f95536a46e861de03a46d2)[0m
+[32m📦  cached locally[0m  components/ws-manager-api/typescript:lib          [90m(version 3c407f78de6991d3fccfb6af70eb6bfda0bef644)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/service-waiter:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib          [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/service-waiter:app     [90m(version 3b3804ba2b777623c8382726a3f4d28eaac48975)[0m
+[32m📦  cached locally[0m  components/service-waiter:docker  [90m(version 2bad6ee4db97b9ccc28f9f7a33153c742ab871f7)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/supervisor:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib                           [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/content-service-api/go:lib              [90m(version 96c22b2ddc7509c580fb952baff56c3a8bfd632d)[0m
+[32m📦  cached locally[0m  components/content-service:lib                     [90m(version b0cd0898613468d7c336a07949eab1a254208889)[0m
+[32m📦  cached locally[0m  components/gitpod-cli:app                          [90m(version c041303b2eb7adc1151637fd23929d71768bc92c)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol/go:lib                  [90m(version 1fa3b26ccbc90832d264edf62bd3340753bb23f7)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:gitpod-schema           [90m(version 3832e8872d751eca5bd2028c5a907c6b266c75c3)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:lib                     [90m(version 6f50f84f6d574c1dae5f44fabf7fd3a6af9537d1)[0m
+[32m📦  cached locally[0m  components/ide-metrics-api/go:lib                  [90m(version 9cc726e368042408982db42a00c99ae057d0c188)[0m
+[32m📦  cached locally[0m  components/ide-metrics-api/typescript-grpcweb:lib  [90m(version 8344948665f3c85e26e1385d5723e12aab0adc7b)[0m
+[32m📦  cached locally[0m  components/ide-metrics-api:proto                   [90m(version 83ee761f7c0245453e1e4ccfa8ac2dd31adebec3)[0m
+[32m📦  cached locally[0m  components/public-api/go:lib                       [90m(version b712341e954abd3f84889ea36df9a2db0692df85)[0m
+[32m📦  cached locally[0m  components/supervisor-api/go:lib                   [90m(version 6505b1a01e6e7b434713f4944dcab84b18d89b56)[0m
+[32m📦  cached locally[0m  components/supervisor-api/typescript-grpc:lib      [90m(version 5d00de98b3c86f4b59738fe59d7316736981f051)[0m
+[32m📦  cached locally[0m  components/supervisor-api:proto                    [90m(version 5924ccc83491010c6320701882875f8807d6880c)[0m
+[32m📦  cached locally[0m  components/ws-daemon-api/go:lib                    [90m(version 50668ec3ec5e31f546c2466c6eb5bd5cf37f52c6)[0m
+[32m📦  cached locally[0m  dev/addlicense:app                                 [90m(version c322ba901584f00744aef2db3f81d8d0e5c0512b)[0m
+[33m🔧  build[0m           components/supervisor/frontend:app                 [90m(version 25bb81cd05ffc4ac0e685ac67b8d8167a6bf7cf6)[0m
+[33m🔧  build[0m           components/supervisor/openssh:app                  [90m(version 29a3572cc3f6afc5e80d9b9636436ed6cc31cfdd)[0m
+[33m🔧  build[0m           components/supervisor/openssh:docker-build         [90m(version fd53302ed0931f883f200b955ee8474c49b4b875)[0m
+[33m🔧  build[0m           components/supervisor:app                          [90m(version e3d0eb79b5a05caaf03a415b02cdad3ab7bc0053)[0m
+[33m🔧  build[0m           components/supervisor:docker                       [90m(version 8c4e4bd4cb16e08678a3c53c7ddc9a026e00ee7e)[0m
+
+[90m[components/supervisor/frontend:app] [0m[33mbuild started[0m [0;90m(version 25bb81cd05ffc4ac0e685ac67b8d8167a6bf7cf6)[0m
+[90m[components/supervisor:app] [0m[33mbuild started[0m [0;90m(version e3d0eb79b5a05caaf03a415b02cdad3ab7bc0053)[0m
+[90m[components/supervisor/openssh:docker-build] [0m[33mbuild started[0m [0;90m(version fd53302ed0931f883f200b955ee8474c49b4b875)[0m
+[90m[components/supervisor/openssh:docker-build] [0m#1 [internal] load .dockerignore
+[90m[components/supervisor/openssh:docker-build] [0m#1 transferring context: 2B done
+[90m[components/supervisor/openssh:docker-build] [0m#1 DONE 0.0s
+[90m[components/supervisor/openssh:docker-build] [0m
+[90m[components/supervisor/openssh:docker-build] [0m#2 [internal] load build definition from Dockerfile
+[90m[components/supervisor/openssh:docker-build] [0m#2 transferring dockerfile: 2.35kB done
+[90m[components/supervisor/openssh:docker-build] [0m#2 DONE 0.0s
+[90m[components/supervisor/openssh:docker-build] [0m
+[90m[components/supervisor/openssh:docker-build] [0m#3 [internal] load metadata for docker.io/library/alpine:3.17
+[90m[components/supervisor/frontend:app] [0myarn install v1.22.19
+[90m[components/supervisor/frontend:app] [0m[1/4] Resolving packages...
+[90m[components/supervisor/frontend:app] [0m[2/4] Fetching packages...
+[90m[components/supervisor:app] [0m?   	github.com/gitpod-io/gitpod/supervisor	[no test files]
+[90m[components/supervisor:app] [0m?   	github.com/gitpod-io/gitpod/supervisor/cmd	[no test files]
+[90m[components/supervisor:app] [0m?   	github.com/gitpod-io/gitpod/supervisor/pkg/activation	[no test files]
+[90m[components/supervisor:app] [0m=== RUN   TestAnalyzeGitpodConfig
+[90m[components/supervisor:app] [0m=== RUN   TestAnalyzeGitpodConfig/change
+[90m[components/supervisor:app] [0m=== RUN   TestAnalyzeGitpodConfig/add
+[90m[components/supervisor:app] [0m=== RUN   TestAnalyzeGitpodConfig/remove
+[90m[components/supervisor:app] [0m=== RUN   TestAnalyzeGitpodConfig/none
+[90m[components/supervisor:app] [0m=== RUN   TestAnalyzeGitpodConfig/fie_created
+[90m[components/supervisor:app] [0m--- PASS: TestAnalyzeGitpodConfig (0.52s)
+[90m[components/supervisor:app] [0m    --- PASS: TestAnalyzeGitpodConfig/change (0.10s)
+[90m[components/supervisor:app] [0m    --- PASS: TestAnalyzeGitpodConfig/add (0.10s)
+[90m[components/supervisor:app] [0m    --- PASS: TestAnalyzeGitpodConfig/remove (0.11s)
+[90m[components/supervisor:app] [0m    --- PASS: TestAnalyzeGitpodConfig/none (0.11s)
+[90m[components/supervisor:app] [0m    --- PASS: TestAnalyzeGitpodConfig/fie_created (0.10s)
+[90m[components/supervisor:app] [0m=== RUN   TestGitpodConfig
+[90m[components/supervisor:app] [0m=== RUN   TestGitpodConfig/parsing
+[90m[components/supervisor:app] [0mtime="2023-05-12T06:40:15Z" level=info msg="file watcher: starting..." location=/tmp/test-gitpod-config-318301396/.gitpod.yml
+[90m[components/supervisor:app] [0mtime="2023-05-12T06:40:17Z" level=info msg="file watcher: started" location=/tmp/test-gitpod-config-318301396/.gitpod.yml
+[90m[components/supervisor:app] [0mtime="2023-05-12T06:40:17Z" level=info msg="file watcher: stopped" location=/tmp/test-gitpod-config-318301396/.gitpod.yml
+[90m[components/supervisor:app] [0mtime="2023-05-12T06:40:19Z" level=info msg="file watcher: started" location=/tmp/test-gitpod-config-318301396/.gitpod.yml
+[90m[components/supervisor:app] [0m--- PASS: TestGitpodConfig (4.31s)
+[90m[components/supervisor:app] [0m    --- PASS: TestGitpodConfig/parsing (4.31s)
+[90m[components/supervisor:app] [0m=== RUN   TestInvalidGitpodConfig
+[90m[components/supervisor:app] [0mtime="2023-05-12T06:40:19Z" level=info msg="file watcher: starting..." location=/tmp/test-gitpod-config-157064226/.gitpod.yml
+[90m[components/supervisor:app] [0mtime="2023-05-12T06:40:19Z" level=info msg="file watcher: stopped" location=/tmp/test-gitpod-config-318301396/.gitpod.yml
+[90m[components/supervisor:app] [0mtime="2023-05-12T06:40:21Z" level=info msg="file watcher: started" location=/tmp/test-gitpod-config-157064226/.gitpod.yml
+[90m[components/supervisor:app] [0mtime="2023-05-12T06:40:21Z" level=error msg="file watcher: failed to parse" error="yaml: line 4: found character that cannot start any token" location=/tmp/test-gitpod-config-157064226/.gitpod.yml
+[90m[components/supervisor:app] [0m--- PASS: TestInvalidGitpodConfig (3.20s)
+[90m[components/supervisor:app] [0m=== RUN   TestWatchImageFile
+[90m[components/supervisor:app] [0mtime="2023-05-12T06:40:22Z" level=info msg="file watcher: starting..." location=/tmp/test-gitpod-config-2181967827/.gitpod.yml
+[90m[components/supervisor:app] [0mtime="2023-05-12T06:40:22Z" level=info msg="file watcher: started" location=/tmp/test-gitpod-config-2181967827/.gitpod.yml
+[90m[components/supervisor:app] [0mtime="2023-05-12T06:40:22Z" level=info msg="file watcher: stopped" location=/tmp/test-gitpod-config-157064226/.gitpod.yml
+[90m[components/supervisor:app] [0mtime="2023-05-12T06:40:22Z" level=info msg="file watcher: starting..." location=/tmp/test-gitpod-config-2181967827/Dockerfile
+[90m[components/supervisor:app] [0mtime="2023-05-12T06:40:24Z" level=info msg="file watcher: started" location=/tmp/test-gitpod-config-2181967827/Dockerfile
+[90m[components/supervisor:app] [0mtime="2023-05-12T06:40:24Z" level=info msg="file watcher: stopped" location=/tmp/test-gitpod-config-2181967827/Dockerfile
+[90m[components/supervisor:app] [0mtime="2023-05-12T06:40:25Z" level=info msg="file watcher: starting..." location=/tmp/test-gitpod-config-2181967827/Dockerfile
+[90m[components/supervisor:app] [0mtime="2023-05-12T06:40:25Z" level=info msg="file watcher: started" location=/tmp/test-gitpod-config-2181967827/Dockerfile
+[90m[components/supervisor:app] [0m--- PASS: TestWatchImageFile (2.61s)
+[90m[components/supervisor:app] [0mPASS
+[90m[components/supervisor:app] [0mok  	github.com/gitpod-io/gitpod/supervisor/pkg/config	(cached)
+[90m[components/supervisor:app] [0m=== RUN   TestBucket
+[90m[components/supervisor:app] [0m=== RUN   TestBucket/below_limit
+[90m[components/supervisor:app] [0m=== RUN   TestBucket/above_limit
+[90m[components/supervisor:app] [0m=== RUN   TestBucket/upfront_peak
+[90m[components/supervisor:app] [0m=== RUN   TestBucket/mid_peak
+[90m[components/supervisor:app] [0m--- PASS: TestBucket (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestBucket/below_limit (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestBucket/above_limit (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestBucket/upfront_peak (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestBucket/mid_peak (0.00s)
+[90m[components/supervisor:app] [0mPASS
+[90m[components/supervisor:app] [0mok  	github.com/gitpod-io/gitpod/supervisor/pkg/dropwriter	(cached)
+[90m[components/supervisor:app] [0m=== RUN   TestHistogram
+[90m[components/supervisor:app] [0m--- PASS: TestHistogram (0.00s)
+[90m[components/supervisor:app] [0m=== RUN   TestCounters
+[90m[components/supervisor:app] [0m--- PASS: TestCounters (0.00s)
+[90m[components/supervisor:app] [0mPASS
+[90m[components/supervisor:app] [0mok  	github.com/gitpod-io/gitpod/supervisor/pkg/metrics	(cached)
+[90m[components/supervisor/openssh:docker-build] [0m#3 DONE 2.4s
+[90m[components/supervisor/openssh:docker-build] [0m
+[90m[components/supervisor/openssh:docker-build] [0m#4 [builder 1/9] FROM docker.io/library/alpine:3.17@sha256:124c7d2707904eea7431fffe91522a01e5a861a624ee31d03372cc1d138a3126
+[90m[components/supervisor/openssh:docker-build] [0m#4 DONE 0.0s
+[90m[components/supervisor/openssh:docker-build] [0m
+[90m[components/supervisor/openssh:docker-build] [0m#5 [builder 2/9] WORKDIR /build
+[90m[components/supervisor/openssh:docker-build] [0m#5 CACHED
+[90m[components/supervisor/openssh:docker-build] [0m
+[90m[components/supervisor/openssh:docker-build] [0m#6 [builder 3/9] RUN apk add --no-cache   bash   autoconf   automake   curl   gcc   make   musl-dev   linux-headers   openssl-dev   openssl-libs-static   patch   zlib-dev   sed   xauth   zlib-static
+[90m[components/supervisor/openssh:docker-build] [0m#6 CACHED
+[90m[components/supervisor/openssh:docker-build] [0m
+[90m[components/supervisor/openssh:docker-build] [0m#7 [builder 4/9] RUN curl -fsSL "https://github.com/openssh/openssh-portable/archive/refs/tags/V_9_2_P1.tar.gz" | tar xz --strip-components=1
+[90m[components/supervisor/openssh:docker-build] [0m#7 CACHED
+[90m[components/supervisor/openssh:docker-build] [0m
+[90m[components/supervisor/openssh:docker-build] [0m#8 [builder 5/9] RUN autoreconf
+[90m[components/supervisor/openssh:docker-build] [0m#8 CACHED
+[90m[components/supervisor/openssh:docker-build] [0m
+[90m[components/supervisor/openssh:docker-build] [0m#9 [builder 6/9] RUN ./configure     --prefix=/usr     --sysconfdir=/etc/ssh     --with-ldflags=-static     --with-privsep-user=nobody     --with-ssl-engine
+[90m[components/supervisor:app] [0m?   	github.com/gitpod-io/gitpod/supervisor/pkg/serverapi	[no test files]
+[90m[components/supervisor:app] [0m=== RUN   TestPortsConfig
+[90m[components/supervisor:app] [0m=== RUN   TestPortsConfig/no_configs
+[90m[components/supervisor:app] [0m=== RUN   TestPortsConfig/instance_port_config
+[90m[components/supervisor:app] [0m=== RUN   TestPortsConfig/instance_range_config
+[90m[components/supervisor:app] [0m--- PASS: TestPortsConfig (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestPortsConfig/no_configs (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestPortsConfig/instance_port_config (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestPortsConfig/instance_range_config (0.00s)
+[90m[components/supervisor:app] [0m=== RUN   TestPortsUpdateState
+[90m[components/supervisor:app] [0m=== RUN   TestPortsUpdateState/basic_locally_served
+[90m[components/supervisor:app] [0m=== RUN   TestPortsUpdateState/basic_globally_served
+[90m[components/supervisor:app] [0m=== RUN   TestPortsUpdateState/basic_port_publically_exposed
+[90m[components/supervisor:app] [0m=== RUN   TestPortsUpdateState/internal_ports_served
+[90m[components/supervisor:app] [0m=== RUN   TestPortsUpdateState/serving_port_from_the_configured_port_range
+[90m[components/supervisor:app] [0m=== RUN   TestPortsUpdateState/auto_expose_configured_ports
+[90m[components/supervisor:app] [0m=== RUN   TestPortsUpdateState/starting_multiple_proxies_for_the_same_served_event
+[90m[components/supervisor:app] [0m=== RUN   TestPortsUpdateState/served_between_auto_exposing_configured_and_exposed_update
+[90m[components/supervisor:app] [0m=== RUN   TestPortsUpdateState/the_same_port_served_locally_and_then_globally_too,_prefer_globally_(exposed_in_between)
+[90m[components/supervisor:app] [0m=== RUN   TestPortsUpdateState/the_same_port_served_locally_and_then_globally_too,_prefer_globally_(exposed_after)
+[90m[components/supervisor:app] [0m=== RUN   TestPortsUpdateState/the_same_port_served_globally_and_then_locally_too,_prefer_globally_(exposed_in_between)
+[90m[components/supervisor:app] [0m=== RUN   TestPortsUpdateState/the_same_port_served_globally_and_then_locally_too,_prefer_globally_(exposed_after)
+[90m[components/supervisor:app] [0m=== RUN   TestPortsUpdateState/the_same_port_served_locally_on_ip4_and_then_locally_on_ip6_too,_prefer_first_(exposed_in_between)
+[90m[components/supervisor:app] [0m=== RUN   TestPortsUpdateState/the_same_port_served_locally_on_ip4_and_then_locally_on_ip6_too,_prefer_first_(exposed_after)
+[90m[components/supervisor:app] [0m=== RUN   TestPortsUpdateState/the_same_port_served_locally_on_ip4_and_then_globally_on_ip6_too,_prefer_first_(exposed_in_between)
+[90m[components/supervisor:app] [0m=== RUN   TestPortsUpdateState/the_same_port_served_locally_on_ip4_and_then_globally_on_ip6_too,_prefer_first_(exposed_after)
+[90m[components/supervisor:app] [0m=== RUN   TestPortsUpdateState/port_status_has_description_set_as_soon_as_the_port_gets_exposed,_if_there_was_a_description_configured
+[90m[components/supervisor:app] [0m=== RUN   TestPortsUpdateState/port_status_has_the_name_attribute_set_as_soon_as_the_port_gets_exposed,_if_there_was_a_name_configured_in_Gitpod's_Workspace
+[90m[components/supervisor:app] [0m=== RUN   TestPortsUpdateState/change_configed_ports_order
+[90m[components/supervisor:app] [0m=== RUN   TestPortsUpdateState/change_configed_ports_order_with_ranged_covered_not_ranged
+[90m[components/supervisor:app] [0m=== RUN   TestPortsUpdateState/expose_port_without_served,_port_should_be_responded_for_use_case_of_openvscode-server
+[90m[components/supervisor:app] [0m--- PASS: TestPortsUpdateState (0.02s)
+[90m[components/supervisor:app] [0m    --- PASS: TestPortsUpdateState/basic_locally_served (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestPortsUpdateState/basic_globally_served (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestPortsUpdateState/basic_port_publically_exposed (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestPortsUpdateState/internal_ports_served (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestPortsUpdateState/serving_port_from_the_configured_port_range (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestPortsUpdateState/auto_expose_configured_ports (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestPortsUpdateState/starting_multiple_proxies_for_the_same_served_event (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestPortsUpdateState/served_between_auto_exposing_configured_and_exposed_update (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestPortsUpdateState/the_same_port_served_locally_and_then_globally_too,_prefer_globally_(exposed_in_between) (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestPortsUpdateState/the_same_port_served_locally_and_then_globally_too,_prefer_globally_(exposed_after) (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestPortsUpdateState/the_same_port_served_globally_and_then_locally_too,_prefer_globally_(exposed_in_between) (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestPortsUpdateState/the_same_port_served_globally_and_then_locally_too,_prefer_globally_(exposed_after) (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestPortsUpdateState/the_same_port_served_locally_on_ip4_and_then_locally_on_ip6_too,_prefer_first_(exposed_in_between) (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestPortsUpdateState/the_same_port_served_locally_on_ip4_and_then_locally_on_ip6_too,_prefer_first_(exposed_after) (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestPortsUpdateState/the_same_port_served_locally_on_ip4_and_then_globally_on_ip6_too,_prefer_first_(exposed_in_between) (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestPortsUpdateState/the_same_port_served_locally_on_ip4_and_then_globally_on_ip6_too,_prefer_first_(exposed_after) (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestPortsUpdateState/port_status_has_description_set_as_soon_as_the_port_gets_exposed,_if_there_was_a_description_configured (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestPortsUpdateState/port_status_has_the_name_attribute_set_as_soon_as_the_port_gets_exposed,_if_there_was_a_name_configured_in_Gitpod's_Workspace (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestPortsUpdateState/change_configed_ports_order (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestPortsUpdateState/change_configed_ports_order_with_ranged_covered_not_ranged (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestPortsUpdateState/expose_port_without_served,_port_should_be_responded_for_use_case_of_openvscode-server (0.00s)
+[90m[components/supervisor:app] [0m=== RUN   TestPortsConcurrentSubscribe
+[90m[components/supervisor:app] [0m--- PASS: TestPortsConcurrentSubscribe (0.00s)
+[90m[components/supervisor:app] [0m=== RUN   TestManager_getStatus
+[90m[components/supervisor:app] [0m=== RUN   TestManager_getStatus/happy_path
+[90m[components/supervisor:app] [0m=== RUN   TestManager_getStatus/order_for_ranged_ports_and_inside_ranged_order_by_number_ASC
+[90m[components/supervisor:app] [0m=== RUN   TestManager_getStatus/served_ports_order_by_number_ASC
+[90m[components/supervisor:app] [0m=== RUN   TestManager_getStatus/expose_not_served_ports_should_respond_their_status
+[90m[components/supervisor:app] [0m--- PASS: TestManager_getStatus (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestManager_getStatus/happy_path (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestManager_getStatus/order_for_ranged_ports_and_inside_ranged_order_by_number_ASC (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestManager_getStatus/served_ports_order_by_number_ASC (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestManager_getStatus/expose_not_served_ports_should_respond_their_status (0.00s)
+[90m[components/supervisor:app] [0m=== RUN   TestObserve
+[90m[components/supervisor:app] [0m=== RUN   TestObserve/basic_positive
+[90m[components/supervisor:app] [0m=== RUN   TestObserve/the_same_port_bound_locally_on_ip4_and_ip6
+[90m[components/supervisor:app] [0m=== RUN   TestObserve/the_same_port_bound_locally_for_ip4_and_globally_for_ip6
+[90m[components/supervisor:app] [0m=== RUN   TestObserve/the_same_port_bound_globally_for_ip4_and_locally_for_ip6
+[90m[components/supervisor:app] [0m=== RUN   TestObserve/multiple_ports_bound_locally_and_globally
+[90m[components/supervisor:app] [0m=== RUN   TestObserve/multiple_ports_bound_locally_and_globally#01
+[90m[components/supervisor:app] [0m--- PASS: TestObserve (3.04s)
+[90m[components/supervisor:app] [0m    --- PASS: TestObserve/basic_positive (0.50s)
+[90m[components/supervisor:app] [0m    --- PASS: TestObserve/the_same_port_bound_locally_on_ip4_and_ip6 (0.50s)
+[90m[components/supervisor:app] [0m    --- PASS: TestObserve/the_same_port_bound_locally_for_ip4_and_globally_for_ip6 (0.50s)
+[90m[components/supervisor:app] [0m    --- PASS: TestObserve/the_same_port_bound_globally_for_ip4_and_locally_for_ip6 (0.50s)
+[90m[components/supervisor:app] [0m    --- PASS: TestObserve/multiple_ports_bound_locally_and_globally (0.51s)
+[90m[components/supervisor:app] [0m    --- PASS: TestObserve/multiple_ports_bound_locally_and_globally#01 (0.52s)
+[90m[components/supervisor:app] [0m=== RUN   TestReadNetTCPFile
+[90m[components/supervisor:app] [0m=== RUN   TestReadNetTCPFile/valid_tcp4_input
+[90m[components/supervisor:app] [0m=== RUN   TestReadNetTCPFile/valid_tcp6_input
+[90m[components/supervisor:app] [0m=== RUN   TestReadNetTCPFile/invalid_input
+[90m[components/supervisor:app] [0m--- PASS: TestReadNetTCPFile (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestReadNetTCPFile/valid_tcp4_input (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestReadNetTCPFile/valid_tcp6_input (0.00s)
+[90m[components/supervisor:app] [0m    --- PASS: TestReadNetTCPFile/invalid_input (0.00s)
+[90m[components/supervisor:app] [0m=== RUN   TestLocalPortTunneling
+[90m[components/supervisor:app] [0mlocal service is listening on 37261
+[90m[components/supervisor:app] [0m37261:35163 tunnel has been created
+[90m[components/supervisor:app] [0mtarget proxy is listening on 35163
+[90m[components/supervisor:app] [0m--- PASS: TestLocalPortTunneling (0.02s)
+[90m[components/supervisor:app] [0mPASS
+[90m[components/supervisor:app] [0mok  	github.com/gitpod-io/gitpod/supervisor/pkg/ports	(cached)
+[90m[components/supervisor/openssh:docker-build] [0m#9 0.596 checking for cc... cc
+[90m[components/supervisor/openssh:docker-build] [0m#9 0.634 checking whether the C compiler works... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 0.839 checking for C compiler default output file name... a.out
+[90m[components/supervisor/openssh:docker-build] [0m#9 0.840 checking for suffix of executables... 
+[90m[components/supervisor/openssh:docker-build] [0m#9 0.899 checking whether we are cross compiling... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 0.963 checking for suffix of object files... o
+[90m[components/supervisor/openssh:docker-build] [0m#9 1.001 checking whether the compiler supports GNU C... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 1.043 checking whether cc accepts -g... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 1.082 checking for cc option to enable C11 features... none needed
+[90m[components/supervisor/openssh:docker-build] [0m#9 1.217 checking if cc supports C99-style variadic macros... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 1.268 checking build system type... x86_64-pc-linux-musl
+[90m[components/supervisor/openssh:docker-build] [0m#9 1.358 checking host system type... x86_64-pc-linux-musl
+[90m[components/supervisor/openssh:docker-build] [0m#9 1.358 checking for stdio.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 1.395 checking for stdlib.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 1.438 checking for string.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 1.471 checking for inttypes.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 1.507 checking for stdint.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 1.545 checking for strings.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 1.580 checking for sys/stat.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 1.618 checking for sys/types.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 1.664 checking for unistd.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 1.705 checking whether byte ordering is bigendian... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 1.808 checking for gawk... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 1.808 checking for mawk... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 1.809 checking for nawk... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 1.809 checking for awk... awk
+[90m[components/supervisor/openssh:docker-build] [0m#9 1.809 checking how to run the C preprocessor... cc -E
+[90m[components/supervisor/openssh:docker-build] [0m#9 1.886 checking for ranlib... ranlib
+[90m[components/supervisor/openssh:docker-build] [0m#9 1.894 checking for a BSD-compatible install... /usr/bin/install -c
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.171 checking for grep that handles long lines and -e... /bin/grep
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.230 checking for egrep... /bin/grep -E
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.231 checking for a race-free mkdir -p... ./install-sh -c -d
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.238 checking for ar... ar
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.238 checking for cat... /bin/cat
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.238 checking for kill... /bin/kill
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.239 checking for sed... /bin/sed
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.239 checking for bash... /bin/bash
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.239 checking for ksh... (cached) /bin/bash
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.240 checking for sh... (cached) /bin/bash
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.240 checking for bash... /bin/bash
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.240 checking for ksh... (cached) /bin/bash
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.240 checking for sh... (cached) /bin/bash
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.241 checking for groff... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.241 checking for nroff... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.241 checking for mandoc... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.242 checking for pkg-config... /usr/bin/pkg-config
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.242 configure: WARNING: no manpage formatter found
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.242 checking for groupadd... groupadd
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.242 checking for useradd... useradd
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.242 checking for pkgmk... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.243 checking for special C compiler options needed for large files... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.243 checking for _FILE_OFFSET_BITS value needed for large files... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.288 checking for passwd... /usr/bin/passwd
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.289 checking for inline... inline
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.315 checking for cc options needed to detect all undeclared functions... none needed
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.378 checking whether LLONG_MAX is declared... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.421 checking whether LONG_LONG_MAX is declared... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.447 checking whether SYSTR_POLICY_KILL is declared... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.480 checking whether RLIMIT_NPROC is declared... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.522 checking whether PR_SET_NO_NEW_PRIVS is declared... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.572 checking whether OpenSSL will be used for cryptography... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.572 checking if cc supports -Werror... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.614 checking gcc version... 12.2.1
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.617 checking clang version... 
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.618 checking if cc supports compile flag -pipe... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.666 checking if cc supports compile flag -Wunknown-warning-option... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.701 checking if cc supports compile flag -Wno-error=format-truncation... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.748 checking if cc supports compile flag -Qunused-arguments... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.778 checking if cc supports compile flag -Wall... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.822 checking if cc supports compile flag -Wextra... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.875 checking if cc supports compile flag -Wpointer-arith... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.921 checking if cc supports compile flag -Wuninitialized... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 2.972 checking if cc supports compile flag -Wsign-compare... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 3.020 checking if cc supports compile flag -Wformat-security... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 3.065 checking if cc supports compile flag -Wsizeof-pointer-memaccess... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 3.109 checking if cc supports compile flag -Wpointer-sign... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 3.151 checking if cc supports compile flag -Wunused-parameter... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 3.197 checking if cc supports compile flag -Wunused-result... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 3.240 checking if cc supports compile flag -Wimplicit-fallthrough... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 3.287 checking if cc supports compile flag -Wmisleading-indentation... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 3.333 checking if cc supports compile flag -Wbitwise-instead-of-logical... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 3.371 checking if cc supports compile flag -fno-strict-aliasing... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 3.416 checking if cc supports compile flag -mretpoline... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 3.436 checking if cc supports link flag -Wl,-z,retpolineplt... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 3.499 checking if cc supports compile flag -D_FORTIFY_SOURCE=2... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 3.543 checking if cc supports link flag -Wl,-z,relro... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 3.630 checking if cc supports link flag -Wl,-z,now... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 3.692 checking if cc supports link flag -Wl,-z,noexecstack... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 3.752 checking if cc supports compile flag -ftrapv and linking succeeds... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 3.813 checking if cc supports compile flag -fzero-call-used-regs=all... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 3.858 checking if cc supports compile flag -ftrivial-auto-var-init=zero... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 3.906 checking if cc accepts -fno-builtin-memset... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 3.960 checking if cc supports -fstack-protector-strong... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 4.025 checking if -fstack-protector-strong works... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 4.087 checking if compiler allows __attribute__ on return types... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 4.132 checking if compiler allows __attribute__ prototype args... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 4.168 checking if compiler supports variable length arrays... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 4.213 checking if compiler accepts variable declarations after code... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 4.249 checking for blf.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 4.283 checking for bstring.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 4.318 checking for crypt.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 4.349 checking for crypto/sha2.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 4.386 checking for dirent.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 4.419 checking for endian.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 4.455 checking for elf.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 4.497 checking for err.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 4.534 checking for features.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 4.564 checking for fcntl.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 4.597 checking for floatingpoint.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 4.632 checking for fnmatch.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 4.669 checking for getopt.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 4.705 checking for glob.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 4.745 checking for ia.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 4.785 checking for iaf.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 4.819 checking for ifaddrs.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 4.855 checking for inttypes.h... (cached) yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 4.855 checking for langinfo.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 4.894 checking for limits.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 4.927 checking for locale.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 4.965 checking for login.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.000 checking for maillock.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.055 checking for ndir.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.089 checking for net/if_tun.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.125 checking for netdb.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.166 checking for netgroup.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.204 checking for pam/pam_appl.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.237 checking for paths.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.270 checking for poll.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.309 checking for pty.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.340 checking for readpassphrase.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.375 checking for rpc/types.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.414 checking for security/pam_appl.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.451 checking for sha2.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.491 checking for shadow.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.523 checking for stddef.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.555 checking for stdint.h... (cached) yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.556 checking for string.h... (cached) yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.556 checking for strings.h... (cached) yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.556 checking for sys/bitypes.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.596 checking for sys/byteorder.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.631 checking for sys/bsdtty.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.665 checking for sys/cdefs.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.703 checking for sys/dir.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.740 checking for sys/file.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.772 checking for sys/mman.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.812 checking for sys/label.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.848 checking for sys/ndir.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.895 checking for sys/param.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.925 checking for sys/poll.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.959 checking for sys/prctl.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 5.991 checking for sys/procctl.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.028 checking for sys/pstat.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.061 checking for sys/ptrace.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.093 checking for sys/random.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.124 checking for sys/select.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.154 checking for sys/stream.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.193 checking for sys/stropts.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.224 checking for sys/strtio.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.264 checking for sys/statvfs.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.295 checking for sys/sysmacros.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.327 checking for sys/time.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.358 checking for sys/timers.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.391 checking for sys/vfs.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.422 checking for time.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.460 checking for tmpdir.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.500 checking for ttyent.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.535 checking for ucred.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.573 checking for unistd.h... (cached) yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.573 checking for usersec.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.608 checking for util.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.641 checking for utime.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.672 checking for utmp.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.705 checking for utmpx.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.735 checking for vis.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.768 checking for wchar.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.800 checking for sys/audit.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.828 checking for sys/capsicum.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.855 checking for capsicum_helpers.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.880 checking for caph_cache_tzdata... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.903 checking for net/route.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.931 checking for sys/sysctl.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 6.960 checking for lastlog.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 7.013 checking for sys/ptms.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 7.035 checking for login_cap.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 7.060 checking for sys/mount.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 7.088 checking for sys/un.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 7.119 checking for linux/if_tun.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 7.159 checking for linux/if.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 7.190 checking for linux/seccomp.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 7.212 checking for linux/filter.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 7.233 checking for linux/audit.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 7.255 checking for seccomp architecture... "AUDIT_ARCH_X86_64"
+[90m[components/supervisor/openssh:docker-build] [0m#9 7.256 checking compiler and flags for sanity... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 7.316 checking for setsockopt... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 7.369 checking for dirname... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 7.422 checking for libgen.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 7.455 checking for getspnam... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 7.555 checking for library containing basename... none required
+[90m[components/supervisor/openssh:docker-build] [0m#9 7.607 checking for zlib... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 7.607 checking for zlib.h... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 7.644 checking for deflate in -lz... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 7.705 checking for possibly buggy zlib... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 7.828 checking for strcasecmp... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 7.883 checking for utimes... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 7.936 checking for bsd/libutil.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 7.974 checking for libutil.h... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 8.016 checking for library containing fmt_scaled... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 8.181 checking for library containing scan_scaled... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 8.365 checking for library containing login... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 8.523 checking for library containing logout... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 8.678 checking for library containing logwtmp... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 8.880 checking for library containing openpty... none required
+[90m[components/supervisor/openssh:docker-build] [0m#9 8.953 checking for library containing updwtmp... none required
+[90m[components/supervisor/openssh:docker-build] [0m#9 9.006 checking for fmt_scaled... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 9.064 checking for scan_scaled... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 9.119 checking for login... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 9.175 checking for logout... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 9.233 checking for openpty... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 9.301 checking for updwtmp... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 9.357 checking for logwtmp... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 9.421 checking for library containing inet_ntop... none required
+[90m[components/supervisor/openssh:docker-build] [0m#9 9.502 checking for library containing gethostbyname... none required
+[90m[components/supervisor/openssh:docker-build] [0m#9 9.597 checking for library containing SHA256Update... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 9.759 checking for strftime... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 9.846 checking for GNU libc compatible malloc... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 9.907 checking for GNU libc compatible realloc... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 9.968 checking if calloc(0, N) returns non-null... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 10.04 checking for GLOB_ALTDIRFUNC support... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 10.06 checking for gl_matchc field in glob_t... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 10.08 checking for gl_statv and GLOB_KEEPSTAT extensions for glob... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 10.11 checking whether GLOB_NOMATCH is declared... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 10.15 checking whether VIS_ALL is declared... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 10.18 checking whether struct dirent allocates space for d_name... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 10.24 checking for /proc/pid/fd directory... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 10.24 checking for gcc >= 4.x... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 10.26 checking if cc supports compile flag -fPIE... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 10.31 checking if cc supports link flag -pie... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 10.40 checking whether both -fPIE and -pie are supported... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 10.40 checking whether -fPIC is accepted... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 10.44 checking for Blowfish_initstate... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 10.50 checking for Blowfish_expandstate... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 10.61 checking for Blowfish_expand0state... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 10.66 checking for Blowfish_stream2word... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 10.72 checking for SHA256Update... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 10.79 checking for SHA384Update... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 10.85 checking for SHA512Update... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 10.90 checking for asprintf... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 10.97 checking for b64_ntop... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 11.02 checking for __b64_ntop... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 11.08 checking for b64_pton... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 11.14 checking for __b64_pton... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 11.19 checking for bcopy... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 11.25 checking for bcrypt_pbkdf... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 11.31 checking for bindresvport_sa... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 11.37 checking for blf_enc... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 11.42 checking for bzero... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 11.48 checking for cap_rights_limit... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 11.53 checking for clock... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 11.58 checking for closefrom... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 11.64 checking for close_range... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 11.70 checking for dirfd... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 11.75 checking for endgrent... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 11.84 checking for err... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 11.98 checking for errx... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 12.06 checking for explicit_bzero... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 12.11 checking for explicit_memset... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 12.17 checking for fchmod... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 12.23 checking for fchmodat... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 12.29 checking for fchown... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 12.35 checking for fchownat... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 12.40 checking for flock... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 12.46 checking for fnmatch... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 12.53 checking for freeaddrinfo... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 12.59 checking for freezero... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 12.65 checking for fstatfs... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 12.70 checking for fstatvfs... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 12.76 checking for futimes... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 12.81 checking for getaddrinfo... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 12.91 checking for getcwd... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 12.97 checking for getentropy... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 13.03 checking for getgrouplist... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 13.13 checking for getline... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 13.20 checking for getnameinfo... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 13.30 checking for getopt... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 13.36 checking for getpagesize... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 13.42 checking for getpeereid... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 13.47 checking for getpeerucred... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 13.53 checking for getpgid... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 13.65 checking for _getpty... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 13.74 checking for getrlimit... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 13.79 checking for getrandom... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 13.91 checking for getsid... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 13.96 checking for getttyent... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 14.02 checking for glob... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 14.13 checking for group_from_gid... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 14.18 checking for inet_aton... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 14.24 checking for inet_ntoa... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 14.30 checking for inet_ntop... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 14.37 checking for innetgr... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 14.43 checking for killpg... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 14.48 checking for llabs... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 14.53 checking for localtime_r... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 14.60 checking for login_getcapbool... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 14.65 checking for login_getpwclass... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 14.71 checking for memmem... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 14.76 checking for memmove... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 14.82 checking for memset_s... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 14.87 checking for mkdtemp... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 14.93 checking for ngetaddrinfo... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 14.99 checking for nsleep... no
+[90m[components/supervisor/frontend:app] [0m[3/4] Linking dependencies...
+[90m[components/supervisor/openssh:docker-build] [0m#9 15.04 checking for ogetaddrinfo... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 15.10 checking for openlog_r... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 15.15 checking for pledge... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 15.21 checking for poll... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 15.26 checking for ppoll... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 15.32 checking for prctl... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 15.37 checking for procctl... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 15.43 checking for pselect... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 15.48 checking for pstat... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 15.54 checking for raise... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 15.60 checking for readpassphrase... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 15.65 checking for reallocarray... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 15.72 checking for realpath... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 15.78 checking for recvmsg... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 15.84 checking for recallocarray... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 15.96 checking for rresvport_af... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 16.02 checking for sendmsg... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 16.08 checking for setdtablesize... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 16.14 checking for setegid... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 16.22 checking for setenv... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 16.28 checking for seteuid... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 16.35 checking for setgroupent... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 16.41 checking for setgroups... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 16.47 checking for setlinebuf... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 16.53 checking for setlogin... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 16.59 checking for setpassent... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 16.65 checking for setpcred... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 16.73 checking for setproctitle... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 16.88 checking for setregid... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 16.95 checking for setreuid... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 17.02 checking for setrlimit... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 17.09 checking for setsid... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 17.15 checking for setvbuf... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 17.22 checking for sigaction... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 17.28 checking for sigvec... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 17.34 checking for snprintf... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 17.41 checking for socketpair... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 17.46 checking for statfs... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 17.55 checking for statvfs... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 17.61 checking for strcasestr... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 17.66 checking for strdup... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 17.73 checking for strerror... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 17.80 checking for strlcat... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 17.86 checking for strlcpy... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 17.92 checking for strmode... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 18.00 checking for strndup... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 18.06 checking for strnlen... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 18.11 checking for strnvis... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 18.18 checking for strptime... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 18.26 checking for strsignal... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 18.34 checking for strtonum... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 18.40 checking for strtoll... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 18.46 checking for strtoul... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 18.51 checking for strtoull... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 18.59 checking for swap32... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 18.67 checking for sysconf... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 18.74 checking for tcgetpgrp... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 18.79 checking for timegm... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 18.86 checking for timingsafe_bcmp... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 18.93 checking for truncate... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 18.99 checking for unsetenv... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 19.06 checking for updwtmpx... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 19.12 checking for utimensat... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 19.18 checking for user_from_uid... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 19.24 checking for usleep... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 19.30 checking for vasprintf... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 19.38 checking for vsnprintf... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 19.45 checking for waitpid... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 19.51 checking for warn... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 19.60 checking whether bzero is declared... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 19.66 checking whether memmem is declared... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 19.71 checking for mblen... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 19.82 checking for mbtowc... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 19.88 checking for nl_langinfo... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 19.94 checking for wcwidth... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 20.02 checking for utf8 locale support... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 20.16 checking for library containing dlopen... none required
+[90m[components/supervisor/openssh:docker-build] [0m#9 20.23 checking for dlopen... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 20.31 checking whether RTLD_NOW is declared... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 20.36 checking for gai_strerror... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 20.50 checking for library containing nanosleep... none required
+[90m[components/supervisor/openssh:docker-build] [0m#9 20.56 checking for library containing clock_gettime... none required
+[90m[components/supervisor/openssh:docker-build] [0m#9 20.63 checking whether localtime_r is declared... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 20.67 checking whether strsep is declared... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 20.72 checking for strsep... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 20.79 checking whether tcsendbreak is declared... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 20.84 checking whether h_errno is declared... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 20.89 checking whether SHUT_RD is declared... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 20.94 checking whether getpeereid is declared... no
+[90m[components/supervisor/openssh:docker-build] [0m#9 20.98 checking whether O_NONBLOCK is declared... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 21.02 checking whether ftruncate is declared... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 21.07 checking whether getentropy is declared... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 21.12 checking whether readv is declared... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 21.17 checking whether writev is declared... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 21.21 checking whether MAXSYMLINKS is declared... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 21.26 checking whether offsetof is declared... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 21.30 checking whether howmany is declared... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 21.34 checking whether NFDBITS is declared... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 21.39 checking for fd_mask... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 21.48 checking for setresuid... yes
+[90m[components/supervisor/frontend:app] [0m[4/4] Building fresh packages...
+[90m[components/supervisor/openssh:docker-build] [0m#9 21.55 checking if setresuid seems to work... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 21.63 checking for setresgid... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 21.73 checking if setresgid seems to work... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 21.81 checking for working fflush(NULL)... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 21.87 checking for gettimeofday... yes
+[90m[components/supervisor/frontend:app] [0msuccess Saved lockfile.
+[90m[components/supervisor/frontend:app] [0mDone in 24.07s.
+[90m[components/supervisor/openssh:docker-build] [0m#9 21.93 checking for time... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 21.99 checking for endutent... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 22.04 checking for getutent... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 22.10 checking for getutid... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 22.15 checking for getutline... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 22.21 checking for pututline... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 22.26 checking for setutent... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 22.31 checking for utmpname... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 22.37 checking for endutxent... yes
+[90m[components/supervisor/openssh:docker-build] [0m#9 22.42 checking for getutxent... yes
+[90m[components/supervisor/frontend:app] [0mFlag --tojson has been deprecated, please use -o=json instead
+[90m[components/supervisor/frontend:app] [0mError: stat config.json: no such file or directory
+[90m[components/supervisor/frontend:app] [0m[0;31mpackage build failed[0m
+[90m[components/supervisor/frontend:app] [0m[1;37mReason:[0m exit status 1
+[0;31mbuild failed[0m
+[1;37mReason:[0m build failed
+time="2023-05-12T08:46:25Z" level=fatal msg="build failed"
+leeway build components/usage:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib               [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/content-service-api/go:lib  [90m(version 96c22b2ddc7509c580fb952baff56c3a8bfd632d)[0m
+[32m📦  cached locally[0m  components/public-api/go:lib           [90m(version b712341e954abd3f84889ea36df9a2db0692df85)[0m
+[33m🔧  build[0m           components/gitpod-db/go:lib            [90m(version 0738c8406610d681ca6dbaae49f3747c8456b4b1)[0m
+[33m🔧  build[0m           components/usage-api/go:lib            [90m(version d09cdbe585fb1443aa98dc8166c76771b26cda54)[0m
+[33m🔧  build[0m           components/usage:app                   [90m(version bb21dd67499f7b52cd8e1064e2fc7623fcb5ee47)[0m
+[33m🔧  build[0m           components/usage:docker                [90m(version 03beb95db881fb39e7b470b7e3cee98ee193e3f0)[0m
+
+[90m[components/usage-api/go:lib] [0m[33mbuild started[0m [0;90m(version d09cdbe585fb1443aa98dc8166c76771b26cda54)[0m
+[90m[components/gitpod-db/go:lib] [0m[33mbuild started[0m [0;90m(version 0738c8406610d681ca6dbaae49f3747c8456b4b1)[0m
+[90m[components/usage-api/go:lib] [0mlevel=error msg="[linters_context] typechecking error: pattern ./...: directory prefix . does not contain main module or its selected dependencies"
+[90m[components/usage-api/go:lib] [0m[0;31mpackage build failed[0m
+[90m[components/usage-api/go:lib] [0m[1;37mReason:[0m exit status 7
+[0;31mbuild failed[0m
+[1;37mReason:[0m build failed
+time="2023-05-12T08:46:27Z" level=fatal msg="build failed"
+leeway build components/workspace-rollout-job:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib                  [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/content-service-api/go:lib     [90m(version 96c22b2ddc7509c580fb952baff56c3a8bfd632d)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol/go:lib         [90m(version 1fa3b26ccbc90832d264edf62bd3340753bb23f7)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:gitpod-schema  [90m(version 3832e8872d751eca5bd2028c5a907c6b266c75c3)[0m
+[32m📦  cached locally[0m  components/image-builder-api/go:lib       [90m(version f569f4c7ed2550ed9c4c7109c92f4e1ee0768739)[0m
+[32m📦  cached locally[0m  components/public-api/go:lib              [90m(version b712341e954abd3f84889ea36df9a2db0692df85)[0m
+[32m📦  cached locally[0m  components/registry-facade-api/go:lib     [90m(version 11d9730b48b27fad322e28b6a16b495e98e43527)[0m
+[32m📦  cached locally[0m  components/workspace-rollout-job:app      [90m(version 7b7001a2c507530b4136a9a3172e3880421d067d)[0m
+[32m📦  cached locally[0m  components/workspace-rollout-job:docker   [90m(version 127ba6fd60e03cd084c693e1fbfab4264bb4b417)[0m
+[32m📦  cached locally[0m  components/ws-daemon-api/go:lib           [90m(version 50668ec3ec5e31f546c2466c6eb5bd5cf37f52c6)[0m
+[32m📦  cached locally[0m  components/ws-manager-api/go:lib          [90m(version d89281deca1e97571505c1d2d858062eab5c5d01)[0m
+[32m📦  cached locally[0m  components/ws-manager-bridge-api/go:lib   [90m(version 3a91881febebb4e177f87cc2a0beb05da7fa3784)[0m
+[32m📦  cached locally[0m  dev/addlicense:app                        [90m(version c322ba901584f00744aef2db3f81d8d0e5c0512b)[0m
+[32m📦  cached locally[0m  dev/gpctl:lib                             [90m(version 079e92baeab1a971e3b5b0ac30a6ceb70160e2f5)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/workspacekit:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib                [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/content-service-api/go:lib   [90m(version 96c22b2ddc7509c580fb952baff56c3a8bfd632d)[0m
+[32m📦  cached locally[0m  components/workspacekit:app             [90m(version e129e785075d67b3ea6d0ff333c1996ebe17cbe3)[0m
+[32m📦  cached locally[0m  components/workspacekit:docker          [90m(version d34db9a6ba62a4cb4b8c2cb919dff480fe291333)[0m
+[32m📦  cached locally[0m  components/workspacekit:fuse-overlayfs  [90m(version 0e3a70acf6c077c42a8c9ddfb56310fea4fce7f6)[0m
+[32m📦  cached locally[0m  components/ws-daemon-api/go:lib         [90m(version 50668ec3ec5e31f546c2466c6eb5bd5cf37f52c6)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/ws-daemon/seccomp-profile-installer:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/ws-daemon/seccomp-profile-installer:app      [90m(version a43fb18e4fd284a225c3ca27c40c606a87e56b5d)[0m
+[32m📦  cached locally[0m  components/ws-daemon/seccomp-profile-installer:docker   [90m(version d315149795701d6b09aed65a760c2717616c9c62)[0m
+[32m📦  cached locally[0m  components/ws-daemon/seccomp-profile-installer:profile  [90m(version 9cab06d4d957c4a7d16a80e0edf95cb7d5fa19e9)[0m
+[32m📦  cached locally[0m  components/ws-manager:userns-test-fixtures              [90m(version 337c24db94051d44e9040782c9f60c379e6f349e)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/ws-daemon:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib                  [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/content-service-api/go:lib     [90m(version 96c22b2ddc7509c580fb952baff56c3a8bfd632d)[0m
+[32m📦  cached locally[0m  components/content-service:lib            [90m(version b0cd0898613468d7c336a07949eab1a254208889)[0m
+[32m📦  cached locally[0m  components/ws-daemon-api/go:lib           [90m(version 50668ec3ec5e31f546c2466c6eb5bd5cf37f52c6)[0m
+[32m📦  cached locally[0m  components/ws-daemon/nsinsider:app        [90m(version d12268fa1f748b5cbc2389c20384fddfc8311db1)[0m
+[32m📦  cached locally[0m  components/ws-daemon:app                  [90m(version 12a1474cd62990545c235c3808be17329d6230f1)[0m
+[32m📦  cached locally[0m  components/ws-daemon:content-initializer  [90m(version c806f7cb10365aebe6a71178c51ef5a431a8ce26)[0m
+[32m📦  cached locally[0m  components/ws-daemon:docker               [90m(version 17c422dc67630f3a475daa21b4d3c73f67b8ca76)[0m
+[32m📦  cached locally[0m  components/ws-manager-api/go:lib          [90m(version d89281deca1e97571505c1d2d858062eab5c5d01)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/ws-manager-bridge:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/content-service-api/typescript:lib    [90m(version c71a29d0b6ae107f0aab9d73f018d87f6b7b8582)[0m
+[32m📦  cached locally[0m  components/gitpod-db:lib                         [90m(version 38d74d9aef02665fba03036289a3b12c241d21dd)[0m
+[32m📦  cached locally[0m  components/gitpod-messagebus:lib                 [90m(version c7668ac9d5b02ee05bd39f17054bba4dcbfdb780)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:lib                   [90m(version 6f50f84f6d574c1dae5f44fabf7fd3a6af9537d1)[0m
+[32m📦  cached locally[0m  components/ws-daemon-api/typescript:lib          [90m(version 45773cbd3b66077d489736c0b7ad4ba41905f3d9)[0m
+[32m📦  cached locally[0m  components/ws-manager-api/typescript:lib         [90m(version 3c407f78de6991d3fccfb6af70eb6bfda0bef644)[0m
+[32m📦  cached locally[0m  components/ws-manager-bridge-api/typescript:lib  [90m(version 9ec71ad36e08048edfa0b703cae362816d1dc962)[0m
+[32m📦  cached locally[0m  components/ws-manager-bridge:app                 [90m(version a6241738c536d6e300ed6202db55ca130203795d)[0m
+[32m📦  cached locally[0m  components/ws-manager-bridge:docker              [90m(version 3aa203c48c68fac2b5c8c0689fc34422b5548500)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/ws-manager-mk2:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib               [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/content-service-api/go:lib  [90m(version 96c22b2ddc7509c580fb952baff56c3a8bfd632d)[0m
+[32m📦  cached locally[0m  components/content-service:lib         [90m(version b0cd0898613468d7c336a07949eab1a254208889)[0m
+[32m📦  cached locally[0m  components/image-builder-api/go:lib    [90m(version f569f4c7ed2550ed9c4c7109c92f4e1ee0768739)[0m
+[32m📦  cached locally[0m  components/registry-facade-api/go:lib  [90m(version 11d9730b48b27fad322e28b6a16b495e98e43527)[0m
+[32m📦  cached locally[0m  components/ws-manager-api/go:lib       [90m(version d89281deca1e97571505c1d2d858062eab5c5d01)[0m
+[33m🔧  build[0m           components/ws-manager-mk2:app          [90m(version a585bcc22377fd5be2995593772a65a6de15a0b0)[0m
+[33m🔧  build[0m           components/ws-manager-mk2:docker       [90m(version e1c52725b30403dc682de29836decb589cbcadcd)[0m
+
+[90m[components/ws-manager-mk2:app] [0m[33mbuild started[0m [0;90m(version a585bcc22377fd5be2995593772a65a6de15a0b0)[0m
+[90m[components/ws-manager-mk2:app] [0m?   	github.com/gitpod-io/gitpod/ws-manager-mk2	[no test files]
+[90m[components/ws-manager-mk2:app] [0m?   	github.com/gitpod-io/gitpod/ws-manager-mk2/cmd/sample-workspace	[no test files]
+[90m[components/ws-manager-mk2:app] [0m?   	github.com/gitpod-io/gitpod/ws-manager-mk2/pkg/activity	[no test files]
+[90m[components/ws-manager-mk2:app] [0m?   	github.com/gitpod-io/gitpod/ws-manager-mk2/pkg/maintenance	[no test files]
+[90m[components/ws-manager-mk2:app] [0m?   	github.com/gitpod-io/gitpod/ws-manager-mk2/pkg/proxy	[no test files]
+[90m[components/ws-manager-mk2:app] [0m?   	github.com/gitpod-io/gitpod/ws-manager-mk2/service	[no test files]
+[90m[components/ws-manager-mk2:app] [0m=== RUN   TestAPIs
+[90m[components/ws-manager-mk2:app] [0mRunning Suite: Controller Suite - /tmp/build/components-ws-manager-mk2--app.a585bcc22377fd5be2995593772a65a6de15a0b0/controllers
+[90m[components/ws-manager-mk2:app] [0m================================================================================================================================
+[90m[components/ws-manager-mk2:app] [0mRandom Seed: [1m1683881199[0m
+[90m[components/ws-manager-mk2:app] [0m
+[90m[components/ws-manager-mk2:app] [0mWill run [1m23[0m of [1m23[0m specs
+[90m[components/ws-manager-mk2:app] [0m[38;5;243m------------------------------[0m
+[90m[components/ws-manager-mk2:app] [0m[38;5;9m[BeforeSuite] [FAILED] [0.006 seconds][0m
+[90m[components/ws-manager-mk2:app] [0m[38;5;9m[1m[BeforeSuite] [0m
+[90m[components/ws-manager-mk2:app] [0m[38;5;243m/tmp/build/components-ws-manager-mk2--app.a585bcc22377fd5be2995593772a65a6de15a0b0/controllers/suite_test.go:59[0m
+[90m[components/ws-manager-mk2:app] [0m
+[90m[components/ws-manager-mk2:app] [0m  [38;5;243mTimeline >>[0m
+[90m[components/ws-manager-mk2:app] [0m  [1mSTEP:[0m bootstrapping test environment [38;5;243m@ 05/12/23 08:46:39.197[0m
+[90m[components/ws-manager-mk2:app] [0m  2023-05-12T08:46:39Z	DEBUG	controller-runtime.test-env	starting control plane
+[90m[components/ws-manager-mk2:app] [0m  2023-05-12T08:46:39Z	ERROR	controller-runtime.test-env	unable to start the controlplane	{"tries": 0, "error": "fork/exec /usr/local/kubebuilder/bin/etcd: no such file or directory"}
+[90m[components/ws-manager-mk2:app] [0m  sigs.k8s.io/controller-runtime/pkg/envtest.(*Environment).startControlPlane
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.14.6/pkg/envtest/server.go:329
+[90m[components/ws-manager-mk2:app] [0m  sigs.k8s.io/controller-runtime/pkg/envtest.(*Environment).Start
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.14.6/pkg/envtest/server.go:259
+[90m[components/ws-manager-mk2:app] [0m  github.com/gitpod-io/gitpod/ws-manager-mk2/controllers.glob..func1
+[90m[components/ws-manager-mk2:app] [0m  	/tmp/build/components-ws-manager-mk2--app.a585bcc22377fd5be2995593772a65a6de15a0b0/controllers/suite_test.go:70
+[90m[components/ws-manager-mk2:app] [0m  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/github.com/onsi/ginkgo/v2@v2.8.0/internal/node.go:463
+[90m[components/ws-manager-mk2:app] [0m  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/github.com/onsi/ginkgo/v2@v2.8.0/internal/suite.go:854
+[90m[components/ws-manager-mk2:app] [0m  2023-05-12T08:46:39Z	ERROR	controller-runtime.test-env	unable to start the controlplane	{"tries": 1, "error": "fork/exec /usr/local/kubebuilder/bin/etcd: no such file or directory"}
+[90m[components/ws-manager-mk2:app] [0m  sigs.k8s.io/controller-runtime/pkg/envtest.(*Environment).startControlPlane
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.14.6/pkg/envtest/server.go:329
+[90m[components/ws-manager-mk2:app] [0m  sigs.k8s.io/controller-runtime/pkg/envtest.(*Environment).Start
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.14.6/pkg/envtest/server.go:259
+[90m[components/ws-manager-mk2:app] [0m  github.com/gitpod-io/gitpod/ws-manager-mk2/controllers.glob..func1
+[90m[components/ws-manager-mk2:app] [0m  	/tmp/build/components-ws-manager-mk2--app.a585bcc22377fd5be2995593772a65a6de15a0b0/controllers/suite_test.go:70
+[90m[components/ws-manager-mk2:app] [0m  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/github.com/onsi/ginkgo/v2@v2.8.0/internal/node.go:463
+[90m[components/ws-manager-mk2:app] [0m  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/github.com/onsi/ginkgo/v2@v2.8.0/internal/suite.go:854
+[90m[components/ws-manager-mk2:app] [0m  2023-05-12T08:46:39Z	ERROR	controller-runtime.test-env	unable to start the controlplane	{"tries": 2, "error": "fork/exec /usr/local/kubebuilder/bin/etcd: no such file or directory"}
+[90m[components/ws-manager-mk2:app] [0m  sigs.k8s.io/controller-runtime/pkg/envtest.(*Environment).startControlPlane
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.14.6/pkg/envtest/server.go:329
+[90m[components/ws-manager-mk2:app] [0m  sigs.k8s.io/controller-runtime/pkg/envtest.(*Environment).Start
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.14.6/pkg/envtest/server.go:259
+[90m[components/ws-manager-mk2:app] [0m  github.com/gitpod-io/gitpod/ws-manager-mk2/controllers.glob..func1
+[90m[components/ws-manager-mk2:app] [0m  	/tmp/build/components-ws-manager-mk2--app.a585bcc22377fd5be2995593772a65a6de15a0b0/controllers/suite_test.go:70
+[90m[components/ws-manager-mk2:app] [0m  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/github.com/onsi/ginkgo/v2@v2.8.0/internal/node.go:463
+[90m[components/ws-manager-mk2:app] [0m  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/github.com/onsi/ginkgo/v2@v2.8.0/internal/suite.go:854
+[90m[components/ws-manager-mk2:app] [0m  2023-05-12T08:46:39Z	ERROR	controller-runtime.test-env	unable to start the controlplane	{"tries": 3, "error": "fork/exec /usr/local/kubebuilder/bin/etcd: no such file or directory"}
+[90m[components/ws-manager-mk2:app] [0m  sigs.k8s.io/controller-runtime/pkg/envtest.(*Environment).startControlPlane
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.14.6/pkg/envtest/server.go:329
+[90m[components/ws-manager-mk2:app] [0m  sigs.k8s.io/controller-runtime/pkg/envtest.(*Environment).Start
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.14.6/pkg/envtest/server.go:259
+[90m[components/ws-manager-mk2:app] [0m  github.com/gitpod-io/gitpod/ws-manager-mk2/controllers.glob..func1
+[90m[components/ws-manager-mk2:app] [0m  	/tmp/build/components-ws-manager-mk2--app.a585bcc22377fd5be2995593772a65a6de15a0b0/controllers/suite_test.go:70
+[90m[components/ws-manager-mk2:app] [0m  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/github.com/onsi/ginkgo/v2@v2.8.0/internal/node.go:463
+[90m[components/ws-manager-mk2:app] [0m  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/github.com/onsi/ginkgo/v2@v2.8.0/internal/suite.go:854
+[90m[components/ws-manager-mk2:app] [0m  2023-05-12T08:46:39Z	ERROR	controller-runtime.test-env	unable to start the controlplane	{"tries": 4, "error": "fork/exec /usr/local/kubebuilder/bin/etcd: no such file or directory"}
+[90m[components/ws-manager-mk2:app] [0m  sigs.k8s.io/controller-runtime/pkg/envtest.(*Environment).startControlPlane
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.14.6/pkg/envtest/server.go:329
+[90m[components/ws-manager-mk2:app] [0m  sigs.k8s.io/controller-runtime/pkg/envtest.(*Environment).Start
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/sigs.k8s.io/controller-runtime@v0.14.6/pkg/envtest/server.go:259
+[90m[components/ws-manager-mk2:app] [0m  github.com/gitpod-io/gitpod/ws-manager-mk2/controllers.glob..func1
+[90m[components/ws-manager-mk2:app] [0m  	/tmp/build/components-ws-manager-mk2--app.a585bcc22377fd5be2995593772a65a6de15a0b0/controllers/suite_test.go:70
+[90m[components/ws-manager-mk2:app] [0m  github.com/onsi/ginkgo/v2/internal.extractBodyFunction.func3
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/github.com/onsi/ginkgo/v2@v2.8.0/internal/node.go:463
+[90m[components/ws-manager-mk2:app] [0m  github.com/onsi/ginkgo/v2/internal.(*Suite).runNode.func3
+[90m[components/ws-manager-mk2:app] [0m  	/root/go/pkg/mod/github.com/onsi/ginkgo/v2@v2.8.0/internal/suite.go:854
+[90m[components/ws-manager-mk2:app] [0m  [38;5;9m[FAILED][0m in [BeforeSuite] - /tmp/build/components-ws-manager-mk2--app.a585bcc22377fd5be2995593772a65a6de15a0b0/controllers/suite_test.go:71 [38;5;243m@ 05/12/23 08:46:39.203[0m
+[90m[components/ws-manager-mk2:app] [0m  [38;5;243m<< Timeline[0m
+[90m[components/ws-manager-mk2:app] [0m
+[90m[components/ws-manager-mk2:app] [0m  [38;5;9m[FAILED] Unexpected error:
+[90m[components/ws-manager-mk2:app] [0m      <*fmt.wrapError | 0xc0004bf680>: {
+[90m[components/ws-manager-mk2:app] [0m          msg: "unable to start control plane itself: failed to start the controlplane. retried 5 times: fork/exec /usr/local/kubebuilder/bin/etcd: no such file or directory",
+[90m[components/ws-manager-mk2:app] [0m          err: <*fmt.wrapError | 0xc0004bf660>{
+[90m[components/ws-manager-mk2:app] [0m              msg: "failed to start the controlplane. retried 5 times: fork/exec /usr/local/kubebuilder/bin/etcd: no such file or directory",
+[90m[components/ws-manager-mk2:app] [0m              err: <*fs.PathError | 0xc000177f50>{
+[90m[components/ws-manager-mk2:app] [0m                  Op: "fork/exec",
+[90m[components/ws-manager-mk2:app] [0m                  Path: "/usr/local/kubebuilder/bin/etcd",
+[90m[components/ws-manager-mk2:app] [0m                  Err: <syscall.Errno>0x2,
+[90m[components/ws-manager-mk2:app] [0m              },
+[90m[components/ws-manager-mk2:app] [0m          },
+[90m[components/ws-manager-mk2:app] [0m      }
+[90m[components/ws-manager-mk2:app] [0m      unable to start control plane itself: failed to start the controlplane. retried 5 times: fork/exec /usr/local/kubebuilder/bin/etcd: no such file or directory
+[90m[components/ws-manager-mk2:app] [0m  occurred[0m
+[90m[components/ws-manager-mk2:app] [0m  [38;5;9mIn [1m[BeforeSuite][0m[38;5;9m at: [1m/tmp/build/components-ws-manager-mk2--app.a585bcc22377fd5be2995593772a65a6de15a0b0/controllers/suite_test.go:71[0m [38;5;243m@ 05/12/23 08:46:39.203[0m
+[90m[components/ws-manager-mk2:app] [0m[38;5;243m------------------------------[0m
+[90m[components/ws-manager-mk2:app] [0m[38;5;13m[AfterSuite] [PANICKED] [0.000 seconds][0m
+[90m[components/ws-manager-mk2:app] [0m[38;5;13m[1m[AfterSuite] [0m
+[90m[components/ws-manager-mk2:app] [0m[38;5;243m/tmp/build/components-ws-manager-mk2--app.a585bcc22377fd5be2995593772a65a6de15a0b0/controllers/suite_test.go:178[0m
+[90m[components/ws-manager-mk2:app] [0m
+[90m[components/ws-manager-mk2:app] [0m  [38;5;13m[PANICKED] Test Panicked[0m
+[90m[components/ws-manager-mk2:app] [0m  [38;5;13mIn [1m[AfterSuite][0m[38;5;13m at: [1m/snap/go/current/src/runtime/panic.go:260[0m [38;5;243m@ 05/12/23 08:46:39.203[0m
+[90m[components/ws-manager-mk2:app] [0m
+[90m[components/ws-manager-mk2:app] [0m  [38;5;13mruntime error: invalid memory address or nil pointer dereference[0m
+[90m[components/ws-manager-mk2:app] [0m
+[90m[components/ws-manager-mk2:app] [0m  [38;5;13mFull Stack Trace[0m
+[90m[components/ws-manager-mk2:app] [0m    github.com/gitpod-io/gitpod/ws-manager-mk2/controllers.glob..func2()
+[90m[components/ws-manager-mk2:app] [0m    	/tmp/build/components-ws-manager-mk2--app.a585bcc22377fd5be2995593772a65a6de15a0b0/controllers/suite_test.go:179 +0x1b
+[90m[components/ws-manager-mk2:app] [0m[38;5;243m------------------------------[0m
+[90m[components/ws-manager-mk2:app] [0m
+[90m[components/ws-manager-mk2:app] [0m[38;5;9m[1mSummarizing 2 Failures:[0m
+[90m[components/ws-manager-mk2:app] [0m  [38;5;9m[FAIL][0m [38;5;9m[1m[BeforeSuite] [0m
+[90m[components/ws-manager-mk2:app] [0m  [38;5;243m/tmp/build/components-ws-manager-mk2--app.a585bcc22377fd5be2995593772a65a6de15a0b0/controllers/suite_test.go:71[0m
+[90m[components/ws-manager-mk2:app] [0m  [38;5;13m[PANICKED!][0m [38;5;13m[1m[AfterSuite] [0m
+[90m[components/ws-manager-mk2:app] [0m  [38;5;243m/snap/go/current/src/runtime/panic.go:260[0m
+[90m[components/ws-manager-mk2:app] [0m
+[90m[components/ws-manager-mk2:app] [0m[38;5;9m[1mRan 0 of 23 Specs in 0.007 seconds[0m
+[90m[components/ws-manager-mk2:app] [0m[38;5;9m[1mFAIL![0m -- [38;5;14m[1mA BeforeSuite node failed so all tests were skipped.[0m
+[90m[components/ws-manager-mk2:app] [0m--- FAIL: TestAPIs (0.01s)
+[90m[components/ws-manager-mk2:app] [0mFAIL
+[90m[components/ws-manager-mk2:app] [0mFAIL	github.com/gitpod-io/gitpod/ws-manager-mk2/controllers	0.051s
+[90m[components/ws-manager-mk2:app] [0m=== RUN   TestFirstGet
+[90m[components/ws-manager-mk2:app] [0m--- PASS: TestFirstGet (0.00s)
+[90m[components/ws-manager-mk2:app] [0m=== RUN   TestGetShutDown
+[90m[components/ws-manager-mk2:app] [0m--- PASS: TestGetShutDown (0.00s)
+[90m[components/ws-manager-mk2:app] [0m=== RUN   TestClosed
+[90m[components/ws-manager-mk2:app] [0m--- PASS: TestClosed (0.00s)
+[90m[components/ws-manager-mk2:app] [0m=== RUN   TestValidateConnections
+[90m[components/ws-manager-mk2:app] [0m--- PASS: TestValidateConnections (0.00s)
+[90m[components/ws-manager-mk2:app] [0mPASS
+[90m[components/ws-manager-mk2:app] [0mok  	github.com/gitpod-io/gitpod/ws-manager-mk2/grpcpool	(cached)
+[90m[components/ws-manager-mk2:app] [0mFAIL
+[90m[components/ws-manager-mk2:app] [0m[0;31mpackage build failed[0m
+[90m[components/ws-manager-mk2:app] [0m[1;37mReason:[0m exit status 1
+[0;31mbuild failed[0m
+[1;37mReason:[0m build failed
+time="2023-05-12T08:46:39Z" level=fatal msg="build failed"
+leeway build components/ws-manager:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib               [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/content-service-api/go:lib  [90m(version 96c22b2ddc7509c580fb952baff56c3a8bfd632d)[0m
+[32m📦  cached locally[0m  components/content-service:lib         [90m(version b0cd0898613468d7c336a07949eab1a254208889)[0m
+[32m📦  cached locally[0m  components/image-builder-api/go:lib    [90m(version f569f4c7ed2550ed9c4c7109c92f4e1ee0768739)[0m
+[32m📦  cached locally[0m  components/registry-facade-api/go:lib  [90m(version 11d9730b48b27fad322e28b6a16b495e98e43527)[0m
+[32m📦  cached locally[0m  components/ws-daemon-api/go:lib        [90m(version 50668ec3ec5e31f546c2466c6eb5bd5cf37f52c6)[0m
+[32m📦  cached locally[0m  components/ws-manager-api/go:lib       [90m(version d89281deca1e97571505c1d2d858062eab5c5d01)[0m
+[32m📦  cached locally[0m  components/ws-manager:app              [90m(version 83418f4921a84792a474cfa3c1f75f73e2513bc6)[0m
+[32m📦  cached locally[0m  components/ws-manager:docker           [90m(version 48c678786153c9829a606e692827f0a905c8feb3)[0m
+
+
+[0;32mbuild succeded[0m
+leeway build components/ws-proxy:docker -Dversion=20230512
+[32m📦  cached locally[0m  components/common-go:lib               [90m(version d2afc756bfcf06513bbc04430c1cffbe52f340fe)[0m
+[32m📦  cached locally[0m  components/content-service-api/go:lib  [90m(version 96c22b2ddc7509c580fb952baff56c3a8bfd632d)[0m
+[32m📦  cached locally[0m  components/content-service:lib         [90m(version b0cd0898613468d7c336a07949eab1a254208889)[0m
+[32m📦  cached locally[0m  components/registry-facade-api/go:lib  [90m(version 11d9730b48b27fad322e28b6a16b495e98e43527)[0m
+[32m📦  cached locally[0m  components/supervisor-api/go:lib       [90m(version 6505b1a01e6e7b434713f4944dcab84b18d89b56)[0m
+[32m📦  cached locally[0m  components/ws-manager-api/go:lib       [90m(version d89281deca1e97571505c1d2d858062eab5c5d01)[0m
+[32m📦  cached locally[0m  components/ws-proxy:app                [90m(version c8f4bc5cbbab18d1e584cf5d292c8416f415e811)[0m
+[32m📦  cached locally[0m  components/ws-proxy:docker             [90m(version 6ec35aef52c54230b12e5655cd9d4427f3bf518b)[0m
+
+
+[0;32mbuild succeded[0m
