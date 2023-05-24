@@ -1,0 +1,423 @@
+leeway build install/installer:app -Dversion=20230524
+[32m📦  cached locally[0m  components/blobserve:lib                                               [90m(version a353d71e5a8d5826ff36556939e3f71608e3bf9d)[0m
+[32m📦  cached locally[0m  components/common-go:lib                                               [90m(version 6863b054510943c5d19b0b4f0a26a2d18825f8b3)[0m
+[32m📦  cached locally[0m  components/content-service-api/go:lib                                  [90m(version 73baf47c1a52e437bb63275c7ce36f593de861ca)[0m
+[32m📦  cached locally[0m  components/content-service:lib                                         [90m(version 90afc360575b8ac37dadf382b1859a274a04aa6f)[0m
+[32m📦  cached locally[0m  components/ee/agent-smith:lib                                          [90m(version 2f2dc0e9720237fd7e478f8e0556046ffd40131f)[0m
+[32m📦  cached locally[0m  components/gitpod-db/go:lib                                            [90m(version cc0dde1ad840e174b8f1dccb46a78ccd844b38a5)[0m
+[32m📦  cached locally[0m  components/gitpod-db:migrations                                        [90m(version 452d639edea889b82fd82943387e8598ac7be73f)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol/go:lib                                      [90m(version f6460239c54dab648fa2e59c7b8542725dae4024)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:gitpod-schema                               [90m(version 0689f330465e70531c34d8aac593b76af22f3ccb)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:lib                                         [90m(version 5dee0a710e72efd9845efdbba648db11d6435e23)[0m
+[32m📦  cached locally[0m  components/ide-metrics-api/go:lib                                      [90m(version d869f0ee0d4788d084abcb7ee545456f9e6d4f22)[0m
+[32m📦  cached locally[0m  components/ide-service-api/go:lib                                      [90m(version 7f7d9cc0e122fd2ddf2eefc648fa99095935ee99)[0m
+[32m📦  cached locally[0m  components/image-builder-api/go:lib                                    [90m(version 2c03d7975a02bcef493668dec41d0722071bab11)[0m
+[32m📦  cached locally[0m  components/node-labeler:lib                                            [90m(version 28de3ce51767ee408af78927fb9634a83c48b316)[0m
+[32m📦  cached locally[0m  components/openvsx-proxy:lib                                           [90m(version 972a5570d66198367315d49befe01b37996db915)[0m
+[32m📦  cached locally[0m  components/public-api/go:lib                                           [90m(version d7fddd4ceae2c2dcd4f567925a7ec4c719434b8f)[0m
+[32m📦  cached locally[0m  components/registry-facade-api/go:lib                                  [90m(version ae99093b2b9f95f993f47394e8173b26b2b3c905)[0m
+[32m📦  cached locally[0m  components/registry-facade:lib                                         [90m(version 676109e8789cf1990a4ca295e387af6c45ce9a08)[0m
+[32m📦  cached locally[0m  components/supervisor-api/go:lib                                       [90m(version 6b6f507b0413ae1ac98543ab30a8086ef17c860b)[0m
+[32m📦  cached locally[0m  components/usage-api/go:lib                                            [90m(version 7b3e9c1ad69c0df341a4b0f78dc564fff6cc3a89)[0m
+[32m📦  cached locally[0m  components/usage:lib                                                   [90m(version e3ab858513d976b0df9a476155d915d7d3b427f6)[0m
+[32m📦  cached locally[0m  components/ws-daemon-api/go:lib                                        [90m(version 8e9a3dad06b6c5e05afb2dbdd0473f0d5d86f27b)[0m
+[32m📦  cached locally[0m  components/ws-daemon:lib                                               [90m(version dcd93f7bdf054ed2bd64d8536d505637782c76ec)[0m
+[32m📦  cached locally[0m  components/ws-manager-api/go:lib                                       [90m(version 3733ce2a418a65ff5954ac0aae1ab66198674e36)[0m
+[32m📦  cached locally[0m  components/ws-manager-mk2:crd                                          [90m(version 179271f80c5a90cf9c0dd73e4faedad22be25f8e)[0m
+[32m📦  cached locally[0m  components/ws-proxy:lib                                                [90m(version 1eaa8c027d05f9a9d8e6c4073a5ff4dd4beb5386)[0m
+[32m📦  cached locally[0m  dev/addlicense:app                                                     [90m(version 200bc6ca31de93388590cc5c1317e11c2093c658)[0m
+[32m📦  cached locally[0m  install/installer/pkg/components/database/incluster/init:init-scripts  [90m(version 19ecdd096dcb0126af680b8f904182ab6ae38bc5)[0m
+[32m📦  cached locally[0m  install/installer:raw-app                                              [90m(version 7b60efa3b670fed8d15e99c2b3f08466e2e05970)[0m
+[33m🔧  build[0m           components/blobserve:app                                               [90m(version a6e69c14443a2d9caa13b0a78dd13fcc31a8712a)[0m
+[33m🔧  build[0m           components/blobserve:docker                                            [90m(version a8177864e5548ac0ab3e0af95e51dc89c002110b)[0m
+[33m🔧  build[0m           components/content-service-api/typescript:lib                          [90m(version 954bd32e4c8af33edb6123780afba3954247beda)[0m
+[33m🔧  build[0m           components/content-service:app                                         [90m(version ff42f126255677176408e936b1dc8234c72c1778)[0m
+[33m🔧  build[0m           components/content-service:docker                                      [90m(version cde65b60eef6667182e5dedd74afab03d7210952)[0m
+[33m🔧  build[0m           components/dashboard:app                                               [90m(version 1026e0aa572270d9fc52af2a8bdf272ee153b62d)[0m
+[33m🔧  build[0m           components/dashboard:docker                                            [90m(version 83c99a04eef1ad3299d655d921b4614da01e14aa)[0m
+[33m🔧  build[0m           components/dashboard:static                                            [90m(version b46bc1e9ed28206830549faccbb4f0f175da30cc)[0m
+[33m🔧  build[0m           components/docker-up:app                                               [90m(version fcf8a4cc9edd5f80ca1460c35a4bb9d1702dfdbe)[0m
+[33m🔧  build[0m           components/docker-up:bin-docker-up                                     [90m(version a65e7a19024e8d110a9a7871c305cf2c4b712559)[0m
+[33m🔧  build[0m           components/docker-up:bin-runc-facade                                   [90m(version 7ad1000e87d47db0ed4a32218c3c8e65f119c627)[0m
+[33m🔧  build[0m           components/docker-up:docker                                            [90m(version fd864ce39edf709a2561fbd5cc8f71dee80b70f6)[0m
+[33m🔧  build[0m           components/ee/agent-smith:app                                          [90m(version 03396373b2708d406e0b23fdbc2cfe9b17b8387f)[0m
+[33m🔧  build[0m           components/ee/agent-smith:docker                                       [90m(version 7074f785f682d66fb830bee01b9b8ad93af42408)[0m
+[33m🔧  build[0m           components/gitpod-cli:app                                              [90m(version f2840a43f8e94a415777b7714de2ad7ef2ba3df4)[0m
+[33m🔧  build[0m           components/gitpod-db/go:init-testdb                                    [90m(version a5e80344a1d5497ba26464bb0659a930fddb9eb2)[0m
+[33m🔧  build[0m           components/gitpod-db:dbtest                                            [90m(version 3cde386d341a25b234d59670039445b8f54e18d2)[0m
+[33m🔧  build[0m           components/gitpod-db:dbtest-init                                       [90m(version 406b8e9505040a35d42fef91b4a30fb9e68b0b2e)[0m
+[33m🔧  build[0m           components/gitpod-db:docker                                            [90m(version def3e0d467fbf5b9db2354ee212cf3e3b0193534)[0m
+[33m🔧  build[0m           components/gitpod-db:lib                                               [90m(version 8720553e6c84242c6cbff6ee6b9f8edbc1a84e09)[0m
+[33m🔧  build[0m           components/gitpod-messagebus:lib                                       [90m(version a7ca2994baff612c43a8706419a658ee4c14f48c)[0m
+[33m🔧  build[0m           components/gitpod-protocol/java:lib                                    [90m(version c176885cc0608c33e85ffec29229dd2ba9b5c821)[0m
+[33m🔧  build[0m           components/ide-metrics-api/typescript-grpcweb:lib                      [90m(version 9183a9ccedf19d99e4abe16bfd4fa6c7d3fd2370)[0m
+[33m🔧  build[0m           components/ide-metrics-api:proto                                       [90m(version 0acc653998dd76eec1e3fdb122d167a97b67d824)[0m
+[33m🔧  build[0m           components/ide-metrics:app                                             [90m(version 75bd6b2f810fed8e133660f55a8daac9e23c1997)[0m
+[33m🔧  build[0m           components/ide-metrics:docker                                          [90m(version 4cc9bcc0f0dd3210ec2b2fc39b6de82c3f6f2822)[0m
+[33m🔧  build[0m           components/ide-proxy:docker                                            [90m(version ef0df777095de13654ca17b462c6a2c2aae8362c)[0m
+[33m🔧  build[0m           components/ide-service-api/typescript:lib                              [90m(version ce5d4381e623f8d438a353b419927ef81d183436)[0m
+[33m🔧  build[0m           components/ide-service:app                                             [90m(version 1f866cd08f158e3e2f6f3e17a17e6eca7fc46b18)[0m
+[33m🔧  build[0m           components/ide-service:docker                                          [90m(version d91741e4c8ddbe1d2cfaa248eaba31f00cd7115f)[0m
+[33m🔧  build[0m           components/ide/code-desktop/status:app                                 [90m(version 0844401c40094c95c92aec8f05a3a7b3cb171069)[0m
+[33m🔧  build[0m           components/ide/code-desktop:docker                                     [90m(version 568a11854891f4f7fe92a8f6cd649e163eb43505)[0m
+[33m🔧  build[0m           components/ide/code-desktop:docker-insiders                            [90m(version 1fdee89ed51e11f74eabdf29f6e7c0c58920a9e3)[0m
+[33m🔧  build[0m           components/ide/code/codehelper:app                                     [90m(version 6e4dcd00539888b6ae5b48bca7c39f8a6b657695)[0m
+[33m🔧  build[0m           components/ide/code/codehelper:docker                                  [90m(version 23b4cb732da7627c2caae215e12c02ca9010034d)[0m
+[33m🔧  build[0m           components/ide/code:docker                                             [90m(version bb216094cb217df6cf5b643ac6e8f14d793dbd6b)[0m
+[33m🔧  build[0m           components/ide/jetbrains/backend-plugin:latest                         [90m(version 40130cafd09e673f137e41e6668fbf627a8f5ecc)[0m
+[33m🔧  build[0m           components/ide/jetbrains/backend-plugin:plugin-latest                  [90m(version 2b3d4a104523e1e5c815d729c81860f94274c70d)[0m
+[33m🔧  build[0m           components/ide/jetbrains/backend-plugin:plugin-stable                  [90m(version 60783199a0263c3fd81701a88f3f7b9386e60207)[0m
+[33m🔧  build[0m           components/ide/jetbrains/backend-plugin:stable                         [90m(version cbc7f672409d731eb2910dd9d7ca0b806879fc3a)[0m
+[33m🔧  build[0m           components/ide/jetbrains/cli:app                                       [90m(version 674d2d303d5df25a2119f7d7cafe995e64424257)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:clion                                   [90m(version c33c87e171f26725765bd58f2d261c8e9478f68a)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:clion-latest                            [90m(version 278ae451b143c9036c6671d24d7a17c0a5cbb284)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-clion                          [90m(version 7f1ddc3b79c65348b69e9a6a4b538630aac20b7a)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-clion-latest                   [90m(version ea2f652ea87a98911f195a52afa9cf22614b3e6c)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-goland                         [90m(version 20c0c83115047554db55fd5503a95b5276a6a22d)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-goland-latest                  [90m(version 751034c5e76c607074ffff7ecf13da89484adbf7)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-intellij                       [90m(version 4dfa010f04513105e39d0f42950ed778e593f47c)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-intellij-latest                [90m(version 9f36e8cde6e8ff7e8927c846d190d70378b3b2a6)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-phpstorm                       [90m(version 92c0e33db279bdd8628a96683c679900157faa0c)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-phpstorm-latest                [90m(version 67d8b7f1f7ee6b770d4a03ca5c717539a6889700)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-pycharm                        [90m(version c412c97b70d52399492f3bdd2e2053d729239b0e)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-pycharm-latest                 [90m(version fd7577bc9c1cd08ad870a5ad500b6c69629a08c1)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-rider                          [90m(version f233cad0635e4b89b05ba8bad3c9021380db73a5)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-rider-latest                   [90m(version b3b632a8d059c37088adcc29e614fd368dcf9f14)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-rubymine                       [90m(version 3b17aa8fc61c7e6ad0fae288e813fab49ccf494a)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-rubymine-latest                [90m(version 7eedf0955ce3429586f12b380a5807b869657351)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-webstorm                       [90m(version adb91a712718b3bf88c4111c0941bd123f58df52)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-webstorm-latest                [90m(version adbeba3e0d604dd1048f509bed45067fc07461b9)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:goland                                  [90m(version 17e29bf344316b2e278df637c13b3fb1413a4781)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:goland-latest                           [90m(version 9295bfbc244cc26fd1197e75a59137bc7076737e)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:intellij                                [90m(version d61ba7d2b37708a071e0b6ac341a345cd40e0859)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:intellij-latest                         [90m(version a9fb541cd5e082a326c48374c50ee492ba439685)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:phpstorm                                [90m(version 444b38b6c48d1fed99de25a451c01c7ba2d4b933)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:phpstorm-latest                         [90m(version 0684328342c0bd0574a73d02ba0ba373e0c18ee2)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:pycharm                                 [90m(version 2e636acfbf672f958dc2aba8cb138333675ffeb2)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:pycharm-latest                          [90m(version d6456c28fa5ea1b7d417b8e2350bdea182848f39)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:rider                                   [90m(version 706c681cd6395c9cbae44f91deb15b6441d15445)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:rider-latest                            [90m(version f59ae30fb06df2bdb33f12df6a54a7766655826c)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:rubymine                                [90m(version 478e35b701c1a4ef08919008f54487130d466c35)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:rubymine-latest                         [90m(version 3135d7776b7bc3d8728cf82e43459886f8d9d8a6)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:webstorm                                [90m(version 30e32e486fde06f637749547af07f8ab880abd85)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:webstorm-latest                         [90m(version 624c71848975a83f234390cbdc0e70a2dc95f575)[0m
+[33m🔧  build[0m           components/ide/jetbrains/launcher:app                                  [90m(version f42dccc315ec9bccf9fd23fa75407c93abaac3bc)[0m
+[33m🔧  build[0m           components/ide/jetbrains/launcher:docker                               [90m(version 04bafb4b6b6c4eb6e9b8938ada4b466c281bea8c)[0m
+[33m🔧  build[0m           components/image-builder-api/typescript:lib                            [90m(version f7cf30732f6d4e12af5e2ce508fe63d157e36750)[0m
+[33m🔧  build[0m           components/image-builder-bob:app                                       [90m(version 290ccc186c08e30f27784a441cdca0c6ecd79b03)[0m
+[33m🔧  build[0m           components/image-builder-bob:docker                                    [90m(version 2da8383789dc3bf2ff0f63d280a32a9360889de1)[0m
+[33m🔧  build[0m           components/image-builder-bob:runc-facade                               [90m(version d5ed0aaec9e07d250fa2e77fc6d3bc45c03888c8)[0m
+[33m🔧  build[0m           components/image-builder-mk3:app                                       [90m(version b43110d91ae7e880fe5cb9dc089d685999cef4b6)[0m
+[33m🔧  build[0m           components/image-builder-mk3:docker                                    [90m(version 061fae11de83d9bee118793e9ea55f378b8eb4ac)[0m
+[33m🔧  build[0m           components/installation-telemetry:app                                  [90m(version 45a8191aa8d021952632db3f0cad91869fcd2656)[0m
+[33m🔧  build[0m           components/installation-telemetry:docker                               [90m(version d1c54e7e0f3f310c8f57f763ec95bd6ebdad433f)[0m
+[33m🔧  build[0m           components/ipfs/ipfs-cluster:docker                                    [90m(version c355e2ef66565723be1fc7a42b6e2cd14761c749)[0m
+[33m🔧  build[0m           components/ipfs/kubo:docker                                            [90m(version 08eeba3a6a8af380f2fd8751cda8e75a4531064e)[0m
+[33m🔧  build[0m           components/kots-config-check/certificate:docker                        [90m(version bff6852d6482d90eda2746460b8692ac7f733651)[0m
+[33m🔧  build[0m           components/kots-config-check/database:docker                           [90m(version 46d89e4670a9ef3443694d9e74a71f561c6e6fe8)[0m
+[33m🔧  build[0m           components/kots-config-check/registry:app                              [90m(version 81522cd30d7b50876ac9df0dfe9e386fd36a6a8a)[0m
+[33m🔧  build[0m           components/kots-config-check/registry:docker                           [90m(version c7bb1443f3e2426d3f309c6b9f481600b29d868c)[0m
+[33m🔧  build[0m           components/kots-config-check/storage:docker                            [90m(version b983486195e4312b6a00124a1ffd1f2c82ed7ed6)[0m
+[33m🔧  build[0m           components/local-app-api/go:lib                                        [90m(version 5d33f4f3767b80bd4b7ba2210d9a5a80213546e9)[0m
+[33m🔧  build[0m           components/local-app:app                                               [90m(version 96d048de9cb5cf98be9b2968d4ac2053f0d6def3)[0m
+[33m🔧  build[0m           components/local-app:app-darwin-amd64                                  [90m(version 3048b942d1d57b048f842adc8e41bc1c94bc98b9)[0m
+[33m🔧  build[0m           components/local-app:app-darwin-arm64                                  [90m(version f306cfe910468e9324e71046acbf0286ffb57615)[0m
+[33m🔧  build[0m           components/local-app:app-linux-amd64                                   [90m(version 5dcc69d30d7cc2fc770920856fd012b4ff9dc201)[0m
+[33m🔧  build[0m           components/local-app:app-linux-arm64                                   [90m(version b6bae22ae9983e64e253390a0954ea1740fb08d4)[0m
+[33m🔧  build[0m           components/local-app:app-windows-386                                   [90m(version f1efa0ca6449fe4a74bc32371e0547b571692446)[0m
+[33m🔧  build[0m           components/local-app:app-windows-amd64                                 [90m(version 373a30c2396ce762f546c9b0dcebab321b01d17b)[0m
+[33m🔧  build[0m           components/local-app:app-windows-arm64                                 [90m(version 65601cda87662b452f54f639b20ff724398c42ff)[0m
+[33m🔧  build[0m           components/local-app:docker                                            [90m(version a7e1b4ef922b6b2413d2185b41f8a8644bdbc813)[0m
+[33m🔧  build[0m           components/node-labeler:app                                            [90m(version 2ceadd1159e2209692c7501ae5507c028bd15fec)[0m
+[33m🔧  build[0m           components/node-labeler:docker                                         [90m(version b15e10c3f0fdf60cf12064e07a40ac271bf50223)[0m
+[33m🔧  build[0m           components/openvsx-proxy:app                                           [90m(version fd52f9b15b7f2384e41eff3c323970051e7c9601)[0m
+[33m🔧  build[0m           components/openvsx-proxy:docker                                        [90m(version a12bf427f06b14f390c333871238e277a2e0afa0)[0m
+[33m🔧  build[0m           components/proxy:docker                                                [90m(version f6b8dd5fec3f81ef7402ce3083fe4d11a93e312b)[0m
+[33m🔧  build[0m           components/public-api-server:app                                       [90m(version a08cc2760c7b0b54f8d6ad3d459be96c38e3e5cf)[0m
+[33m🔧  build[0m           components/public-api-server:docker                                    [90m(version 94642179a6a161597986d1aaa776cf671d12a8b3)[0m
+[33m🔧  build[0m           components/public-api/typescript:lib                                   [90m(version 1ab7593b68f301ea77e717c32ea0a3c668459f1d)[0m
+[33m🔧  build[0m           components/registry-facade:app                                         [90m(version a540cad7dd5261a9f1f7a5e7f2f018252c5e3925)[0m
+[33m🔧  build[0m           components/registry-facade:docker                                      [90m(version c57568aba67fd695ca9743e690e0a2a1d15e0e2e)[0m
+[33m🔧  build[0m           components/server:app                                                  [90m(version 4642016442b41376890217d6eeb0fab8a82ab7c3)[0m
+[33m🔧  build[0m           components/server:docker                                               [90m(version 3689a0dd67dfc22bf904afd23b2a4af59dfb7bb8)[0m
+[33m🔧  build[0m           components/service-waiter:app                                          [90m(version 5ab99c5529f02586ebfe929cbb372bede1411da3)[0m
+[33m🔧  build[0m           components/service-waiter:docker                                       [90m(version 7feb4d14286bcddd59e6c150dd2f3f220c5d8a0a)[0m
+[33m🔧  build[0m           components/supervisor-api/java:lib                                     [90m(version ceb0b8d6ead7d36b5ed722292ace531d5a675635)[0m
+[33m🔧  build[0m           components/supervisor-api/typescript-grpc:lib                          [90m(version 4dfe84fd8af3c365d1d48769e210537505636800)[0m
+[33m🔧  build[0m           components/supervisor-api/typescript-grpcweb:lib                       [90m(version 3d9e01cd652cceaa88253b1d0e21daeebbe316fd)[0m
+[33m🔧  build[0m           components/supervisor-api:java                                         [90m(version 07dcac48173915d491a17ec71e6393237ed65676)[0m
+[33m🔧  build[0m           components/supervisor-api:proto                                        [90m(version 073acf775836fe7f4a359b200bccb9c53694dc70)[0m
+[33m🔧  build[0m           components/supervisor/frontend:app                                     [90m(version 2dc20ac44ae0943cba2435de909635f9fe6bcc00)[0m
+[33m🔧  build[0m           components/supervisor/openssh:app                                      [90m(version c3fe831244fe64016fd5a170064b0ae71a761ebf)[0m
+[33m🔧  build[0m           components/supervisor/openssh:docker-build                             [90m(version c23de7b6fc6201bea9dba0cb57ed7da6aeadc34f)[0m
+[33m🔧  build[0m           components/supervisor:app                                              [90m(version 7d28da80c6db35388723f44c1522f57ef7e3ea63)[0m
+[33m🔧  build[0m           components/supervisor:docker                                           [90m(version 74f89da8a6c2194d93c4b5b7568a23e0a5f8dd51)[0m
+[33m🔧  build[0m           components/usage-api/typescript:lib                                    [90m(version 79525e3752e047f7b8dbbf9927eed357bfe99b43)[0m
+[33m🔧  build[0m           components/usage:app                                                   [90m(version 1817a288baccb2c5f3531faa683cde3b9580f271)[0m
+[33m🔧  build[0m           components/usage:docker                                                [90m(version 5eff09d6eabb63cd3b280ea0481f532380152d8e)[0m
+[33m🔧  build[0m           components/workspace-rollout-job:app                                   [90m(version 436bc0b279e4307212a516710de7543aead8c146)[0m
+[33m🔧  build[0m           components/workspace-rollout-job:docker                                [90m(version d0ff522b6cde38b2fa3b9651ca2c149145684843)[0m
+[33m🔧  build[0m           components/workspacekit:app                                            [90m(version ec3bf167bcd1c9c00f49c7692f2a190a360c9c11)[0m
+[33m🔧  build[0m           components/workspacekit:docker                                         [90m(version 720f79dc75cacaa3a3c2492eecd4c75db97d9597)[0m
+[33m🔧  build[0m           components/workspacekit:fuse-overlayfs                                 [90m(version 6a36b0300da677fdecdc55766183b78cf4730698)[0m
+[33m🔧  build[0m           components/ws-daemon-api/typescript:lib                                [90m(version c41e537b93ea6eac164515fae6dc1fcf0b0cf45c)[0m
+[33m🔧  build[0m           components/ws-daemon/nsinsider:app                                     [90m(version ee81e0607cda5a6c54215b9ce6393e6161ed84d9)[0m
+[33m🔧  build[0m           components/ws-daemon/seccomp-profile-installer:app                     [90m(version 55bd8771ddb8eeb062e73989dfd3293657c9d992)[0m
+[33m🔧  build[0m           components/ws-daemon/seccomp-profile-installer:docker                  [90m(version fb54e96617fe51e6548fd4ac1b4f185f19778c3d)[0m
+[33m🔧  build[0m           components/ws-daemon/seccomp-profile-installer:profile                 [90m(version 6bf4c3c05d8a299e23ba7d6eef3953437c7afa35)[0m
+[33m🔧  build[0m           components/ws-daemon:app                                               [90m(version 990a18920400fb0c1673ddf2827d9b3a30697cfa)[0m
+[33m🔧  build[0m           components/ws-daemon:content-initializer                               [90m(version 6add1668ba570e4ad897b6c865c7db84fec0f4b9)[0m
+[33m🔧  build[0m           components/ws-daemon:docker                                            [90m(version 79cb593fb4690b940c234cf638d6e1897e123a0b)[0m
+[33m🔧  build[0m           components/ws-manager-api/typescript:lib                               [90m(version bbddeb68778e7f0c861f7b9dda33bb1dbdda5969)[0m
+[33m🔧  build[0m           components/ws-manager-bridge-api/go:lib                                [90m(version 94c71424c24d5db82985240d61cdd66b2ccf50dc)[0m
+[33m🔧  build[0m           components/ws-manager-bridge-api/typescript:lib                        [90m(version 60a4ba6cf07f3e682aeea1be27255ffff4a0f899)[0m
+[33m🔧  build[0m           components/ws-manager-bridge:app                                       [90m(version 0e421d26713c7a3bc23c71a0e38e45c549bfb232)[0m
+[33m🔧  build[0m           components/ws-manager-bridge:docker                                    [90m(version 65fa14ac834fa5ca838abd46408ed4e77e7d5647)[0m
+[33m🔧  build[0m           components/ws-manager-mk2:app                                          [90m(version 16bdd4be49226db0962112dbdd1d6e13db8e0b86)[0m
+[33m🔧  build[0m           components/ws-manager-mk2:docker                                       [90m(version d3164d522bd1608948193a2afbc4dc581037abff)[0m
+[33m🔧  build[0m           components/ws-manager:app                                              [90m(version c8fbd7718e0226ac29f96599e5e91ad8fc1af745)[0m
+[33m🔧  build[0m           components/ws-manager:docker                                           [90m(version cf333d02977ab9705aa8c7398c1ebf5a95df0e16)[0m
+[33m🔧  build[0m           components/ws-manager:userns-test-fixtures                             [90m(version e9234cfc551eb32f0307f9756e130159dd76fafd)[0m
+[33m🔧  build[0m           components/ws-proxy:app                                                [90m(version c02ec2d4cb89d4e7e27cbc7023bf3cc658a48ca3)[0m
+[33m🔧  build[0m           components/ws-proxy:docker                                             [90m(version 3a95c07046345cf468e69c907307ff448baf020f)[0m
+[33m🔧  build[0m           components:all-docker                                                  [90m(version 139c0d5ca929cda9128b35350d3dad90d9a9e1cc)[0m
+[33m🔧  build[0m           dev/gpctl:lib                                                          [90m(version cf017156914c6c20a01080668fa9b1784911283c)[0m
+[33m🔧  build[0m           dev/version-manifest:app                                               [90m(version 0132fe329683eec92a20c22363cf92cabdaa31a3)[0m
+[33m🔧  build[0m           install/installer:app                                                  [90m(version eed4cf0be2df58006f8262e6afa4c90dd330f71a)[0m
+[33m🔧  build[0m           test:app                                                               [90m(version b2c0a2201c6a4b1999b7b014110240246842724e)[0m
+[33m🔧  build[0m           test:docker                                                            [90m(version 1b562b5433138b4a6c7d99bbf9680de5a532084a)[0m
+
+[0;31mbuild failed[0m
+[1;37mReason:[0m cannot build with unresolved argument "${SEGMENT_IO_TOKEN}": use -DSEGMENT_IO_TOKEN=value to set the argument
+	${SEGMENT_IO_TOKEN} appears in components/installation-telemetry:app
+
+
+time="2023-05-24T09:04:28Z" level=fatal msg="cannot build with unresolved argument \"${SEGMENT_IO_TOKEN}\": use -DSEGMENT_IO_TOKEN=value to set the argument\n\t${SEGMENT_IO_TOKEN} appears in components/installation-telemetry:app\n\n"
+leeway build install/installer:docker -Dversion=20230524
+[32m📦  cached locally[0m  components/blobserve:lib                                               [90m(version a353d71e5a8d5826ff36556939e3f71608e3bf9d)[0m
+[32m📦  cached locally[0m  components/common-go:lib                                               [90m(version 6863b054510943c5d19b0b4f0a26a2d18825f8b3)[0m
+[32m📦  cached locally[0m  components/content-service-api/go:lib                                  [90m(version 73baf47c1a52e437bb63275c7ce36f593de861ca)[0m
+[32m📦  cached locally[0m  components/content-service:lib                                         [90m(version 90afc360575b8ac37dadf382b1859a274a04aa6f)[0m
+[32m📦  cached locally[0m  components/ee/agent-smith:lib                                          [90m(version 2f2dc0e9720237fd7e478f8e0556046ffd40131f)[0m
+[32m📦  cached locally[0m  components/gitpod-db/go:lib                                            [90m(version cc0dde1ad840e174b8f1dccb46a78ccd844b38a5)[0m
+[32m📦  cached locally[0m  components/gitpod-db:migrations                                        [90m(version 452d639edea889b82fd82943387e8598ac7be73f)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol/go:lib                                      [90m(version f6460239c54dab648fa2e59c7b8542725dae4024)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:gitpod-schema                               [90m(version 0689f330465e70531c34d8aac593b76af22f3ccb)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:lib                                         [90m(version 5dee0a710e72efd9845efdbba648db11d6435e23)[0m
+[32m📦  cached locally[0m  components/ide-metrics-api/go:lib                                      [90m(version d869f0ee0d4788d084abcb7ee545456f9e6d4f22)[0m
+[32m📦  cached locally[0m  components/ide-service-api/go:lib                                      [90m(version 7f7d9cc0e122fd2ddf2eefc648fa99095935ee99)[0m
+[32m📦  cached locally[0m  components/image-builder-api/go:lib                                    [90m(version 2c03d7975a02bcef493668dec41d0722071bab11)[0m
+[32m📦  cached locally[0m  components/node-labeler:lib                                            [90m(version 28de3ce51767ee408af78927fb9634a83c48b316)[0m
+[32m📦  cached locally[0m  components/openvsx-proxy:lib                                           [90m(version 972a5570d66198367315d49befe01b37996db915)[0m
+[32m📦  cached locally[0m  components/public-api/go:lib                                           [90m(version d7fddd4ceae2c2dcd4f567925a7ec4c719434b8f)[0m
+[32m📦  cached locally[0m  components/registry-facade-api/go:lib                                  [90m(version ae99093b2b9f95f993f47394e8173b26b2b3c905)[0m
+[32m📦  cached locally[0m  components/registry-facade:lib                                         [90m(version 676109e8789cf1990a4ca295e387af6c45ce9a08)[0m
+[32m📦  cached locally[0m  components/supervisor-api/go:lib                                       [90m(version 6b6f507b0413ae1ac98543ab30a8086ef17c860b)[0m
+[32m📦  cached locally[0m  components/usage-api/go:lib                                            [90m(version 7b3e9c1ad69c0df341a4b0f78dc564fff6cc3a89)[0m
+[32m📦  cached locally[0m  components/usage:lib                                                   [90m(version e3ab858513d976b0df9a476155d915d7d3b427f6)[0m
+[32m📦  cached locally[0m  components/ws-daemon-api/go:lib                                        [90m(version 8e9a3dad06b6c5e05afb2dbdd0473f0d5d86f27b)[0m
+[32m📦  cached locally[0m  components/ws-daemon:lib                                               [90m(version dcd93f7bdf054ed2bd64d8536d505637782c76ec)[0m
+[32m📦  cached locally[0m  components/ws-manager-api/go:lib                                       [90m(version 3733ce2a418a65ff5954ac0aae1ab66198674e36)[0m
+[32m📦  cached locally[0m  components/ws-manager-mk2:crd                                          [90m(version 179271f80c5a90cf9c0dd73e4faedad22be25f8e)[0m
+[32m📦  cached locally[0m  components/ws-proxy:lib                                                [90m(version 1eaa8c027d05f9a9d8e6c4073a5ff4dd4beb5386)[0m
+[32m📦  cached locally[0m  dev/addlicense:app                                                     [90m(version 200bc6ca31de93388590cc5c1317e11c2093c658)[0m
+[32m📦  cached locally[0m  install/installer/pkg/components/database/incluster/init:init-scripts  [90m(version 19ecdd096dcb0126af680b8f904182ab6ae38bc5)[0m
+[32m📦  cached locally[0m  install/installer:raw-app                                              [90m(version 7b60efa3b670fed8d15e99c2b3f08466e2e05970)[0m
+[33m🔧  build[0m           components/blobserve:app                                               [90m(version a6e69c14443a2d9caa13b0a78dd13fcc31a8712a)[0m
+[33m🔧  build[0m           components/blobserve:docker                                            [90m(version a8177864e5548ac0ab3e0af95e51dc89c002110b)[0m
+[33m🔧  build[0m           components/content-service-api/typescript:lib                          [90m(version 954bd32e4c8af33edb6123780afba3954247beda)[0m
+[33m🔧  build[0m           components/content-service:app                                         [90m(version ff42f126255677176408e936b1dc8234c72c1778)[0m
+[33m🔧  build[0m           components/content-service:docker                                      [90m(version cde65b60eef6667182e5dedd74afab03d7210952)[0m
+[33m🔧  build[0m           components/dashboard:app                                               [90m(version 1026e0aa572270d9fc52af2a8bdf272ee153b62d)[0m
+[33m🔧  build[0m           components/dashboard:docker                                            [90m(version 83c99a04eef1ad3299d655d921b4614da01e14aa)[0m
+[33m🔧  build[0m           components/dashboard:static                                            [90m(version b46bc1e9ed28206830549faccbb4f0f175da30cc)[0m
+[33m🔧  build[0m           components/docker-up:app                                               [90m(version fcf8a4cc9edd5f80ca1460c35a4bb9d1702dfdbe)[0m
+[33m🔧  build[0m           components/docker-up:bin-docker-up                                     [90m(version a65e7a19024e8d110a9a7871c305cf2c4b712559)[0m
+[33m🔧  build[0m           components/docker-up:bin-runc-facade                                   [90m(version 7ad1000e87d47db0ed4a32218c3c8e65f119c627)[0m
+[33m🔧  build[0m           components/docker-up:docker                                            [90m(version fd864ce39edf709a2561fbd5cc8f71dee80b70f6)[0m
+[33m🔧  build[0m           components/ee/agent-smith:app                                          [90m(version 03396373b2708d406e0b23fdbc2cfe9b17b8387f)[0m
+[33m🔧  build[0m           components/ee/agent-smith:docker                                       [90m(version 7074f785f682d66fb830bee01b9b8ad93af42408)[0m
+[33m🔧  build[0m           components/gitpod-cli:app                                              [90m(version f2840a43f8e94a415777b7714de2ad7ef2ba3df4)[0m
+[33m🔧  build[0m           components/gitpod-db/go:init-testdb                                    [90m(version a5e80344a1d5497ba26464bb0659a930fddb9eb2)[0m
+[33m🔧  build[0m           components/gitpod-db:dbtest                                            [90m(version 3cde386d341a25b234d59670039445b8f54e18d2)[0m
+[33m🔧  build[0m           components/gitpod-db:dbtest-init                                       [90m(version 406b8e9505040a35d42fef91b4a30fb9e68b0b2e)[0m
+[33m🔧  build[0m           components/gitpod-db:docker                                            [90m(version def3e0d467fbf5b9db2354ee212cf3e3b0193534)[0m
+[33m🔧  build[0m           components/gitpod-db:lib                                               [90m(version 8720553e6c84242c6cbff6ee6b9f8edbc1a84e09)[0m
+[33m🔧  build[0m           components/gitpod-messagebus:lib                                       [90m(version a7ca2994baff612c43a8706419a658ee4c14f48c)[0m
+[33m🔧  build[0m           components/gitpod-protocol/java:lib                                    [90m(version c176885cc0608c33e85ffec29229dd2ba9b5c821)[0m
+[33m🔧  build[0m           components/ide-metrics-api/typescript-grpcweb:lib                      [90m(version 9183a9ccedf19d99e4abe16bfd4fa6c7d3fd2370)[0m
+[33m🔧  build[0m           components/ide-metrics-api:proto                                       [90m(version 0acc653998dd76eec1e3fdb122d167a97b67d824)[0m
+[33m🔧  build[0m           components/ide-metrics:app                                             [90m(version 75bd6b2f810fed8e133660f55a8daac9e23c1997)[0m
+[33m🔧  build[0m           components/ide-metrics:docker                                          [90m(version 4cc9bcc0f0dd3210ec2b2fc39b6de82c3f6f2822)[0m
+[33m🔧  build[0m           components/ide-proxy:docker                                            [90m(version ef0df777095de13654ca17b462c6a2c2aae8362c)[0m
+[33m🔧  build[0m           components/ide-service-api/typescript:lib                              [90m(version ce5d4381e623f8d438a353b419927ef81d183436)[0m
+[33m🔧  build[0m           components/ide-service:app                                             [90m(version 1f866cd08f158e3e2f6f3e17a17e6eca7fc46b18)[0m
+[33m🔧  build[0m           components/ide-service:docker                                          [90m(version d91741e4c8ddbe1d2cfaa248eaba31f00cd7115f)[0m
+[33m🔧  build[0m           components/ide/code-desktop/status:app                                 [90m(version 0844401c40094c95c92aec8f05a3a7b3cb171069)[0m
+[33m🔧  build[0m           components/ide/code-desktop:docker                                     [90m(version 568a11854891f4f7fe92a8f6cd649e163eb43505)[0m
+[33m🔧  build[0m           components/ide/code-desktop:docker-insiders                            [90m(version 1fdee89ed51e11f74eabdf29f6e7c0c58920a9e3)[0m
+[33m🔧  build[0m           components/ide/code/codehelper:app                                     [90m(version 6e4dcd00539888b6ae5b48bca7c39f8a6b657695)[0m
+[33m🔧  build[0m           components/ide/code/codehelper:docker                                  [90m(version 23b4cb732da7627c2caae215e12c02ca9010034d)[0m
+[33m🔧  build[0m           components/ide/code:docker                                             [90m(version bb216094cb217df6cf5b643ac6e8f14d793dbd6b)[0m
+[33m🔧  build[0m           components/ide/jetbrains/backend-plugin:latest                         [90m(version 40130cafd09e673f137e41e6668fbf627a8f5ecc)[0m
+[33m🔧  build[0m           components/ide/jetbrains/backend-plugin:plugin-latest                  [90m(version 2b3d4a104523e1e5c815d729c81860f94274c70d)[0m
+[33m🔧  build[0m           components/ide/jetbrains/backend-plugin:plugin-stable                  [90m(version 60783199a0263c3fd81701a88f3f7b9386e60207)[0m
+[33m🔧  build[0m           components/ide/jetbrains/backend-plugin:stable                         [90m(version cbc7f672409d731eb2910dd9d7ca0b806879fc3a)[0m
+[33m🔧  build[0m           components/ide/jetbrains/cli:app                                       [90m(version 674d2d303d5df25a2119f7d7cafe995e64424257)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:clion                                   [90m(version c33c87e171f26725765bd58f2d261c8e9478f68a)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:clion-latest                            [90m(version 278ae451b143c9036c6671d24d7a17c0a5cbb284)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-clion                          [90m(version 7f1ddc3b79c65348b69e9a6a4b538630aac20b7a)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-clion-latest                   [90m(version ea2f652ea87a98911f195a52afa9cf22614b3e6c)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-goland                         [90m(version 20c0c83115047554db55fd5503a95b5276a6a22d)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-goland-latest                  [90m(version 751034c5e76c607074ffff7ecf13da89484adbf7)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-intellij                       [90m(version 4dfa010f04513105e39d0f42950ed778e593f47c)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-intellij-latest                [90m(version 9f36e8cde6e8ff7e8927c846d190d70378b3b2a6)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-phpstorm                       [90m(version 92c0e33db279bdd8628a96683c679900157faa0c)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-phpstorm-latest                [90m(version 67d8b7f1f7ee6b770d4a03ca5c717539a6889700)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-pycharm                        [90m(version c412c97b70d52399492f3bdd2e2053d729239b0e)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-pycharm-latest                 [90m(version fd7577bc9c1cd08ad870a5ad500b6c69629a08c1)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-rider                          [90m(version f233cad0635e4b89b05ba8bad3c9021380db73a5)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-rider-latest                   [90m(version b3b632a8d059c37088adcc29e614fd368dcf9f14)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-rubymine                       [90m(version 3b17aa8fc61c7e6ad0fae288e813fab49ccf494a)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-rubymine-latest                [90m(version 7eedf0955ce3429586f12b380a5807b869657351)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-webstorm                       [90m(version adb91a712718b3bf88c4111c0941bd123f58df52)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:download-webstorm-latest                [90m(version adbeba3e0d604dd1048f509bed45067fc07461b9)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:goland                                  [90m(version 17e29bf344316b2e278df637c13b3fb1413a4781)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:goland-latest                           [90m(version 9295bfbc244cc26fd1197e75a59137bc7076737e)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:intellij                                [90m(version d61ba7d2b37708a071e0b6ac341a345cd40e0859)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:intellij-latest                         [90m(version a9fb541cd5e082a326c48374c50ee492ba439685)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:phpstorm                                [90m(version 444b38b6c48d1fed99de25a451c01c7ba2d4b933)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:phpstorm-latest                         [90m(version 0684328342c0bd0574a73d02ba0ba373e0c18ee2)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:pycharm                                 [90m(version 2e636acfbf672f958dc2aba8cb138333675ffeb2)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:pycharm-latest                          [90m(version d6456c28fa5ea1b7d417b8e2350bdea182848f39)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:rider                                   [90m(version 706c681cd6395c9cbae44f91deb15b6441d15445)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:rider-latest                            [90m(version f59ae30fb06df2bdb33f12df6a54a7766655826c)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:rubymine                                [90m(version 478e35b701c1a4ef08919008f54487130d466c35)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:rubymine-latest                         [90m(version 3135d7776b7bc3d8728cf82e43459886f8d9d8a6)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:webstorm                                [90m(version 30e32e486fde06f637749547af07f8ab880abd85)[0m
+[33m🔧  build[0m           components/ide/jetbrains/image:webstorm-latest                         [90m(version 624c71848975a83f234390cbdc0e70a2dc95f575)[0m
+[33m🔧  build[0m           components/ide/jetbrains/launcher:app                                  [90m(version f42dccc315ec9bccf9fd23fa75407c93abaac3bc)[0m
+[33m🔧  build[0m           components/ide/jetbrains/launcher:docker                               [90m(version 04bafb4b6b6c4eb6e9b8938ada4b466c281bea8c)[0m
+[33m🔧  build[0m           components/image-builder-api/typescript:lib                            [90m(version f7cf30732f6d4e12af5e2ce508fe63d157e36750)[0m
+[33m🔧  build[0m           components/image-builder-bob:app                                       [90m(version 290ccc186c08e30f27784a441cdca0c6ecd79b03)[0m
+[33m🔧  build[0m           components/image-builder-bob:docker                                    [90m(version 2da8383789dc3bf2ff0f63d280a32a9360889de1)[0m
+[33m🔧  build[0m           components/image-builder-bob:runc-facade                               [90m(version d5ed0aaec9e07d250fa2e77fc6d3bc45c03888c8)[0m
+[33m🔧  build[0m           components/image-builder-mk3:app                                       [90m(version b43110d91ae7e880fe5cb9dc089d685999cef4b6)[0m
+[33m🔧  build[0m           components/image-builder-mk3:docker                                    [90m(version 061fae11de83d9bee118793e9ea55f378b8eb4ac)[0m
+[33m🔧  build[0m           components/installation-telemetry:app                                  [90m(version 45a8191aa8d021952632db3f0cad91869fcd2656)[0m
+[33m🔧  build[0m           components/installation-telemetry:docker                               [90m(version d1c54e7e0f3f310c8f57f763ec95bd6ebdad433f)[0m
+[33m🔧  build[0m           components/ipfs/ipfs-cluster:docker                                    [90m(version c355e2ef66565723be1fc7a42b6e2cd14761c749)[0m
+[33m🔧  build[0m           components/ipfs/kubo:docker                                            [90m(version 08eeba3a6a8af380f2fd8751cda8e75a4531064e)[0m
+[33m🔧  build[0m           components/kots-config-check/certificate:docker                        [90m(version bff6852d6482d90eda2746460b8692ac7f733651)[0m
+[33m🔧  build[0m           components/kots-config-check/database:docker                           [90m(version 46d89e4670a9ef3443694d9e74a71f561c6e6fe8)[0m
+[33m🔧  build[0m           components/kots-config-check/registry:app                              [90m(version 81522cd30d7b50876ac9df0dfe9e386fd36a6a8a)[0m
+[33m🔧  build[0m           components/kots-config-check/registry:docker                           [90m(version c7bb1443f3e2426d3f309c6b9f481600b29d868c)[0m
+[33m🔧  build[0m           components/kots-config-check/storage:docker                            [90m(version b983486195e4312b6a00124a1ffd1f2c82ed7ed6)[0m
+[33m🔧  build[0m           components/local-app-api/go:lib                                        [90m(version 5d33f4f3767b80bd4b7ba2210d9a5a80213546e9)[0m
+[33m🔧  build[0m           components/local-app:app                                               [90m(version 96d048de9cb5cf98be9b2968d4ac2053f0d6def3)[0m
+[33m🔧  build[0m           components/local-app:app-darwin-amd64                                  [90m(version 3048b942d1d57b048f842adc8e41bc1c94bc98b9)[0m
+[33m🔧  build[0m           components/local-app:app-darwin-arm64                                  [90m(version f306cfe910468e9324e71046acbf0286ffb57615)[0m
+[33m🔧  build[0m           components/local-app:app-linux-amd64                                   [90m(version 5dcc69d30d7cc2fc770920856fd012b4ff9dc201)[0m
+[33m🔧  build[0m           components/local-app:app-linux-arm64                                   [90m(version b6bae22ae9983e64e253390a0954ea1740fb08d4)[0m
+[33m🔧  build[0m           components/local-app:app-windows-386                                   [90m(version f1efa0ca6449fe4a74bc32371e0547b571692446)[0m
+[33m🔧  build[0m           components/local-app:app-windows-amd64                                 [90m(version 373a30c2396ce762f546c9b0dcebab321b01d17b)[0m
+[33m🔧  build[0m           components/local-app:app-windows-arm64                                 [90m(version 65601cda87662b452f54f639b20ff724398c42ff)[0m
+[33m🔧  build[0m           components/local-app:docker                                            [90m(version a7e1b4ef922b6b2413d2185b41f8a8644bdbc813)[0m
+[33m🔧  build[0m           components/node-labeler:app                                            [90m(version 2ceadd1159e2209692c7501ae5507c028bd15fec)[0m
+[33m🔧  build[0m           components/node-labeler:docker                                         [90m(version b15e10c3f0fdf60cf12064e07a40ac271bf50223)[0m
+[33m🔧  build[0m           components/openvsx-proxy:app                                           [90m(version fd52f9b15b7f2384e41eff3c323970051e7c9601)[0m
+[33m🔧  build[0m           components/openvsx-proxy:docker                                        [90m(version a12bf427f06b14f390c333871238e277a2e0afa0)[0m
+[33m🔧  build[0m           components/proxy:docker                                                [90m(version f6b8dd5fec3f81ef7402ce3083fe4d11a93e312b)[0m
+[33m🔧  build[0m           components/public-api-server:app                                       [90m(version a08cc2760c7b0b54f8d6ad3d459be96c38e3e5cf)[0m
+[33m🔧  build[0m           components/public-api-server:docker                                    [90m(version 94642179a6a161597986d1aaa776cf671d12a8b3)[0m
+[33m🔧  build[0m           components/public-api/typescript:lib                                   [90m(version 1ab7593b68f301ea77e717c32ea0a3c668459f1d)[0m
+[33m🔧  build[0m           components/registry-facade:app                                         [90m(version a540cad7dd5261a9f1f7a5e7f2f018252c5e3925)[0m
+[33m🔧  build[0m           components/registry-facade:docker                                      [90m(version c57568aba67fd695ca9743e690e0a2a1d15e0e2e)[0m
+[33m🔧  build[0m           components/server:app                                                  [90m(version 4642016442b41376890217d6eeb0fab8a82ab7c3)[0m
+[33m🔧  build[0m           components/server:docker                                               [90m(version 3689a0dd67dfc22bf904afd23b2a4af59dfb7bb8)[0m
+[33m🔧  build[0m           components/service-waiter:app                                          [90m(version 5ab99c5529f02586ebfe929cbb372bede1411da3)[0m
+[33m🔧  build[0m           components/service-waiter:docker                                       [90m(version 7feb4d14286bcddd59e6c150dd2f3f220c5d8a0a)[0m
+[33m🔧  build[0m           components/supervisor-api/java:lib                                     [90m(version ceb0b8d6ead7d36b5ed722292ace531d5a675635)[0m
+[33m🔧  build[0m           components/supervisor-api/typescript-grpc:lib                          [90m(version 4dfe84fd8af3c365d1d48769e210537505636800)[0m
+[33m🔧  build[0m           components/supervisor-api/typescript-grpcweb:lib                       [90m(version 3d9e01cd652cceaa88253b1d0e21daeebbe316fd)[0m
+[33m🔧  build[0m           components/supervisor-api:java                                         [90m(version 07dcac48173915d491a17ec71e6393237ed65676)[0m
+[33m🔧  build[0m           components/supervisor-api:proto                                        [90m(version 073acf775836fe7f4a359b200bccb9c53694dc70)[0m
+[33m🔧  build[0m           components/supervisor/frontend:app                                     [90m(version 2dc20ac44ae0943cba2435de909635f9fe6bcc00)[0m
+[33m🔧  build[0m           components/supervisor/openssh:app                                      [90m(version c3fe831244fe64016fd5a170064b0ae71a761ebf)[0m
+[33m🔧  build[0m           components/supervisor/openssh:docker-build                             [90m(version c23de7b6fc6201bea9dba0cb57ed7da6aeadc34f)[0m
+[33m🔧  build[0m           components/supervisor:app                                              [90m(version 7d28da80c6db35388723f44c1522f57ef7e3ea63)[0m
+[33m🔧  build[0m           components/supervisor:docker                                           [90m(version 74f89da8a6c2194d93c4b5b7568a23e0a5f8dd51)[0m
+[33m🔧  build[0m           components/usage-api/typescript:lib                                    [90m(version 79525e3752e047f7b8dbbf9927eed357bfe99b43)[0m
+[33m🔧  build[0m           components/usage:app                                                   [90m(version 1817a288baccb2c5f3531faa683cde3b9580f271)[0m
+[33m🔧  build[0m           components/usage:docker                                                [90m(version 5eff09d6eabb63cd3b280ea0481f532380152d8e)[0m
+[33m🔧  build[0m           components/workspace-rollout-job:app                                   [90m(version 436bc0b279e4307212a516710de7543aead8c146)[0m
+[33m🔧  build[0m           components/workspace-rollout-job:docker                                [90m(version d0ff522b6cde38b2fa3b9651ca2c149145684843)[0m
+[33m🔧  build[0m           components/workspacekit:app                                            [90m(version ec3bf167bcd1c9c00f49c7692f2a190a360c9c11)[0m
+[33m🔧  build[0m           components/workspacekit:docker                                         [90m(version 720f79dc75cacaa3a3c2492eecd4c75db97d9597)[0m
+[33m🔧  build[0m           components/workspacekit:fuse-overlayfs                                 [90m(version 6a36b0300da677fdecdc55766183b78cf4730698)[0m
+[33m🔧  build[0m           components/ws-daemon-api/typescript:lib                                [90m(version c41e537b93ea6eac164515fae6dc1fcf0b0cf45c)[0m
+[33m🔧  build[0m           components/ws-daemon/nsinsider:app                                     [90m(version ee81e0607cda5a6c54215b9ce6393e6161ed84d9)[0m
+[33m🔧  build[0m           components/ws-daemon/seccomp-profile-installer:app                     [90m(version 55bd8771ddb8eeb062e73989dfd3293657c9d992)[0m
+[33m🔧  build[0m           components/ws-daemon/seccomp-profile-installer:docker                  [90m(version fb54e96617fe51e6548fd4ac1b4f185f19778c3d)[0m
+[33m🔧  build[0m           components/ws-daemon/seccomp-profile-installer:profile                 [90m(version 6bf4c3c05d8a299e23ba7d6eef3953437c7afa35)[0m
+[33m🔧  build[0m           components/ws-daemon:app                                               [90m(version 990a18920400fb0c1673ddf2827d9b3a30697cfa)[0m
+[33m🔧  build[0m           components/ws-daemon:content-initializer                               [90m(version 6add1668ba570e4ad897b6c865c7db84fec0f4b9)[0m
+[33m🔧  build[0m           components/ws-daemon:docker                                            [90m(version 79cb593fb4690b940c234cf638d6e1897e123a0b)[0m
+[33m🔧  build[0m           components/ws-manager-api/typescript:lib                               [90m(version bbddeb68778e7f0c861f7b9dda33bb1dbdda5969)[0m
+[33m🔧  build[0m           components/ws-manager-bridge-api/go:lib                                [90m(version 94c71424c24d5db82985240d61cdd66b2ccf50dc)[0m
+[33m🔧  build[0m           components/ws-manager-bridge-api/typescript:lib                        [90m(version 60a4ba6cf07f3e682aeea1be27255ffff4a0f899)[0m
+[33m🔧  build[0m           components/ws-manager-bridge:app                                       [90m(version 0e421d26713c7a3bc23c71a0e38e45c549bfb232)[0m
+[33m🔧  build[0m           components/ws-manager-bridge:docker                                    [90m(version 65fa14ac834fa5ca838abd46408ed4e77e7d5647)[0m
+[33m🔧  build[0m           components/ws-manager-mk2:app                                          [90m(version 16bdd4be49226db0962112dbdd1d6e13db8e0b86)[0m
+[33m🔧  build[0m           components/ws-manager-mk2:docker                                       [90m(version d3164d522bd1608948193a2afbc4dc581037abff)[0m
+[33m🔧  build[0m           components/ws-manager:app                                              [90m(version c8fbd7718e0226ac29f96599e5e91ad8fc1af745)[0m
+[33m🔧  build[0m           components/ws-manager:docker                                           [90m(version cf333d02977ab9705aa8c7398c1ebf5a95df0e16)[0m
+[33m🔧  build[0m           components/ws-manager:userns-test-fixtures                             [90m(version e9234cfc551eb32f0307f9756e130159dd76fafd)[0m
+[33m🔧  build[0m           components/ws-proxy:app                                                [90m(version c02ec2d4cb89d4e7e27cbc7023bf3cc658a48ca3)[0m
+[33m🔧  build[0m           components/ws-proxy:docker                                             [90m(version 3a95c07046345cf468e69c907307ff448baf020f)[0m
+[33m🔧  build[0m           components:all-docker                                                  [90m(version 139c0d5ca929cda9128b35350d3dad90d9a9e1cc)[0m
+[33m🔧  build[0m           dev/gpctl:app                                                          [90m(version 2e93033f197624598076b0234631d2c1049aaf24)[0m
+[33m🔧  build[0m           dev/gpctl:lib                                                          [90m(version cf017156914c6c20a01080668fa9b1784911283c)[0m
+[33m🔧  build[0m           dev/version-manifest:app                                               [90m(version 0132fe329683eec92a20c22363cf92cabdaa31a3)[0m
+[33m🔧  build[0m           install/installer:app                                                  [90m(version eed4cf0be2df58006f8262e6afa4c90dd330f71a)[0m
+[33m🔧  build[0m           install/installer:docker                                               [90m(version 141d0cf4ceeeee43cadc7e29da614cd0e2ea9549)[0m
+[33m🔧  build[0m           test:app                                                               [90m(version b2c0a2201c6a4b1999b7b014110240246842724e)[0m
+[33m🔧  build[0m           test:docker                                                            [90m(version 1b562b5433138b4a6c7d99bbf9680de5a532084a)[0m
+
+[0;31mbuild failed[0m
+[1;37mReason:[0m cannot build with unresolved argument "${SEGMENT_IO_TOKEN}": use -DSEGMENT_IO_TOKEN=value to set the argument
+	${SEGMENT_IO_TOKEN} appears in components/installation-telemetry:app
+
+
+time="2023-05-24T09:04:28Z" level=fatal msg="cannot build with unresolved argument \"${SEGMENT_IO_TOKEN}\": use -DSEGMENT_IO_TOKEN=value to set the argument\n\t${SEGMENT_IO_TOKEN} appears in components/installation-telemetry:app\n\n"
+leeway build install/installer:raw-app -Dversion=20230524
+[32m📦  cached locally[0m  components/blobserve:lib                  [90m(version a353d71e5a8d5826ff36556939e3f71608e3bf9d)[0m
+[32m📦  cached locally[0m  components/common-go:lib                  [90m(version 6863b054510943c5d19b0b4f0a26a2d18825f8b3)[0m
+[32m📦  cached locally[0m  components/content-service-api/go:lib     [90m(version 73baf47c1a52e437bb63275c7ce36f593de861ca)[0m
+[32m📦  cached locally[0m  components/content-service:lib            [90m(version 90afc360575b8ac37dadf382b1859a274a04aa6f)[0m
+[32m📦  cached locally[0m  components/ee/agent-smith:lib             [90m(version 2f2dc0e9720237fd7e478f8e0556046ffd40131f)[0m
+[32m📦  cached locally[0m  components/gitpod-db/go:lib               [90m(version cc0dde1ad840e174b8f1dccb46a78ccd844b38a5)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol/go:lib         [90m(version f6460239c54dab648fa2e59c7b8542725dae4024)[0m
+[32m📦  cached locally[0m  components/gitpod-protocol:gitpod-schema  [90m(version 0689f330465e70531c34d8aac593b76af22f3ccb)[0m
+[32m📦  cached locally[0m  components/ide-metrics-api/go:lib         [90m(version d869f0ee0d4788d084abcb7ee545456f9e6d4f22)[0m
+[32m📦  cached locally[0m  components/ide-service-api/go:lib         [90m(version 7f7d9cc0e122fd2ddf2eefc648fa99095935ee99)[0m
+[32m📦  cached locally[0m  components/image-builder-api/go:lib       [90m(version 2c03d7975a02bcef493668dec41d0722071bab11)[0m
+[32m📦  cached locally[0m  components/node-labeler:lib               [90m(version 28de3ce51767ee408af78927fb9634a83c48b316)[0m
+[32m📦  cached locally[0m  components/openvsx-proxy:lib              [90m(version 972a5570d66198367315d49befe01b37996db915)[0m
+[32m📦  cached locally[0m  components/public-api/go:lib              [90m(version d7fddd4ceae2c2dcd4f567925a7ec4c719434b8f)[0m
+[32m📦  cached locally[0m  components/registry-facade-api/go:lib     [90m(version ae99093b2b9f95f993f47394e8173b26b2b3c905)[0m
+[32m📦  cached locally[0m  components/registry-facade:lib            [90m(version 676109e8789cf1990a4ca295e387af6c45ce9a08)[0m
+[32m📦  cached locally[0m  components/supervisor-api/go:lib          [90m(version 6b6f507b0413ae1ac98543ab30a8086ef17c860b)[0m
+[32m📦  cached locally[0m  components/usage-api/go:lib               [90m(version 7b3e9c1ad69c0df341a4b0f78dc564fff6cc3a89)[0m
+[32m📦  cached locally[0m  components/usage:lib                      [90m(version e3ab858513d976b0df9a476155d915d7d3b427f6)[0m
+[32m📦  cached locally[0m  components/ws-daemon-api/go:lib           [90m(version 8e9a3dad06b6c5e05afb2dbdd0473f0d5d86f27b)[0m
+[32m📦  cached locally[0m  components/ws-daemon:lib                  [90m(version dcd93f7bdf054ed2bd64d8536d505637782c76ec)[0m
+[32m📦  cached locally[0m  components/ws-manager-api/go:lib          [90m(version 3733ce2a418a65ff5954ac0aae1ab66198674e36)[0m
+[32m📦  cached locally[0m  components/ws-manager-mk2:crd             [90m(version 179271f80c5a90cf9c0dd73e4faedad22be25f8e)[0m
+[32m📦  cached locally[0m  components/ws-proxy:lib                   [90m(version 1eaa8c027d05f9a9d8e6c4073a5ff4dd4beb5386)[0m
+[32m📦  cached locally[0m  dev/addlicense:app                        [90m(version 200bc6ca31de93388590cc5c1317e11c2093c658)[0m
+[32m📦  cached locally[0m  install/installer:raw-app                 [90m(version 7b60efa3b670fed8d15e99c2b3f08466e2e05970)[0m
+[33m🔧  build[0m           components/gitpod-db/go:init-testdb       [90m(version a5e80344a1d5497ba26464bb0659a930fddb9eb2)[0m
+
+
+[0;32mbuild succeded[0m
